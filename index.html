@@ -47,7 +47,7 @@
   }
   .ticker {
     display: flex;
-    animation: scroll 45s linear infinite;
+    animation: scroll 18s linear infinite;
     white-space: nowrap;
     padding-top: 9px;
   }
@@ -244,10 +244,28 @@
   .archive-card .headline { font-size: 0.9em; margin-top: 6px; }
 
   @media (max-width: 768px) {
-    .container { grid-template-columns: 1fr; }
-    .hero h2 { font-size: 1.3em; }
-    .hero { padding: 24px; }
-    .header { flex-direction: column; gap: 8px; }
+    .container { grid-template-columns: 1fr; padding: 16px 12px; gap: 18px; }
+    .hero { padding: 20px; }
+    .hero h2 { font-size: 1.2em; }
+    .hero p { font-size: 0.88em; }
+    .header { flex-direction: column; gap: 6px; padding: 16px 12px; }
+    .logo h1 { font-size: 1.3em; }
+    .story-card { padding: 14px; }
+    .story-card h3 { font-size: 0.95em; }
+    .story-card p { font-size: 0.84em; }
+    .sidebar { order: 2; }
+    .stories { order: 1; }
+    .archive-grid { grid-template-columns: 1fr; }
+    .henry { flex-direction: column; padding: 18px; }
+    .ticker-item { padding: 0 20px; font-size: 0.8em; }
+  }
+  @media (max-width: 390px) {
+    .hero h2 { font-size: 1.05em; }
+    .hero { padding: 16px; }
+    .container { padding: 12px 8px; }
+    .logo-icon { font-size: 1.4em; }
+    .logo h1 { font-size: 1.1em; }
+    .story-card p { font-size: 0.82em; }
   }
 </style>
 </head>
