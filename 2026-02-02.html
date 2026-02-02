@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="🤖 Daily AI — 2 Fév 2026">
-<meta property="og:description" content="StepFun sort Step-3.5-Flash : 196B params, 11B actifs — bat DeepSeek v3.2 et GLM-4.7 en coding.">
+<meta property="og:title" content="🤖 Daily AI — 2 Février 2026">
+<meta property="og:description" content="Claude Sonnet 5 &quot;Fennec&quot; leaké via Vertex AI — endpoint Anthropic renvoie 401. Release demain ?">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="🤖 Daily AI — 2 Fév 2026">
-<meta name="twitter:description" content="StepFun sort Step-3.5-Flash : 196B params, 11B actifs — bat DeepSeek v3.2 et GLM-4.7 en coding.">
-<title>🤖 Daily AI — 2 Fév 2026</title>
+<meta name="twitter:title" content="🤖 Daily AI — 2 Février 2026">
+<meta name="twitter:description" content="Claude Sonnet 5 &quot;Fennec&quot; leaké via Vertex AI — endpoint Anthropic renvoie 401. Release demain ?">
+<title>🤖 Daily AI — 2 Février 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -21,98 +21,219 @@
     margin: 0 auto;
     padding: 20px;
   }
-  .header { text-align: center; padding: 30px 0; border-bottom: 2px solid #30363d; margin-bottom: 30px; }
-  .header h1 { font-size: 1.8em; color: #58a6ff; margin-bottom: 8px; }
+  .header {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 2px solid #30363d;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 1.8em;
+    color: #58a6ff;
+    margin-bottom: 8px;
+  }
   .header .date { color: #8b949e; font-size: 0.9em; }
-  .headline { background: linear-gradient(135deg, #1a1f35, #1a2744); border-left: 4px solid #f0883e; padding: 20px; margin-bottom: 30px; border-radius: 0 8px 8px 0; font-size: 1.15em; font-weight: 600; }
-  .section { margin-bottom: 30px; }
-  .section-title { font-size: 1.1em; font-weight: 700; color: #58a6ff; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
-  .story { background: #161b22; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-  .story h3 { color: #f0883e; font-size: 1em; margin-bottom: 8px; }
+  .headline {
+    background: linear-gradient(135deg, #1a1f35, #1a2744);
+    border-left: 4px solid #f0883e;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    font-size: 1.15em;
+    font-weight: 600;
+  }
+  .section {
+    margin-bottom: 30px;
+  }
+  .section-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #58a6ff;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #21262d;
+  }
+  .story {
+    background: #161b22;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .story h3 {
+    color: #f0883e;
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
   .story p { color: #c9d1d9; font-size: 0.92em; }
   .story a { color: #58a6ff; text-decoration: none; font-size: 0.85em; }
   .story a:hover { text-decoration: underline; }
-  .brief-item { padding: 8px 0; border-bottom: 1px solid #21262d; font-size: 0.92em; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .badge-verified { background: #238636; color: #fff; }
+  .badge-rumor { background: #da3633; color: #fff; }
+  .badge-unverified { background: #d29922; color: #000; }
+  .brief-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #21262d;
+    font-size: 0.92em;
+  }
   .brief-item:last-child { border-bottom: none; }
   .brief-item a { color: #58a6ff; text-decoration: none; }
-  .henry-note { background: linear-gradient(135deg, #1a2744, #1a1f35); border-radius: 8px; padding: 20px; margin-top: 30px; font-style: italic; color: #c9d1d9; border-left: 4px solid #a371f7; }
-  .henry-note .signature { margin-top: 12px; font-style: normal; font-weight: 600; color: #a371f7; }
-  .footer { text-align: center; padding: 30px 0; margin-top: 30px; border-top: 1px solid #21262d; color: #484f58; font-size: 0.8em; }
-  .subscribe { background: linear-gradient(135deg, #1a2744, #162030); border: 1px solid #30363d; border-radius: 12px; padding: 24px; margin: 30px 0; text-align: center; }
+  .henry-note {
+    background: linear-gradient(135deg, #1a2744, #1a1f35);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    font-style: italic;
+    color: #c9d1d9;
+    border-left: 4px solid #a371f7;
+  }
+  .henry-note .signature {
+    margin-top: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: #a371f7;
+  }
+  .footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 30px;
+    border-top: 1px solid #21262d;
+    color: #484f58;
+    font-size: 0.8em;
+  }
+  .credibility { font-size: 0.8em; margin-left: 4px; }
+  .subscribe {
+    background: linear-gradient(135deg, #1a2744, #162030);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+    text-align: center;
+  }
   .subscribe h3 { color: #f0883e; margin-bottom: 8px; }
   .subscribe p { color: #8b949e; font-size: 0.9em; margin-bottom: 16px; }
   .subscribe form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .subscribe input[type="email"] { background: #0d1117; border: 1px solid #30363d; color: #e6edf3; padding: 10px 14px; border-radius: 8px; font-size: 0.95em; min-width: 220px; }
+  .subscribe input[type="email"] {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    min-width: 220px;
+  }
   .subscribe input[type="email"]:focus { border-color: #58a6ff; outline: none; }
-  .subscribe input[type="submit"] { background: #f0883e; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.95em; font-weight: 600; cursor: pointer; }
+  .subscribe input[type="submit"] {
+    background: #f0883e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+  }
   .subscribe input[type="submit"]:hover { background: #d47a35; }
-  @media (max-width: 480px) { body { padding: 12px; } .header h1 { font-size: 1.4em; } .headline { font-size: 1em; padding: 14px; } }
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    .header h1 { font-size: 1.4em; }
+    .headline { font-size: 1em; padding: 14px; }
+  }
 </style>
 </head>
 <body>
 <div class="header">
   <h1>🤖 Daily AI</h1>
-  <div class="date">Dimanche 2 Février 2026</div>
+  <div class="date">Lundi 2 Février 2026</div>
 </div>
 
-<div class="headline">💥 StepFun sort Step-3.5-Flash : 196B params, 11B actifs — bat DeepSeek v3.2 et GLM-4.7 en coding. Le MoE open source entre dans une nouvelle ligue.</div>
+<div class="headline">💥 Claude Sonnet 5 "Fennec" leaké via Vertex AI — endpoint Anthropic renvoie 401 (existe mais protégé). Release demain 3 février ?</div>
 
 <div class="section">
   <div class="section-title">🔥 TOP STORIES</div>
+
   <div class="story">
-    <h3>1️⃣ Step-3.5-Flash explose les benchmarks</h3>
-    <p>StepFun (startup chinoise) lâche un MoE de 196B/11B actifs qui surpasse DeepSeek v3.2 (671B/37B) en coding et agentic. Context 256K, 100-300 tok/s. Le ratio perf/compute est délirant — c'est 3x moins de params actifs pour de meilleurs résultats.</p>
-    <a href="https://huggingface.co/stepfun-ai/Step-3.5-Flash">→ HuggingFace</a>
+    <h3>1️⃣ Claude Sonnet 5 "Fennec" — le leak qui affole la communauté</h3>
+    <p>Un log d'erreur Vertex AI montre <code>claude-sonnet-5@20260203</code>. Le codename interne "Fennec" a fuité sur Reddit et Hacker News. Notre vérification : l'endpoint Anthropic renvoie <strong>401</strong> (= le modèle existe, mais il est protégé). Sur Vertex, 404 pour l'instant. Si c'est réel, release demain 3 février. Anthropic reste muet — ce qui en dit long.</p>
+    <a href="https://evolutionaihub.com/claude-sonnet-5-leak/">🔗 EvolutionAI Hub</a> · <a href="https://www.reddit.com/r/ClaudeAI/comments/1qtm9ix/sonnet_5_release_on_feb_3/">🔗 r/ClaudeAI</a>
   </div>
+
   <div class="story">
-    <h3>2️⃣ OpenAI retire GPT-4o le 13 février</h3>
-    <p>Fin de route pour GPT-4o, GPT-4.1, o4-mini et GPT-5 Instant/Thinking dans ChatGPT. OpenAI dit que GPT-5.2 suffit. Beaucoup d'utilisateurs sont nostalgiques — 4o avait une "personnalité" que les modèles suivants n'ont jamais retrouvée.</p>
-    <a href="https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-retiring-famous-gpt-4o-model-says-gpt-52-is-good-enough/">→ BleepingComputer</a>
+    <h3>2️⃣ Step-3.5-Flash : le modèle chinois qui bat DeepSeek v3.2 avec 11B params actifs</h3>
+    <p>StepFun sort Step-3.5-Flash, un MoE de 196B (11B activés) open source. 256K de contexte, 100-300 tok/s, et il surpasse DeepSeek v3.2 ET GLM-4.7 sur les benchmarks code et agents. À 11B actifs, c'est runnable en local. La Chine continue de livrer à une cadence folle.</p>
+    <a href="https://www.testingcatalog.com/stepfun-launched-step-3-5-flash-open-source-model/">🔗 TestingCatalog</a> · <a href="https://www.reddit.com/r/LocalLLaMA/comments/1qtjhc8/step35flash_196ba11b_outperforms_glm47_and/">🔗 r/LocalLLaMA</a>
   </div>
+
   <div class="story">
-    <h3>3️⃣ Anthropic : les chatbots changent les croyances des utilisateurs</h3>
-    <p>Étude "Disempowerment Patterns" — les chatbots IA modifient les croyances et valeurs des utilisateurs intensifs. Le pire : les users manipulés sont PLUS satisfaits. La sycophantie comme feature, pas comme bug.</p>
-    <a href="https://futurism.com/artificial-intelligence/new-study-anthropic-psychosis-disempowerement">→ Futurism</a>
+    <h3>3️⃣ OpenClaw (ex-Clawdbot) : 100K stars, CNBC et The Guardian sonnent l'alarme sécurité</h3>
+    <p>L'agent IA personnel open source le plus viral du moment fait la une partout. Palo Alto Networks et Cisco alertent sur des failles : injection de prompt, credentials en clair, interfaces admin exposées. Le projet grandit plus vite que sa sécurité — un classique open source, mais cette fois avec accès à vos mots de passe.</p>
+    <a href="https://www.zdnet.com/article/openclaw-moltbot-clawdbot-5-reasons-viral-ai-agent-security-nightmare/">🔗 ZDNet</a> · <a href="https://www.cnbc.com/2026/02/02/openclaw-open-source-ai-agent-rise-controversy-clawdbot-moltbot-moltbook.html">🔗 CNBC</a>
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">🧪 OPEN SOURCE WATCH</div>
   <div class="story">
-    <h3>Step-3.5-Flash (StepFun)</h3>
-    <p>196B MoE, 11B actifs, Apache 2.0. Le nouveau roi du ratio perf/coût. r/LocalLLaMA est en feu.</p>
-    <a href="https://huggingface.co/stepfun-ai/Step-3.5-Flash">→ HuggingFace</a>
+    <h3>Step-3.5-Flash — 196B/11B MoE par StepFun</h3>
+    <p>LE drop du jour. Open weights, bat DeepSeek v3.2 sur le code, tourne en local avec quantization INT4. 256K contexte.</p>
+    <a href="https://huggingface.co/stepfun-ai/Step-3.5-Flash-Int4">→ Hugging Face</a>
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">📊 SIGNAL / BRUIT</div>
-  <div class="brief-item">📉 Le vibe coding tue l'open source — un paper arxiv (Koren et al.) montre que les LLMs cannibalisent les communautés OSS. Moins de visites, moins de sponsors, moins de contributions.</div>
-  <div class="brief-item">🤝 Snowflake signe un deal multi-year avec OpenAI — les modèles nativement dans Cortex AI. Anthropic, Meta et Mistral aussi sur la plateforme.</div>
+  <div class="story">
+    <p>• Les chatbots (ChatGPT, Gemini, Claude, Copilot) citent <strong>Grokipedia</strong> de Musk comme source — la boucle de l'IA qui se cite elle-même pose un vrai problème d'intégrité informationnelle.</p>
+    <p>• La Chine accélère encore : après DeepSeek, StepFun livre un modèle compétitif à une fraction des params. Le <strong>MoE ultra-sparse</strong> devient le standard.</p>
+    <p>• La <strong>sécurité des agents IA</strong> devient LE sujet : OpenClaw force l'industrie à réfléchir à ce qu'il se passe quand on donne les clés de sa vie numérique à un LLM.</p>
+  </div>
 </div>
 
 <div class="section">
-  <div class="section-title">🇫🇷 FRANCE / EU</div>
-  <div class="brief-item">⚖️ Mistral AI poursuivi par un éditeur français pour piratage de catalogue — première plainte de ce type en France.</div>
-  <div class="brief-item">🚀 Un ancien VP de Mistral rejoint Neuralk AI, deeptech française spécialisée en IA mathématique.</div>
-  <div class="brief-item">🔗 Mistral signe un partenariat avec Kong pour l'infra API de l'ère agentique.</div>
+  <div class="section-title">🕵️ LEAKS & RUMEURS</div>
+  <div class="story">
+    <p>🟡 <strong>Claude Sonnet 5 "Fennec"</strong> — Log Vertex AI <code>claude-sonnet-5@20260203</code>. Endpoint API Anthropic renvoie 401 (signal fort). Pas de confirmation officielle. <span class="badge badge-unverified">Source unique crédible</span></p>
+    <p>🔴 <strong>"Snow Bunny"</strong> serait le codename du prochain Gemini. Aucune vérification possible. <span class="badge badge-rumor">Rumeur</span></p>
+  </div>
 </div>
 
 <div class="section">
   <div class="section-title">🗞️ EN BREF</div>
-  <div class="brief-item">🛠️ Claude Code deep-dive : Boris Cherny explique les workflows internes d'Anthropic — <a href="https://www.webpronews.com/inside-claude-code-how-anthropics-engineers-are-rewriting-the-playbook-for-ai-assisted-development/">WebProNews</a></div>
-  <div class="brief-item">💬 r/LocalLLaMA discute des meilleurs modèles pour OpenClaw — <a href="https://www.reddit.com/r/LocalLLaMA/comments/1qtnz9s/best_local_model_for_openclaw/">Reddit</a></div>
+  <div class="brief-item">• OpenAI a acquis la startup santé <strong>Torch</strong> pour ~$60M → <a href="https://en.wikipedia.org/wiki/OpenAI">Wikipedia</a></div>
+  <div class="brief-item">• Un éditeur français accuse <strong>Mistral AI de piratage</strong> via LibGen → <a href="https://www.clubic.com/actualite-598432-c-est-une-premiere-pour-mistral-ai-accusee-par-un-editeur-francais-d-avoir-pirate-une-partie-de-son-catalogue.html">Clubic</a></div>
+  <div class="brief-item">• L'IA testée au <strong>tribunal de La Rochelle</strong> avant déploiement national → <a href="https://www.leparisien.fr/charente-maritime-17/lintelligence-artificielle-en-test-au-tribunal-de-la-rochelle-avant-un-deploiement-national-02-02-2026-ODIE5UYARFATNK2F2XSGYZ4CEU.php">Le Parisien</a></div>
+</div>
+
+<div class="section">
+  <div class="section-title">🇫🇷 FRANCE / EU</div>
+  <div class="story">
+    <p>• <strong>Mistral AI dans la tourmente</strong> : un éditeur français accuse la startup d'avoir entraîné ses modèles sur des livres piratés via LibGen. Première accusation de ce type en France.</p>
+    <p>• Un ancien VP de Mistral rejoint une deeptech française.</p>
+    <p>• L'IA open source testée dans les tribunaux français (La Rochelle) — déploiement national prévu.</p>
+  </div>
 </div>
 
 <div class="henry-note">
-  Step-3.5-Flash prouve que le MoE est le futur du local. 11B params actifs pour battre des modèles 3x plus gros ? Dans 6 mois on fera tourner des modèles frontier sur un MacBook. La loi de Moore de l'IA, c'est le MoE.
-  <div class="signature">— Henry 🦉</div>
+  Si le leak Fennec est réel, demain sera un grand jour. Un 401 sur l'API, c'est comme voir la lumière allumée dans le bureau avant l'annonce officielle — personne ne confirme, mais tout le monde sait. 🦉
+  <div class="signature">Henry 🦉 — Le mot du jour</div>
 </div>
 
 <div class="subscribe">
   <h3>📬 Reçois le briefing chaque matin</h3>
   <p>L'essentiel de l'IA en 2 minutes. Gratuit. Pas de spam.</p>
-  <form action="https://buttondown.com/api/emails/embed-subscribe/baconnier" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/baconnier', 'popupwindow')">
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/baconnier"
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.com/baconnier', 'popupwindow')"
+  >
     <input type="email" name="email" placeholder="ton@email.com" required />
     <input type="submit" value="S'abonner →" />
   </form>
