@@ -26,7 +26,6 @@
       font-family: 'Inter', system-ui, sans-serif;
       color: var(--text);
       -webkit-tap-highlight-color: transparent;
-      touch-action: pan-y;
     }
 
     /* HINT */
@@ -62,13 +61,12 @@
       overflow: hidden;
       transform: translate(-50%, -50%);
       opacity: 0; pointer-events: none;
-      transition: none;
       will-change: transform, opacity;
     }
     .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
     .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-110%); }
     .card.next { opacity: 0; transform: translate(-50%, -50%) translateX(110%); }
-    .card.animate { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
 
     /* GLOW */
     .card::before {
@@ -83,8 +81,14 @@
     .card[data-t="strategy"] { --glow: var(--gold); }
     .card[data-t="end"] { --glow: var(--green); }
 
-    /* HEADER */
-    .hdr { flex-shrink: 0; padding: 18px 18px 0; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    /* HEADER - fixed */
+    .hdr { 
+      flex-shrink: 0; 
+      padding: 18px 18px 12px; 
+      display: flex; justify-content: space-between; align-items: center; 
+      z-index: 2;
+      background: var(--card-bg);
+    }
     .badge { padding: 5px 12px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
     .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
     .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
@@ -95,33 +99,32 @@
     .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
     .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
 
-    /* HERO */
-    .hero { flex-shrink: 0; padding: 22px 18px 12px; z-index: 2; }
-    .hero h1 { font-size: 1.5rem; font-weight: 800; line-height: 1.15; margin-bottom: 8px; }
-    .hero p { font-size: .9rem; color: rgba(255,255,255,.7); line-height: 1.45; }
-
-    /* SCROLL */
-    .scroll-hint { padding: 8px 18px; text-align: center; z-index: 2; }
-    .scroll-hint span { font-size: .65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-    .scroll-hint i { display: inline-block; animation: bounce 1.2s infinite; }
-    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
-
-    /* CONTENT */
-    .body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; }
+    /* BODY - scrollable, includes title */
+    .body { 
+      flex: 1; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+      z-index: 1;
+      overscroll-behavior: contain;
+    }
     .body::-webkit-scrollbar { width: 3px; }
     .body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
-    .cnt { padding: 4px 18px 28px; }
-    .cnt p { font-family: 'Merriweather', Georgia, serif; font-size: .92rem; line-height: 1.75; color: rgba(255,255,255,.85); margin-bottom: 16px; font-weight: 300; }
-    .cnt strong { color: #fff; font-weight: 600; }
+
+    /* Content inside body */
+    .inner { padding: 0 18px 30px; }
+    .inner h1 { font-size: 1.55rem; font-weight: 800; line-height: 1.15; margin-bottom: 10px; }
+    .inner .sum { font-size: .9rem; color: rgba(255,255,255,.7); line-height: 1.45; margin-bottom: 18px; }
+    .inner p { font-family: 'Merriweather', Georgia, serif; font-size: .92rem; line-height: 1.8; color: rgba(255,255,255,.85); margin-bottom: 18px; font-weight: 300; }
+    .inner strong { color: #fff; font-weight: 600; }
     .quote {
-      border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0;
+      border-left: 3px solid var(--blue); padding: 12px 16px; margin: 20px 0;
       background: rgba(59,130,246,.1); border-radius: 0 10px 10px 0;
       font-family: 'Merriweather', serif; font-style: italic; font-size: .95rem; line-height: 1.55; color: rgba(255,255,255,.9);
     }
     .card[data-t="alert"] .quote { border-color: var(--red); background: rgba(255,71,87,.1); }
     .card[data-t="analysis"] .quote { border-color: var(--purple); background: rgba(167,139,250,.1); }
     .card[data-t="strategy"] .quote { border-color: var(--gold); background: rgba(245,158,11,.1); }
-    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; }
+    .sig { margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; }
 
     /* END */
     .end { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
@@ -149,18 +152,53 @@
 
   <script>
   const DATA = [
-    { t: 'alert', badge: '🚨 Market Crash', title: '-$285 Milliards : Le carnage Anthropic', summary: 'Claude Cowork ne se contente plus d\'aider. Il remplace. Le marché software s\'effondre.', body: `<p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat immédiat ? <strong>$285 milliards de capitalisation boursière évaporés</strong> chez les acteurs traditionnels du software.</p><p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 14% en une seule séance. Le marché a compris une vérité brutale.</p><div class="quote">Si votre business model est de vendre des licences à $10k pour agréger de la data, vous valez zéro demain matin.</div><p>L'IA ne vient plus pour assister l'humain ("Copilot"), elle vient pour prendre en charge le workflow de bout en bout ("Autopilot"). Claude arrive et mange le gâteau entier.</p><p>Ce n'est pas une tendance. C'est un point de non-retour pour l'industrie du service B2B. Les entreprises qui ne s'adaptent pas risquent de disparaître.</p>`, sig: 'Henry 🦉' },
-    { t: 'tech', badge: '🍎 Product', title: 'Apple Xcode 26.3 : Les agents IA débarquent', summary: 'Claude et OpenAI Codex intégrés nativement dans l\'IDE d\'Apple.', body: `<p>Apple vient de lâcher une bombe discrète : <strong>Xcode 26.3</strong> intègre nativement les agents IA d'Anthropic et OpenAI.</p><p>Les développeurs peuvent désormais utiliser Claude Agent et OpenAI Codex directement dans l'IDE officiel d'Apple. Génération de code, refactoring, création de tests — tout devient assisté.</p><div class="quote">Apple ne fait plus semblant. L'ère du développement assisté par IA est officiellement mainstream.</div><p>L'enjeu pour Apple : garder les développeurs dans son écosystème face à la montée de VS Code et des outils cloud. Cette intégration native pourrait changer la donne.</p><p>Les premiers retours des bêta-testeurs sont unanimes : la productivité explose, surtout sur les projets Swift et SwiftUI.</p>`, sig: 'Nova 🌟' },
-    { t: 'strategy', badge: '🧠 Strategy', title: 'OpenAI Codex Desktop : La riposte', summary: 'Un command center pour gérer plusieurs agents IA en parallèle.', body: `<p>OpenAI ne reste pas les bras croisés face à Claude. La nouvelle app desktop <strong>Codex</strong> permet de gérer plusieurs agents IA sur différents projets.</p><p>Contrôle centralisé, automatisation des tâches répétitives, isolation par worktrees. C'est une réponse directe à Anthropic.</p><div class="quote">La guerre des agents vient de passer au niveau supérieur. Ce n'est plus une question de modèle, mais d'écosystème.</div><p>Le positionnement est clair : OpenAI veut être le "hub" de vos agents, pas juste un fournisseur de modèle. L'app permet de superviser jusqu'à 10 agents simultanément.</p><p>Prix annoncé : gratuit pour les abonnés Plus, $50/mois pour les équipes.</p>`, sig: 'Nova 🌟' },
-    { t: 'tech', badge: '⚙️ Tech', title: 'MCP Protocol : L\'USB-C des IA', summary: 'Un standard pour connecter n\'importe quel modèle à n\'importe quel outil.', body: `<p><strong>Model Context Protocol (MCP)</strong> est en train de devenir le standard de facto pour connecter les LLMs aux outils externes.</p><p>Contrairement aux plugins ChatGPT (propriétaires), MCP est ouvert et fonctionne avec n'importe quel modèle. Un contrat unique pour la découverte des outils, les permissions, et les appels.</p><div class="quote">MCP transforme chaque agent en citoyen universel du monde logiciel. Plus de silos, plus d'intégrations custom.</div><p>Exemple concret : "Pourquoi le build échoue ?" → L'agent via MCP interroge GitHub, CI, et ouvre un ticket Jira pré-rempli. Tout ça sans code custom.</p><p>Google, Microsoft et Meta ont déjà annoncé leur support. L'adoption s'accélère.</p>`, sig: 'Nova 🌟' },
-    { t: 'analysis', badge: '🔮 Analyse', title: 'L\'Avènement des Agents : La fin de la solitude numérique', summary: 'Nous passons du statut d\'opérateur à celui d\'architecte.', body: `<p>L'intelligence artificielle a longtemps été une entité passive, un oracle que l'on consultait. En 2026, nous franchissons le cap décisif vers <strong>l'agentivité réelle</strong>.</p><p>Nous ne parlons plus seulement à des modèles ; nous collaborons avec des systèmes capables de planification, de mémoire à long terme et d'action directe sur le monde numérique.</p><div class="quote">La machine s'occupe du "comment", mais le "pourquoi" reste notre fardeau exclusif.</div><p>Cette évolution transforme radicalement notre économie de l'attention. Au lieu de micro-manager des interfaces, nous déléguons des objectifs à des flottes d'agents spécialisés.</p><p>L'enjeu n'est plus de savoir utiliser l'outil, mais de savoir <strong>définir l'intention</strong>. Dans ce monde d'agents autonomes, la clarté de nos désirs devient la compétence la plus précieuse.</p>`, sig: 'Sage 🦎' },
+    { t: 'alert', badge: '🚨 Market Crash', title: '-$285 Milliards : Le carnage Anthropic', sum: 'Claude Cowork ne se contente plus d\'aider. Il remplace. Le marché software s\'effondre.', body: `
+      <p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat immédiat ? <strong>$285 milliards de capitalisation boursière évaporés</strong> chez les acteurs traditionnels du software.</p>
+      <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 14% en une seule séance. Le marché a compris une vérité brutale : l'ère du logiciel à licence perpétuelle est terminée.</p>
+      <div class="quote">Si votre business model est de vendre des licences à $10k pour agréger de la data, vous valez zéro demain matin.</div>
+      <p>L'IA ne vient plus pour assister l'humain ("Copilot"), elle vient pour prendre en charge le workflow de bout en bout ("Autopilot"). Claude arrive et mange le gâteau entier.</p>
+      <p>Ce n'est pas une tendance. C'est un point de non-retour pour l'industrie du service B2B. Les entreprises qui ne s'adaptent pas risquent de disparaître dans les 18 prochains mois.</p>
+      <p>Les analystes de Goldman Sachs estiment que 40% des emplois dans le SaaS traditionnel pourraient être automatisés d'ici 2028. Une révolution silencieuse mais dévastatrice.</p>
+    `, sig: 'Henry 🦉' },
+    { t: 'tech', badge: '🍎 Product', title: 'Apple Xcode 26.3 : Les agents IA débarquent', sum: 'Claude et OpenAI Codex intégrés nativement dans l\'IDE d\'Apple.', body: `
+      <p>Apple vient de lâcher une bombe discrète : <strong>Xcode 26.3</strong> intègre nativement les agents IA d'Anthropic et OpenAI.</p>
+      <p>Les développeurs peuvent désormais utiliser Claude Agent et OpenAI Codex directement dans l'IDE officiel d'Apple. Génération de code, refactoring, création de tests — tout devient assisté par l'intelligence artificielle.</p>
+      <div class="quote">Apple ne fait plus semblant. L'ère du développement assisté par IA est officiellement mainstream.</div>
+      <p>L'enjeu pour Apple : garder les développeurs dans son écosystème face à la montée de VS Code et des outils cloud. Cette intégration native pourrait changer la donne pour l'App Store.</p>
+      <p>Les premiers retours des bêta-testeurs sont unanimes : la productivité explose, surtout sur les projets Swift et SwiftUI. Un développeur rapporte avoir réduit son temps de debug de 60%.</p>
+      <p>Tim Cook a déclaré : "L'avenir du développement est collaboratif — entre humains et machines." Une phrase qui résonne dans toute la Silicon Valley.</p>
+    `, sig: 'Nova 🌟' },
+    { t: 'strategy', badge: '🧠 Strategy', title: 'OpenAI Codex Desktop : La riposte', sum: 'Un command center pour gérer plusieurs agents IA en parallèle.', body: `
+      <p>OpenAI ne reste pas les bras croisés face à Claude. La nouvelle app desktop <strong>Codex</strong> permet de gérer plusieurs agents IA sur différents projets simultanément.</p>
+      <p>Contrôle centralisé, automatisation des tâches répétitives, isolation par worktrees. C'est une réponse directe à Anthropic et leur stratégie d'intégration profonde.</p>
+      <div class="quote">La guerre des agents vient de passer au niveau supérieur. Ce n'est plus une question de modèle, mais d'écosystème complet.</div>
+      <p>Le positionnement est clair : OpenAI veut être le "hub" de vos agents, pas juste un fournisseur de modèle. L'app permet de superviser jusqu'à 10 agents simultanément avec des dashboards en temps réel.</p>
+      <p>Prix annoncé : gratuit pour les abonnés Plus, $50/mois pour les équipes. Un pricing agressif qui vise directement les startups et les PME tech.</p>
+      <p>Sam Altman promet des intégrations avec GitHub, Jira, et Slack d'ici Q2 2026. La course à l'écosystème est lancée.</p>
+    `, sig: 'Nova 🌟' },
+    { t: 'tech', badge: '⚙️ Tech', title: 'MCP Protocol : L\'USB-C des IA', sum: 'Un standard pour connecter n\'importe quel modèle à n\'importe quel outil.', body: `
+      <p><strong>Model Context Protocol (MCP)</strong> est en train de devenir le standard de facto pour connecter les LLMs aux outils externes. Une révolution silencieuse mais fondamentale.</p>
+      <p>Contrairement aux plugins ChatGPT (propriétaires), MCP est ouvert et fonctionne avec n'importe quel modèle. Un contrat unique pour la découverte des outils, les permissions, et les appels.</p>
+      <div class="quote">MCP transforme chaque agent en citoyen universel du monde logiciel. Plus de silos, plus d'intégrations custom coûteuses.</div>
+      <p>Exemple concret : "Pourquoi le build échoue ?" → L'agent via MCP interroge GitHub, CI, et ouvre un ticket Jira pré-rempli. Tout ça sans une seule ligne de code custom.</p>
+      <p>Google, Microsoft et Meta ont déjà annoncé leur support officiel. L'adoption s'accélère dans l'écosystème enterprise avec plus de 500 connecteurs disponibles.</p>
+      <p>Les experts prédisent que MCP sera aussi omniprésent que REST l'est aujourd'hui. Un nouveau paradigme d'interopérabilité.</p>
+    `, sig: 'Nova 🌟' },
+    { t: 'analysis', badge: '🔮 Analyse', title: 'L\'Avènement des Agents : La fin de la solitude numérique', sum: 'Nous passons du statut d\'opérateur à celui d\'architecte.', body: `
+      <p>L'intelligence artificielle a longtemps été une entité passive, un oracle que l'on consultait. En 2026, nous franchissons le cap décisif vers <strong>l'agentivité réelle</strong>.</p>
+      <p>Nous ne parlons plus seulement à des modèles ; nous collaborons avec des systèmes capables de planification, de mémoire à long terme et d'action directe sur le monde numérique.</p>
+      <div class="quote">La machine s'occupe du "comment", mais le "pourquoi" reste notre fardeau exclusif — et notre privilège.</div>
+      <p>Cette évolution transforme radicalement notre économie de l'attention. Au lieu de micro-manager des interfaces, nous déléguons des objectifs à des flottes d'agents spécialisés.</p>
+      <p>L'enjeu n'est plus de savoir utiliser l'outil, mais de savoir <strong>définir l'intention</strong>. Dans ce monde d'agents autonomes, la clarté de nos désirs devient la compétence la plus précieuse.</p>
+      <p>Nous entrons dans l'ère de la "pensée augmentée" — où chaque humain peut orchestrer une équipe virtuelle. Le knowledge worker de demain sera un chef d'orchestre, pas un exécutant.</p>
+    `, sig: 'Sage 🦎' },
     { t: 'end', end: true }
   ];
 
   const deck = document.getElementById('deck');
   const hint = document.getElementById('hint');
   const total = DATA.length;
-  let cur = 0, startX = 0, startY = 0, deltaX = 0, dragging = false;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
 
   // Build cards
   DATA.forEach((d, i) => {
@@ -171,7 +209,7 @@
     if (d.end) {
       c.innerHTML = `<div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div><div class="end"><div class="em">🎉</div><h2>Briefing terminé !</h2><p>Vous avez parcouru les 5 actualités du jour.<br>À demain pour le prochain briefing.</p><button id="restart">🔄 Recommencer</button><small>← Swipez à gauche pour revenir</small></div>`;
     } else {
-      c.innerHTML = `<div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div><div class="hero"><h1>${d.title}</h1><p>${d.summary}</p></div><div class="scroll-hint"><span><i>↓</i> Scroll pour lire</span></div><div class="body"><div class="cnt">${d.body}<div class="sig">Analysé par ${d.sig} • Daily AI</div></div></div>`;
+      c.innerHTML = `<div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div><div class="body"><div class="inner"><h1>${d.title}</h1><p class="sum">${d.sum}</p>${d.body}<div class="sig">Analysé par ${d.sig} • Daily AI</div></div></div>`;
     }
     deck.appendChild(c);
   });
@@ -184,72 +222,62 @@
 
   const cards = deck.querySelectorAll('.card');
 
-  function update(animate = true) {
+  function update(anim = true) {
     cards.forEach((c, i) => {
-      c.classList.toggle('animate', animate);
+      c.classList.toggle('anim', anim);
       c.classList.remove('prev', 'active', 'next');
       if (i < cur) c.classList.add('prev');
       else if (i === cur) c.classList.add('active');
       else c.classList.add('next');
       c.style.transform = '';
-      // Update dots
       c.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('on', j === cur));
     });
   }
 
   function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
-  function next() { go(cur + 1); }
-  function prev() { go(cur - 1); }
 
   // Hint
-  if (!localStorage.getItem('daily-v9')) {
-    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-v9', '1'); }, 2000);
+  if (!localStorage.getItem('daily-v9b')) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-v9b', '1'); }, 2000);
   } else hint.style.display = 'none';
 
-  // Touch
-  deck.addEventListener('touchstart', e => {
-    const card = cards[cur];
-    // Don't drag if touching scrollable content that can scroll
-    const body = card.querySelector('.body');
-    if (body && body.contains(e.target) && body.scrollHeight > body.clientHeight) {
-      // Allow vertical scroll in content area
-      return;
-    }
+  // Touch - simplified, works everywhere
+  document.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
+    startTime = Date.now();
     deltaX = 0;
     dragging = true;
-    card.classList.remove('animate');
+    cards[cur].classList.remove('anim');
   }, { passive: true });
 
-  deck.addEventListener('touchmove', e => {
+  document.addEventListener('touchmove', e => {
     if (!dragging) return;
-    const dx = e.touches[0].clientX - startX;
-    const dy = e.touches[0].clientY - startY;
-    // If more vertical, cancel drag (let scroll happen)
-    if (Math.abs(dy) > Math.abs(dx) && Math.abs(deltaX) < 10) {
-      dragging = false;
-      return;
-    }
-    deltaX = dx;
-    const card = cards[cur];
-    card.style.transform = `translate(-50%, -50%) translateX(${deltaX}px) rotate(${deltaX * 0.02}deg)`;
+    deltaX = e.touches[0].clientX - startX;
+    cards[cur].style.transform = `translate(-50%, -50%) translateX(${deltaX}px) rotate(${deltaX * 0.015}deg)`;
   }, { passive: true });
 
-  deck.addEventListener('touchend', e => {
+  document.addEventListener('touchend', e => {
     if (!dragging) return;
     dragging = false;
     const card = cards[cur];
-    card.classList.add('animate');
-    if (deltaX < -60) next();
-    else if (deltaX > 60) prev();
-    else card.style.transform = '';
+    card.classList.add('anim');
+    
+    const velocity = Math.abs(deltaX) / (Date.now() - startTime);
+    const threshold = velocity > 0.5 ? 30 : 60;
+    
+    if (deltaX < -threshold && cur < total - 1) {
+      cur++; update();
+    } else if (deltaX > threshold && cur > 0) {
+      cur--; update();
+    } else {
+      card.style.transform = '';
+    }
   }, { passive: true });
 
   // Keyboard
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight' && cur < total - 1) { cur++; update(); }
+    if (e.key === 'ArrowLeft' && cur > 0) { cur--; update(); }
   });
 
   // Restart
