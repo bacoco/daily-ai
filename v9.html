@@ -237,8 +237,8 @@
   function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
 
   // Hint
-  if (!localStorage.getItem('daily-v9b')) {
-    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-v9b', '1'); }, 2000);
+  if (!localStorage.getItem('daily-v9c')) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-v9c', '1'); }, 2000);
   } else hint.style.display = 'none';
 
   // Touch - simplified, works everywhere
