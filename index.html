@@ -218,6 +218,30 @@
     }
     .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
 
+    /* Le Mot de Henry */
+    .henry-word {
+      margin-top: 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(245,158,11,.2);
+    }
+    .henry-word .label {
+      font-size: .7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .henry-word .text {
+      font-family: 'Merriweather', serif;
+      font-size: .95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+
     /* BG */
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none;
@@ -248,7 +272,8 @@
         <p>L'IA ne vient plus pour assister l'humain ("Copilot"), elle vient pour prendre en charge le workflow de bout en bout ("Autopilot"). Claude arrive et mange le gâteau entier.</p>
         <p>Ce n'est pas une tendance. C'est un point de non-retour pour l'industrie du service B2B. Les entreprises qui ne s'adaptent pas risquent de disparaître dans les 18 prochains mois.</p>
         <p>Les analystes de Goldman Sachs estiment que 40% des emplois dans le SaaS traditionnel pourraient être automatisés d'ici 2028. Une révolution silencieuse mais dévastatrice.</p>
-      `, 
+      `,
+      henryWord: 'Si Anthropic continue à ce rythme, on passe du stade "outil" au stade "collègue qui dort jamais". Les boîtes qui vendent du logiciel legacy ont 18 mois pour pivoter ou mourir. Je surveille les earnings calls comme un faucon.',
       sig: 'Henry 🦉' 
     },
     { 
@@ -349,7 +374,7 @@
         <div class="scroll-zone">
           <div class="scroll-inner">
             <div class="hook">${d.hook}</div>
-            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
+            <div class="details">${d.details}${d.henryWord ? `<div class="henry-word"><div class="label">🎯 Le Mot de Henry</div><div class="text">${d.henryWord}</div></div>` : ''}<div class="sig">deeplearning.fr • Daily News</div></div>
           </div>
         </div>`;
     }
