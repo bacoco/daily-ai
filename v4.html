@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AI Insight Daily — V4 Tinder Style</title>
+  <title>AI Insight Daily — V4</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-app: #000000;
-      --bg-card: #0c0c14;
+      --bg-card: #0a0a0f;
       --text-main: #ffffff;
-      --text-muted: #7a7a8a;
+      --text-muted: #8a8a9a;
       --accent-red: #ff4757;
       --accent-blue: #3b82f6;
       --accent-green: #10b981;
       --accent-purple: #a78bfa;
       --accent-gold: #f59e0b;
-      --shadow-card: 0 30px 60px -15px rgba(0,0,0,0.9);
-      --radius: 20px;
+      --shadow-card: 0 25px 80px -15px rgba(0,0,0,0.8), 0 10px 30px -10px rgba(0,0,0,0.6);
+      --radius: 24px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,106 +31,207 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* === BACKGROUND GLOW === */
-    body::before {
-      content: '';
+    /* === ONBOARDING HINT === */
+    .swipe-hint {
       position: fixed;
-      inset: 0;
-      background: 
-        radial-gradient(ellipse 80% 60% at 30% 20%, rgba(59,130,246,0.1) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 50% at 70% 80%, rgba(167,139,250,0.08) 0%, transparent 50%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .swipe-hint.hidden {
+      opacity: 0;
+    }
+    .swipe-hint .arrow {
+      font-size: 3rem;
+      color: white;
+      text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.4);
+      animation: pulse 0.6s ease-in-out infinite alternate;
+    }
+    .swipe-hint .arrow-left {
+      animation-delay: 0s;
+    }
+    .swipe-hint .arrow-right {
+      animation-delay: 0.3s;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
     }
 
     /* === DECK CONTAINER === */
-    .deck-container {
-      position: relative;
+    .deck {
       width: 100%;
       height: 100%;
       display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    .deck::-webkit-scrollbar { display: none; }
+
+    /* === CARD WRAPPER === */
+    .card-wrapper {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      scroll-snap-align: center;
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px;
+      padding: 20px;
+      position: relative;
     }
 
-    /* === PROGRESS DOTS (fixed top) === */
-    .progress-dots {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* === CARD === */
+    .card {
+      width: 100%;
+      max-width: 500px;
+      height: 92%;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(255,255,255,0.06);
       display: flex;
-      gap: 8px;
-      z-index: 100;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
     }
-    .progress-dot {
+
+    /* Glow effect */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow-color, transparent) 0%, transparent 50%);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card[data-type="alert"] { --glow-color: var(--accent-red); }
+    .card[data-type="tech"] { --glow-color: var(--accent-blue); }
+    .card[data-type="analysis"] { --glow-color: var(--accent-purple); }
+    .card[data-type="strategy"] { --glow-color: var(--accent-gold); }
+
+    /* === CARD HEADER === */
+    .card-header {
+      flex-shrink: 0;
+      padding: 20px 20px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge.alert { background: var(--accent-red); color: white; box-shadow: 0 0 20px rgba(255,71,87,0.4); }
+    .badge.tech { background: var(--accent-blue); color: white; box-shadow: 0 0 20px rgba(59,130,246,0.4); }
+    .badge.analysis { background: var(--accent-purple); color: white; box-shadow: 0 0 20px rgba(167,139,250,0.4); }
+    .badge.strategy { background: var(--accent-gold); color: black; box-shadow: 0 0 20px rgba(245,158,11,0.4); }
+    .badge.open { background: var(--accent-green); color: black; box-shadow: 0 0 20px rgba(16,185,129,0.4); }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: rgba(255,255,255,0.2);
       transition: all 0.3s ease;
     }
-    .progress-dot.active {
+    .dot.active {
       background: white;
-      transform: scale(1.2);
-      box-shadow: 0 0 10px rgba(255,255,255,0.5);
-    }
-    .progress-dot.done {
-      background: var(--accent-green);
+      box-shadow: 0 0 8px rgba(255,255,255,0.5);
     }
 
-    /* === CARD STACK === */
-    .card-stack {
+    /* === HERO === */
+    .hero {
+      flex-shrink: 0;
+      padding: 30px 20px 20px 20px;
       position: relative;
-      width: 100%;
-      max-width: 400px;
-      height: 85%;
-      max-height: 700px;
+      z-index: 2;
+      background: linear-gradient(180deg, var(--bg-card) 0%, transparent 100%);
     }
 
-    /* === CARD === */
-    .card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-card);
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      will-change: transform;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero .summary {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      max-width: 95%;
+    }
+
+    /* === SCROLL INDICATOR === */
+    .scroll-hint {
+      flex-shrink: 0;
+      padding: 15px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .scroll-hint span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .scroll-hint .arrow {
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
     }
 
-    /* Stack effect */
-    .card[data-position="1"] { transform: scale(0.95) translateY(15px); opacity: 0.6; z-index: 1; }
-    .card[data-position="2"] { transform: scale(0.90) translateY(30px); opacity: 0.3; z-index: 0; }
-    .card[data-position="current"] { transform: scale(1) translateY(0); opacity: 1; z-index: 10; }
-
-    /* Swipe animation */
-    .card.swiping { transition: none; }
-    .card.swipe-left { transform: translateX(-150%) rotate(-30deg); opacity: 0; }
-    .card.swipe-right { transform: translateX(150%) rotate(30deg); opacity: 0; }
-
-    /* Glow effect */
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 200px;
-      background: linear-gradient(180deg, var(--glow, rgba(59,130,246,0.15)) 0%, transparent 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .card[data-type="alert"] { --glow: rgba(255,71,87,0.2); }
-    .card[data-type="tech"] { --glow: rgba(59,130,246,0.2); }
-    .card[data-type="analysis"] { --glow: rgba(167,139,250,0.2); }
-    .card[data-type="strategy"] { --glow: rgba(245,158,11,0.2); }
-
-    /* === CARD INNER (scrollable) === */
-    .card-inner {
+    /* === CONTENT === */
+    .content-wrapper {
       flex: 1;
       overflow-y: auto;
       overflow-x: hidden;
@@ -138,76 +239,12 @@
       position: relative;
       z-index: 1;
     }
-    .card-inner::-webkit-scrollbar { width: 3px; }
-    .card-inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+    .content-wrapper::-webkit-scrollbar { width: 3px; }
+    .content-wrapper::-webkit-scrollbar-track { background: transparent; }
+    .content-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
-    /* === HERO SECTION (moves on scroll) === */
-    .hero {
-      min-height: 55%;
-      padding: 60px 24px 30px 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
-    }
-
-    .badge {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      z-index: 2;
-    }
-    .badge.alert { background: var(--accent-red); box-shadow: 0 0 25px rgba(255,71,87,0.5); }
-    .badge.tech { background: var(--accent-blue); box-shadow: 0 0 25px rgba(59,130,246,0.5); }
-    .badge.analysis { background: var(--accent-purple); box-shadow: 0 0 25px rgba(167,139,250,0.5); }
-    .badge.strategy { background: var(--accent-gold); color: #000; box-shadow: 0 0 25px rgba(245,158,11,0.5); }
-    .badge.open { background: var(--accent-green); color: #000; box-shadow: 0 0 25px rgba(16,185,129,0.5); }
-
-    .hero h1 {
-      font-size: 1.7rem;
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      text-shadow: 0 4px 30px rgba(0,0,0,0.8);
-    }
-
-    .hero .summary {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.5;
-    }
-
-    .scroll-cue {
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .scroll-cue .arrow {
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(5px); }
-    }
-
-    /* === CONTENT SECTION === */
     .content {
-      padding: 20px 24px 120px 24px;
-      background: var(--bg-card);
+      padding: 10px 20px 100px 20px;
     }
 
     .content p {
@@ -215,376 +252,346 @@
       font-size: 1rem;
       line-height: 1.85;
       color: rgba(255,255,255,0.8);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       font-weight: 300;
     }
 
-    .content strong { color: white; font-weight: 600; }
+    .content strong {
+      color: white;
+      font-weight: 700;
+    }
 
+    /* Pull Quote */
     .pull-quote {
       border-left: 3px solid var(--accent-blue);
-      padding: 15px 18px;
-      margin: 24px 0;
+      padding: 15px 20px;
+      margin: 25px 0;
       background: rgba(59,130,246,0.08);
       border-radius: 0 12px 12px 0;
       font-family: 'Merriweather', serif;
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       color: rgba(255,255,255,0.9);
     }
-    .card[data-type="alert"] .pull-quote { border-color: var(--accent-red); background: rgba(255,71,87,0.1); }
-    .card[data-type="analysis"] .pull-quote { border-color: var(--accent-purple); background: rgba(167,139,250,0.1); }
-    .card[data-type="strategy"] .pull-quote { border-color: var(--accent-gold); background: rgba(245,158,11,0.1); }
+    .card[data-type="alert"] .pull-quote { border-color: var(--accent-red); background: rgba(255,71,87,0.08); }
+    .card[data-type="analysis"] .pull-quote { border-color: var(--accent-purple); background: rgba(167,139,250,0.08); }
 
     .signature {
       margin-top: 30px;
-      padding-top: 15px;
+      padding-top: 20px;
       border-top: 1px solid rgba(255,255,255,0.1);
       font-size: 0.85rem;
       color: var(--text-muted);
       font-style: italic;
     }
 
-    /* === SWIPE HINTS (appear during drag) === */
-    .swipe-hint {
+    /* === CARD FOOTER === */
+    .card-footer {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      z-index: 20;
-      padding: 10px 15px;
-      border-radius: 10px;
-    }
-    .swipe-hint.left {
-      left: 20px;
-      color: var(--accent-red);
-      background: rgba(255,71,87,0.15);
-      border: 2px solid var(--accent-red);
-    }
-    .swipe-hint.right {
-      right: 20px;
-      color: var(--accent-green);
-      background: rgba(16,185,129,0.15);
-      border: 2px solid var(--accent-green);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      background: linear-gradient(0deg, var(--bg-card) 60%, transparent 100%);
+      z-index: 10;
     }
 
-    /* === NAV BUTTONS (fixed bottom) === */
-    .nav-bar {
-      position: fixed;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-      z-index: 100;
-    }
     .nav-btn {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.2);
-      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
       color: white;
-      font-size: 1.3rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
       backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .nav-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
-    .nav-btn.skip { border-color: var(--accent-red); }
-    .nav-btn.skip:hover { background: rgba(255,71,87,0.2); }
-    .nav-btn.next { border-color: var(--accent-green); }
-    .nav-btn.next:hover { background: rgba(16,185,129,0.2); }
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
 
-    /* === END SCREEN === */
-    .end-screen {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--bg-app);
-      z-index: 200;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px;
+    /* === RESPONSIVE === */
+    @media (min-width: 768px) {
+      .card {
+        max-width: 480px;
+        height: 88%;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .swipe-hint {
+        padding: 0 80px;
+      }
+      .swipe-hint .arrow {
+        font-size: 4rem;
+      }
     }
-    .end-screen.active { display: flex; }
-    .end-screen h2 { font-size: 2rem; margin-bottom: 15px; }
-    .end-screen p { color: var(--text-muted); margin-bottom: 30px; }
-    .end-screen button {
-      padding: 15px 30px;
-      border-radius: 12px;
-      border: none;
-      background: white;
-      color: black;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
+
+    /* === BACKGROUND DECORATION === */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <!-- Progress dots -->
-  <div class="progress-dots" id="progressDots"></div>
-
-  <!-- Card deck -->
-  <div class="deck-container">
-    <div class="card-stack" id="cardStack"></div>
+  <!-- Onboarding hint (disparaît après 2s) -->
+  <div class="swipe-hint" id="swipeHint">
+    <span class="arrow arrow-left">‹</span>
+    <span class="arrow arrow-right">›</span>
   </div>
 
-  <!-- Navigation -->
-  <nav class="nav-bar">
-    <button class="nav-btn skip" onclick="swipeCard('left')" aria-label="Passer">✕</button>
-    <button class="nav-btn next" onclick="swipeCard('right')" aria-label="Suivant">→</button>
-  </nav>
+  <div class="deck" id="deck">
+    <!-- Card 1: Crash -->
+    <div class="card-wrapper">
+      <article class="card" data-type="alert">
+        <header class="card-header">
+          <span class="badge alert">🚨 Market Crash</span>
+          <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </header>
+        <div class="hero">
+          <h1>-$285 Milliards : Le carnage Anthropic</h1>
+          <p class="summary">Claude Cowork ne se contente plus d'aider. Il remplace. Le marché software s'effondre.</p>
+        </div>
+        <div class="scroll-hint">
+          <span><span class="arrow">↓</span> Scroll pour lire</span>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat immédiat ? <strong>$285 milliards de capitalisation boursière évaporés</strong> chez les acteurs traditionnels du software.</p>
+            <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 14% en une seule séance. Le marché a compris une vérité brutale.</p>
+            <div class="pull-quote">
+              Si votre business model est de vendre des licences à $10k pour agréger de la data, vous valez zéro demain matin.
+            </div>
+            <p>L'IA ne vient plus pour assister l'humain ("Copilot"), elle vient pour prendre en charge le workflow de bout en bout ("Autopilot"). Claude arrive et mange le gâteau entier.</p>
+            <p>Ce n'est pas une tendance. C'est un point de non-retour pour l'industrie du service B2B.</p>
+            <div class="signature">Analysé par Henry 🦉 • Daily AI</div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <button class="nav-btn" disabled>← Précédent</button>
+          <button class="nav-btn" onclick="goTo(1)">Suivant →</button>
+        </footer>
+      </article>
+    </div>
 
-  <!-- End screen -->
-  <div class="end-screen" id="endScreen">
-    <h2>✨ Briefing terminé</h2>
-    <p>5 articles lus. À demain pour la suite !</p>
-    <button onclick="restart()">Recommencer</button>
+    <!-- Card 2: Xcode -->
+    <div class="card-wrapper">
+      <article class="card" data-type="tech">
+        <header class="card-header">
+          <span class="badge tech">🍎 Product</span>
+          <div class="dots">
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </header>
+        <div class="hero">
+          <h1>Apple Xcode 26.3 : Les agents IA débarquent</h1>
+          <p class="summary">Claude et OpenAI Codex intégrés nativement dans l'IDE d'Apple.</p>
+        </div>
+        <div class="scroll-hint">
+          <span><span class="arrow">↓</span> Scroll pour lire</span>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <p>Apple vient de lâcher une bombe discrète : <strong>Xcode 26.3</strong> intègre nativement les agents IA d'Anthropic et OpenAI.</p>
+            <p>Les développeurs peuvent désormais utiliser Claude Agent et OpenAI Codex directement dans l'IDE officiel d'Apple. Génération de code, refactoring, création de tests — tout devient assisté.</p>
+            <div class="pull-quote">
+              Apple ne fait plus semblant. L'ère du développement assisté par IA est officiellement mainstream.
+            </div>
+            <p>L'enjeu pour Apple : garder les développeurs dans son écosystème face à la montée de VS Code et des outils cloud.</p>
+            <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <button class="nav-btn" onclick="goTo(0)">← Précédent</button>
+          <button class="nav-btn" onclick="goTo(2)">Suivant →</button>
+        </footer>
+      </article>
+    </div>
+
+    <!-- Card 3: Codex -->
+    <div class="card-wrapper">
+      <article class="card" data-type="strategy">
+        <header class="card-header">
+          <span class="badge strategy">🧠 Strategy</span>
+          <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </header>
+        <div class="hero">
+          <h1>OpenAI Codex Desktop : La riposte</h1>
+          <p class="summary">Un command center pour gérer plusieurs agents IA en parallèle.</p>
+        </div>
+        <div class="scroll-hint">
+          <span><span class="arrow">↓</span> Scroll pour lire</span>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <p>OpenAI ne reste pas les bras croisés face à Claude. La nouvelle app desktop <strong>Codex</strong> permet de gérer plusieurs agents IA sur différents projets.</p>
+            <p>Contrôle centralisé, automatisation des tâches répétitives, isolation par worktrees. C'est une réponse directe à Anthropic.</p>
+            <div class="pull-quote">
+              La guerre des agents vient de passer au niveau supérieur. Ce n'est plus une question de modèle, mais d'écosystème.
+            </div>
+            <p>Le positionnement est clair : OpenAI veut être le "hub" de vos agents, pas juste un fournisseur de modèle.</p>
+            <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <button class="nav-btn" onclick="goTo(1)">← Précédent</button>
+          <button class="nav-btn" onclick="goTo(3)">Suivant →</button>
+        </footer>
+      </article>
+    </div>
+
+    <!-- Card 4: MCP -->
+    <div class="card-wrapper">
+      <article class="card" data-type="tech">
+        <header class="card-header">
+          <span class="badge tech">⚙️ Tech</span>
+          <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+          </div>
+        </header>
+        <div class="hero">
+          <h1>MCP Protocol : L'USB-C des IA</h1>
+          <p class="summary">Un standard pour connecter n'importe quel modèle à n'importe quel outil.</p>
+        </div>
+        <div class="scroll-hint">
+          <span><span class="arrow">↓</span> Scroll pour lire</span>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <p><strong>Model Context Protocol (MCP)</strong> est en train de devenir le standard de facto pour connecter les LLMs aux outils externes.</p>
+            <p>Contrairement aux plugins ChatGPT (propriétaires), MCP est ouvert et fonctionne avec n'importe quel modèle. Un contrat unique pour la découverte des outils, les permissions, et les appels.</p>
+            <div class="pull-quote">
+              MCP transforme chaque agent en citoyen universel du monde logiciel. Plus de silos, plus d'intégrations custom.
+            </div>
+            <p>Exemple concret : "Pourquoi le build échoue ?" → L'agent via MCP interroge GitHub, CI, et ouvre un ticket Jira pré-rempli. Tout ça sans code custom.</p>
+            <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <button class="nav-btn" onclick="goTo(2)">← Précédent</button>
+          <button class="nav-btn" onclick="goTo(4)">Suivant →</button>
+        </footer>
+      </article>
+    </div>
+
+    <!-- Card 5: Analyse -->
+    <div class="card-wrapper">
+      <article class="card" data-type="analysis">
+        <header class="card-header">
+          <span class="badge analysis">🔮 Analyse</span>
+          <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+          </div>
+        </header>
+        <div class="hero">
+          <h1>L'Avènement des Agents : La fin de la solitude numérique</h1>
+          <p class="summary">Nous passons du statut d'opérateur à celui d'architecte.</p>
+        </div>
+        <div class="scroll-hint">
+          <span><span class="arrow">↓</span> Scroll pour lire</span>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <p>L'intelligence artificielle a longtemps été une entité passive, un oracle que l'on consultait. En 2026, nous franchissons le cap décisif vers <strong>l'agentivité réelle</strong>.</p>
+            <p>Nous ne parlons plus seulement à des modèles ; nous collaborons avec des systèmes capables de planification, de mémoire à long terme et d'action directe sur le monde numérique.</p>
+            <div class="pull-quote">
+              La machine s'occupe du "comment", mais le "pourquoi" reste notre fardeau exclusif.
+            </div>
+            <p>Cette évolution transforme radicalement notre économie de l'attention. Au lieu de micro-manager des interfaces, nous déléguons des objectifs à des flottes d'agents spécialisés.</p>
+            <p>L'enjeu n'est plus de savoir utiliser l'outil, mais de savoir <strong>définir l'intention</strong>. Dans ce monde d'agents autonomes, la clarté de nos désirs devient la compétence la plus précieuse.</p>
+            <div class="signature">Analysé par Sage 🦎 • Daily AI</div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <button class="nav-btn" onclick="goTo(3)">← Précédent</button>
+          <button class="nav-btn" disabled>Fin →</button>
+        </footer>
+      </article>
+    </div>
   </div>
 
   <script>
-    // === DATA ===
-    const articles = [
-      {
-        id: 1,
-        type: 'alert',
-        badge: '🚨 CRASH',
-        title: '-$285 Milliards : Le carnage Anthropic',
-        summary: 'Claude Cowork ne se contente plus d\'aider. Il remplace.',
-        content: `
-          <p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat ? <strong>$285 milliards évaporés</strong> chez les acteurs traditionnels du software.</p>
-          <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 14% en une seule séance.</p>
-          <div class="pull-quote">Si votre business model est de vendre des licences à $10k pour agréger de la data, vous valez zéro demain matin.</div>
-          <p>L'IA ne vient plus pour assister ("Copilot"), elle vient pour prendre en charge le workflow entier ("Autopilot").</p>
-          <div class="signature">Analysé par Henry 🦉</div>
-        `
-      },
-      {
-        id: 2,
-        type: 'tech',
-        badge: '🍎 PRODUCT',
-        title: 'Apple Xcode 26.3 : Les agents IA débarquent',
-        summary: 'Claude et OpenAI Codex intégrés nativement dans l\'IDE.',
-        content: `
-          <p>Apple vient de lâcher une bombe : <strong>Xcode 26.3</strong> intègre nativement les agents d'Anthropic et OpenAI.</p>
-          <p>Génération de code, refactoring, tests — tout devient assisté directement dans l'IDE officiel.</p>
-          <div class="pull-quote">Apple ne fait plus semblant. L'ère du développement assisté par IA est mainstream.</div>
-          <p>L'enjeu : garder les développeurs dans l'écosystème Apple face à VS Code.</p>
-          <div class="signature">Analysé par Nova 🌟</div>
-        `
-      },
-      {
-        id: 3,
-        type: 'strategy',
-        badge: '🧠 STRATEGY',
-        title: 'OpenAI Codex Desktop : La riposte',
-        summary: 'Un command center pour gérer plusieurs agents en parallèle.',
-        content: `
-          <p>OpenAI contre-attaque. <strong>Codex Desktop</strong> permet de gérer plusieurs agents sur différents projets.</p>
-          <p>Contrôle centralisé, automatisation, isolation par worktrees. Réponse directe à Anthropic.</p>
-          <div class="pull-quote">La guerre des agents passe au niveau supérieur. Ce n'est plus le modèle, c'est l'écosystème.</div>
-          <p>OpenAI veut être le "hub" de vos agents, pas juste un fournisseur.</p>
-          <div class="signature">Analysé par Nova 🌟</div>
-        `
-      },
-      {
-        id: 4,
-        type: 'tech',
-        badge: '⚙️ TECH',
-        title: 'MCP Protocol : L\'USB-C des IA',
-        summary: 'Un standard pour connecter n\'importe quel modèle à n\'importe quel outil.',
-        content: `
-          <p><strong>Model Context Protocol</strong> devient le standard pour connecter les LLMs aux outils externes.</p>
-          <p>Contrairement aux plugins ChatGPT, MCP est ouvert et universel. Un contrat unique pour tout.</p>
-          <div class="pull-quote">MCP transforme chaque agent en citoyen universel du monde logiciel.</div>
-          <p>Exemple : "Pourquoi le build échoue ?" → L'agent interroge GitHub, CI, et ouvre un ticket Jira.</p>
-          <div class="signature">Analysé par Nova 🌟</div>
-        `
-      },
-      {
-        id: 5,
-        type: 'analysis',
-        badge: '🔮 ANALYSE',
-        title: 'L\'Avènement des Agents',
-        summary: 'Nous passons du statut d\'opérateur à celui d\'architecte.',
-        content: `
-          <p>L'IA a longtemps été passive, un oracle. En 2026, nous franchissons le cap vers <strong>l'agentivité réelle</strong>.</p>
-          <p>Nous collaborons avec des systèmes capables de planification, mémoire, et action directe sur le monde.</p>
-          <div class="pull-quote">La machine s'occupe du "comment", mais le "pourquoi" reste notre fardeau exclusif.</div>
-          <p>L'enjeu n'est plus d'utiliser l'outil, mais de <strong>définir l'intention</strong>.</p>
-          <div class="signature">Analysé par Sage 🦎</div>
-        `
-      }
-    ];
+    const deck = document.getElementById('deck');
+    const cards = document.querySelectorAll('.card-wrapper');
+    const totalCards = cards.length;
+    const swipeHint = document.getElementById('swipeHint');
 
-    let currentIndex = 0;
-    const cardStack = document.getElementById('cardStack');
-    const progressDots = document.getElementById('progressDots');
-    const endScreen = document.getElementById('endScreen');
-
-    // === RENDER ===
-    function renderDots() {
-      progressDots.innerHTML = articles.map((_, i) => 
-        `<div class="progress-dot ${i < currentIndex ? 'done' : ''} ${i === currentIndex ? 'active' : ''}"></div>`
-      ).join('');
-    }
-
-    function renderCards() {
-      cardStack.innerHTML = '';
-      
-      // Render up to 3 cards (current + 2 behind)
-      for (let i = Math.min(currentIndex + 2, articles.length - 1); i >= currentIndex; i--) {
-        const article = articles[i];
-        const position = i === currentIndex ? 'current' : (i - currentIndex).toString();
-        
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.dataset.position = position;
-        card.dataset.type = article.type;
-        card.dataset.index = i;
-        
-        card.innerHTML = `
-          <div class="swipe-hint left">SKIP</div>
-          <div class="swipe-hint right">NEXT</div>
-          <div class="card-inner">
-            <div class="hero">
-              <span class="badge ${article.type}">${article.badge}</span>
-              <h1>${article.title}</h1>
-              <p class="summary">${article.summary}</p>
-              <div class="scroll-cue">
-                <span class="arrow">↓</span> Scroll pour lire
-              </div>
-            </div>
-            <div class="content">
-              ${article.content}
-            </div>
-          </div>
-        `;
-        
-        cardStack.appendChild(card);
-        
-        if (position === 'current') {
-          attachSwipeListeners(card);
-        }
-      }
-      
-      renderDots();
-    }
-
-    // === SWIPE LOGIC ===
-    let startX = 0, startY = 0, currentX = 0, isDragging = false;
-    let currentCard = null;
-
-    function attachSwipeListeners(card) {
-      currentCard = card;
-      const inner = card.querySelector('.card-inner');
-      
-      card.addEventListener('pointerdown', onPointerDown);
-      card.addEventListener('pointermove', onPointerMove);
-      card.addEventListener('pointerup', onPointerUp);
-      card.addEventListener('pointercancel', onPointerUp);
-    }
-
-    function onPointerDown(e) {
-      // Only swipe from top part of card (hero area)
-      const inner = currentCard.querySelector('.card-inner');
-      if (inner.scrollTop > 10) return; // If scrolled, don't swipe
-      
-      startX = e.clientX;
-      startY = e.clientY;
-      isDragging = true;
-      currentCard.classList.add('swiping');
-      currentCard.setPointerCapture(e.pointerId);
-    }
-
-    function onPointerMove(e) {
-      if (!isDragging) return;
-      
-      currentX = e.clientX - startX;
-      const currentY = e.clientY - startY;
-      
-      // If moving more vertically, let it scroll
-      if (Math.abs(currentY) > Math.abs(currentX) * 1.2) {
-        return;
-      }
-      
-      const rotate = currentX / 15;
-      currentCard.style.transform = `translateX(${currentX}px) rotate(${rotate}deg)`;
-      
-      // Show hints
-      const leftHint = currentCard.querySelector('.swipe-hint.left');
-      const rightHint = currentCard.querySelector('.swipe-hint.right');
-      leftHint.style.opacity = currentX < -50 ? 1 : 0;
-      rightHint.style.opacity = currentX > 50 ? 1 : 0;
-    }
-
-    function onPointerUp(e) {
-      if (!isDragging) return;
-      isDragging = false;
-      currentCard.classList.remove('swiping');
-      
-      // Hide hints
-      currentCard.querySelector('.swipe-hint.left').style.opacity = 0;
-      currentCard.querySelector('.swipe-hint.right').style.opacity = 0;
-      
-      const threshold = 100;
-      
-      if (currentX < -threshold) {
-        completeSwipe('left');
-      } else if (currentX > threshold) {
-        completeSwipe('right');
-      } else {
-        // Snap back
-        currentCard.style.transform = '';
-      }
-    }
-
-    function swipeCard(direction) {
-      if (!currentCard || currentIndex >= articles.length) return;
-      currentCard.classList.add('swiping');
-      completeSwipe(direction);
-    }
-
-    function completeSwipe(direction) {
-      currentCard.classList.remove('swiping');
-      currentCard.classList.add(`swipe-${direction}`);
-      
+    // Onboarding: affiche les flèches 2s puis disparaît (une seule fois)
+    if (!localStorage.getItem('dailyai-hint-seen')) {
       setTimeout(() => {
-        currentIndex++;
-        if (currentIndex >= articles.length) {
-          endScreen.classList.add('active');
-        } else {
-          renderCards();
-        }
-      }, 300);
+        swipeHint.classList.add('hidden');
+        localStorage.setItem('dailyai-hint-seen', 'true');
+      }, 2000);
+    } else {
+      swipeHint.style.display = 'none';
     }
 
-    function restart() {
-      currentIndex = 0;
-      endScreen.classList.remove('active');
-      renderCards();
+    function goTo(index) {
+      if (index < 0 || index >= totalCards) return;
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center' });
     }
 
-    // === KEYBOARD ===
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') swipeCard('left');
-      if (e.key === 'ArrowRight') swipeCard('right');
+      const currentIndex = Math.round(deck.scrollLeft / deck.offsetWidth);
+      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+      if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
     });
 
-    // === INIT ===
-    renderCards();
+    // Update dots on scroll
+    deck.addEventListener('scroll', () => {
+      const currentIndex = Math.round(deck.scrollLeft / deck.offsetWidth);
+      document.querySelectorAll('.card-wrapper').forEach((wrapper, i) => {
+        const dots = wrapper.querySelectorAll('.dot');
+        dots.forEach((dot, j) => {
+          dot.classList.toggle('active', j === currentIndex);
+        });
+      });
+    });
   </script>
 </body>
 </html>
