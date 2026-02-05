@@ -1,0 +1,1199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>AI Insight Daily — V1</title>
+
+  <!-- Premium typography (fallbacks included). External; remove if you need 100% offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /*
+      AI Insight Daily — V1
+      Base: stack de cartes + reader slide-up + pull-quotes
+      ✅ Corrections Blaise (commentées dans le JS/CSS):
+      1) Conflit scroll vs swipe-down → threshold + scrollTop===0 + délai d'activation
+      2) touchmove sans preventDefault → listeners { passive:false } + preventDefault conditionnel
+      3) z-index stacking → seule la carte du dessus capte les events (pointer-events:none dessous)
+      4) Accessibilité → ARIA + Escape + focus management
+      5) Navigation reader → prev/next + dots
+    */
+
+    :root{
+      color-scheme: dark;
+      --bg0:#07090f;
+      --bg1:#0b1020;
+      --card:#0c1224;
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(255,255,255,.14);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
+      --shadow: 0 18px 60px rgba(0,0,0,.58);
+      --radius: 24px;
+      --pad: 18px;
+      --safeTop: env(safe-area-inset-top);
+      --safeBottom: env(safe-area-inset-bottom);
+      --safeLeft: env(safe-area-inset-left);
+      --safeRight: env(safe-area-inset-right);
+
+      --accentBreaking:#ff4d6d;
+      --accentTech:#43c6ff;
+      --accentAnalysis:#a78bfa;
+
+      --btnH: 44px;
+      --easing: cubic-bezier(.2,.9,.2,1);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 900px at 20% 0%, rgba(122,92,255,.18), transparent 55%),
+        radial-gradient(1000px 800px at 90% 10%, rgba(41,176,255,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      color:var(--text);
+      overflow:hidden; /* deck is viewport-scoped */
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
+    }
+
+    .app{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: calc(10px + var(--safeTop)) calc(10px + var(--safeRight)) calc(10px + var(--safeBottom)) calc(10px + var(--safeLeft));
+    }
+
+    .stage{
+      width: min(92vw, 430px);
+      aspect-ratio: 9 / 16;
+      position: relative;
+      filter: drop-shadow(var(--shadow));
+    }
+
+    /* Header mini */
+    .brand{
+      position:absolute;
+      z-index: 20;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      pointer-events:none;
+    }
+    .brandLeft{
+      pointer-events:none;
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+    }
+    .brandTitle{
+      font-weight: 800;
+      letter-spacing: .02em;
+      font-size: 12px;
+      color: rgba(255,255,255,.82);
+      text-transform: uppercase;
+    }
+    .brandSub{
+      font-size: 12px;
+      color: rgba(255,255,255,.48);
+    }
+
+    .progressDots{
+      pointer-events:auto;
+      display:flex;
+      gap: 6px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .dotBtn{
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+      cursor:pointer;
+      padding:0;
+      appearance:none;
+    }
+    .dotBtn[aria-current="true"]{
+      background: rgba(255,255,255,.72);
+      border-color: rgba(255,255,255,.35);
+    }
+    .dotBtn:focus-visible{ outline:2px solid rgba(255,255,255,.38); outline-offset: 2px; }
+
+    .deck{
+      position:absolute;
+      inset:0;
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--stroke);
+    }
+
+    /* Cards */
+    .card{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.10);
+      will-change: transform, opacity;
+      transform: translate3d(0,0,0);
+      transition: transform 260ms var(--easing), opacity 220ms ease;
+    }
+
+    /* ✅ BUGFIX #3 (z-index stacking + events): by default cards don't receive pointer events.
+       Only [data-pos="current"] will be interactive (pointer-events:auto). */
+    .card{ pointer-events:none; }
+    .card[data-pos="current"]{ pointer-events:auto; }
+
+    .card[data-pos="prev"]{ transform: translate3d(-8%, 0, 0) scale(.98); opacity:.18; }
+    .card[data-pos="next"]{ transform: translate3d( 8%, 0, 0) scale(.98); opacity:.18; }
+    .card[data-pos="current"]{ opacity:1; }
+
+    .card.isDragging{ transition:none !important; }
+
+    .cardBg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 560px at 20% 10%, rgba(255,255,255,.14), transparent 58%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.00) 50%),
+        var(--bg);
+      transform: translateZ(0);
+    }
+    .cardBg::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg,
+        rgba(0,0,0,.00) 0%,
+        rgba(0,0,0,.10) 35%,
+        rgba(0,0,0,.46) 76%,
+        rgba(0,0,0,.66) 100%
+      );
+    }
+
+    .cardInner{
+      position:relative;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      padding: 14px var(--pad) 14px var(--pad);
+      gap: 12px;
+    }
+
+    .topRow{ display:flex; align-items:center; justify-content:space-between; gap:10px; min-height: 36px; padding-top: 6px; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .badgeDot{ width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 3px rgba(0,0,0,.25); }
+    .count{
+      font-variant-numeric: tabular-nums;
+      color: var(--muted2);
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .spacer{ flex: 1 1 auto; }
+
+    .headline{
+      margin-top:auto;
+      font-size: 24px;
+      line-height: 1.10;
+      letter-spacing: -0.01em;
+      margin-bottom:0;
+      text-wrap: balance;
+      text-shadow: 0 10px 26px rgba(0,0,0,.42);
+    }
+    .summary{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow:hidden;
+      text-shadow: 0 10px 22px rgba(0,0,0,.35);
+    }
+
+    .pull{
+      margin-top: 8px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 12px 14px;
+      color: rgba(255,255,255,.86);
+      font-family: "Merriweather", ui-serif, Georgia, "Times New Roman", serif;
+      font-size: 13px;
+      line-height: 1.45;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .pull strong{ color: rgba(255,255,255,.94); font-weight:700; }
+
+    .actions{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items:center;
+      gap: 12px;
+      padding-bottom: 2px;
+    }
+
+    .btn{
+      height: var(--btnH);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      font-weight: 650;
+      letter-spacing: .02em;
+      padding: 0 16px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .btn:focus-visible{ outline: 2px solid rgba(255,255,255,.38); outline-offset: 2px; }
+    .btn:active{ transform: scale(.98); }
+
+    .btnGhost{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.14);
+    }
+
+    .btnSkip{ justify-self:start; }
+    .btnSave{ justify-self:end; border-color: rgba(255,255,255,.20); }
+
+    .hint{
+      color: var(--muted2);
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      white-space:nowrap;
+    }
+
+    .swipeHint{
+      position:absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 68px;
+      display:flex;
+      justify-content:space-between;
+      pointer-events:none;
+      opacity:.25;
+      font-size: 12px;
+      color: rgba(255,255,255,.75);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    /* Reader overlay */
+    .backdrop{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.55);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity 220ms ease;
+      z-index: 80;
+    }
+    .backdrop.isOpen{ opacity:1; pointer-events:auto; }
+
+    .reader{
+      position:fixed;
+      left:0; right:0;
+      bottom:0;
+      height: min(86vh, 760px);
+      transform: translate3d(0, 110%, 0);
+      transition: transform 260ms var(--easing);
+      z-index: 90;
+      padding: 0 calc(10px + var(--safeRight)) calc(10px + var(--safeBottom)) calc(10px + var(--safeLeft));
+      display:flex;
+      align-items:flex-end;
+      pointer-events:none;
+    }
+    .reader.isOpen{ transform: translate3d(0, 0, 0); pointer-events:auto; }
+
+    .sheet{
+      width: min(92vw, 640px);
+      margin: 0 auto;
+      border-radius: 24px;
+      background: rgba(10,14,28,.92);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 22px 90px rgba(0,0,0,.62);
+      overflow:hidden;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display:flex;
+      flex-direction:column;
+      max-height: 100%;
+    }
+
+    .sheetTop{
+      padding: 10px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.00));
+    }
+
+    .grab{
+      height: 22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 1 1 auto;
+    }
+    .grabBar{
+      width: 54px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.22);
+    }
+
+    .sheetTitle{
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      white-space:nowrap;
+    }
+
+    .closeBtn{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color: rgba(255,255,255,.92);
+      cursor:pointer;
+    }
+    .closeBtn:focus-visible{ outline: 2px solid rgba(255,255,255,.38); outline-offset: 2px; }
+
+    .sheetBody{
+      padding: 14px 18px 12px 18px;
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      overscroll-behavior: contain; /* helps avoid page bounce */
+    }
+
+    .readerH1{
+      margin: 6px 0 10px 0;
+      font-family: "Merriweather", ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      align-items:center;
+      margin-bottom: 12px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.86);
+    }
+    .pillDot{ width: 8px; height: 8px; border-radius: 999px; background: var(--accent); }
+
+    .readerP{
+      margin: 0 0 12px 0;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.58;
+      font-family: "Merriweather", ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 300;
+    }
+
+    .quote{
+      margin: 12px 0 14px 0;
+      padding: 12px 14px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,.06);
+      border-radius: 14px;
+      color: rgba(255,255,255,.90);
+      font-family: "Merriweather", ui-serif, Georgia, "Times New Roman", serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .sheetFooter{
+      padding: 12px 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,.00), rgba(0,0,0,.16));
+    }
+
+    .navGroup{ display:flex; gap: 10px; align-items:center; }
+
+    .kbdHint{ color: rgba(255,255,255,.55); font-size: 12px; }
+
+    @media (prefers-reduced-motion: reduce){
+      .card{ transition:none; }
+      .reader{ transition:none; }
+      .backdrop{ transition:none; }
+      .btn{ transition:none; }
+    }
+
+    /* Desktop helper */
+    .footerHelp{
+      position: fixed;
+      left: 0; right: 0;
+      bottom: 10px;
+      text-align:center;
+      color: rgba(255,255,255,.40);
+      font-size: 12px;
+      pointer-events:none;
+      z-index: 5;
+    }
+    @media (max-width: 560px){ .footerHelp{ display:none; } }
+
+  </style>
+</head>
+<body>
+  <div class="app" role="application" aria-label="AI Insight Daily">
+    <div class="stage" aria-label="Deck de lecture">
+      <div class="brand" aria-hidden="false">
+        <div class="brandLeft">
+          <div class="brandTitle">AI Insight Daily</div>
+          <div class="brandSub" id="dateLabel">Édition du jour</div>
+        </div>
+        <div class="progressDots" id="dots" aria-label="Progression (dots)"></div>
+      </div>
+
+      <div class="sr-only" aria-live="polite" aria-atomic="true" id="live"></div>
+      <div class="deck" id="deck" aria-label="Cartes d'actualités"></div>
+    </div>
+  </div>
+
+  <div class="footerHelp">Astuce : ← / → pour naviguer, Entrée pour ouvrir, Échap pour fermer</div>
+
+  <!-- Reader overlay -->
+  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+  <div class="reader" id="reader" role="dialog" aria-modal="true" aria-label="Lecteur d'article" aria-hidden="true">
+    <div class="sheet" id="sheet">
+      <div class="sheetTop" id="sheetTop" aria-label="En-tête du lecteur">
+        <div class="sheetTitle" id="sheetKicker">Reader</div>
+        <div class="grab" id="grab" aria-hidden="true"><div class="grabBar"></div></div>
+        <button class="closeBtn" id="closeBtn" type="button" aria-label="Fermer (Échap)">✕</button>
+      </div>
+
+      <div class="sheetBody" id="sheetBody" tabindex="0" aria-label="Contenu de l'article">
+        <!-- injected -->
+      </div>
+
+      <div class="sheetFooter" aria-label="Navigation article">
+        <div class="navGroup">
+          <button class="btn btnGhost" id="prevBtn" type="button" aria-label="Article précédent">← Prev</button>
+          <button class="btn btnGhost" id="nextBtn" type="button" aria-label="Article suivant">Next →</button>
+        </div>
+        <div class="kbdHint" aria-hidden="true">Esc • ←/→</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* -----------------------------
+      Données démo (5 news du jour)
+    ------------------------------*/
+    const NEWS = [
+      {
+        id: 'anthropic-285b',
+        category: 'Breaking',
+        title: 'Anthropic : valorisation $285B en chute',
+        summary: "Correction brutale sur les valeurs IA : re-pricing et prudence des investisseurs.",
+        pull: "Quand la narration ralentit, <strong>les multiples redeviennent des multiples</strong>.",
+        body: [
+          "Le marché réévalue les multiples des leaders IA. Le moteur : coûts d’inférence, compétition accrue et attentes plus strictes sur la qualité des revenus.",
+          "Dans ce contexte, la question n’est plus ‘qui a la meilleure démo’, mais ‘qui a la meilleure boucle produit → usage → revenus’.",
+          "À surveiller : discipline de coûts, contrats enterprise, et clarté des roadmaps (sécurité, conformité, gouvernance)."
+        ],
+        quote: "Une valorisation est une hypothèse sur la vitesse : quand elle baisse, c’est souvent que la trajectoire devient plus incertaine.",
+        bg: 'linear-gradient(135deg, rgba(255,77,109,.28), rgba(255,77,109,.06) 55%, rgba(12,18,36,.00))'
+      },
+      {
+        id: 'xcode-26-3-agents',
+        category: 'Breaking',
+        title: 'Apple : Xcode 26.3 et agents intégrés',
+        summary: "Nouveaux workflows assistés : génération, refactor, tests — directement dans l’IDE.",
+        pull: "Le vrai game-changer n’est pas ‘coder plus vite’, mais <strong>itérer avec moins de friction</strong>.",
+        body: [
+          "Xcode 26.3 introduit des assistants orientés tâches (navigation, modifications multi-fichiers, création de tests).",
+          "Le risque principal est connu : quand l’agent agit, il faut des garde-fous (permissions, journaux d’actions, granularité des changements).",
+          "L’opportunité : un flux de travail ‘local-first’ et intégré, qui réduit les context switches et améliore la qualité via les tests."
+        ],
+        quote: "Un bon agent dans l’IDE doit être évalué sur la qualité des diffs — pas sur la quantité de tokens.",
+        bg: 'linear-gradient(135deg, rgba(255,77,109,.22), rgba(67,198,255,.08) 60%, rgba(12,18,36,.00))'
+      },
+      {
+        id: 'codex-desktop',
+        category: 'Breaking',
+        title: 'OpenAI : Codex arrive sur Desktop',
+        summary: "Un client bureau pour coder plus vite : itération, exécution et contextes projet.",
+        pull: "Le desktop met la pression sur la gouvernance : <strong>qui peut faire quoi, et quand</strong>.",
+        body: [
+          "Un client bureau vise à réduire la friction entre l’éditeur, l’exécution et l’accès au contexte (fichiers, commandes, logs).",
+          "Le point critique : permissions explicites, audit des actions, et limites d’exécution (sandbox, allowlists).",
+          "Bien fait, c’est un accélérateur : boucles plus courtes, moins d’erreurs de contexte, plus de reproductibilité."
+        ],
+        quote: "Le futur des assistants dev : des actions petites, vérifiables, et faciles à annuler.",
+        bg: 'linear-gradient(135deg, rgba(255,77,109,.20), rgba(167,139,250,.10) 60%, rgba(12,18,36,.00))'
+      },
+      {
+        id: 'mcp-explique',
+        category: 'Tech',
+        title: 'MCP Protocol : le modèle expliqué',
+        summary: "Un standard pour connecter modèles et outils : contexte, ressources et actions.",
+        pull: "Standardiser les outils, c’est <strong>standardiser les permissions</strong>.",
+        body: [
+          "MCP (Model Context Protocol) structure la façon dont un assistant accède à des capacités externes : découverte, permissions et appels d’outils.",
+          "C’est le chaînon manquant entre ‘un modèle’ et ‘un produit’ : intégrations plus sûres, plus portables.",
+          "La clé : une UX claire sur ce qui est accessible, et une séparation nette entre lire / écrire / exécuter."
+        ],
+        quote: "Interopérabilité sans sécurité explicite, c’est juste de la dette technique.",
+        bg: 'linear-gradient(135deg, rgba(67,198,255,.26), rgba(67,198,255,.06) 55%, rgba(12,18,36,.00))'
+      },
+      {
+        id: 'analyse-sage',
+        category: 'Analysis',
+        title: 'L’Analyse de Sage : signal vs bruit',
+        summary: "Ce qui compte cette semaine : qualité des données, coût d’inférence et adoption réelle.",
+        pull: "Les gagnants IA optimisent <strong>l’inférence + l’adoption</strong>, pas la démo.",
+        body: [
+          "Lecture macro : la maturité IA se mesure moins aux démos qu’aux déploiements.",
+          "Les gagnants optimisent l’inférence, verrouillent des données différenciantes et trouvent des usages récurrents côté métiers.",
+          "À court terme : attention au coût total (run + monitoring + sécurité) et au temps d’intégration."
+        ],
+        quote: "Signal : usage récurrent. Bruit : pics d’attention. Le produit tranche.",
+        bg: 'linear-gradient(135deg, rgba(167,139,250,.26), rgba(167,139,250,.06) 55%, rgba(12,18,36,.00))'
+      },
+    ];
+
+    const CATEGORY = {
+      Breaking: { accent: 'var(--accentBreaking)' },
+      Tech: { accent: 'var(--accentTech)' },
+      Analysis: { accent: 'var(--accentAnalysis)' },
+    };
+
+    const deckEl = document.getElementById('deck');
+    const dotsEl = document.getElementById('dots');
+    const liveEl = document.getElementById('live');
+
+    const backdropEl = document.getElementById('backdrop');
+    const readerEl = document.getElementById('reader');
+    const sheetEl = document.getElementById('sheet');
+    const sheetTopEl = document.getElementById('sheetTop');
+    const grabEl = document.getElementById('grab');
+    const sheetBodyEl = document.getElementById('sheetBody');
+    const closeBtnEl = document.getElementById('closeBtn');
+    const prevBtnEl = document.getElementById('prevBtn');
+    const nextBtnEl = document.getElementById('nextBtn');
+    const sheetKickerEl = document.getElementById('sheetKicker');
+
+    // Deck state
+    let index = 0;
+    let currentCardEl = null;
+
+    // Reader state
+    let readerOpen = false;
+    let readerIndex = 0;
+    let lastFocus = null;
+
+    // Deck horizontal gesture state (pointer events)
+    let pointerId = null;
+    let startX = 0, startY = 0;
+    let dx = 0, dy = 0;
+    let isDragging = false;
+
+    // ✅ BUGFIX #1 & #2 (reader swipe-down close gesture)
+    // We use Touch Events on the reader sheet (because we need {passive:false} on touchmove).
+    let tId = null;
+    let rStartY = 0;
+    let rStartX = 0;
+    let rDy = 0;
+    let rDx = 0;
+    let rDragging = false;
+    let rArmed = false;
+    let armTimer = null;
+
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function prefersReducedMotion(){
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function announce(text){ liveEl.textContent = text; }
+
+    function setDateLabel(){
+      try{
+        const d = new Date();
+        const fmt = new Intl.DateTimeFormat('fr-FR', { weekday:'short', year:'numeric', month:'short', day:'2-digit' });
+        document.getElementById('dateLabel').textContent = fmt.format(d);
+      } catch {}
+    }
+
+    function actionLabel(i = index){
+      return `[${i + 1}/${NEWS.length}]`;
+    }
+
+    function buildDots(){
+      dotsEl.innerHTML = '';
+      NEWS.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'dotBtn';
+        b.type = 'button';
+        b.setAttribute('aria-label', `Aller à l’article ${i + 1}`);
+        b.setAttribute('aria-current', i === index ? 'true' : 'false');
+        b.addEventListener('click', () => {
+          index = i;
+          renderDeck();
+        });
+        dotsEl.appendChild(b);
+      });
+    }
+
+    function updateDots(){
+      [...dotsEl.querySelectorAll('.dotBtn')].forEach((b, i) => {
+        b.setAttribute('aria-current', i === index ? 'true' : 'false');
+      });
+    }
+
+    function createCard(item, pos, i){
+      const cat = CATEGORY[item.category] || { accent: 'rgba(255,255,255,.7)' };
+
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.dataset.pos = pos;
+      card.dataset.id = item.id;
+      card.style.setProperty('--accent', cat.accent);
+      card.setAttribute('role', 'group');
+      card.setAttribute('aria-label', `${item.category} — ${item.title}`);
+
+      const bg = document.createElement('div');
+      bg.className = 'cardBg';
+      bg.style.setProperty('--bg', item.bg);
+
+      const inner = document.createElement('div');
+      inner.className = 'cardInner';
+      inner.innerHTML = `
+        <div class="topRow">
+          <div class="badge" aria-label="Catégorie">
+            <span class="badgeDot" aria-hidden="true"></span>
+            <span>${escapeHtml(item.category)}</span>
+          </div>
+          <div class="count" aria-label="Position">${actionLabel(i)}</div>
+        </div>
+
+        <div class="spacer" aria-hidden="true"></div>
+
+        <h2 class="headline">${escapeHtml(item.title)}</h2>
+        <p class="summary">${escapeHtml(item.summary)}</p>
+
+        <div class="pull" aria-label="Citation">
+          ${item.pull}
+        </div>
+
+        <div class="actions" role="toolbar" aria-label="Actions">
+          <button class="btn btnSkip" type="button" data-action="prev" aria-label="Article précédent (flèche gauche)">
+            <span aria-hidden="true">←</span> PREV
+          </button>
+          <button class="btn btnGhost" type="button" data-action="open" aria-label="Ouvrir l’article (Entrée)">
+            Lire
+          </button>
+          <button class="btn btnSave" type="button" data-action="next" aria-label="Article suivant (flèche droite)">
+            NEXT <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      `;
+
+      const swipe = document.createElement('div');
+      swipe.className = 'swipeHint';
+      swipe.innerHTML = '<span>Swipe ←</span><span>Swipe →</span>';
+
+      card.appendChild(bg);
+      card.appendChild(inner);
+      card.appendChild(swipe);
+
+      // Buttons
+      card.querySelector('[data-action="prev"]').addEventListener('click', () => goto(index - 1));
+      card.querySelector('[data-action="next"]').addEventListener('click', () => goto(index + 1));
+      card.querySelector('[data-action="open"]').addEventListener('click', () => openReader(index));
+
+      // Make the current card focusable for keyboard users
+      if (pos === 'current') card.tabIndex = 0;
+
+      return card;
+    }
+
+    function renderDeck(){
+      deckEl.innerHTML = '';
+
+      const prevIdx = index - 1;
+      const nextIdx = index + 1;
+
+      if (prevIdx >= 0) deckEl.appendChild(createCard(NEWS[prevIdx], 'prev', prevIdx));
+      if (nextIdx < NEWS.length) deckEl.appendChild(createCard(NEWS[nextIdx], 'next', nextIdx));
+
+      const cur = createCard(NEWS[index], 'current', index);
+      deckEl.appendChild(cur);
+      currentCardEl = cur;
+
+      attachDeckPointer();
+
+      buildDots();
+      updateDots();
+
+      announce(`Carte ${index + 1} sur ${NEWS.length}. ${NEWS[index].category}. ${NEWS[index].title}`);
+
+      // Keep focus visible when navigating with keyboard
+      if (!readerOpen && document.activeElement && document.activeElement === document.body){
+        currentCardEl.focus({ preventScroll:true });
+      }
+    }
+
+    function goto(i){
+      index = clamp(i, 0, NEWS.length - 1);
+      renderDeck();
+    }
+
+    /* -----------------------------
+      Deck swipe (horizontal)
+    ------------------------------*/
+    function attachDeckPointer(){
+      deckEl.onpointerdown = onPointerDown;
+      deckEl.onpointermove = onPointerMove;
+      deckEl.onpointerup = onPointerUp;
+      deckEl.onpointercancel = onPointerCancel;
+    }
+
+    function onPointerDown(e){
+      if (readerOpen) return;
+      if (e.button !== undefined && e.button !== 0) return;
+      if (!currentCardEl) return;
+
+      // Avoid hijacking controls
+      const interactive = e.target.closest('button, a');
+      if (interactive) return;
+
+      pointerId = e.pointerId;
+      deckEl.setPointerCapture(pointerId);
+      startX = e.clientX;
+      startY = e.clientY;
+      dx = 0; dy = 0;
+      isDragging = true;
+      currentCardEl.classList.add('isDragging');
+    }
+
+    function onPointerMove(e){
+      if (!isDragging || e.pointerId !== pointerId) return;
+      dx = e.clientX - startX;
+      dy = e.clientY - startY;
+
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
+
+      // If primarily vertical, ignore (lets user scroll nowhere, but avoids accidental swipe)
+      if (absY > absX * 1.15){
+        currentCardEl.style.transform = 'translate3d(0,0,0)';
+        return;
+      }
+
+      const w = deckEl.getBoundingClientRect().width;
+      const progress = clamp(dx / w, -1, 1);
+      const rotate = progress * 6;
+      currentCardEl.style.transform = `translate3d(${dx}px, 0, 0) rotate(${rotate}deg)`;
+    }
+
+    function onPointerUp(e){
+      if (!isDragging || e.pointerId !== pointerId) return;
+      finishDeckDrag();
+    }
+
+    function onPointerCancel(e){
+      if (!isDragging || e.pointerId !== pointerId) return;
+      cancelDeckDrag();
+    }
+
+    function cancelDeckDrag(){
+      isDragging = false;
+      pointerId = null;
+      if (!currentCardEl) return;
+      currentCardEl.classList.remove('isDragging');
+      currentCardEl.style.transform = '';
+    }
+
+    function finishDeckDrag(){
+      isDragging = false;
+      if (!currentCardEl) return;
+
+      const w = deckEl.getBoundingClientRect().width;
+      const threshold = Math.min(110, w * 0.22);
+
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
+      currentCardEl.classList.remove('isDragging');
+
+      if (absY > absX * 1.15){
+        currentCardEl.style.transform = '';
+        pointerId = null;
+        return;
+      }
+
+      if (absX >= threshold){
+        const dir = dx < 0 ? -1 : 1;
+        const outX = dir * (w + 80);
+        const rotate = dir * 7;
+        currentCardEl.style.transform = `translate3d(${outX}px, 0, 0) rotate(${rotate}deg)`;
+        currentCardEl.style.opacity = '0.02';
+        window.setTimeout(() => {
+          goto(index + (dir > 0 ? 1 : -1));
+          if (currentCardEl){ currentCardEl.style.opacity = ''; }
+        }, prefersReducedMotion() ? 0 : 230);
+      } else {
+        currentCardEl.style.transform = '';
+      }
+
+      pointerId = null;
+    }
+
+    /* -----------------------------
+      Reader (slide-up)
+    ------------------------------*/
+
+    function renderReader(i){
+      const item = NEWS[i];
+      const cat = CATEGORY[item.category] || { accent: 'rgba(255,255,255,.7)' };
+      sheetEl.style.setProperty('--accent', cat.accent);
+
+      sheetKickerEl.textContent = `${item.category} • ${actionLabel(i)}`;
+
+      sheetBodyEl.innerHTML = `
+        <div class="meta">
+          <span class="pill" aria-label="Catégorie"><span class="pillDot" aria-hidden="true"></span>${escapeHtml(item.category)}</span>
+          <span class="pill" aria-label="Position">${actionLabel(i)}</span>
+        </div>
+        <h1 class="readerH1" id="readerTitle" tabindex="-1">${escapeHtml(item.title)}</h1>
+        <p class="readerP">${escapeHtml(item.summary)}</p>
+        <div class="quote" aria-label="Pull quote">${escapeHtml(item.quote)}</div>
+        ${item.body.map(p => `<p class="readerP">${escapeHtml(p)}</p>`).join('')}
+      `;
+
+      prevBtnEl.disabled = i <= 0;
+      nextBtnEl.disabled = i >= NEWS.length - 1;
+
+      announce(`Lecteur ouvert. ${item.title}`);
+    }
+
+    function openReader(i){
+      readerIndex = clamp(i, 0, NEWS.length - 1);
+      renderReader(readerIndex);
+
+      // ✅ BUGFIX #4 (focus management): store last focus + move focus into dialog.
+      lastFocus = document.activeElement;
+
+      readerOpen = true;
+      backdropEl.classList.add('isOpen');
+      readerEl.classList.add('isOpen');
+      readerEl.setAttribute('aria-hidden', 'false');
+      backdropEl.setAttribute('aria-hidden', 'false');
+
+      // Focus the scrollable body (or the title) to help SR/keyboard users.
+      window.setTimeout(() => {
+        const title = document.getElementById('readerTitle');
+        (title || sheetBodyEl).focus({ preventScroll:true });
+      }, 0);
+
+      // Reset any dragging state
+      resetReaderGesture();
+    }
+
+    function closeReader(){
+      if (!readerOpen) return;
+
+      readerOpen = false;
+      backdropEl.classList.remove('isOpen');
+      readerEl.classList.remove('isOpen');
+      readerEl.setAttribute('aria-hidden', 'true');
+      backdropEl.setAttribute('aria-hidden', 'true');
+
+      resetReaderGesture();
+
+      // ✅ BUGFIX #4 (focus management): return focus to the opener.
+      window.setTimeout(() => {
+        if (lastFocus && typeof lastFocus.focus === 'function'){
+          lastFocus.focus({ preventScroll:true });
+        } else if (currentCardEl){
+          currentCardEl.focus({ preventScroll:true });
+        }
+      }, prefersReducedMotion() ? 0 : 220);
+
+      announce('Lecteur fermé.');
+    }
+
+    function resetReaderGesture(){
+      tId = null;
+      rDragging = false;
+      rArmed = false;
+      rDx = 0; rDy = 0;
+      if (armTimer) window.clearTimeout(armTimer);
+      armTimer = null;
+      sheetEl.style.transform = '';
+    }
+
+    backdropEl.addEventListener('click', closeReader);
+    closeBtnEl.addEventListener('click', closeReader);
+
+    prevBtnEl.addEventListener('click', () => {
+      if (readerIndex > 0){
+        readerIndex -= 1;
+        renderReader(readerIndex);
+        // keep deck in sync
+        index = readerIndex;
+        renderDeck();
+        sheetBodyEl.scrollTop = 0;
+      }
+    });
+    nextBtnEl.addEventListener('click', () => {
+      if (readerIndex < NEWS.length - 1){
+        readerIndex += 1;
+        renderReader(readerIndex);
+        index = readerIndex;
+        renderDeck();
+        sheetBodyEl.scrollTop = 0;
+      }
+    });
+
+    /*
+      ✅ BUGFIX #1 + #2: Swipe-down pour fermer (robuste)
+      - Ne s'arme que si scrollTop === 0
+      - Délai d'armement (anti faux-positifs lors d'un scroll)
+      - Thresholds (distance + direction)
+      - touchmove { passive:false } + preventDefault uniquement pendant le drag
+    */
+
+    function onReaderTouchStart(e){
+      if (!readerOpen) return;
+      if (e.touches.length !== 1) return;
+
+      const t = e.touches[0];
+      tId = 1;
+      rStartY = t.clientY;
+      rStartX = t.clientX;
+      rDy = 0; rDx = 0;
+      rDragging = false;
+      rArmed = false;
+
+      if (armTimer) window.clearTimeout(armTimer);
+
+      // Only arm when the content is at top.
+      // Additionally, we add a small delay: if the user starts a scroll, we avoid turning it into a close.
+      const canArm = sheetBodyEl.scrollTop <= 0;
+      if (canArm){
+        armTimer = window.setTimeout(() => {
+          rArmed = true;
+        }, 120);
+      }
+    }
+
+    function onReaderTouchMove(e){
+      if (!readerOpen) return;
+      if (!tId) return;
+      if (e.touches.length !== 1) return;
+
+      const t = e.touches[0];
+      rDy = t.clientY - rStartY;
+      rDx = t.clientX - rStartX;
+
+      const absY = Math.abs(rDy);
+      const absX = Math.abs(rDx);
+
+      // If user is scrolling inside content (scrollTop > 0), do not hijack.
+      if (sheetBodyEl.scrollTop > 0){
+        return; // allow native scroll
+      }
+
+      // If not armed yet, do not start dragging.
+      // This prevents close gesture from firing while the user initiates a scroll.
+      if (!rArmed){
+        return;
+      }
+
+      // Direction gating: must be primarily vertical and downward.
+      if (absX > absY * 0.9) return;
+      if (rDy < 0) return;
+
+      // Start dragging after a small movement threshold.
+      if (!rDragging){
+        if (absY < 10) return;
+        rDragging = true;
+      }
+
+      // ✅ BUGFIX #2: prevent native scroll while dragging (requires passive:false)
+      e.preventDefault();
+
+      const maxPull = 220;
+      const pull = clamp(rDy, 0, maxPull);
+      const scale = 1 - (pull / 220) * 0.02;
+      sheetEl.style.transform = `translate3d(0, ${pull}px, 0) scale(${scale})`;
+    }
+
+    function onReaderTouchEnd(){
+      if (!readerOpen) return;
+
+      if (armTimer) window.clearTimeout(armTimer);
+      armTimer = null;
+
+      if (!tId){ resetReaderGesture(); return; }
+
+      const closeThreshold = 90;
+      const velocityish = rDy; // simple (we keep it stable; no real velocity tracking)
+
+      if (rDragging && velocityish >= closeThreshold){
+        // animate out by closing
+        sheetEl.style.transform = '';
+        closeReader();
+      } else {
+        // snap back
+        sheetEl.style.transform = '';
+      }
+
+      resetReaderGesture();
+    }
+
+    // Attach on the sheetTop + sheetBody (so it feels natural), but still gated by scrollTop/delay.
+    // ✅ BUGFIX #2: passive:false on touchmove
+    [sheetTopEl, sheetBodyEl].forEach(el => {
+      el.addEventListener('touchstart', onReaderTouchStart, { passive:true });
+      el.addEventListener('touchmove', onReaderTouchMove, { passive:false });
+      el.addEventListener('touchend', onReaderTouchEnd, { passive:true });
+      el.addEventListener('touchcancel', onReaderTouchEnd, { passive:true });
+    });
+
+    /* -----------------------------
+      Global keyboard (accessibility)
+    ------------------------------*/
+
+    window.addEventListener('keydown', (e) => {
+      // ✅ BUGFIX #4: Escape closes reader
+      if (e.key === 'Escape'){
+        if (readerOpen){
+          e.preventDefault();
+          closeReader();
+        }
+        return;
+      }
+
+      // If reader open: allow ←/→ to navigate articles
+      if (readerOpen){
+        if (e.key === 'ArrowLeft'){
+          e.preventDefault();
+          prevBtnEl.click();
+        }
+        if (e.key === 'ArrowRight'){
+          e.preventDefault();
+          nextBtnEl.click();
+        }
+        return;
+      }
+
+      // Deck navigation
+      if (e.key === 'ArrowLeft'){
+        e.preventDefault();
+        goto(index - 1);
+      }
+      if (e.key === 'ArrowRight'){
+        e.preventDefault();
+        goto(index + 1);
+      }
+      if (e.key === 'Enter'){
+        // Open reader from deck
+        const activeOnCard = currentCardEl && (document.activeElement === currentCardEl || currentCardEl.contains(document.activeElement));
+        if (activeOnCard){
+          e.preventDefault();
+          openReader(index);
+        }
+      }
+    }, { passive:false });
+
+    // Init
+    setDateLabel();
+    renderDeck();
+
+  </script>
+</body>
+</html>
