@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — V6</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-app: #000000;
+      --bg-card: #0a0a10;
+      --text-main: #ffffff;
+      --text-muted: #888;
+      --accent-red: #ff4757;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-purple: #a78bfa;
+      --accent-gold: #f59e0b;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg-app);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text-main);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: pan-y;
+    }
+
+    .deck-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    /* === PROGRESS DOTS === */
+    .progress-dots {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      transition: all 0.3s ease;
+    }
+    .progress-dot.active { background: white; transform: scale(1.3); }
+    .progress-dot.done { background: var(--accent-green); }
+
+    /* === CARD STACK === */
+    .card-stack {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 94%;
+    }
+
+    /* === CARD === */
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px -10px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      will-change: transform;
+      display: flex;
+      flex-direction: column;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .card[data-position="1"] { transform: scale(0.96) translateY(12px); opacity: 0.5; z-index: 1; pointer-events: none; }
+    .card[data-position="2"] { transform: scale(0.92) translateY(24px); opacity: 0.25; z-index: 0; pointer-events: none; }
+    .card[data-position="current"] { z-index: 10; }
+
+    .card.animating {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+    }
+    .card.swipe-left { transform: translateX(-130%) rotate(-25deg) !important; opacity: 0 !important; }
+    .card.swipe-right { transform: translateX(130%) rotate(25deg) !important; opacity: 0 !important; }
+
+    /* Glow */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 250px;
+      background: linear-gradient(180deg, var(--glow, rgba(59,130,246,0.12)) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .card[data-type="alert"] { --glow: rgba(255,71,87,0.18); }
+    .card[data-type="tech"] { --glow: rgba(59,130,246,0.18); }
+    .card[data-type="analysis"] { --glow: rgba(167,139,250,0.18); }
+    .card[data-type="strategy"] { --glow: rgba(245,158,11,0.18); }
+
+    /* === CARD SCROLLABLE === */
+    .card-inner {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      overscroll-behavior: contain;
+    }
+    .card-inner::-webkit-scrollbar { width: 4px; }
+    .card-inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+
+    /* === HERO === */
+    .hero {
+      padding: 45px 22px 25px 22px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+    .badge.alert { background: var(--accent-red); box-shadow: 0 0 20px rgba(255,71,87,0.5); }
+    .badge.tech { background: var(--accent-blue); box-shadow: 0 0 20px rgba(59,130,246,0.5); }
+    .badge.analysis { background: var(--accent-purple); box-shadow: 0 0 20px rgba(167,139,250,0.5); }
+    .badge.strategy { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,0.5); }
+
+    .hero h1 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+
+    .hero .summary {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .scroll-cue {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scroll-cue .arrow { animation: bounce 1.5s infinite; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    /* === CONTENT === */
+    .content {
+      padding: 5px 22px 80px 22px;
+    }
+
+    .content p {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 22px;
+      font-weight: 300;
+    }
+
+    .content strong { color: white; font-weight: 600; }
+
+    .content h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 30px 0 15px 0;
+      color: white;
+    }
+
+    .pull-quote {
+      border-left: 4px solid var(--accent-blue);
+      padding: 18px 20px;
+      margin: 28px 0;
+      background: rgba(59,130,246,0.1);
+      border-radius: 0 14px 14px 0;
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.95);
+    }
+    .card[data-type="alert"] .pull-quote { border-color: var(--accent-red); background: rgba(255,71,87,0.1); }
+    .card[data-type="analysis"] .pull-quote { border-color: var(--accent-purple); background: rgba(167,139,250,0.1); }
+    .card[data-type="strategy"] .pull-quote { border-color: var(--accent-gold); background: rgba(245,158,11,0.1); }
+
+    .signature {
+      margin-top: 35px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* === SWIPE INDICATORS (pendant le drag) === */
+    .swipe-indicator {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 20;
+      padding: 12px 18px;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .swipe-indicator.left { left: 15px; color: var(--accent-red); background: rgba(255,71,87,0.2); border: 2px solid var(--accent-red); }
+    .swipe-indicator.right { right: 15px; color: var(--accent-green); background: rgba(16,185,129,0.2); border: 2px solid var(--accent-green); }
+
+    /* === TUTORIAL OVERLAY (apparaît au début, disparaît après) === */
+    .tutorial-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      cursor: pointer;
+    }
+    .tutorial-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .tutorial-content {
+      text-align: center;
+    }
+    .tutorial-arrows {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      margin-bottom: 20px;
+    }
+    .tutorial-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .tutorial-arrow .icon {
+      font-size: 3rem;
+      animation: swipeHint 1.5s infinite;
+    }
+    .tutorial-arrow.left .icon { animation-name: swipeLeft; }
+    .tutorial-arrow.right .icon { animation-name: swipeRight; }
+    @keyframes swipeLeft {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-15px); }
+    }
+    @keyframes swipeRight {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(15px); }
+    }
+    .tutorial-arrow .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+    .tutorial-arrow.left .label { color: var(--accent-red); }
+    .tutorial-arrow.right .label { color: var(--accent-green); }
+    .tutorial-tap {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 30px;
+    }
+
+    /* === END SCREEN === */
+    .end-screen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg-app);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+    .end-screen.active { display: flex; }
+    .end-screen h2 { font-size: 2.2rem; margin-bottom: 15px; }
+    .end-screen p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; }
+    .end-screen button {
+      padding: 16px 35px;
+      border-radius: 14px;
+      border: none;
+      background: white;
+      color: black;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
+
+    @media (min-width: 500px) {
+      .hero h1 { font-size: 1.9rem; }
+      .content p { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tutorial overlay -->
+  <div class="tutorial-overlay" id="tutorial" onclick="hideTutorial()">
+    <div class="tutorial-content">
+      <div class="tutorial-arrows">
+        <div class="tutorial-arrow left">
+          <span class="icon">👈</span>
+          <span class="label">Skip</span>
+        </div>
+        <div class="tutorial-arrow right">
+          <span class="icon">👉</span>
+          <span class="label">Next</span>
+        </div>
+      </div>
+      <p style="font-size: 1.3rem; margin-bottom: 10px;">Swipe pour naviguer</p>
+      <p class="tutorial-tap">Tap pour commencer</p>
+    </div>
+  </div>
+
+  <div class="progress-dots" id="progressDots"></div>
+
+  <div class="deck-container">
+    <div class="card-stack" id="cardStack"></div>
+  </div>
+
+  <div class="end-screen" id="endScreen">
+    <h2>✨ Briefing terminé</h2>
+    <p>5 articles lus. À demain !</p>
+    <button onclick="restart()">Recommencer</button>
+  </div>
+
+  <script>
+    const articles = [
+      {
+        id: 1, type: 'alert', badge: '🚨 CRASH',
+        title: '-$285 Milliards : Le carnage Anthropic',
+        summary: 'Claude Cowork ne se contente plus d\'aider. Il remplace. Le marché software s\'effondre.',
+        content: `
+          <h2>Ceci n'est pas une correction, c'est une exécution</h2>
+          <p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat immédiat ? <strong>$285 milliards de capitalisation boursière évaporés</strong> chez les acteurs traditionnels du software.</p>
+          <p>Thomson Reuters, RELX, Wolters Kluwer, Pearson — tous ont plongé entre 10% et 14% en une seule séance. Le marché a compris une vérité brutale que beaucoup refusaient de voir.</p>
+          <div class="pull-quote">Si votre business model est de vendre des licences à $10k pour agréger de la data, vous valez zéro demain matin.</div>
+          <p>L'IA ne vient plus pour assister l'humain dans son travail ("Copilot"). Elle vient pour <strong>prendre en charge le workflow de bout en bout</strong> ("Autopilot"). Claude arrive et mange le gâteau entier.</p>
+          <p>Ce n'est pas une tendance passagère. C'est un point de non-retour pour l'industrie du service B2B.</p>
+          <div class="signature">Analysé par Henry 🦉 • Daily AI</div>
+        `
+      },
+      {
+        id: 2, type: 'tech', badge: '🍎 PRODUCT',
+        title: 'Apple Xcode 26.3 : Les agents IA débarquent',
+        summary: 'Claude et OpenAI Codex intégrés nativement. L\'ère du développement assisté est officielle.',
+        content: `
+          <h2>Apple ne fait plus semblant</h2>
+          <p>Apple vient de lâcher une bombe discrète : <strong>Xcode 26.3</strong> intègre nativement les agents IA d'Anthropic et OpenAI.</p>
+          <p>Les développeurs peuvent désormais utiliser Claude Agent et OpenAI Codex directement dans l'IDE officiel. Génération de code, refactoring, création de tests — tout devient assisté.</p>
+          <div class="pull-quote">L'ère du développement assisté par IA est officiellement mainstream. Apple l'a consacré.</div>
+          <p>L'enjeu stratégique : garder les développeurs dans l'écosystème Apple face à la montée de VS Code.</p>
+          <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+        `
+      },
+      {
+        id: 3, type: 'strategy', badge: '🧠 STRATEGY',
+        title: 'OpenAI Codex Desktop : La riposte',
+        summary: 'Un command center pour gérer plusieurs agents IA en parallèle.',
+        content: `
+          <h2>La guerre des écosystèmes</h2>
+          <p>OpenAI contre-attaque. <strong>Codex Desktop</strong> permet de gérer plusieurs agents sur différents projets simultanément.</p>
+          <p>Contrôle centralisé, automatisation des tâches répétitives, isolation par worktrees.</p>
+          <div class="pull-quote">La guerre des agents passe au niveau supérieur. Ce n'est plus le modèle, c'est l'écosystème.</div>
+          <p>OpenAI veut être le <strong>"hub" central</strong> de vos agents, pas juste un fournisseur.</p>
+          <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+        `
+      },
+      {
+        id: 4, type: 'tech', badge: '⚙️ TECH',
+        title: 'MCP Protocol : L\'USB-C des IA',
+        summary: 'Un standard ouvert pour connecter n\'importe quel modèle à n\'importe quel outil.',
+        content: `
+          <h2>La fin des intégrations custom</h2>
+          <p><strong>Model Context Protocol (MCP)</strong> devient le standard pour connecter les LLMs aux outils externes.</p>
+          <p>Contrairement aux plugins ChatGPT, MCP est ouvert et universel.</p>
+          <div class="pull-quote">MCP transforme chaque agent en citoyen universel du monde logiciel.</div>
+          <p><strong>Exemple :</strong> "Pourquoi le build échoue ?" → L'agent interroge GitHub, CI, et ouvre un ticket Jira. Sans code custom.</p>
+          <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+        `
+      },
+      {
+        id: 5, type: 'analysis', badge: '🔮 ANALYSE',
+        title: 'L\'Avènement des Agents',
+        summary: 'Nous passons d\'opérateur à architecte. L\'intention devient la compétence clé.',
+        content: `
+          <h2>D'opérateur à architecte</h2>
+          <p>L'IA a longtemps été passive. En 2026, nous franchissons le cap vers <strong>l'agentivité réelle</strong>.</p>
+          <p>Nous collaborons avec des systèmes capables de planification, mémoire, et action directe sur le monde.</p>
+          <div class="pull-quote">La machine s'occupe du "comment", mais le "pourquoi" reste notre fardeau exclusif.</div>
+          <p>L'enjeu n'est plus d'utiliser l'outil, mais de <strong>définir l'intention</strong>.</p>
+          <div class="signature">Analysé par Sage 🦎 • Daily AI</div>
+        `
+      }
+    ];
+
+    let currentIndex = 0;
+    let tutorialShown = false;
+    const cardStack = document.getElementById('cardStack');
+    const progressDots = document.getElementById('progressDots');
+    const endScreen = document.getElementById('endScreen');
+    const tutorial = document.getElementById('tutorial');
+
+    // === TUTORIAL ===
+    function hideTutorial() {
+      tutorial.classList.add('hidden');
+      tutorialShown = true;
+    }
+
+    // === RENDER ===
+    function renderDots() {
+      progressDots.innerHTML = articles.map((_, i) => 
+        `<div class="progress-dot ${i < currentIndex ? 'done' : ''} ${i === currentIndex ? 'active' : ''}"></div>`
+      ).join('');
+    }
+
+    function renderCards() {
+      cardStack.innerHTML = '';
+      
+      for (let i = Math.min(currentIndex + 2, articles.length - 1); i >= currentIndex; i--) {
+        const article = articles[i];
+        const position = i === currentIndex ? 'current' : (i - currentIndex).toString();
+        
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.position = position;
+        card.dataset.type = article.type;
+        card.dataset.index = i;
+        
+        card.innerHTML = `
+          <div class="swipe-indicator left">SKIP</div>
+          <div class="swipe-indicator right">NEXT</div>
+          <div class="card-inner">
+            <div class="hero">
+              <span class="badge ${article.type}">${article.badge}</span>
+              <h1>${article.title}</h1>
+              <p class="summary">${article.summary}</p>
+              <div class="scroll-cue"><span class="arrow">↓</span> Scroll pour lire</div>
+            </div>
+            <div class="content">${article.content}</div>
+          </div>
+        `;
+        
+        cardStack.appendChild(card);
+      }
+      
+      renderDots();
+      
+      // Attach listeners to current card
+      const currentCard = cardStack.querySelector('[data-position="current"]');
+      if (currentCard) {
+        setupCardSwipe(currentCard);
+      }
+    }
+
+    // === SWIPE LOGIC (FIXED) ===
+    function setupCardSwipe(card) {
+      let startX = 0;
+      let startY = 0;
+      let currentX = 0;
+      let isDragging = false;
+      let isHorizontal = null;
+      
+      const cardInner = card.querySelector('.card-inner');
+      const leftIndicator = card.querySelector('.swipe-indicator.left');
+      const rightIndicator = card.querySelector('.swipe-indicator.right');
+
+      function onTouchStart(e) {
+        // Only swipe if at top of scroll
+        if (cardInner.scrollTop > 5) return;
+        
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        currentX = 0;
+        isDragging = true;
+        isHorizontal = null;
+      }
+
+      function onTouchMove(e) {
+        if (!isDragging) return;
+        
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+        
+        // Determine direction on first significant move
+        if (isHorizontal === null && (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10)) {
+          isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+        }
+        
+        // If vertical, let it scroll
+        if (isHorizontal === false) {
+          isDragging = false;
+          return;
+        }
+        
+        // If horizontal, prevent scroll and move card
+        if (isHorizontal === true) {
+          e.preventDefault();
+          currentX = deltaX;
+          const rotate = deltaX / 20;
+          card.style.transform = `translateX(${deltaX}px) rotate(${rotate}deg)`;
+          
+          // Show indicators
+          leftIndicator.style.opacity = deltaX < -50 ? 1 : 0;
+          rightIndicator.style.opacity = deltaX > 50 ? 1 : 0;
+        }
+      }
+
+      function onTouchEnd() {
+        if (!isDragging || isHorizontal !== true) {
+          isDragging = false;
+          return;
+        }
+        
+        isDragging = false;
+        leftIndicator.style.opacity = 0;
+        rightIndicator.style.opacity = 0;
+        
+        const threshold = 80;
+        
+        if (currentX < -threshold) {
+          animateSwipe(card, 'left');
+        } else if (currentX > threshold) {
+          animateSwipe(card, 'right');
+        } else {
+          // Snap back
+          card.style.transition = 'transform 0.3s ease';
+          card.style.transform = '';
+          setTimeout(() => { card.style.transition = ''; }, 300);
+        }
+      }
+
+      card.addEventListener('touchstart', onTouchStart, { passive: true });
+      card.addEventListener('touchmove', onTouchMove, { passive: false });
+      card.addEventListener('touchend', onTouchEnd, { passive: true });
+    }
+
+    function animateSwipe(card, direction) {
+      card.classList.add('animating');
+      card.classList.add(`swipe-${direction}`);
+      
+      setTimeout(() => {
+        currentIndex++;
+        if (currentIndex >= articles.length) {
+          endScreen.classList.add('active');
+        } else {
+          renderCards();
+        }
+      }, 350);
+    }
+
+    function restart() {
+      currentIndex = 0;
+      endScreen.classList.remove('active');
+      renderCards();
+    }
+
+    // === KEYBOARD (desktop) ===
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const card = cardStack.querySelector('[data-position="current"]');
+        if (card) {
+          animateSwipe(card, e.key === 'ArrowLeft' ? 'left' : 'right');
+        }
+      }
+      if (e.key === 'Escape' && !tutorial.classList.contains('hidden')) {
+        hideTutorial();
+      }
+    });
+
+    // === INIT ===
+    renderCards();
+  </script>
+</body>
+</html>
