@@ -218,6 +218,114 @@
     }
     .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
 
+    /* HOME CARD */
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 2;
+      overflow-y: auto;
+    }
+    .home-logo {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .home-logo span {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .home-logo b {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .home-date {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .home-henry {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 24px;
+    }
+    .home-henry .label {
+      font-size: .65rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .home-henry .text {
+      font-family: 'Merriweather', serif;
+      font-size: .9rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+    .home-articles {
+      flex: 1;
+    }
+    .home-article {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .home-article:hover {
+      background: rgba(255,255,255,.03);
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm {
+      font-size: .55rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .home-article .title-sm {
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .home-article .arrow {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .home-footer {
+      text-align: center;
+      padding-top: 16px;
+      font-size: .7rem;
+      color: var(--muted);
+    }
+
     /* Le Mot de Henry */
     .henry-word {
       margin-top: 24px;
@@ -261,6 +369,19 @@
   <script>
   const DATA = [
     { 
+      t: 'home',
+      home: true,
+      date: '5 Février 2026',
+      henryWord: 'Si Anthropic continue à ce rythme, on passe du stade "outil" au stade "collègue qui dort jamais". Les boîtes qui vendent du logiciel legacy ont 18 mois pour pivoter ou mourir.',
+      articles: [
+        { title: '-$285 Milliards en 24h', badge: '🚨 Market Crash', idx: 1 },
+        { title: 'Xcode 26.3 : Les agents arrivent', badge: '🍎 Apple', idx: 2 },
+        { title: 'OpenAI Codex Desktop', badge: '🧠 Strategy', idx: 3 },
+        { title: 'MCP : L\'USB-C des IA', badge: '⚙️ Protocol', idx: 4 },
+        { title: 'La fin de la solitude numérique', badge: '🔮 Édito', idx: 5 },
+      ]
+    },
+    { 
       t: 'alert', 
       badge: '🚨 Market Crash', 
       title: '-$285 Milliards en 24h', 
@@ -273,7 +394,6 @@
         <p>Ce n'est pas une tendance. C'est un point de non-retour pour l'industrie du service B2B. Les entreprises qui ne s'adaptent pas risquent de disparaître dans les 18 prochains mois.</p>
         <p>Les analystes de Goldman Sachs estiment que 40% des emplois dans le SaaS traditionnel pourraient être automatisés d'ici 2028. Une révolution silencieuse mais dévastatrice.</p>
       `,
-      henryWord: 'Si Anthropic continue à ce rythme, on passe du stade "outil" au stade "collègue qui dort jamais". Les boîtes qui vendent du logiciel legacy ont 18 mois pour pivoter ou mourir. Je surveille les earnings calls comme un faucon.',
       sig: 'Henry 🦉' 
     },
     { 
@@ -350,7 +470,33 @@
     c.className = 'card' + (i === 0 ? ' active' : ' next');
     c.dataset.t = d.t;
     c.dataset.i = i;
-    if (d.end) {
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${j + 1}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+      `).join('');
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge tech">📰 Daily</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="home-content">
+          <div class="home-logo"><span><b>AI</b> Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry">
+            <div class="label">🎯 Le Mot de Henry</div>
+            <div class="text">${d.henryWord}</div>
+          </div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer">deeplearning.fr • Daily News</div>
+        </div>`;
+    } else if (d.end) {
       c.innerHTML = `
         <div class="hdr">
           <span class="badge end">✅ Terminé</span>
@@ -447,9 +593,14 @@
     if (e.key === 'ArrowLeft' && cur > 0) { cur--; update(); }
   });
 
-  // Restart
+  // Restart & Article click
   document.addEventListener('click', e => {
     if (e.target.id === 'restart') go(0);
+    const article = e.target.closest('.home-article');
+    if (article) {
+      const idx = parseInt(article.dataset.goto);
+      if (!isNaN(idx)) go(idx);
+    }
   });
   </script>
 </body>
