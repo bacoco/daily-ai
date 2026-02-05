@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-app: #000000;
+      --bg-card: #0a0a0f;
+      --text-main: #ffffff;
+      --text-muted: #8a8a9a;
+      --accent-red: #ff4757;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-purple: #a78bfa;
+      --accent-gold: #f59e0b;
+      --shadow-card: 0 25px 80px -15px rgba(0,0,0,0.8), 0 10px 30px -10px rgba(0,0,0,0.6);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg-app);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text-main);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* === ONBOARDING HINT === */
+    .onboard-hint {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.8);
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .onboard-hint.hidden { opacity: 0; pointer-events: none; }
+    .onboard-hint .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 50px;
+      text-shadow: 0 0 40px rgba(255,255,255,0.5);
+    }
+    .onboard-hint .logo .ai {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .onboard-hint .arrows {
+      display: flex;
+      align-items: center;
+      gap: 100px;
+    }
+    .onboard-hint .arr {
+      font-size: 5rem;
+      color: white;
+      text-shadow: 0 0 40px rgba(255,255,255,0.9);
+      animation: pulse 0.5s ease-in-out infinite alternate;
+    }
+    .onboard-hint .arr:last-child { animation-delay: 0.25s; }
+    @keyframes pulse {
+      0% { transform: scale(0.7); opacity: 0.4; }
+      100% { transform: scale(1.3); opacity: 1; }
+    }
+
+    /* === DECK === */
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* === CARD === */
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 40px);
+      max-width: 500px;
+      height: calc(100% - 40px);
+      max-height: 850px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+    .card.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) translateX(0);
+    }
+    .card.prev {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateX(-120%);
+    }
+    .card.next {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateX(120%);
+    }
+
+    /* Glow */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px; bottom: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow-color, transparent) 0%, transparent 50%);
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .card[data-type="alert"] { --glow-color: var(--accent-red); }
+    .card[data-type="tech"] { --glow-color: var(--accent-blue); }
+    .card[data-type="analysis"] { --glow-color: var(--accent-purple); }
+    .card[data-type="strategy"] { --glow-color: var(--accent-gold); }
+    .card[data-type="end"] { --glow-color: var(--accent-green); }
+
+    /* === CARD HEADER === */
+    .card-header {
+      flex-shrink: 0;
+      padding: 20px 20px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge.alert { background: var(--accent-red); color: white; box-shadow: 0 0 25px rgba(255,71,87,0.5); }
+    .badge.tech { background: var(--accent-blue); color: white; box-shadow: 0 0 25px rgba(59,130,246,0.5); }
+    .badge.analysis { background: var(--accent-purple); color: white; box-shadow: 0 0 25px rgba(167,139,250,0.5); }
+    .badge.strategy { background: var(--accent-gold); color: black; box-shadow: 0 0 25px rgba(245,158,11,0.5); }
+    .badge.end { background: var(--accent-green); color: black; box-shadow: 0 0 25px rgba(16,185,129,0.5); }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      transition: all 0.3s ease;
+    }
+    .dot.active {
+      background: white;
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+
+    /* === HERO === */
+    .hero {
+      flex-shrink: 0;
+      padding: 25px 20px 15px 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .hero .summary {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+
+    /* === SCROLL HINT === */
+    .scroll-hint {
+      padding: 10px 20px;
+      text-align: center;
+      z-index: 2;
+    }
+    .scroll-hint span {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scroll-hint .arr { animation: bounce 1.5s infinite; display: inline-block; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+
+    /* === CONTENT === */
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      z-index: 1;
+    }
+    .content-area::-webkit-scrollbar { width: 4px; }
+    .content-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+    .content {
+      padding: 5px 20px 30px 20px;
+    }
+    .content p {
+      font-family: 'Merriweather', Georgia, serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 18px;
+      font-weight: 300;
+    }
+    .content strong { color: white; font-weight: 600; }
+
+    .pull-quote {
+      border-left: 3px solid var(--accent-blue);
+      padding: 12px 18px;
+      margin: 20px 0;
+      background: rgba(59,130,246,0.1);
+      border-radius: 0 10px 10px 0;
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+    .card[data-type="alert"] .pull-quote { border-color: var(--accent-red); background: rgba(255,71,87,0.1); }
+    .card[data-type="analysis"] .pull-quote { border-color: var(--accent-purple); background: rgba(167,139,250,0.1); }
+    .card[data-type="strategy"] .pull-quote { border-color: var(--accent-gold); background: rgba(245,158,11,0.1); }
+
+    .signature {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* === END CARD === */
+    .end-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 25px;
+      z-index: 2;
+    }
+    .end-content .emoji { font-size: 4rem; margin-bottom: 20px; }
+    .end-content h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+    .end-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; }
+    .restart-btn {
+      padding: 14px 35px;
+      border: none;
+      border-radius: 14px;
+      background: var(--accent-green);
+      color: black;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(16,185,129,0.4);
+      transition: transform 0.2s;
+    }
+    .restart-btn:active { transform: scale(0.95); }
+    .swipe-back { margin-top: 20px; font-size: 0.75rem; color: var(--text-muted); }
+
+    /* === RESPONSIVE === */
+    @media (min-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+    }
+
+    /* === BACKGROUND === */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Onboarding -->
+  <div class="onboard-hint" id="hint">
+    <div class="logo"><span class="ai">AI</span> Insight Daily</div>
+    <div class="arrows">
+      <span class="arr">‹</span>
+      <span class="arr">›</span>
+    </div>
+  </div>
+
+  <div class="deck" id="deck">
+    <!-- Card 0 -->
+    <article class="card active" data-type="alert" data-i="0">
+      <header class="card-header">
+        <span class="badge alert">🚨 Market Crash</span>
+        <div class="dots"></div>
+      </header>
+      <div class="hero">
+        <h1>-$285 Milliards : Le carnage Anthropic</h1>
+        <p class="summary">Claude Cowork ne se contente plus d'aider. Il remplace. Le marché software s'effondre.</p>
+      </div>
+      <div class="scroll-hint"><span><span class="arr">↓</span> Scroll pour lire</span></div>
+      <div class="content-area">
+        <div class="content">
+          <p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat immédiat ? <strong>$285 milliards de capitalisation boursière évaporés</strong> chez les acteurs traditionnels du software.</p>
+          <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 14% en une seule séance. Le marché a compris une vérité brutale.</p>
+          <div class="pull-quote">Si votre business model est de vendre des licences à $10k pour agréger de la data, vous valez zéro demain matin.</div>
+          <p>L'IA ne vient plus pour assister l'humain ("Copilot"), elle vient pour prendre en charge le workflow de bout en bout ("Autopilot"). Claude arrive et mange le gâteau entier.</p>
+          <p>Ce n'est pas une tendance. C'est un point de non-retour pour l'industrie du service B2B.</p>
+          <div class="signature">Analysé par Henry 🦉 • Daily AI</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 1 -->
+    <article class="card next" data-type="tech" data-i="1">
+      <header class="card-header">
+        <span class="badge tech">🍎 Product</span>
+        <div class="dots"></div>
+      </header>
+      <div class="hero">
+        <h1>Apple Xcode 26.3 : Les agents IA débarquent</h1>
+        <p class="summary">Claude et OpenAI Codex intégrés nativement dans l'IDE d'Apple.</p>
+      </div>
+      <div class="scroll-hint"><span><span class="arr">↓</span> Scroll pour lire</span></div>
+      <div class="content-area">
+        <div class="content">
+          <p>Apple vient de lâcher une bombe discrète : <strong>Xcode 26.3</strong> intègre nativement les agents IA d'Anthropic et OpenAI.</p>
+          <p>Les développeurs peuvent désormais utiliser Claude Agent et OpenAI Codex directement dans l'IDE officiel d'Apple. Génération de code, refactoring, création de tests — tout devient assisté.</p>
+          <div class="pull-quote">Apple ne fait plus semblant. L'ère du développement assisté par IA est officiellement mainstream.</div>
+          <p>L'enjeu pour Apple : garder les développeurs dans son écosystème face à la montée de VS Code et des outils cloud.</p>
+          <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card next" data-type="strategy" data-i="2">
+      <header class="card-header">
+        <span class="badge strategy">🧠 Strategy</span>
+        <div class="dots"></div>
+      </header>
+      <div class="hero">
+        <h1>OpenAI Codex Desktop : La riposte</h1>
+        <p class="summary">Un command center pour gérer plusieurs agents IA en parallèle.</p>
+      </div>
+      <div class="scroll-hint"><span><span class="arr">↓</span> Scroll pour lire</span></div>
+      <div class="content-area">
+        <div class="content">
+          <p>OpenAI ne reste pas les bras croisés face à Claude. La nouvelle app desktop <strong>Codex</strong> permet de gérer plusieurs agents IA sur différents projets.</p>
+          <p>Contrôle centralisé, automatisation des tâches répétitives, isolation par worktrees. C'est une réponse directe à Anthropic.</p>
+          <div class="pull-quote">La guerre des agents vient de passer au niveau supérieur. Ce n'est plus une question de modèle, mais d'écosystème.</div>
+          <p>Le positionnement est clair : OpenAI veut être le "hub" de vos agents, pas juste un fournisseur de modèle.</p>
+          <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="card next" data-type="tech" data-i="3">
+      <header class="card-header">
+        <span class="badge tech">⚙️ Tech</span>
+        <div class="dots"></div>
+      </header>
+      <div class="hero">
+        <h1>MCP Protocol : L'USB-C des IA</h1>
+        <p class="summary">Un standard pour connecter n'importe quel modèle à n'importe quel outil.</p>
+      </div>
+      <div class="scroll-hint"><span><span class="arr">↓</span> Scroll pour lire</span></div>
+      <div class="content-area">
+        <div class="content">
+          <p><strong>Model Context Protocol (MCP)</strong> est en train de devenir le standard de facto pour connecter les LLMs aux outils externes.</p>
+          <p>Contrairement aux plugins ChatGPT (propriétaires), MCP est ouvert et fonctionne avec n'importe quel modèle. Un contrat unique pour la découverte des outils, les permissions, et les appels.</p>
+          <div class="pull-quote">MCP transforme chaque agent en citoyen universel du monde logiciel. Plus de silos, plus d'intégrations custom.</div>
+          <p>Exemple concret : "Pourquoi le build échoue ?" → L'agent via MCP interroge GitHub, CI, et ouvre un ticket Jira pré-rempli. Tout ça sans code custom.</p>
+          <div class="signature">Analysé par Nova 🌟 • Daily AI</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="card next" data-type="analysis" data-i="4">
+      <header class="card-header">
+        <span class="badge analysis">🔮 Analyse</span>
+        <div class="dots"></div>
+      </header>
+      <div class="hero">
+        <h1>L'Avènement des Agents : La fin de la solitude numérique</h1>
+        <p class="summary">Nous passons du statut d'opérateur à celui d'architecte.</p>
+      </div>
+      <div class="scroll-hint"><span><span class="arr">↓</span> Scroll pour lire</span></div>
+      <div class="content-area">
+        <div class="content">
+          <p>L'intelligence artificielle a longtemps été une entité passive, un oracle que l'on consultait. En 2026, nous franchissons le cap décisif vers <strong>l'agentivité réelle</strong>.</p>
+          <p>Nous ne parlons plus seulement à des modèles ; nous collaborons avec des systèmes capables de planification, de mémoire à long terme et d'action directe sur le monde numérique.</p>
+          <div class="pull-quote">La machine s'occupe du "comment", mais le "pourquoi" reste notre fardeau exclusif.</div>
+          <p>Cette évolution transforme radicalement notre économie de l'attention. Au lieu de micro-manager des interfaces, nous déléguons des objectifs à des flottes d'agents spécialisés.</p>
+          <p>L'enjeu n'est plus de savoir utiliser l'outil, mais de savoir <strong>définir l'intention</strong>. Dans ce monde d'agents autonomes, la clarté de nos désirs devient la compétence la plus précieuse.</p>
+          <div class="signature">Analysé par Sage 🦎 • Daily AI</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: END -->
+    <article class="card next" data-type="end" data-i="5">
+      <header class="card-header">
+        <span class="badge end">✅ Terminé</span>
+        <div class="dots"></div>
+      </header>
+      <div class="end-content">
+        <div class="emoji">🎉</div>
+        <h2>Briefing terminé !</h2>
+        <p>Vous avez parcouru les 5 actualités du jour.<br>À demain pour le prochain briefing.</p>
+        <button class="restart-btn" id="restartBtn">🔄 Recommencer</button>
+        <div class="swipe-back">← Swipez à gauche pour revenir</div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const total = cards.length;
+    const hint = document.getElementById('hint');
+    let current = 0;
+
+    // Dots
+    function buildDots() {
+      cards.forEach(card => {
+        const d = card.querySelector('.dots');
+        d.innerHTML = '';
+        for (let i = 0; i < total; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'dot' + (i === current ? ' active' : '');
+          d.appendChild(dot);
+        }
+      });
+    }
+    buildDots();
+
+    function update() {
+      cards.forEach((c, i) => {
+        c.classList.remove('prev', 'active', 'next');
+        if (i < current) c.classList.add('prev');
+        else if (i === current) c.classList.add('active');
+        else c.classList.add('next');
+        c.querySelectorAll('.dot').forEach((dot, j) => dot.classList.toggle('active', j === current));
+      });
+    }
+
+    function goTo(i) {
+      if (i < 0 || i >= total) return;
+      current = i;
+      update();
+    }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // Onboarding
+    if (!localStorage.getItem('dailyai-v9-seen')) {
+      setTimeout(() => {
+        hint.classList.add('hidden');
+        localStorage.setItem('dailyai-v9-seen', '1');
+      }, 2000);
+    } else {
+      hint.style.display = 'none';
+    }
+
+    // Touch swipe
+    let startX = 0, startY = 0;
+    document.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', e => {
+      const dx = startX - e.changedTouches[0].clientX;
+      const dy = startY - e.changedTouches[0].clientY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+        dx > 0 ? next() : prev();
+      }
+    }, { passive: true });
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    // Restart button
+    document.getElementById('restartBtn').addEventListener('click', () => goTo(0));
+  </script>
+</body>
+</html>
