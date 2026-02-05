@@ -350,6 +350,14 @@
       font-size: .7rem;
       color: var(--muted);
     }
+    .home-footer a {
+      color: var(--gold);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+    .home-footer a:hover {
+      text-decoration: underline;
+    }
 
     /* Le Mot de Henry */
     .henry-word {
@@ -529,7 +537,7 @@
             <div class="text">${d.henryWord}</div>
           </div>
           <div class="home-articles">${articlesHtml}</div>
-          <div class="home-footer">deeplearning.fr • Daily News</div>
+          <div class="home-footer">deeplearning.fr • Daily News | <a href="archives.html">📚 Archives</a></div>
         </div>`;
     } else if (d.end) {
       c.innerHTML = `

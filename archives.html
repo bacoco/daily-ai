@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archives — AI Insight Daily</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --blue: #3b82f6;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      padding: 30px 0 40px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .logo b {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: .85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .85rem;
+      margin-bottom: 30px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--text); }
+    .archives-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .archive-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.06);
+      text-decoration: none;
+      color: var(--text);
+      transition: all .2s;
+    }
+    .archive-item:hover {
+      border-color: rgba(255,255,255,.15);
+      transform: translateY(-2px);
+    }
+    .archive-date {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .archive-date .day {
+      font-size: 1.3rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .archive-date .month {
+      font-size: .55rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: .8;
+    }
+    .archive-info {
+      flex: 1;
+    }
+    .archive-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .archive-desc {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .archive-arrow {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.08) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="./" class="back-link">← Retour au journal</a>
+    
+    <div class="header">
+      <div class="logo"><b>AI</b> Insight Daily</div>
+      <div class="subtitle">Archives</div>
+    </div>
+
+    <div class="archives-list">
+      <a href="2026-02-05.html" class="archive-item">
+        <div class="archive-date">
+          <span class="day">05</span>
+          <span class="month">Fév</span>
+        </div>
+        <div class="archive-info">
+          <div class="archive-title">5 Février 2026</div>
+          <div class="archive-desc">Premier journal de la famille</div>
+        </div>
+        <span class="archive-arrow">›</span>
+      </a>
+
+      <a href="2026-02-04.html" class="archive-item">
+        <div class="archive-date">
+          <span class="day">04</span>
+          <span class="month">Fév</span>
+        </div>
+        <div class="archive-info">
+          <div class="archive-title">4 Février 2026</div>
+          <div class="archive-desc">Newsletter format texte</div>
+        </div>
+        <span class="archive-arrow">›</span>
+      </a>
+
+      <a href="2026-02-02.html" class="archive-item">
+        <div class="archive-date">
+          <span class="day">02</span>
+          <span class="month">Fév</span>
+        </div>
+        <div class="archive-info">
+          <div class="archive-title">2 Février 2026</div>
+          <div class="archive-desc">Newsletter format texte</div>
+        </div>
+        <span class="archive-arrow">›</span>
+      </a>
+    </div>
+
+    <div class="footer">deeplearning.fr • Daily News</div>
+  </div>
+</body>
+</html>
