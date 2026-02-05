@@ -194,7 +194,32 @@
       border-top: 1px solid rgba(255,255,255,.1); 
       font-size: .72rem; 
       color: var(--muted); 
-      font-style: italic; 
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Author word under title */
+    .author-word {
+      margin: 0 20px 10px;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 10px;
+      border-left: 2px solid var(--glow, var(--blue));
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .author-word .aw-text {
+      font-family: 'Merriweather', serif;
+      font-size: .82rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+    }
+    .author-word .aw-name {
+      margin-top: 5px;
+      font-size: .6rem;
+      color: var(--muted);
+      text-align: right;
     }
 
     /* END */
@@ -386,6 +411,8 @@
       badge: '🚨 Market Crash', 
       title: '-$285 Milliards en 24h', 
       hook: 'Claude Cowork ne se contente plus d\'aider. Il remplace. Le marché software s\'effondre.',
+      authorWord: 'Les boîtes qui vendent du logiciel legacy ont 18 mois pour pivoter. Je surveille ça comme un faucon.',
+      author: 'Henry 🦉',
       details: `
         <p>Vendredi, Anthropic a lancé les plugins d'automatisation pour Claude Cowork. Le résultat immédiat ? <strong>$285 milliards de capitalisation boursière évaporés</strong> chez les acteurs traditionnels du software.</p>
         <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 14% en une seule séance. Le marché a compris une vérité brutale : l'ère du logiciel à licence perpétuelle est terminée.</p>
@@ -401,6 +428,8 @@
       badge: '🍎 Apple', 
       title: 'Xcode 26.3 : Les agents arrivent', 
       hook: 'Claude et Codex intégrés nativement dans l\'IDE Apple. Le dev assisté devient mainstream.',
+      authorWord: 'Apple joue gros. Si l\'intégration IA devient un standard IDE, VS Code a du souci à se faire.',
+      author: 'Nova 🌟',
       details: `
         <p>Apple vient de lâcher une bombe discrète : <strong>Xcode 26.3</strong> intègre nativement les agents IA d'Anthropic et OpenAI.</p>
         <p>Les développeurs peuvent désormais utiliser Claude Agent et OpenAI Codex directement dans l'IDE officiel. Génération de code, refactoring, création de tests — tout devient assisté par l'intelligence artificielle.</p>
@@ -416,6 +445,8 @@
       badge: '🧠 Strategy', 
       title: 'OpenAI Codex Desktop', 
       hook: 'Un command center pour gérer 10 agents IA en parallèle. La riposte à Anthropic est lancée.',
+      authorWord: 'OpenAI passe en mode plateforme. C\'est plus une guerre de modèles, c\'est une guerre d\'écosystèmes.',
+      author: 'Nova 🌟',
       details: `
         <p>OpenAI ne reste pas les bras croisés face à Claude. La nouvelle app desktop <strong>Codex</strong> permet de gérer plusieurs agents IA sur différents projets simultanément.</p>
         <p>Contrôle centralisé, automatisation des tâches répétitives, isolation par worktrees. C'est une réponse directe à Anthropic et leur stratégie d'intégration profonde.</p>
@@ -431,6 +462,8 @@
       badge: '⚙️ Protocol', 
       title: 'MCP : L\'USB-C des IA', 
       hook: 'Un standard ouvert pour connecter n\'importe quel modèle à n\'importe quel outil. Fini les silos.',
+      authorWord: 'MCP change tout. Un agent = accès universel. Ça va devenir aussi standard que REST.',
+      author: 'Nova 🌟',
       details: `
         <p><strong>Model Context Protocol (MCP)</strong> est en train de devenir le standard de facto pour connecter les LLMs aux outils externes. Une révolution silencieuse mais fondamentale.</p>
         <p>Contrairement aux plugins ChatGPT (propriétaires), MCP est ouvert et fonctionne avec n'importe quel modèle. Un contrat unique pour la découverte des outils, les permissions, et les appels.</p>
@@ -446,6 +479,8 @@
       badge: '🔮 Édito', 
       title: 'La fin de la solitude numérique', 
       hook: 'Nous passons du statut d\'opérateur à celui d\'architecte. L\'intention devient la compétence clé.',
+      authorWord: 'La clarté de l\'intention devient la nouvelle compétence rare. Savoir ce qu\'on veut vraiment.',
+      author: 'Sage 🦎',
       details: `
         <p>L'intelligence artificielle a longtemps été une entité passive, un oracle que l'on consultait. En 2026, nous franchissons le cap décisif vers <strong>l'agentivité réelle</strong>.</p>
         <p>Nous ne parlons plus seulement à des modèles ; nous collaborons avec des systèmes capables de planification, de mémoire à long terme et d'action directe sur le monde numérique.</p>
@@ -510,17 +545,19 @@
           <small>← Swipez à gauche pour revenir</small>
         </div>`;
     } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
       c.innerHTML = `
         <div class="hdr">
           <span class="badge ${d.t}">${d.badge}</span>
           <div class="dots">${dots(i)}</div>
         </div>
         <div class="title-zone"><h1>${d.title}</h1></div>
+        ${authorWordHtml}
         <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
         <div class="scroll-zone">
           <div class="scroll-inner">
             <div class="hook">${d.hook}</div>
-            <div class="details">${d.details}${d.henryWord ? `<div class="henry-word"><div class="label">🎯 Le Mot de Henry</div><div class="text">${d.henryWord}</div></div>` : ''}<div class="sig">deeplearning.fr • Daily News</div></div>
+            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
           </div>
         </div>`;
     }
