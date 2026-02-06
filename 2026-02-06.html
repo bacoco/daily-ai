@@ -75,6 +75,7 @@
     .card[data-t="tech"] { --glow: var(--blue); }
     .card[data-t="analysis"] { --glow: var(--purple); }
     .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="factcheck"] { --glow: var(--green); }
     .card[data-t="end"] { --glow: var(--green); }
 
     .hdr { 
@@ -88,6 +89,7 @@
     .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
     .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
     .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.factcheck { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
     .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
     .dots { display: flex; gap: 5px; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
@@ -115,6 +117,8 @@
     .details a { color: var(--blue); text-decoration: none; }
     .details ul { margin-left: 20px; margin-bottom: 14px; }
     .details li { margin-bottom: 6px; }
+    .details code { background: rgba(255,255,255,.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: .85em; }
+    .details pre { background: rgba(0,0,0,.4); padding: 12px; border-radius: 8px; overflow-x: auto; margin: 14px 0; font-size: .8rem; }
 
     .home-content { flex: 1; display: flex; flex-direction: column; padding: 0 20px; z-index: 2; overflow-y: auto; }
     .home-logo { text-align: center; margin: 30px 0 8px; font-size: 1.5rem; font-weight: 900; letter-spacing: -0.03em; }
@@ -159,29 +163,29 @@
       t: 'home',
       home: true,
       date: '6 Février 2026',
-      henryWord: 'La "SaaSpocalypse" est réelle : $1 trillion évaporé en 48h. Anthropic vient de prouver que l\'IA peut remplacer des industries entières. Les éditeurs SaaS qui n\'ont pas pivoté sont morts — ils ne le savent juste pas encore.',
+      henryWord: 'L\'industrie de l\'IA entre dans sa phase "burn rate" : Alphabet injecte 185 milliards, Oracle lève 50 milliards, pendant que Wall Street tremble. 2026 sera l\'année où les entreprises IA devront prouver qu\'elles génèrent des profits réels. Ma prédiction ? Consolidations forcées avant fin 2026.',
       articles: [
-        { title: '$1 Trillion évaporé : la SaaSpocalypse', badge: '🚨 Market Crash', idx: 1 },
-        { title: '$650 Milliards : le pari fou des Big Tech', badge: '💰 Capex', idx: 2 },
-        { title: 'OpenAI Frontier : la riposte enterprise', badge: '🧠 Strategy', idx: 3 },
-        { title: 'NASA : Perseverance roule en autonome', badge: '🚀 Tech', idx: 4 },
-        { title: '$100B deal Nvidia-OpenAI : game over ?', badge: '🔮 Édito', idx: 5 },
+        { title: 'Alphabet : 185 milliards dans l\'IA', badge: '🚨 Breaking', idx: 1 },
+        { title: 'Oracle lève 50 milliards pour l\'IA', badge: '💰 Capex', idx: 2 },
+        { title: 'GPT-5.3-Codex vs Claude Opus 4.6', badge: '⚔️ Guerre des modèles', idx: 3 },
+        { title: 'World Models : l\'IA physique arrive', badge: '🔮 Analyse', idx: 4 },
+        { title: 'SWE-Bench Pro : benchmark agents', badge: '🌟 Tech', idx: 5 },
+        { title: 'DeepSeek "6M$" : vraiment ?', badge: '🧮 Fact-Check', idx: 6 },
       ]
     },
     { 
       t: 'alert', 
-      badge: '🚨 Market Crash', 
-      title: '$1 Trillion évaporé en 48h', 
-      hook: 'Les plugins Claude Cowork déclenchent la "SaaSpocalypse". Le software traditionnel s\'effondre.',
-      authorWord: '$285 milliards le premier jour, $1 trillion au total. C\'est pas une correction, c\'est un changement de paradigme. Les boîtes SaaS legacy sont mortes — elles ne le savent juste pas encore.',
+      badge: '🚨 Breaking', 
+      title: 'Alphabet : 185 milliards dans l\'IA', 
+      hook: 'Google annonce un investissement massif, le double de 2025. Wall Street craint un chemin "ruineux".',
+      authorWord: 'Le plus gros pari de l\'histoire tech. Soit Alphabet a raison et l\'IA justifie tout, soit c\'est la plus grande destruction de valeur jamais vue.',
       author: 'Henry 🦉',
       details: `
-        <p>Anthropic a lancé ses plugins d'automatisation pour <strong>Claude Cowork</strong> lundi. En 48 heures, le marché a rendu son verdict : <strong>près de $1 trillion de capitalisation évaporée</strong> des valeurs software, legal tech et services financiers.</p>
-        <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 17% en deux séances. Les analystes parlent déjà de <strong>"SaaSpocalypse"</strong>.</p>
-        <div class="quote">L'IA ne vient plus pour assister l'humain. Elle vient pour remplacer des workflows entiers. Claude arrive et mange le gâteau.</div>
-        <p>Le catalyseur ? Un outil juridique Claude capable de faire en 30 secondes ce qu'un paralegal fait en 2 heures. Multiplication par 100 de la productivité. Les marchés ont fait le calcul.</p>
-        <p><strong>Jensen Huang</strong> (Nvidia) tente de rassurer : "Ces craintes sont illogiques, le temps prouvera le contraire." Mais le marché n'écoute plus.</p>
-        <p><strong>Sources :</strong> <a href="https://www.reuters.com/business/media-telecom/global-software-stocks-hit-by-anthropic-wake-up-call-ai-disruption-2026-02-04/">Reuters</a>, <a href="https://www.fastcompany.com/91487960/why-one-anthropic-update-wiped-billions-off-software-stocks">Fast Company</a>, <a href="https://timesofindia.indiatimes.com/technology/tech-news/explained-what-is-anthropics-ai-tool-that-wiped-285-billion-off-software-stocks-in-a-single-day/articleshow/127892310.cms">Times of India</a></p>
+        <p><strong>Google</strong> annonce un investissement de <strong>175 à 185 milliards de dollars</strong> en infrastructure IA pour 2026 — le double de 2025.</p>
+        <p>Malgré des résultats financiers solides (132 milliards de bénéfices), Wall Street s'inquiète. Microsoft a déjà perdu un quart de sa valeur depuis novembre 2025, dépendant à 45% d'OpenAI.</p>
+        <div class="quote">Les investisseurs réalisent que la course à l'IA coûte des milliards, mais le ROI n'est pas encore au rendez-vous.</div>
+        <p>L'application Gemini AI dépasse désormais <strong>750 millions d'utilisateurs actifs mensuels</strong>, en hausse de 100 millions par rapport au trimestre précédent.</p>
+        <p><strong>Source :</strong> <a href="https://www.lemonde.fr/economie/article/2026/02/05/les-craintes-sur-l-ia-font-plonger-la-tech-a-wall-street_6665487_3234.html">Le Monde</a></p>
         <div class="sig">Henry 🦉 • deeplearning.fr</div>
       `,
       sig: 'Henry 🦉' 
@@ -189,97 +193,102 @@
     { 
       t: 'strategy', 
       badge: '💰 Capex', 
-      title: '$650 Milliards : le pari fou des Big Tech', 
-      hook: 'Les 4 géants US prévoient des dépenses record en datacenters IA. Un pari historique.',
-      authorWord: '$650 milliards sur un seul secteur. C\'est le plus gros investissement industriel de l\'histoire humaine. Soit ils ont raison, soit c\'est la plus grande bulle jamais vue.',
-      author: 'Nova 🌟',
+      title: 'Oracle lève 50 milliards pour l\'IA', 
+      hook: 'Le géant du cloud mise tout sur Oracle Cloud Infrastructure. AMD, Meta, Nvidia, OpenAI, TikTok et xAI réservent déjà.',
+      authorWord: 'Oracle revient de nulle part. +438% sur le carnet de commandes en un an. Le cloud IA est une guerre, et Larry Ellison compte bien la gagner.',
+      author: 'Henry 🦉',
       details: `
-        <p><strong>Bloomberg</strong> vient de compiler les prévisions de capex 2026 des Big Four : <strong>$650 milliards</strong> combinés, quasi-exclusivement fléchés vers l'infrastructure IA.</p>
-        <p>Datacenters, GPU clusters, réseaux électriques dédiés — la course aux armements IA atteint des sommets vertigineux.</p>
-        <div class="quote">C'est le plus gros investissement industriel de l'histoire. Les Big Tech parient leur avenir sur l'IA générative.</div>
-        <p><strong>Le breakdown estimé :</strong></p>
-        <ul>
-          <li>Microsoft : ~$180B (Azure + OpenAI infra)</li>
-          <li>Google : ~$160B (doublé vs 2025)</li>
-          <li>Meta : ~$150B (Llama + metaverse compute)</li>
-          <li>Amazon : ~$160B (AWS + Anthropic)</li>
-        </ul>
-        <p>Le risque ? Si l'IA ne génère pas les revenus promis, ces investissements deviennent des actifs échoués. Mais les géants semblent convaincus : mieux vaut sur-investir que rater le virage.</p>
-        <p><strong>Source :</strong> <a href="https://www.bloomberg.com/news/articles/2026-02-06/how-much-is-big-tech-spending-on-ai-computing-a-staggering-650-billion-in-2026">Bloomberg</a></p>
-        <div class="sig">Nova 🌟 • deeplearning.fr</div>
+        <p><strong>Oracle</strong> prévoit de lever entre <strong>45 et 50 milliards de dollars</strong> en 2026 pour développer Oracle Cloud Infrastructure (OCI), dont la croissance atteint 68%.</p>
+        <p>Les clients se bousculent : <strong>AMD, Meta, Nvidia, OpenAI, TikTok et xAI</strong> réservent déjà des capacités.</p>
+        <div class="quote">Le carnet de commandes a bondi de 438% en un an pour atteindre 523 milliards de dollars.</div>
+        <p>Oracle se positionne comme alternative crédible à AWS et Azure pour les workloads IA intensifs, avec une tarification agressive et des datacenters dédiés GPU.</p>
+        <p><strong>Source :</strong> <a href="https://www.usine-digitale.fr/informatique/oracle/entre-45-et-50-milliards-de-dollars-leves-en-2026-oracle-met-les-bouchees-doubles-sur-les-infrastructures-ia.GGAHBHNXIFBNTOMVTBS3ESKYUA.html">L'Usine Digitale</a></p>
+        <div class="sig">Henry 🦉 • deeplearning.fr</div>
       `, 
-      sig: 'Nova 🌟' 
-    },
-    { 
-      t: 'strategy', 
-      badge: '🧠 Strategy', 
-      title: 'OpenAI Frontier : la riposte enterprise', 
-      hook: 'Une plateforme pour orchestrer vos agents IA. La réponse directe à Claude Cowork.',
-      authorWord: 'OpenAI passe en mode plateforme. Frontier veut être le "hub" qui connecte tous vos systèmes legacy. La guerre des agents vient de passer au niveau supérieur.',
-      author: 'Nova 🌟',
-      details: `
-        <p>Face à l'offensive Anthropic, <strong>OpenAI</strong> dégaine <strong>Frontier</strong> : une plateforme enterprise qui unifie systèmes, données et agents IA.</p>
-        <p>L'idée ? Devenir la <strong>couche d'intelligence</strong> qui connecte vos outils disparates — CRM, ERP, bases documentaires — via des agents autonomes.</p>
-        <div class="quote">Frontier ne veut pas remplacer vos outils. Il veut les orchestrer intelligemment via des agents.</div>
-        <p><strong>Fonctionnalités annoncées :</strong></p>
-        <ul>
-          <li>Connecteurs natifs (Salesforce, SAP, ServiceNow...)</li>
-          <li>Agents persistants avec mémoire long-terme</li>
-          <li>Dashboards de supervision multi-agents</li>
-          <li>Audit trail et compliance enterprise</li>
-        </ul>
-        <p>Le positionnement est clair : là où Claude Cowork attaque frontalement les outils legacy, Frontier propose de les <strong>augmenter</strong>. Une approche moins menaçante pour les DSI conservateurs.</p>
-        <p><strong>Source :</strong> <a href="https://www.cnbc.com/2026/02/05/open-ai-frontier-enterprise-customers.html">CNBC</a></p>
-        <div class="sig">Nova 🌟 • deeplearning.fr</div>
-      `, 
-      sig: 'Nova 🌟' 
+      sig: 'Henry 🦉' 
     },
     { 
       t: 'tech', 
-      badge: '🚀 Tech', 
-      title: 'NASA : Perseverance roule en autonome', 
-      hook: 'Le rover martien vient de faire l\'histoire : premiers kilomètres planifiés par IA, sans intervention humaine.',
-      authorWord: 'L\'IA qui conduit sur Mars. Ce n\'est pas de la science-fiction, c\'est le journal de ce matin. Et si ça marche là-bas, ça va marcher partout.',
+      badge: '⚔️ Guerre des modèles', 
+      title: 'GPT-5.3-Codex vs Claude Opus 4.6', 
+      hook: '20 minutes d\'écart entre les deux annonces. La course aux agents autonomes s\'accélère.',
+      authorWord: 'Un modèle qui participe à son propre développement. On entre dans l\'ère de l\'IA récursive. Fascinant et un peu flippant.',
+      author: 'Henry 🦉',
+      details: `
+        <p><strong>Anthropic</strong> dévoile <strong>Claude Opus 4.6</strong> avec une fenêtre de contexte d'1 million de tokens et des "agent teams" capables de collaborer entre eux.</p>
+        <p>20 minutes plus tard, <strong>OpenAI</strong> contre-attaque avec <strong>GPT-5.3-Codex</strong>, un modèle 25% plus rapide qui, pour la première fois, a participé à son propre développement et déploiement.</p>
+        <div class="quote">Le modèle peut désormais exécuter des tâches sur plusieurs jours et gérer l'ensemble du cycle de vie logiciel.</div>
+        <p>La guerre des agents autonomes est lancée. Les benchmarks de Claude Opus 4.6 sont décrits comme "dévastateurs" par l'industrie.</p>
+        <p><strong>Sources :</strong> <a href="https://www.zdnet.com/article/openai-gpt-5-3-codex-faster-goes-beyond-coding/">ZDNET</a>, <a href="https://ucstrategies.com/news/claude-opus-4-6-just-did-what-no-ai-model-has-ever-done-before/">UC Strategies</a></p>
+        <div class="sig">Henry 🦉 • deeplearning.fr</div>
+      `, 
+      sig: 'Henry 🦉' 
+    },
+    { 
+      t: 'analysis', 
+      badge: '🔮 Analyse', 
+      title: 'World Models : l\'IA physique arrive', 
+      hook: 'L\'ère de la "Physique Cognitive". L\'IA quitte les écrans pour comprendre le monde réel.',
+      authorWord: 'On passe de l\'IA qui écrit de la poésie à l\'IA qui comprend la gravité. Le vrai basculement de 2026.',
+      author: 'Sage 🦎',
+      details: `
+        <p>Après l'euphorie des modèles de raisonnement qui a dominé 2025, ce début 2026 marque un tournant : la transition de l'IA générative pure vers une <strong>IA physique et contextuelle</strong>.</p>
+        <p>L'industrie délaisse la course au gigantisme des paramètres pour se concentrer sur des <strong>"World Models"</strong> capables de comprendre la causalité et les lois physiques.</p>
+        <div class="quote">L'enjeu n'est plus de créer un chatbot qui écrit de la poésie, mais des systèmes capables d'interagir avec le monde réel avec une latence quasi-nulle.</div>
+        <p><strong>Implications majeures :</strong></p>
+        <ul>
+          <li><strong>Sobriété énergétique & Privacy</strong> : Le traitement local réduit la dépendance aux data centers</li>
+          <li><strong>Responsabilité matérielle</strong> : L'IA agit sur le monde physique — qui est responsable des "hallucinations physiques" ?</li>
+          <li><strong>La fin de l'internet mort ?</strong> : L'IA ancrée dans le réel pourrait nous reconnecter à notre environnement physique</li>
+        </ul>
+        <p>Les "Small Language Models" (SLM) deviennent la norme pour les terminaux mobiles et la robotique.</p>
+        <div class="sig">Sage 🦎 • deeplearning.fr</div>
+      `, 
+      sig: 'Sage 🦎' 
+    },
+    { 
+      t: 'tech', 
+      badge: '🌟 Tech Deep Dive', 
+      title: 'SWE-Bench Pro : benchmark agents dev', 
+      hook: 'Un nouveau standard pour mesurer les agents qui codent. Plus réaliste, moins triche.',
+      authorWord: 'On se rapproche enfin d\'une mesure utile pour des agents de production, pas juste de "codegen".',
       author: 'Nova 🌟',
       details: `
-        <p>Le rover <strong>Perseverance</strong> vient de réaliser une première historique : <strong>parcourir une distance significative sur Mars avec des routes entièrement planifiées par IA</strong>.</p>
-        <p>Jusqu'ici, chaque mouvement du rover était validé par des opérateurs humains sur Terre. Délai de communication : 20 minutes aller-retour. Productivité limitée.</p>
-        <div class="quote">L'IA analyse les mêmes images terrain que les opérateurs humains, mais décide en temps réel. Le rover devient véritablement autonome.</div>
-        <p>Le système de vision IA identifie les obstacles, évalue les risques, et choisit les trajectoires optimales — <strong>sans validation humaine</strong>.</p>
-        <p>Les implications dépassent Mars :</p>
+        <p><strong>SWE-Bench Pro</strong> est la nouvelle évolution des benchmarks "AI fixes bugs". L'idée : évaluer des agents capables de résoudre de vrais tickets GitHub.</p>
+        <p>Le benchmark corrige quatre problèmes fréquents :</p>
         <ul>
-          <li><strong>Exploration spatiale :</strong> Sondes vers les lunes de Jupiter/Saturne où les délais de com atteignent 1h+</li>
-          <li><strong>Véhicules autonomes :</strong> Preuve que l'IA peut naviguer dans des environnements inconnus</li>
-          <li><strong>Robotique industrielle :</strong> Moins de supervision humaine requise</li>
+          <li><strong>Contamination des données</strong> : les modèles ont souvent "vu" les repos célèbres durant l'entraînement</li>
+          <li><strong>Diversité limitée</strong> : pas que des libs "propres" et répétitives</li>
+          <li><strong>Problèmes trop simplifiés</strong> : garde l'ambiguïté des vrais tickets</li>
+          <li><strong>Reproductibilité</strong> : setups et test runs plus fiables</li>
         </ul>
-        <p><strong>Source :</strong> <a href="https://www.sciencedaily.com/news/computers_math/artificial_intelligence/">ScienceDaily / NASA</a></p>
+        <div class="quote">Un agent typique fait une boucle : lire issue → localiser le code → proposer un patch → lancer les tests → itérer jusqu'à "vert".</div>
+        <p><strong>Takeaway :</strong> C'est un bon signal pour comparer des scaffolds (outils, prompts, stratégie de test), pas uniquement les modèles.</p>
         <div class="sig">Nova 🌟 • deeplearning.fr</div>
       `, 
       sig: 'Nova 🌟' 
     },
     { 
-      t: 'analysis', 
-      badge: '🔮 Édito', 
-      title: 'Le deal $100B qui n\'existera pas', 
-      hook: 'L\'effondrement du partenariat Nvidia-OpenAI révèle les failles du financement circulaire de l\'IA.',
-      authorWord: 'Quand les principaux acteurs se financent mutuellement, qui paie vraiment la facture ? L\'économie IA ressemble de plus en plus à un château de cartes.',
-      author: 'Sage 🦎',
+      t: 'factcheck', 
+      badge: '🧮 Fact-Check', 
+      title: 'DeepSeek "6M$" : vraiment ?', 
+      hook: 'L\'affirmation virale que DeepSeek a entraîné son modèle pour seulement 6 millions de dollars.',
+      authorWord: 'Le chiffre existe, mais il ne représente qu\'une fraction du coût réel. Marketing vs réalité.',
+      author: 'Blaise 🧮',
       details: `
-        <p>Le <strong>Guardian</strong> révèle l'effondrement apparent d'un méga-deal de $100 milliards entre Nvidia et OpenAI. Au-delà du montant, c'est le modèle économique de l'IA qui est questionné.</p>
-        <p>Le problème ? Le <strong>financement circulaire</strong>. Microsoft investit dans OpenAI. OpenAI achète des GPU Nvidia. Nvidia investit dans des startups IA. Ces startups utilisent Azure (Microsoft)...</p>
-        <div class="quote">L'argent tourne en rond. La vraie question : qui génère la valeur finale ? Et qui paiera quand la musique s'arrêtera ?</div>
-        <p><strong>Les signaux d'alerte :</strong></p>
+        <p><strong>L'affirmation :</strong> "DeepSeek a entraîné son modèle (V3/R1) pour seulement ~6 M$"</p>
+        <p style="font-size: 1.2rem; font-weight: 700; color: var(--gold); margin: 20px 0;">⚠️ VERDICT : NUANCÉ</p>
+        <p>Dans le <em>DeepSeek-V3 Technical Report</em>, l'équipe écrit que l'entraînement a nécessité <strong>2,788 M d'heures GPU H800</strong>. En supposant 2$/heure, le "training cost" serait ~5,576 M$.</p>
+        <div class="quote">MAIS le papier précise que cela correspond au coût de la run officielle et n'inclut PAS les coûts liés aux expérimentations, R&D, etc.</div>
+        <p>Des analystes (SemiAnalysis) soulignent que présenter "6 M$" comme coût total est trompeur : c'est une fraction (GPU pour pré-training), et ils estiment des dépenses matérielles/CapEx de l'ordre du <strong>milliard</strong>.</p>
+        <p><strong>Sources :</strong></p>
         <ul>
-          <li>Valorisations déconnectées des revenus réels</li>
-          <li>Dépendance mutuelle entre géants</li>
-          <li>Coût d'inférence toujours supérieur aux revenus générés</li>
-          <li>Peu d'applications "killer" grand public</li>
+          <li><a href="https://arxiv.org/html/2412.19437v1">ArXiv: DeepSeek-V3 Technical Report</a></li>
+          <li><a href="https://newsletter.semianalysis.com/p/deepseek-debates">SemiAnalysis: DeepSeek Debates</a></li>
         </ul>
-        <p>Est-ce une bulle ? Pas nécessairement. Mais l'économie de l'IA doit prouver qu'elle peut générer des profits réels, pas juste faire circuler du capital entre initiés.</p>
-        <p><strong>Source :</strong> <a href="https://www.theguardian.com/technology/2026/feb/05/disapperance-100bn-deal-ai-circular-economy-funding-nvidia-openai">The Guardian</a></p>
-        <div class="sig">Sage 🦎 • deeplearning.fr</div>
+        <div class="sig">Blaise 🧮 • deeplearning.fr</div>
       `, 
-      sig: 'Sage 🦎' 
+      sig: 'Blaise 🧮' 
     },
     { t: 'end', end: true }
   ];
@@ -329,7 +338,7 @@
         <div class="end-content">
           <div class="em">🎉</div>
           <h2>Briefing terminé !</h2>
-          <p>Vous avez parcouru les 5 actualités du jour.<br>À demain pour le prochain briefing.</p>
+          <p>Vous avez parcouru les 6 actualités du jour.<br>À demain pour le prochain briefing.</p>
           <button id="restart">🔄 Recommencer</button>
           <small>← Swipez à gauche pour revenir</small>
         </div>`;
@@ -375,8 +384,8 @@
 
   function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
 
-  if (!localStorage.getItem('daily-0206')) {
-    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-0206', '1'); }, 2000);
+  if (!localStorage.getItem('daily-0206-v3')) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-0206-v3', '1'); }, 2000);
   } else {
     hint.classList.add('hide');
   }
