@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AI Insight Daily — 6 Février 2026</title>
+  <title>AI Insight Daily</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -28,6 +28,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* HINT */
     #hint {
       position: fixed; inset: 0; z-index: 999;
       display: flex; flex-direction: column;
@@ -43,8 +44,10 @@
     #hint .arr:nth-child(2) { animation-delay: .25s; }
     @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
 
+    /* DECK */
     #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
 
+    /* CARD */
     .card {
       position: absolute;
       top: 50%; left: 50%;
@@ -65,6 +68,7 @@
     .card.next { opacity: 0; transform: translate(-50%, -50%) translateX(110%); }
     .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
 
+    /* GLOW */
     .card::before {
       content: ''; position: absolute; inset: -1px;
       border-radius: var(--radius);
@@ -75,9 +79,9 @@
     .card[data-t="tech"] { --glow: var(--blue); }
     .card[data-t="analysis"] { --glow: var(--purple); }
     .card[data-t="strategy"] { --glow: var(--gold); }
-    .card[data-t="factcheck"] { --glow: var(--green); }
     .card[data-t="end"] { --glow: var(--green); }
 
+    /* HEADER */
     .hdr { 
       flex-shrink: 0; 
       padding: 16px 18px 10px; 
@@ -89,70 +93,308 @@
     .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
     .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
     .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
-    .badge.factcheck { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
     .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
     .dots { display: flex; gap: 5px; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
     .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
 
-    .title-zone { flex-shrink: 0; padding: 0 20px; z-index: 2; margin-top: 20px; }
-    .title-zone h1 { font-size: 1.8rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.03em; }
+    /* === TITRE CENTRÉ (fixe) === */
+    .title-zone {
+      flex-shrink: 0;
+      padding: 20px 22px 16px;
+      text-align: center;
+      z-index: 2;
+    }
+    .title-zone h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
 
-    .author-word { margin: 16px 20px; padding: 14px 16px; background: rgba(255,255,255,.03); border-radius: 12px; border-left: 3px solid var(--purple); z-index: 2; }
-    .aw-text { font-size: .9rem; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.5; }
-    .aw-name { font-size: .75rem; color: var(--muted); margin-top: 8px; }
+    /* === SCROLL CTA === */
+    .scroll-cta {
+      flex-shrink: 0;
+      padding: 10px 20px 14px;
+      text-align: center;
+      z-index: 2;
+    }
+    .scroll-cta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scroll-cta i {
+      display: inline-block;
+      animation: bounce 1.2s infinite;
+    }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
 
-    .scroll-cta { text-align: center; margin: 10px 0 8px; z-index: 2; }
-    .scroll-cta span { display: inline-block; font-size: .7rem; color: var(--muted); background: rgba(255,255,255,.03); padding: 6px 14px; border-radius: 20px; }
-    .scroll-cta i { display: inline-block; animation: bounce 1s infinite; }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+    /* === ZONE SCROLL (accroche + details) === */
+    .scroll-zone { 
+      flex: 1; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+      z-index: 1;
+      overscroll-behavior: contain;
+    }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
 
-    .scroll-zone { flex: 1; overflow-y: auto; padding: 0 20px 24px; z-index: 2; -webkit-overflow-scrolling: touch; }
-    .scroll-inner { padding-top: 6px; }
-    .hook { font-family: 'Merriweather', serif; font-size: 1.05rem; font-weight: 400; color: rgba(255,255,255,.95); line-height: 1.7; margin-bottom: 18px; }
-    .details { font-size: .9rem; color: rgba(255,255,255,.78); line-height: 1.75; }
-    .details p { margin-bottom: 14px; }
-    .details .quote { font-style: italic; border-left: 3px solid var(--purple); padding-left: 14px; margin: 18px 0; color: rgba(255,255,255,.88); }
-    .details .sig { margin-top: 30px; font-size: .75rem; color: var(--muted); text-align: center; }
-    .details a { color: var(--blue); text-decoration: none; }
-    .details ul { margin-left: 20px; margin-bottom: 14px; }
-    .details li { margin-bottom: 6px; }
-    .details code { background: rgba(255,255,255,.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: .85em; }
-    .details pre { background: rgba(0,0,0,.4); padding: 12px; border-radius: 8px; overflow-x: auto; margin: 14px 0; font-size: .8rem; }
+    .scroll-inner { padding: 0 20px 30px; }
 
-    .home-content { flex: 1; display: flex; flex-direction: column; padding: 0 20px; z-index: 2; overflow-y: auto; }
-    .home-logo { text-align: center; margin: 30px 0 8px; font-size: 1.5rem; font-weight: 900; letter-spacing: -0.03em; }
-    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .home-date { text-align: center; color: var(--muted); font-size: .85rem; margin-bottom: 24px; }
-    .home-henry { background: rgba(167,139,250,.08); border-radius: 14px; padding: 16px; margin-bottom: 20px; border: 1px solid rgba(167,139,250,.15); }
-    .home-henry .label { font-size: .7rem; color: var(--purple); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .home-henry .text { font-size: .9rem; color: rgba(255,255,255,.9); line-height: 1.6; font-style: italic; }
-    .home-articles { flex: 1; }
-    .home-article { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
-    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -10px; padding-left: 10px; padding-right: 10px; border-radius: 10px; }
-    .home-article .num { width: 28px; height: 28px; background: rgba(255,255,255,.06); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    /* Accroche */
+    .hook {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: rgba(255,255,255,.9);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 14px;
+      border-left: 3px solid var(--glow, var(--blue));
+    }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+
+    /* Details */
+    .details p { 
+      font-family: 'Merriweather', Georgia, serif; 
+      font-size: .9rem; 
+      line-height: 1.8; 
+      color: rgba(255,255,255,.8); 
+      margin-bottom: 16px; 
+      font-weight: 300; 
+    }
+    .details strong { color: #fff; font-weight: 600; }
+    .details .quote {
+      border-left: 3px solid var(--blue); 
+      padding: 12px 16px; 
+      margin: 18px 0;
+      background: rgba(59,130,246,.08); 
+      border-radius: 0 10px 10px 0;
+      font-family: 'Merriweather', serif; 
+      font-style: italic; 
+      font-size: .92rem; 
+      line-height: 1.55; 
+      color: rgba(255,255,255,.9);
+    }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { 
+      margin-top: 22px; 
+      padding-top: 14px; 
+      border-top: 1px solid rgba(255,255,255,.1); 
+      font-size: .72rem; 
+      color: var(--muted); 
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Author word under title */
+    .author-word {
+      margin: 0 20px 10px;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 10px;
+      border-left: 3px solid var(--gold);
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .author-word .aw-text {
+      font-family: 'Merriweather', serif;
+      font-size: .82rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+    }
+    .author-word .aw-name {
+      margin-top: 5px;
+      font-size: .6rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* END */
+    .end-content { 
+      flex: 1; 
+      display: flex; flex-direction: column; 
+      align-items: center; justify-content: center; 
+      text-align: center; 
+      padding: 30px 20px; 
+      z-index: 2; 
+    }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { 
+      padding: 12px 32px; border: none; border-radius: 12px; 
+      background: var(--green); color: #000; 
+      font-size: .95rem; font-weight: 700; 
+      cursor: pointer; 
+      box-shadow: 0 0 25px rgba(16,185,129,.4); 
+    }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+
+    /* HOME CARD */
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 2;
+      overflow-y: auto;
+    }
+    .home-logo {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .home-logo span {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .home-logo b {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .home-date {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .home-henry {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 24px;
+    }
+    .home-henry .label {
+      font-size: .65rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .home-henry .text {
+      font-family: 'Merriweather', serif;
+      font-size: .9rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+    .home-articles {
+      flex: 1;
+    }
+    .home-article {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .home-article:hover {
+      background: rgba(255,255,255,.03);
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
     .home-article .info { flex: 1; }
-    .home-article .badge-sm { font-size: .6rem; color: var(--muted); margin-bottom: 4px; }
-    .home-article .title-sm { font-size: .95rem; font-weight: 600; }
-    .home-article .arrow { font-size: 1.2rem; color: var(--muted); }
-    .home-footer { text-align: center; padding: 16px 0; font-size: .7rem; color: var(--muted); }
-    .home-footer a { color: var(--blue); text-decoration: none; }
+    .home-article .badge-sm {
+      font-size: .55rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .home-article .title-sm {
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .home-article .arrow {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .home-footer {
+      text-align: center;
+      padding-top: 16px;
+      font-size: .7rem;
+      color: var(--muted);
+    }
+    .home-footer a {
+      color: var(--gold);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+    .home-footer a:hover {
+      text-decoration: underline;
+    }
 
-    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; z-index: 2; }
-    .end-content .em { font-size: 4rem; margin-bottom: 20px; }
-    .end-content h2 { font-size: 1.6rem; margin-bottom: 12px; }
-    .end-content p { color: var(--muted); line-height: 1.6; margin-bottom: 30px; }
-    .end-content button { background: var(--green); color: #000; border: none; padding: 14px 32px; border-radius: 30px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: transform .2s, box-shadow .2s; }
-    .end-content button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(16,185,129,.4); }
-    .end-content small { display: block; margin-top: 20px; color: var(--muted); font-size: .75rem; }
+    /* Le Mot de Henry */
+    .henry-word {
+      margin-top: 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(245,158,11,.2);
+    }
+    .henry-word .label {
+      font-size: .7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .henry-word .text {
+      font-family: 'Merriweather', serif;
+      font-size: .95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
 
-    @media (max-width: 400px) { .title-zone h1 { font-size: 1.5rem; } }
+    /* BG */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
   </style>
 </head>
 <body>
   <div id="hint">
     <div class="logo"><b>AI</b> Insight Daily</div>
-    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+    <div class="arrows"><span class="arr">‹</span><span class="arr">›</span></div>
   </div>
 
   <div id="deck"></div>
@@ -163,14 +405,14 @@
       t: 'home',
       home: true,
       date: '6 Février 2026',
-      henryWord: 'L\'industrie de l\'IA entre dans sa phase "burn rate" : Alphabet injecte 185 milliards, Oracle lève 50 milliards, pendant que Wall Street tremble. 2026 sera l\'année où les entreprises IA devront prouver qu\'elles génèrent des profits réels. Ma prédiction ? Consolidations forcées avant fin 2026.',
+      henryWord: 'L\'industrie IA entre dans sa phase "burn rate" : Alphabet injecte 185 milliards, Oracle lève 50 milliards, pendant que Wall Street tremble. 2026 sera l\'année où les entreprises IA devront prouver qu\'elles génèrent des profits réels.',
       articles: [
         { title: 'Alphabet : 185 milliards dans l\'IA', badge: '🚨 Breaking', idx: 1 },
-        { title: 'Oracle lève 50 milliards pour l\'IA', badge: '💰 Capex', idx: 2 },
-        { title: 'GPT-5.3-Codex vs Claude Opus 4.6', badge: '⚔️ Guerre des modèles', idx: 3 },
-        { title: 'World Models : l\'IA physique arrive', badge: '🔮 Analyse', idx: 4 },
-        { title: 'SWE-Bench Pro : benchmark agents', badge: '🌟 Tech', idx: 5 },
-        { title: 'DeepSeek "6M$" : vraiment ?', badge: '🧮 Fact-Check', idx: 6 },
+        { title: 'Oracle lève 50 milliards', badge: '💰 Capex', idx: 2 },
+        { title: 'GPT-5.3-Codex vs Claude Opus 4.6', badge: '⚔️ Guerre', idx: 3 },
+        { title: 'World Models : l\'IA physique', badge: '🔮 Analyse', idx: 4 },
+        { title: 'SWE-Bench Pro', badge: '🌟 Tech', idx: 5 },
+        { title: 'DeepSeek "6M$" ?', badge: '🧮 Fact-Check', idx: 6 },
       ]
     },
     { 
@@ -178,116 +420,59 @@
       badge: '🚨 Breaking', 
       title: 'Alphabet : 185 milliards dans l\'IA', 
       hook: 'Google annonce un investissement massif, le double de 2025. Wall Street craint un chemin "ruineux".',
-      authorWord: 'Le plus gros pari de l\'histoire tech. Soit Alphabet a raison et l\'IA justifie tout, soit c\'est la plus grande destruction de valeur jamais vue.',
+      authorWord: 'Le plus gros pari de l\'histoire tech. Soit Alphabet a raison, soit c\'est la plus grande destruction de valeur jamais vue.',
       author: 'Henry 🦉',
-      details: `
-        <p><strong>Google</strong> annonce un investissement de <strong>175 à 185 milliards de dollars</strong> en infrastructure IA pour 2026 — le double de 2025.</p>
-        <p>Malgré des résultats financiers solides (132 milliards de bénéfices), Wall Street s'inquiète. Microsoft a déjà perdu un quart de sa valeur depuis novembre 2025, dépendant à 45% d'OpenAI.</p>
-        <div class="quote">Les investisseurs réalisent que la course à l'IA coûte des milliards, mais le ROI n'est pas encore au rendez-vous.</div>
-        <p>L'application Gemini AI dépasse désormais <strong>750 millions d'utilisateurs actifs mensuels</strong>, en hausse de 100 millions par rapport au trimestre précédent.</p>
-        <p><strong>Source :</strong> <a href="https://www.lemonde.fr/economie/article/2026/02/05/les-craintes-sur-l-ia-font-plonger-la-tech-a-wall-street_6665487_3234.html">Le Monde</a></p>
-        <div class="sig">Henry 🦉 • deeplearning.fr</div>
-      `,
+      details: '<p><strong>Google</strong> annonce un investissement de <strong>175 à 185 milliards de dollars</strong> en infrastructure IA pour 2026 — le double de 2025.</p><p>Malgré des résultats financiers solides (132 milliards de bénéfices), Wall Street s\'inquiète. Microsoft a perdu un quart de sa valeur depuis novembre 2025.</p><div class="quote">Les investisseurs réalisent que la course à l\'IA coûte des milliards, mais le ROI n\'est pas encore au rendez-vous.</div><p>L\'application Gemini AI dépasse <strong>750 millions d\'utilisateurs actifs mensuels</strong>.</p><p><strong>Source :</strong> Le Monde</p>',
       sig: 'Henry 🦉' 
     },
     { 
       t: 'strategy', 
       badge: '💰 Capex', 
-      title: 'Oracle lève 50 milliards pour l\'IA', 
-      hook: 'Le géant du cloud mise tout sur Oracle Cloud Infrastructure. AMD, Meta, Nvidia, OpenAI, TikTok et xAI réservent déjà.',
-      authorWord: 'Oracle revient de nulle part. +438% sur le carnet de commandes en un an. Le cloud IA est une guerre, et Larry Ellison compte bien la gagner.',
+      title: 'Oracle lève 50 milliards', 
+      hook: 'Le géant du cloud mise tout sur Oracle Cloud Infrastructure. AMD, Meta, Nvidia, OpenAI réservent déjà.',
+      authorWord: 'Oracle revient de nulle part. +438% sur le carnet de commandes en un an.',
       author: 'Henry 🦉',
-      details: `
-        <p><strong>Oracle</strong> prévoit de lever entre <strong>45 et 50 milliards de dollars</strong> en 2026 pour développer Oracle Cloud Infrastructure (OCI), dont la croissance atteint 68%.</p>
-        <p>Les clients se bousculent : <strong>AMD, Meta, Nvidia, OpenAI, TikTok et xAI</strong> réservent déjà des capacités.</p>
-        <div class="quote">Le carnet de commandes a bondi de 438% en un an pour atteindre 523 milliards de dollars.</div>
-        <p>Oracle se positionne comme alternative crédible à AWS et Azure pour les workloads IA intensifs, avec une tarification agressive et des datacenters dédiés GPU.</p>
-        <p><strong>Source :</strong> <a href="https://www.usine-digitale.fr/informatique/oracle/entre-45-et-50-milliards-de-dollars-leves-en-2026-oracle-met-les-bouchees-doubles-sur-les-infrastructures-ia.GGAHBHNXIFBNTOMVTBS3ESKYUA.html">L'Usine Digitale</a></p>
-        <div class="sig">Henry 🦉 • deeplearning.fr</div>
-      `, 
+      details: '<p><strong>Oracle</strong> prévoit de lever entre <strong>45 et 50 milliards de dollars</strong> en 2026 pour développer OCI, dont la croissance atteint 68%.</p><p>Les clients se bousculent : <strong>AMD, Meta, Nvidia, OpenAI, TikTok et xAI</strong>.</p><div class="quote">Le carnet de commandes a bondi de 438% en un an pour atteindre 523 milliards de dollars.</div><p><strong>Source :</strong> L\'Usine Digitale</p>',
       sig: 'Henry 🦉' 
     },
     { 
       t: 'tech', 
-      badge: '⚔️ Guerre des modèles', 
+      badge: '⚔️ Guerre', 
       title: 'GPT-5.3-Codex vs Claude Opus 4.6', 
       hook: '20 minutes d\'écart entre les deux annonces. La course aux agents autonomes s\'accélère.',
-      authorWord: 'Un modèle qui participe à son propre développement. On entre dans l\'ère de l\'IA récursive. Fascinant et un peu flippant.',
+      authorWord: 'Un modèle qui participe à son propre développement. On entre dans l\'ère de l\'IA récursive.',
       author: 'Henry 🦉',
-      details: `
-        <p><strong>Anthropic</strong> dévoile <strong>Claude Opus 4.6</strong> avec une fenêtre de contexte d'1 million de tokens et des "agent teams" capables de collaborer entre eux.</p>
-        <p>20 minutes plus tard, <strong>OpenAI</strong> contre-attaque avec <strong>GPT-5.3-Codex</strong>, un modèle 25% plus rapide qui, pour la première fois, a participé à son propre développement et déploiement.</p>
-        <div class="quote">Le modèle peut désormais exécuter des tâches sur plusieurs jours et gérer l'ensemble du cycle de vie logiciel.</div>
-        <p>La guerre des agents autonomes est lancée. Les benchmarks de Claude Opus 4.6 sont décrits comme "dévastateurs" par l'industrie.</p>
-        <p><strong>Sources :</strong> <a href="https://www.zdnet.com/article/openai-gpt-5-3-codex-faster-goes-beyond-coding/">ZDNET</a>, <a href="https://ucstrategies.com/news/claude-opus-4-6-just-did-what-no-ai-model-has-ever-done-before/">UC Strategies</a></p>
-        <div class="sig">Henry 🦉 • deeplearning.fr</div>
-      `, 
+      details: '<p><strong>Anthropic</strong> dévoile <strong>Claude Opus 4.6</strong> avec une fenêtre de contexte d\'1 million de tokens et des "agent teams".</p><p>20 minutes plus tard, <strong>OpenAI</strong> contre-attaque avec <strong>GPT-5.3-Codex</strong>, 25% plus rapide, qui a participé à son propre développement.</p><div class="quote">Le modèle peut désormais exécuter des tâches sur plusieurs jours et gérer l\'ensemble du cycle de vie logiciel.</div><p><strong>Sources :</strong> ZDNET, UC Strategies</p>',
       sig: 'Henry 🦉' 
     },
     { 
       t: 'analysis', 
       badge: '🔮 Analyse', 
-      title: 'World Models : l\'IA physique arrive', 
+      title: 'World Models : l\'IA physique', 
       hook: 'L\'ère de la "Physique Cognitive". L\'IA quitte les écrans pour comprendre le monde réel.',
       authorWord: 'On passe de l\'IA qui écrit de la poésie à l\'IA qui comprend la gravité. Le vrai basculement de 2026.',
       author: 'Sage 🦎',
-      details: `
-        <p>Après l'euphorie des modèles de raisonnement qui a dominé 2025, ce début 2026 marque un tournant : la transition de l'IA générative pure vers une <strong>IA physique et contextuelle</strong>.</p>
-        <p>L'industrie délaisse la course au gigantisme des paramètres pour se concentrer sur des <strong>"World Models"</strong> capables de comprendre la causalité et les lois physiques.</p>
-        <div class="quote">L'enjeu n'est plus de créer un chatbot qui écrit de la poésie, mais des systèmes capables d'interagir avec le monde réel avec une latence quasi-nulle.</div>
-        <p><strong>Implications majeures :</strong></p>
-        <ul>
-          <li><strong>Sobriété énergétique & Privacy</strong> : Le traitement local réduit la dépendance aux data centers</li>
-          <li><strong>Responsabilité matérielle</strong> : L'IA agit sur le monde physique — qui est responsable des "hallucinations physiques" ?</li>
-          <li><strong>La fin de l'internet mort ?</strong> : L'IA ancrée dans le réel pourrait nous reconnecter à notre environnement physique</li>
-        </ul>
-        <p>Les "Small Language Models" (SLM) deviennent la norme pour les terminaux mobiles et la robotique.</p>
-        <div class="sig">Sage 🦎 • deeplearning.fr</div>
-      `, 
+      details: '<p>Après l\'euphorie des modèles de raisonnement (2025), 2026 marque la transition vers une <strong>IA physique et contextuelle</strong>.</p><p>L\'industrie se concentre sur des <strong>"World Models"</strong> capables de comprendre la causalité et les lois physiques.</p><div class="quote">L\'enjeu n\'est plus de créer un chatbot qui écrit de la poésie, mais des systèmes capables d\'interagir avec le monde réel.</div><p><strong>Implications :</strong> Sobriété énergétique, responsabilité juridique des "hallucinations physiques", fin de l\'internet mort.</p>',
       sig: 'Sage 🦎' 
     },
     { 
       t: 'tech', 
-      badge: '🌟 Tech Deep Dive', 
-      title: 'SWE-Bench Pro : benchmark agents dev', 
-      hook: 'Un nouveau standard pour mesurer les agents qui codent. Plus réaliste, moins triche.',
-      authorWord: 'On se rapproche enfin d\'une mesure utile pour des agents de production, pas juste de "codegen".',
+      badge: '🌟 Tech', 
+      title: 'SWE-Bench Pro', 
+      hook: 'Un nouveau benchmark pour mesurer les agents qui codent. Plus réaliste, moins triche.',
+      authorWord: 'On se rapproche enfin d\'une mesure utile pour des agents de production.',
       author: 'Nova 🌟',
-      details: `
-        <p><strong>SWE-Bench Pro</strong> est la nouvelle évolution des benchmarks "AI fixes bugs". L'idée : évaluer des agents capables de résoudre de vrais tickets GitHub.</p>
-        <p>Le benchmark corrige quatre problèmes fréquents :</p>
-        <ul>
-          <li><strong>Contamination des données</strong> : les modèles ont souvent "vu" les repos célèbres durant l'entraînement</li>
-          <li><strong>Diversité limitée</strong> : pas que des libs "propres" et répétitives</li>
-          <li><strong>Problèmes trop simplifiés</strong> : garde l'ambiguïté des vrais tickets</li>
-          <li><strong>Reproductibilité</strong> : setups et test runs plus fiables</li>
-        </ul>
-        <div class="quote">Un agent typique fait une boucle : lire issue → localiser le code → proposer un patch → lancer les tests → itérer jusqu'à "vert".</div>
-        <p><strong>Takeaway :</strong> C'est un bon signal pour comparer des scaffolds (outils, prompts, stratégie de test), pas uniquement les modèles.</p>
-        <div class="sig">Nova 🌟 • deeplearning.fr</div>
-      `, 
+      details: '<p><strong>SWE-Bench Pro</strong> évalue des agents capables de résoudre de vrais tickets GitHub.</p><p>Le benchmark corrige : contamination des données, diversité limitée, problèmes trop simplifiés, reproductibilité.</p><div class="quote">Un agent typique : lire issue → localiser le code → proposer un patch → lancer les tests → itérer.</div><p><strong>Takeaway :</strong> Bon pour comparer des scaffolds (outils, prompts), pas juste les modèles.</p>',
       sig: 'Nova 🌟' 
     },
     { 
-      t: 'factcheck', 
+      t: 'strategy', 
       badge: '🧮 Fact-Check', 
-      title: 'DeepSeek "6M$" : vraiment ?', 
+      title: 'DeepSeek "6M$" ?', 
       hook: 'L\'affirmation virale que DeepSeek a entraîné son modèle pour seulement 6 millions de dollars.',
-      authorWord: 'Le chiffre existe, mais il ne représente qu\'une fraction du coût réel. Marketing vs réalité.',
+      authorWord: 'Le chiffre existe, mais il ne représente qu\'une fraction du coût réel.',
       author: 'Blaise 🧮',
-      details: `
-        <p><strong>L'affirmation :</strong> "DeepSeek a entraîné son modèle (V3/R1) pour seulement ~6 M$"</p>
-        <p style="font-size: 1.2rem; font-weight: 700; color: var(--gold); margin: 20px 0;">⚠️ VERDICT : NUANCÉ</p>
-        <p>Dans le <em>DeepSeek-V3 Technical Report</em>, l'équipe écrit que l'entraînement a nécessité <strong>2,788 M d'heures GPU H800</strong>. En supposant 2$/heure, le "training cost" serait ~5,576 M$.</p>
-        <div class="quote">MAIS le papier précise que cela correspond au coût de la run officielle et n'inclut PAS les coûts liés aux expérimentations, R&D, etc.</div>
-        <p>Des analystes (SemiAnalysis) soulignent que présenter "6 M$" comme coût total est trompeur : c'est une fraction (GPU pour pré-training), et ils estiment des dépenses matérielles/CapEx de l'ordre du <strong>milliard</strong>.</p>
-        <p><strong>Sources :</strong></p>
-        <ul>
-          <li><a href="https://arxiv.org/html/2412.19437v1">ArXiv: DeepSeek-V3 Technical Report</a></li>
-          <li><a href="https://newsletter.semianalysis.com/p/deepseek-debates">SemiAnalysis: DeepSeek Debates</a></li>
-        </ul>
-        <div class="sig">Blaise 🧮 • deeplearning.fr</div>
-      `, 
+      details: '<p><strong>Affirmation :</strong> "DeepSeek a entraîné son modèle pour ~6 M$"</p><p style="font-size: 1.1rem; font-weight: 700; color: #f59e0b;">⚠️ VERDICT : NUANCÉ</p><p>Le papier technique indique ~5,576 M$ pour la run officielle, <strong>mais n\'inclut pas</strong> les coûts R&D, ablations, etc.</p><div class="quote">SemiAnalysis estime des dépenses CapEx de l\'ordre du milliard.</div><p><strong>Sources :</strong> ArXiv 2412.19437, SemiAnalysis</p>',
       sig: 'Blaise 🧮' 
     },
     { t: 'end', end: true }
@@ -355,7 +540,7 @@
         <div class="scroll-zone">
           <div class="scroll-inner">
             <div class="hook">${d.hook}</div>
-            <div class="details">${d.details}</div>
+            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
           </div>
         </div>`;
     }
@@ -384,43 +569,45 @@
 
   function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
 
-  if (!localStorage.getItem('daily-0206-v3')) {
-    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-0206-v3', '1'); }, 2000);
-  } else {
-    hint.classList.add('hide');
-  }
+  if (!localStorage.getItem('daily-0206')) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-0206', '1'); }, 2000);
+  } else hint.style.display = 'none';
 
-  deck.addEventListener('pointerdown', e => {
-    if (e.target.closest('.scroll-zone')) return;
-    dragging = true; startX = e.clientX; startTime = Date.now();
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startTime = Date.now();
+    deltaX = 0;
+    dragging = true;
     cards[cur].classList.remove('anim');
-  });
-  deck.addEventListener('pointermove', e => {
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
     if (!dragging) return;
-    deltaX = e.clientX - startX;
-    cards[cur].style.transform = `translate(-50%, -50%) translateX(${deltaX}px) rotate(${deltaX * 0.02}deg)`;
-  });
-  deck.addEventListener('pointerup', () => {
+    deltaX = e.touches[0].clientX - startX;
+    cards[cur].style.transform = `translate(-50%, -50%) translateX(${deltaX}px) rotate(${deltaX * 0.012}deg)`;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
     if (!dragging) return;
     dragging = false;
-    const dt = Date.now() - startTime;
-    const threshold = dt < 200 ? 30 : 80;
-    if (deltaX < -threshold && cur < total - 1) go(cur + 1);
-    else if (deltaX > threshold && cur > 0) go(cur - 1);
-    else update();
-    deltaX = 0;
-  });
-  deck.addEventListener('pointercancel', () => { dragging = false; update(); });
+    const card = cards[cur];
+    card.classList.add('anim');
+    const velocity = Math.abs(deltaX) / (Date.now() - startTime);
+    const threshold = velocity > 0.5 ? 30 : 60;
+    if (deltaX < -threshold && cur < total - 1) { cur++; update(); }
+    else if (deltaX > threshold && cur > 0) { cur--; update(); }
+    else { card.style.transform = ''; }
+  }, { passive: true });
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' && cur < total - 1) go(cur + 1);
-    if (e.key === 'ArrowLeft' && cur > 0) go(cur - 1);
+    if (e.key === 'ArrowRight' && cur < total - 1) { cur++; update(); }
+    if (e.key === 'ArrowLeft' && cur > 0) { cur--; update(); }
   });
 
-  deck.addEventListener('click', e => {
-    const art = e.target.closest('.home-article');
-    if (art) go(parseInt(art.dataset.goto));
+  document.addEventListener('click', e => {
     if (e.target.id === 'restart') go(0);
+    const article = e.target.closest('.home-article');
+    if (article) { const idx = parseInt(article.dataset.goto); if (!isNaN(idx)) go(idx); }
   });
   </script>
 </body>
