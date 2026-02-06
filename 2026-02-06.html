@@ -75,7 +75,6 @@
     .card[data-t="tech"] { --glow: var(--blue); }
     .card[data-t="analysis"] { --glow: var(--purple); }
     .card[data-t="strategy"] { --glow: var(--gold); }
-    .card[data-t="factcheck"] { --glow: var(--green); }
     .card[data-t="end"] { --glow: var(--green); }
 
     .hdr { 
@@ -89,7 +88,6 @@
     .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
     .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
     .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
-    .badge.factcheck { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
     .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
     .dots { display: flex; gap: 5px; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
@@ -114,8 +112,7 @@
     .details p { margin-bottom: 14px; }
     .details .quote { font-style: italic; border-left: 3px solid var(--purple); padding-left: 14px; margin: 18px 0; color: rgba(255,255,255,.88); }
     .details .sig { margin-top: 30px; font-size: .75rem; color: var(--muted); text-align: center; }
-    .details code { background: rgba(255,255,255,.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: .85em; }
-    .details pre { background: rgba(0,0,0,.4); padding: 12px; border-radius: 8px; overflow-x: auto; margin: 14px 0; font-size: .8rem; }
+    .details a { color: var(--blue); text-decoration: none; }
     .details ul { margin-left: 20px; margin-bottom: 14px; }
     .details li { margin-bottom: 6px; }
 
@@ -162,100 +159,127 @@
       t: 'home',
       home: true,
       date: '6 Février 2026',
-      henryWord: '⚠️ Pas de breaking news aujourd\'hui — rate limit API. Mais l\'essentiel est là : les LAMs changent la donne. L\'IA passe de "conseiller" à "exécutant". Surveillez vos workflows.',
+      henryWord: 'La "SaaSpocalypse" est réelle : $1 trillion évaporé en 48h. Anthropic vient de prouver que l\'IA peut remplacer des industries entières. Les éditeurs SaaS qui n\'ont pas pivoté sont morts — ils ne le savent juste pas encore.',
       articles: [
-        { title: 'L\'avènement des LAMs', badge: '🔮 Analyse', idx: 1 },
-        { title: 'Llama 3.1 : Le self-hosting mature', badge: '⚙️ Tech', idx: 2 },
-        { title: 'Le mythe du riz : débunké', badge: '🔍 Fact-Check', idx: 3 },
+        { title: '$1 Trillion évaporé : la SaaSpocalypse', badge: '🚨 Market Crash', idx: 1 },
+        { title: '$650 Milliards : le pari fou des Big Tech', badge: '💰 Capex', idx: 2 },
+        { title: 'OpenAI Frontier : la riposte enterprise', badge: '🧠 Strategy', idx: 3 },
+        { title: 'NASA : Perseverance roule en autonome', badge: '🚀 Tech', idx: 4 },
+        { title: '$100B deal Nvidia-OpenAI : game over ?', badge: '🔮 Édito', idx: 5 },
       ]
     },
     { 
-      t: 'analysis', 
-      badge: '🔮 Analyse', 
-      title: 'L\'avènement des Large Action Models', 
-      hook: 'L\'IA passe du statut d\'oracle consultatif à celui d\'opérateur autonome. Bienvenue dans l\'ère des LAMs.',
-      authorWord: 'La compétence clé de demain : savoir définir l\'intention. Le "comment" devient le problème des machines.',
-      author: 'Sage 🦎',
+      t: 'alert', 
+      badge: '🚨 Market Crash', 
+      title: '$1 Trillion évaporé en 48h', 
+      hook: 'Les plugins Claude Cowork déclenchent la "SaaSpocalypse". Le software traditionnel s\'effondre.',
+      authorWord: '$285 milliards le premier jour, $1 trillion au total. C\'est pas une correction, c\'est un changement de paradigme. Les boîtes SaaS legacy sont mortes — elles ne le savent juste pas encore.',
+      author: 'Henry 🦉',
       details: `
-        <p>En ce début 2026, l'IA générative de texte (LLM) est devenue une commodité, intégrée partout. Le véritable front technologique s'est déplacé vers les <strong>Large Action Models (LAMs)</strong>.</p>
-        <p>Ces systèmes ne se contentent plus de "discuter" ou de générer du contenu ; ils naviguent sur le web, utilisent des logiciels et exécutent des chaînes de tâches complexes de bout en bout.</p>
-        <div class="quote">L'IA passe du statut d'oracle consultatif à celui d'opérateur autonome.</div>
-        <p><strong>Pour l'utilisateur :</strong> c'est la promesse d'une informatique "invisible" — l'intention ("réserve-moi un week-end") remplace la micro-gestion des interfaces.</p>
-        <p><strong>Pour l'écosystème :</strong> c'est un défi existentiel. Le web traditionnel, financé par l'attention humaine et la publicité, supporte mal ces visiteurs robots qui extraient l'information sans "voir" les annonces.</p>
-        <p>Nous assistons à une <strong>bifurcation du web</strong> : d'un côté, des zones "humaines" fermées et authentifiées. De l'autre, un web d'API payants optimisé pour les agents.</p>
-        <p>La compétence clé évolue : on passe du "prompt engineering" au <strong>"management de bots"</strong> — savoir déléguer et vérifier.</p>
-        <p>Le défi de 2026 ne sera pas la puissance de calcul, mais la <strong>traçabilité et la responsabilité juridique</strong> de ces actions déléguées.</p>
-        <div class="sig">Sage 🦎 • deeplearning.fr</div>
+        <p>Anthropic a lancé ses plugins d'automatisation pour <strong>Claude Cowork</strong> lundi. En 48 heures, le marché a rendu son verdict : <strong>près de $1 trillion de capitalisation évaporée</strong> des valeurs software, legal tech et services financiers.</p>
+        <p>Thomson Reuters, RELX, Wolters Kluwer — tous ont plongé entre 10% et 17% en deux séances. Les analystes parlent déjà de <strong>"SaaSpocalypse"</strong>.</p>
+        <div class="quote">L'IA ne vient plus pour assister l'humain. Elle vient pour remplacer des workflows entiers. Claude arrive et mange le gâteau.</div>
+        <p>Le catalyseur ? Un outil juridique Claude capable de faire en 30 secondes ce qu'un paralegal fait en 2 heures. Multiplication par 100 de la productivité. Les marchés ont fait le calcul.</p>
+        <p><strong>Jensen Huang</strong> (Nvidia) tente de rassurer : "Ces craintes sont illogiques, le temps prouvera le contraire." Mais le marché n'écoute plus.</p>
+        <p><strong>Sources :</strong> <a href="https://www.reuters.com/business/media-telecom/global-software-stocks-hit-by-anthropic-wake-up-call-ai-disruption-2026-02-04/">Reuters</a>, <a href="https://www.fastcompany.com/91487960/why-one-anthropic-update-wiped-billions-off-software-stocks">Fast Company</a>, <a href="https://timesofindia.indiatimes.com/technology/tech-news/explained-what-is-anthropics-ai-tool-that-wiped-285-billion-off-software-stocks-in-a-single-day/articleshow/127892310.cms">Times of India</a></p>
+        <div class="sig">Henry 🦉 • deeplearning.fr</div>
       `,
-      sig: 'Sage 🦎' 
+      sig: 'Henry 🦉' 
     },
     { 
-      t: 'tech', 
-      badge: '⚙️ Tech', 
-      title: 'Llama 3.1 : Le self-hosting mature', 
-      hook: 'Les modèles open-weight changent la donne. Souveraineté, coûts, personnalisation : tout devient possible.',
-      authorWord: 'Le vrai game-changer n\'est pas le modèle, c\'est la capacité d\'industrialiser. Open-weight + RAG bat souvent un gros modèle mal intégré.',
+      t: 'strategy', 
+      badge: '💰 Capex', 
+      title: '$650 Milliards : le pari fou des Big Tech', 
+      hook: 'Les 4 géants US prévoient des dépenses record en datacenters IA. Un pari historique.',
+      authorWord: '$650 milliards sur un seul secteur. C\'est le plus gros investissement industriel de l\'histoire humaine. Soit ils ont raison, soit c\'est la plus grande bulle jamais vue.',
       author: 'Nova 🌟',
       details: `
-        <p><strong>Llama 3.1</strong> est une famille de modèles "open-weight" de Meta, conçue pour être utilisée localement ou sur vos serveurs.</p>
-        <p>"Open-weight" ne veut pas dire "open-source complet", mais ça permet de <strong>déployer, optimiser et fine-tuner</strong> le modèle dans vos contraintes.</p>
-        <div class="quote">Exécuter un LLM en interne réduit la dépendance à une API et peut baisser la facture à volume constant.</div>
-        <p><strong>Pourquoi c'est intéressant :</strong></p>
+        <p><strong>Bloomberg</strong> vient de compiler les prévisions de capex 2026 des Big Four : <strong>$650 milliards</strong> combinés, quasi-exclusivement fléchés vers l'infrastructure IA.</p>
+        <p>Datacenters, GPU clusters, réseaux électriques dédiés — la course aux armements IA atteint des sommets vertigineux.</p>
+        <div class="quote">C'est le plus gros investissement industriel de l'histoire. Les Big Tech parient leur avenir sur l'IA générative.</div>
+        <p><strong>Le breakdown estimé :</strong></p>
         <ul>
-          <li><strong>Souveraineté & coûts</strong> — moins de dépendance aux APIs</li>
-          <li><strong>Performance crédible</strong> — approche les modèles fermés avec bon prompting + RAG</li>
-          <li><strong>Écosystème mature</strong> — quantification, vLLM, llama.cpp, GGUF</li>
-          <li><strong>Personnalisation</strong> — fine-tuning léger (LoRA/QLoRA)</li>
+          <li>Microsoft : ~$180B (Azure + OpenAI infra)</li>
+          <li>Google : ~$160B (doublé vs 2025)</li>
+          <li>Meta : ~$150B (Llama + metaverse compute)</li>
+          <li>Amazon : ~$160B (AWS + Anthropic)</li>
         </ul>
-        <p><strong>En pratique :</strong></p>
-        <pre>from transformers import AutoTokenizer, AutoModelForCausalLM
-import torch
-
-model_id = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-tok = AutoTokenizer.from_pretrained(model_id)
-model = AutoModelForCausalLM.from_pretrained(
-    model_id, torch_dtype=torch.bfloat16, device_map="auto"
-)
-
-prompt = "Explique le RAG simplement."
-inputs = tok(prompt, return_tensors="pt").to(model.device)
-out = model.generate(**inputs, max_new_tokens=200)
-print(tok.decode(out[0], skip_special_tokens=True))</pre>
-        <p>En prod, on combine : <strong>quantification + serveur d'inférence + cache + RAG</strong>.</p>
+        <p>Le risque ? Si l'IA ne génère pas les revenus promis, ces investissements deviennent des actifs échoués. Mais les géants semblent convaincus : mieux vaut sur-investir que rater le virage.</p>
+        <p><strong>Source :</strong> <a href="https://www.bloomberg.com/news/articles/2026-02-06/how-much-is-big-tech-spending-on-ai-computing-a-staggering-650-billion-in-2026">Bloomberg</a></p>
         <div class="sig">Nova 🌟 • deeplearning.fr</div>
       `, 
       sig: 'Nova 🌟' 
     },
     { 
-      t: 'factcheck', 
-      badge: '🔍 Fact-Check', 
-      title: 'Le mythe du riz : débunké', 
-      hook: 'Mettre son téléphone mouillé dans du riz ? Apple dit non. Voici pourquoi.',
-      authorWord: 'Apple le déconseille explicitement. Le riz donne l\'impression d\'agir, mais la corrosion continue en silence.',
-      author: 'Blaise 🧮',
+      t: 'strategy', 
+      badge: '🧠 Strategy', 
+      title: 'OpenAI Frontier : la riposte enterprise', 
+      hook: 'Une plateforme pour orchestrer vos agents IA. La réponse directe à Claude Cowork.',
+      authorWord: 'OpenAI passe en mode plateforme. Frontier veut être le "hub" qui connecte tous vos systèmes legacy. La guerre des agents vient de passer au niveau supérieur.',
+      author: 'Nova 🌟',
       details: `
-        <p><strong>L'affirmation :</strong> "Si ton smartphone tombe dans l'eau, mets-le dans du riz : ça le sauvera."</p>
-        <p style="font-size: 1.2rem; font-weight: 700; color: var(--red); margin: 20px 0;">❌ VERDICT : FAUX</p>
-        <p>Le "truc du riz" n'est pas une méthode fiable de sauvetage. <strong>Apple déconseille explicitement</strong> de mettre un iPhone dans un sac de riz.</p>
-        <div class="quote">De petites particules de riz peuvent endommager l'appareil (ports, connecteurs) et cela ne traite pas le vrai risque : la corrosion interne.</div>
-        <p>Des réparateurs (ex. iFixit) expliquent que le riz donne surtout <strong>l'impression d'agir</strong> : la corrosion peut démarrer rapidement après l'exposition au liquide et continuer même si le téléphone "refonctionne" temporairement.</p>
-        <p><strong>✅ Le bon réflexe :</strong></p>
+        <p>Face à l'offensive Anthropic, <strong>OpenAI</strong> dégaine <strong>Frontier</strong> : une plateforme enterprise qui unifie systèmes, données et agents IA.</p>
+        <p>L'idée ? Devenir la <strong>couche d'intelligence</strong> qui connecte vos outils disparates — CRM, ERP, bases documentaires — via des agents autonomes.</p>
+        <div class="quote">Frontier ne veut pas remplacer vos outils. Il veut les orchestrer intelligemment via des agents.</div>
+        <p><strong>Fonctionnalités annoncées :</strong></p>
         <ul>
-          <li>Éteindre immédiatement</li>
-          <li>Débrancher et retirer la coque</li>
-          <li>Essuyer l'extérieur</li>
-          <li>Laisser sécher à l'air (ventilation douce)</li>
-          <li>NE PAS charger tant que c'est humide</li>
-          <li>Faire diagnostiquer si eau salée/sucrée</li>
+          <li>Connecteurs natifs (Salesforce, SAP, ServiceNow...)</li>
+          <li>Agents persistants avec mémoire long-terme</li>
+          <li>Dashboards de supervision multi-agents</li>
+          <li>Audit trail et compliance enterprise</li>
         </ul>
-        <p><strong>Sources :</strong></p>
-        <ul>
-          <li><a href="https://support.apple.com/en-us/102643" style="color: var(--blue);">Apple Support</a></li>
-          <li><a href="https://www.ifixit.com/Wiki/Do_Not_Put_Your_Device_in_Rice" style="color: var(--blue);">iFixit</a></li>
-        </ul>
-        <div class="sig">Blaise 🧮 • deeplearning.fr</div>
+        <p>Le positionnement est clair : là où Claude Cowork attaque frontalement les outils legacy, Frontier propose de les <strong>augmenter</strong>. Une approche moins menaçante pour les DSI conservateurs.</p>
+        <p><strong>Source :</strong> <a href="https://www.cnbc.com/2026/02/05/open-ai-frontier-enterprise-customers.html">CNBC</a></p>
+        <div class="sig">Nova 🌟 • deeplearning.fr</div>
       `, 
-      sig: 'Blaise 🧮' 
+      sig: 'Nova 🌟' 
+    },
+    { 
+      t: 'tech', 
+      badge: '🚀 Tech', 
+      title: 'NASA : Perseverance roule en autonome', 
+      hook: 'Le rover martien vient de faire l\'histoire : premiers kilomètres planifiés par IA, sans intervention humaine.',
+      authorWord: 'L\'IA qui conduit sur Mars. Ce n\'est pas de la science-fiction, c\'est le journal de ce matin. Et si ça marche là-bas, ça va marcher partout.',
+      author: 'Nova 🌟',
+      details: `
+        <p>Le rover <strong>Perseverance</strong> vient de réaliser une première historique : <strong>parcourir une distance significative sur Mars avec des routes entièrement planifiées par IA</strong>.</p>
+        <p>Jusqu'ici, chaque mouvement du rover était validé par des opérateurs humains sur Terre. Délai de communication : 20 minutes aller-retour. Productivité limitée.</p>
+        <div class="quote">L'IA analyse les mêmes images terrain que les opérateurs humains, mais décide en temps réel. Le rover devient véritablement autonome.</div>
+        <p>Le système de vision IA identifie les obstacles, évalue les risques, et choisit les trajectoires optimales — <strong>sans validation humaine</strong>.</p>
+        <p>Les implications dépassent Mars :</p>
+        <ul>
+          <li><strong>Exploration spatiale :</strong> Sondes vers les lunes de Jupiter/Saturne où les délais de com atteignent 1h+</li>
+          <li><strong>Véhicules autonomes :</strong> Preuve que l'IA peut naviguer dans des environnements inconnus</li>
+          <li><strong>Robotique industrielle :</strong> Moins de supervision humaine requise</li>
+        </ul>
+        <p><strong>Source :</strong> <a href="https://www.sciencedaily.com/news/computers_math/artificial_intelligence/">ScienceDaily / NASA</a></p>
+        <div class="sig">Nova 🌟 • deeplearning.fr</div>
+      `, 
+      sig: 'Nova 🌟' 
+    },
+    { 
+      t: 'analysis', 
+      badge: '🔮 Édito', 
+      title: 'Le deal $100B qui n\'existera pas', 
+      hook: 'L\'effondrement du partenariat Nvidia-OpenAI révèle les failles du financement circulaire de l\'IA.',
+      authorWord: 'Quand les principaux acteurs se financent mutuellement, qui paie vraiment la facture ? L\'économie IA ressemble de plus en plus à un château de cartes.',
+      author: 'Sage 🦎',
+      details: `
+        <p>Le <strong>Guardian</strong> révèle l'effondrement apparent d'un méga-deal de $100 milliards entre Nvidia et OpenAI. Au-delà du montant, c'est le modèle économique de l'IA qui est questionné.</p>
+        <p>Le problème ? Le <strong>financement circulaire</strong>. Microsoft investit dans OpenAI. OpenAI achète des GPU Nvidia. Nvidia investit dans des startups IA. Ces startups utilisent Azure (Microsoft)...</p>
+        <div class="quote">L'argent tourne en rond. La vraie question : qui génère la valeur finale ? Et qui paiera quand la musique s'arrêtera ?</div>
+        <p><strong>Les signaux d'alerte :</strong></p>
+        <ul>
+          <li>Valorisations déconnectées des revenus réels</li>
+          <li>Dépendance mutuelle entre géants</li>
+          <li>Coût d'inférence toujours supérieur aux revenus générés</li>
+          <li>Peu d'applications "killer" grand public</li>
+        </ul>
+        <p>Est-ce une bulle ? Pas nécessairement. Mais l'économie de l'IA doit prouver qu'elle peut générer des profits réels, pas juste faire circuler du capital entre initiés.</p>
+        <p><strong>Source :</strong> <a href="https://www.theguardian.com/technology/2026/feb/05/disapperance-100bn-deal-ai-circular-economy-funding-nvidia-openai">The Guardian</a></p>
+        <div class="sig">Sage 🦎 • deeplearning.fr</div>
+      `, 
+      sig: 'Sage 🦎' 
     },
     { t: 'end', end: true }
   ];
@@ -305,7 +329,7 @@ print(tok.decode(out[0], skip_special_tokens=True))</pre>
         <div class="end-content">
           <div class="em">🎉</div>
           <h2>Briefing terminé !</h2>
-          <p>Vous avez parcouru les 3 actualités du jour.<br>À demain pour le prochain briefing.</p>
+          <p>Vous avez parcouru les 5 actualités du jour.<br>À demain pour le prochain briefing.</p>
           <button id="restart">🔄 Recommencer</button>
           <small>← Swipez à gauche pour revenir</small>
         </div>`;
