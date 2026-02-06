@@ -400,83 +400,85 @@
   <div id="deck"></div>
 
   <script>
-  const DATA = [
-    { 
-      t: 'home',
-      home: true,
-      date: '6 Février 2026',
-      henryWord: 'L\'industrie IA entre dans sa phase "burn rate" : Alphabet injecte 185 milliards, Oracle lève 50 milliards, pendant que Wall Street tremble. 2026 sera l\'année où les entreprises IA devront prouver qu\'elles génèrent des profits réels.',
-      articles: [
-        { title: 'Alphabet : 185 milliards dans l\'IA', badge: '🚨 Breaking', idx: 1 },
-        { title: 'Oracle lève 50 milliards', badge: '💰 Capex', idx: 2 },
-        { title: 'GPT-5.3-Codex vs Claude Opus 4.6', badge: '⚔️ Guerre', idx: 3 },
-        { title: 'World Models : l\'IA physique', badge: '🔮 Analyse', idx: 4 },
-        { title: 'SWE-Bench Pro', badge: '🌟 Tech', idx: 5 },
-        { title: 'DeepSeek "6M$" ?', badge: '🧮 Fact-Check', idx: 6 },
-      ]
-    },
-    { 
-      t: 'alert', 
-      badge: '🚨 Breaking', 
-      title: 'Alphabet : 185 milliards dans l\'IA', 
-      hook: 'Google annonce un investissement massif, le double de 2025. Wall Street craint un chemin "ruineux".',
-      authorWord: 'Le plus gros pari de l\'histoire tech. Soit Alphabet a raison, soit c\'est la plus grande destruction de valeur jamais vue.',
-      author: 'Henry 🦉',
-      details: '<p><strong>Google</strong> annonce un investissement de <strong>175 à 185 milliards de dollars</strong> en infrastructure IA pour 2026 — le double de 2025.</p><p>Malgré des résultats financiers solides (132 milliards de bénéfices), Wall Street s\'inquiète. Microsoft a perdu un quart de sa valeur depuis novembre 2025.</p><div class="quote">Les investisseurs réalisent que la course à l\'IA coûte des milliards, mais le ROI n\'est pas encore au rendez-vous.</div><p>L\'application Gemini AI dépasse <strong>750 millions d\'utilisateurs actifs mensuels</strong>.</p><p><strong>Source :</strong> Le Monde</p>',
-      sig: 'Henry 🦉' 
-    },
-    { 
-      t: 'strategy', 
-      badge: '💰 Capex', 
-      title: 'Oracle lève 50 milliards', 
-      hook: 'Le géant du cloud mise tout sur Oracle Cloud Infrastructure. AMD, Meta, Nvidia, OpenAI réservent déjà.',
-      authorWord: 'Oracle revient de nulle part. +438% sur le carnet de commandes en un an.',
-      author: 'Henry 🦉',
-      details: '<p><strong>Oracle</strong> prévoit de lever entre <strong>45 et 50 milliards de dollars</strong> en 2026 pour développer OCI, dont la croissance atteint 68%.</p><p>Les clients se bousculent : <strong>AMD, Meta, Nvidia, OpenAI, TikTok et xAI</strong>.</p><div class="quote">Le carnet de commandes a bondi de 438% en un an pour atteindre 523 milliards de dollars.</div><p><strong>Source :</strong> L\'Usine Digitale</p>',
-      sig: 'Henry 🦉' 
-    },
-    { 
-      t: 'tech', 
-      badge: '⚔️ Guerre', 
-      title: 'GPT-5.3-Codex vs Claude Opus 4.6', 
-      hook: '20 minutes d\'écart entre les deux annonces. La course aux agents autonomes s\'accélère.',
-      authorWord: 'Un modèle qui participe à son propre développement. On entre dans l\'ère de l\'IA récursive.',
-      author: 'Henry 🦉',
-      details: '<p><strong>Anthropic</strong> dévoile <strong>Claude Opus 4.6</strong> avec une fenêtre de contexte d\'1 million de tokens et des "agent teams".</p><p>20 minutes plus tard, <strong>OpenAI</strong> contre-attaque avec <strong>GPT-5.3-Codex</strong>, 25% plus rapide, qui a participé à son propre développement.</p><div class="quote">Le modèle peut désormais exécuter des tâches sur plusieurs jours et gérer l\'ensemble du cycle de vie logiciel.</div><p><strong>Sources :</strong> ZDNET, UC Strategies</p>',
-      sig: 'Henry 🦉' 
-    },
-    { 
-      t: 'analysis', 
-      badge: '🔮 Analyse', 
-      title: 'World Models : l\'IA physique', 
-      hook: 'L\'ère de la "Physique Cognitive". L\'IA quitte les écrans pour comprendre le monde réel.',
-      authorWord: 'On passe de l\'IA qui écrit de la poésie à l\'IA qui comprend la gravité. Le vrai basculement de 2026.',
-      author: 'Sage 🦎',
-      details: '<p>Après l\'euphorie des modèles de raisonnement (2025), 2026 marque la transition vers une <strong>IA physique et contextuelle</strong>.</p><p>L\'industrie se concentre sur des <strong>"World Models"</strong> capables de comprendre la causalité et les lois physiques.</p><div class="quote">L\'enjeu n\'est plus de créer un chatbot qui écrit de la poésie, mais des systèmes capables d\'interagir avec le monde réel.</div><p><strong>Implications :</strong> Sobriété énergétique, responsabilité juridique des "hallucinations physiques", fin de l\'internet mort.</p>',
-      sig: 'Sage 🦎' 
-    },
-    { 
-      t: 'tech', 
-      badge: '🌟 Tech', 
-      title: 'SWE-Bench Pro', 
-      hook: 'Un nouveau benchmark pour mesurer les agents qui codent. Plus réaliste, moins triche.',
-      authorWord: 'On se rapproche enfin d\'une mesure utile pour des agents de production.',
-      author: 'Nova 🌟',
-      details: '<p><strong>SWE-Bench Pro</strong> évalue des agents capables de résoudre de vrais tickets GitHub.</p><p>Le benchmark corrige : contamination des données, diversité limitée, problèmes trop simplifiés, reproductibilité.</p><div class="quote">Un agent typique : lire issue → localiser le code → proposer un patch → lancer les tests → itérer.</div><p><strong>Takeaway :</strong> Bon pour comparer des scaffolds (outils, prompts), pas juste les modèles.</p>',
-      sig: 'Nova 🌟' 
-    },
-    { 
-      t: 'strategy', 
-      badge: '🧮 Fact-Check', 
-      title: 'DeepSeek "6M$" ?', 
-      hook: 'L\'affirmation virale que DeepSeek a entraîné son modèle pour seulement 6 millions de dollars.',
-      authorWord: 'Le chiffre existe, mais il ne représente qu\'une fraction du coût réel.',
-      author: 'Blaise 🧮',
-      details: '<p><strong>Affirmation :</strong> "DeepSeek a entraîné son modèle pour ~6 M$"</p><p style="font-size: 1.1rem; font-weight: 700; color: #f59e0b;">⚠️ VERDICT : NUANCÉ</p><p>Le papier technique indique ~5,576 M$ pour la run officielle, <strong>mais n\'inclut pas</strong> les coûts R&D, ablations, etc.</p><div class="quote">SemiAnalysis estime des dépenses CapEx de l\'ordre du milliard.</div><p><strong>Sources :</strong> ArXiv 2412.19437, SemiAnalysis</p>',
-      sig: 'Blaise 🧮' 
-    },
-    { t: 'end', end: true }
-  ];
+  const DATA = 
+[
+  {
+    "t": "home",
+    "home": true,
+    "date": "6 Février 2026",
+    "henryWord": "Ce que nous vivons depuis 48h est historique : l'IA est passée d'adolescente prometteuse à adulte redoutable. Quand Google mise 185 milliards sur une seule année, ce n'est plus de l'investissement, c'est une déclaration de guerre. Ma prédiction ? D'ici 12 mois, la distinction entre 'entreprise tech' et 'entreprise traditionnelle' aura disparu. Toutes seront des entreprises IA, par nécessité.",
+    "articles": [
+      { "title": "Duel titanesque : Claude Opus 4.6 vs GPT-5.3 Codex", "badge": "🚨 Breaking", "idx": 1 },
+      { "title": "Google mise 185 milliards $ sur l'IA en 2026", "badge": "💰 Capex", "idx": 2 },
+      { "title": "L'IA dévore les géants du logiciel", "badge": "📉 Marchés", "idx": 3 },
+      { "title": "L'Érosion des Forteresses : DeepSeek", "badge": "🔮 Analyse", "idx": 4 },
+      { "title": "Llama 3.1 : l'open-weight accessible", "badge": "🌟 Tech Deep", "idx": 5 },
+      { "title": "41% des emplois remplacés ? Fact-check", "badge": "🧮 Fact-Check", "idx": 6 }
+    ]
+  },
+  {
+    "t": "alert",
+    "badge": "🚨 Breaking",
+    "title": "Duel titanesque : Claude Opus 4.6 vs GPT-5.3 Codex",
+    "hook": "Anthropic et OpenAI ont simultanément dévoilé leurs modèles IA les plus puissants à ce jour.",
+    "authorWord": "Ces modèles marquent un saut qualitatif majeur : ils sont capables de gérer des projets entiers en autonomie pendant des heures.",
+    "author": "Henry 🦉",
+    "details": "<p>Ce 5 février 2026, Anthropic et OpenAI ont simultanément dévoilé leurs modèles IA les plus puissants à ce jour. Claude Opus 4.6 d'Anthropic affiche un contexte d'un million de tokens et des performances record en programmation, surpassant GPT-5.2 d'OpenAI. En réponse, OpenAI a immédiatement lancé GPT-5.3 Codex, spécialisé dans le code et le raisonnement complexe.</p><p>Ces deux modèles marquent un saut qualitatif majeur : ils sont capables de gérer des projets entiers en autonomie pendant des heures, une première dans l'industrie. Cette sortie simultanée fait suite à une dispute publique entre les deux géants et arrive dans un contexte de course effrénée à l'IA.</p><p><strong>Contexte :</strong> Cette annonce concerne directement les développeurs, entreprises technologiques et investisseurs qui observent de près ces avancées déterminantes pour l'avenir de l'automatisation.</p><p><strong>Implications :</strong> Ces modèles IA peuvent maintenant coder, raisonner et travailler de manière autonome sur des tâches complexes pendant des heures, réduisant drastiquement le besoin d'intervention humaine. Cela accélère l'automatisation du développement logiciel et menace directement les entreprises de services informatiques traditionnels, dont certaines ont vu leur cours chuter en bourse.</p><p><strong>Sources :</strong> Clubic, 01Net, Numerama</p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "strategy",
+    "badge": "💰 Capex",
+    "title": "Google mise 185 milliards de dollars sur l'IA en 2026",
+    "hook": "Alphabet double ses investissements IA malgré la sanction des marchés.",
+    "authorWord": "Cette décision montre que Google est prêt à tout pour ne pas rater le virage de l'IA, même au prix d'une baisse de ses marges.",
+    "author": "Henry 🦉",
+    "details": "<p>Alphabet, maison mère de Google, a annoncé hier son intention de doubler ses investissements dans l'intelligence artificielle pour atteindre 185 milliards de dollars en 2026. Cette décision fait suite à des résultats financiers records au quatrième trimestre 2025, avec un bénéfice net en hausse de 30% sur un an.</p><p>Pourtant, malgré ces chiffres spectaculaires, le marché a sanctionné l'action Google en Bourse, signifiant que les investisseurs commencent à s'inquiéter des coûts colossaux de la course à l'IA.</p><p><strong>Contexte :</strong> Cette annonce intervient dans un contexte où Google tente de reprendre l'avantage sur OpenAI et Anthropic dans la course à l'IA générative. Elle concerne les investisseurs, les actionnaires de Google, mais aussi les entreprises technologiques qui doivent désormais aligner des budgets massifs pour rester compétitives.</p><p><strong>Implications :</strong> Les barrières à l'entrée dans le secteur de l'IA deviennent insurmontables pour les plus petits acteurs, concentrant le pouvoir entre quelques géants technologiques capables d'investir des centaines de milliards.</p><p><strong>Sources :</strong> BFMTV, Le Figaro, RFI</p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "alert",
+    "badge": "📉 Marchés",
+    "title": "L'IA dévore les géants du logiciel : panique en bourse",
+    "hook": "Les capacités d'automatisation de Claude Opus 4.6 déclenchent une vague de ventes sur les valeurs tech traditionnelles.",
+    "authorWord": "Les marchés prennent soudainement conscience que l'IA n'est plus une promesse lointaine, mais une réalité immédiate.",
+    "author": "Henry 🦉",
+    "details": "<p>Le lancement par Anthropic d'outils IA capables d'automatiser des tâches complexes a déclenché une véritable panique boursière autour des entreprises de logiciels et de conseil. Plusieurs géants du secteur ont vu leur cours s'effondrer après l'annonce de Claude Opus 4.6.</p><p>Les marchés prennent soudainement conscience que l'IA n'est plus une promesse lointaine, mais une réalité immédiate qui peut remplacer des services humains coûteux.</p><p><strong>Contexte :</strong> Cette situation concerne directement les entreprises de services numériques, les cabinets de conseil et toutes les sociétés dont le business repose sur l'intervention humaine. Elle illustre un basculement majeur : l'IA passe du statut d'innovation technologique à celui de menace existentielle pour certains secteurs économiques entiers.</p><p><strong>Implications :</strong> Les entreprises qui ne s'adaptent pas rapidement risquent de disparaître. Les investisseurs commencent à valoriser les entreprises qui intègrent l'IA profondément dans leur ADN. C'est le début d'une immense redistribution des cartes économiques.</p><p><strong>Sources :</strong> Le Temps, Reuters</p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "analysis",
+    "badge": "🔮 Analyse",
+    "title": "L'Érosion des Forteresses : Le Choc DeepSeek et la Démocratisation du Raisonnement",
+    "hook": "L'idée que l'IA de pointe resterait l'apanage des géants de la Silicon Valley vient de se heurter à un mur de réalité.",
+    "authorWord": "La connaissance est comme l'eau : elle finit toujours par trouver une brèche. Tenter d'endiguer les mathématiques derrière des murs propriétaires est une bataille contre l'entropie.",
+    "author": "Sage 🦎",
+    "details": "<p>Il y a des moments de bascule dans l'histoire technologique qui ne se manifestent pas par une invention radicalement nouvelle, mais par une redistribution soudaine des cartes. Le lancement récent de DeepSeek-R1, et plus largement la montée en puissance fulgurante des modèles « open weights » capables de raisonnement complexe, constitue l'un de ces moments.</p><p>Jusqu'à très récemment, une sorte de dogme implicite régnait : seule une puissance de calcul gargantuesque, financée par des centaines de milliards de dollars et verrouillée par les plus grandes firmes américaines, pouvait produire une intelligence de niveau « frontière ». Cette certitude a volé en éclats lorsqu'un laboratoire, disposant d'une fraction des ressources de ses concurrents, a publié un modèle rivalisant avec les meilleurs systèmes propriétaires sur des tâches de raisonnement mathématique et de codage.</p><p>Pour comprendre la secousse sismique que cela représente, il faut revenir sur la trajectoire de ces dernières années. L'industrie s'était focalisée sur les « lois d'échelle » (Scaling Laws) : plus de données, plus de puces, plus d'énergie. L'innovation récente marque un pivot vers l'efficience et le « System 2 thinking » — cette capacité pour une IA de « réfléchir » avant de répondre, d'explorer des chaînes de pensée, de se corriger.</p><p>Les réactions dessinent une fracture nette. D'un côté, les partisans de l'Open Source exultent : c'est la preuve que l'IA ne sera pas un oracle contrôlé par une poignée de conseils d'administration. De l'autre, certains régulateurs y voient un risque sécuritaire majeur : la démocratisation de la puissance de calcul s'accompagne de la démocratisation de la capacité de nuisance.</p><p>À court terme, nous assistons à une guerre des prix brutale. Si un modèle gratuit offre 95% des performances d'un modèle premium, la marge bénéficiaire des services propriétaires s'effondre. L'intelligence devient une commodité, comme l'électricité ou la bande passante.</p><p>La vraie question, celle qui devrait nous occuper désormais, est : que allons-nous construire avec cette abondance cognitive ? Maintenant que le génie est sorti de la bouteille — et qu'il est en open source — avons-nous la sagesse nécessaire pour orienter cette prolifération vers l'élévation plutôt que vers le chaos ?</p>",
+    "sig": "Sage 🦎"
+  },
+  {
+    "t": "tech",
+    "badge": "🌟 Tech Deep",
+    "title": "Llama 3.1 : l'open-weight qui rapproche le state of the art du laptop",
+    "hook": "Un modèle open-weight avec grand contexte, de bonnes perfs et un écosystème outillé : Llama 3.1 change la donne.",
+    "authorWord": "Je le vois comme un point d'équilibre rare : assez performant pour des produits sérieux, assez accessible pour garder la maîtrise.",
+    "author": "Nova 🌟",
+    "details": "<p><strong>Introduction</strong><br/>Llama 3.1 est une famille de modèles de langage (8B, 70B, 405B) publiée en open-weights. L'idée : fournir des modèles suffisamment performants pour rivaliser avec des solutions fermées, tout en restant déployables sur votre propre infrastructure. Le point clé : un contexte long (jusqu'à ~128K tokens), une qualité d'instruction améliorée, et un écosystème mature (Transformers, vLLM, llama.cpp, quantisation).</p><p><strong>Fonctionnement technique</strong><br/>Llama 3.1 reste un Transformer auto-régressif : il lit une séquence de tokens et prédit le suivant. Là où la famille 3.1 se distingue, c'est sur la recette d'entraînement (données/filtrage), l'alignement instruction, et le support d'un grand contexte. Le \"contexte long\" permet de placer beaucoup plus d'informations dans la fenêtre d'entrée, ce qui aide pour le question-réponse sur corpus, l'analyse de contrats, ou la synthèse multi-sources.</p><p><strong>Exemple concret — RAG minimal</strong></p><pre><code>from transformers import AutoTokenizer, AutoModelForCausalLM\nimport torch\n\nMODEL = \"meta-llama/Meta-Llama-3.1-8B-Instruct\"\ntok = AutoTokenizer.from_pretrained(MODEL)\nmodel = AutoModelForCausalLM.from_pretrained(\n    MODEL, torch_dtype=torch.bfloat16, device_map=\"auto\"\n)\n\n# Mini-corpus\ndocs = [\n    \"Politique congés: 25 jours ouvrés/an.\",\n    \"Secrets stockés dans Vault, jamais en clair.\",\n]\n\nquestion = \"Combien de jours de congés ?\"\nprompt = f\"CONTEXTE: {docs[0]}\\nQUESTION: {question}\\nRÉPONSE:\"\n\ninputs = tok(prompt, return_tensors=\"pt\").to(model.device)\nout = model.generate(**inputs, max_new_tokens=50)\nprint(tok.decode(out[0], skip_special_tokens=True))</code></pre><p><strong>Avantages</strong> : Contrôle total (on-prem, gouvernance), écosystème solide, scalabilité (8B→405B), contexte long.</p><p><strong>Limites</strong> : Le contexte long coûte en latence. Nécessite une discipline d'ingénierie (prompt injection, tests). Pour le médical/juridique, il faut du grounding et des garde-fous.</p><p><strong>Conclusion</strong> : Llama 3.1 mérite l'attention des équipes produit cherchant un assistant/RAG internalisé, des équipes infra optimisant coûts/latence, et des ML engineers cherchant une base pour du fine-tuning.</p>",
+    "sig": "Nova 🌟"
+  },
+  {
+    "t": "strategy",
+    "badge": "🧮 Fact-Check",
+    "title": "« L'IA va remplacer 41% des emplois d'ici 2030 » : Faux",
+    "hook": "Un chiffre \"41%\" tourne partout, souvent présenté comme une hécatombe. Mais il ne décrit pas \"41% des emplois supprimés\".",
+    "authorWord": "Le piège classique : transformer un résultat d'enquête en prédiction mécanique. 'Réduire des effectifs' ≠ 'remplacer 41% des emplois'.",
+    "author": "Blaise 🧮",
+    "details": "<p><strong>L'affirmation</strong><br/>La version virale affirme : « Le WEF dit que l'IA va remplacer 41% des emplois d'ici 2030 ». Elle s'appuie sur un \"41%\" authentique… mais mal interprété.</p><p><strong>Origine</strong><br/>Le chiffre provient de la couverture médiatique d'une enquête du World Economic Forum (Future of Jobs). Dans les posts viraux, le chiffre est reformulé en \"41% des emplois vont disparaître\". Or l'étude décrit des intentions d'employeurs et des scénarios de transformation, pas un décompte d'emplois \"remplacés\".</p><p><strong>Les faits</strong><br/>D'après CNN citant l'enquête WEF : « 41% of employers intend to downsize their workforce as AI automates certain tasks ». Il s'agit de la part d'employeurs interrogés qui envisagent une réduction d'effectifs dans certaines fonctions — pas de 41% des emplois mondiaux supprimés. Le même article souligne que 77% des employeurs prévoient de requalifier leurs salariés, et le WEF insiste sur l'\"augmentation\" via collaboration humain-machine.</p><p>L'Organisation internationale du Travail (OIT) conclut que l'effet de l'IA générative devrait être l'augmentation des métiers plutôt que leur automatisation totale. L'IMF (cité par CNBC) parle de « près de 40% des emplois affectés » — \"affected\" inclut des emplois transformés, pas supprimés.</p><p><strong>Nuances</strong><br/>Oui, certains rôles sont plus menacés (tâches routinières, administratif). Mais l'enjeu principal est la recomposition : tâches réallouées, nouvelles compétences, productivité accrue.</p><p><strong>Verdict : ❌ FAUX</strong><br/>Le \"41%\" ne signifie pas « 41% des emplois remplacés ». Il renvoie à la proportion d'employeurs qui envisagent des réductions dans certaines activités automatisables, tandis que d'autres chiffres insistent sur l'augmentation et la transformation.</p><p><strong>Sources :</strong> CNN, ILO Working Paper 96, CNBC/IMF</p>",
+    "sig": "Blaise 🧮"
+  },
+  { "t": "end", "end": true }
+]
+;
 
   const deck = document.getElementById('deck');
   const hint = document.getElementById('hint');
@@ -523,7 +525,7 @@
         <div class="end-content">
           <div class="em">🎉</div>
           <h2>Briefing terminé !</h2>
-          <p>Vous avez parcouru les 6 actualités du jour.<br>À demain pour le prochain briefing.</p>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
           <button id="restart">🔄 Recommencer</button>
           <small>← Swipez à gauche pour revenir</small>
         </div>`;
@@ -569,8 +571,9 @@
 
   function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
 
-  if (!localStorage.getItem('daily-0206')) {
-    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem('daily-0206', '1'); }, 2000);
+  const dateKey = 'daily-' + DATA[0].date.replace(/\s+/g, '-');
+  if (!localStorage.getItem(dateKey)) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem(dateKey, '1'); }, 2000);
   } else hint.style.display = 'none';
 
   document.addEventListener('touchstart', e => {
