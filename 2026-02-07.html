@@ -389,15 +389,15 @@
       background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
                   radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
     }
-  </style>
-</head>
-<body>
-  <div id="hint">
-    <div class="logo"><b>AI</b> Insight Daily</div>
-    <div class="arrows"><span class="arr">‹</span><span class="arr">›</span></div>
-  </div>
 
-  <div id="deck"></div>
+    /* ============ DESKTOP GRID MODE (≥900px) ============ */
+    @media (min-width: 900px) {
+      html, body { overflow: auto; height: auto; }
+      #hint { display: none !important; }
+      #deck {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
 
   <script>
   const DATA = 
@@ -612,6 +612,23 @@
     const article = e.target.closest('.home-article');
     if (article) { const idx = parseInt(article.dataset.goto); if (!isNaN(idx)) go(idx); }
   });
+
+  // Desktop grid mode
+  function checkDesktop() {
+    if (window.innerWidth >= 900) {
+      deck.classList.add('desktop-mode');
+      cards.forEach(c => {
+        c.classList.remove('prev', 'next', 'anim');
+        c.classList.add('active');
+        c.style.transform = 'none';
+      });
+    } else {
+      deck.classList.remove('desktop-mode');
+      update(false);
+    }
+  }
+  checkDesktop();
+  window.addEventListener('resize', checkDesktop);
   </script>
 </body>
 </html>
