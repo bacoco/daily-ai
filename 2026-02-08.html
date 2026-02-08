@@ -696,7 +696,7 @@
         <div class="scroll-zone">
           <div class="scroll-inner">
             <div class="hook">${d.hook}</div>
-            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
+            <div class="details">${d.details}${d.dissent ? `<div class="dissent"><div class="dissent-text">"${d.dissent.text}"</div><div class="dissent-author">— ${d.dissent.author}</div></div>` : ''}<div class="sig">deeplearning.fr • Daily News</div></div>
           </div>
         </div>`;
     }
