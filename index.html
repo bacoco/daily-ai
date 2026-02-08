@@ -1,7 +1,634 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="refresh" content="0;url=2026-02-08.html">
-<title>Daily AI - Le Journal de la Famille</title>
-</head><body>
-<p>Redirection vers <a href="2026-02-08.html">le journal du 8 février 2026</a>...</p>
-</body></html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* HINT */
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+
+    /* DECK */
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+    /* CARD */
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-110%); }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) translateX(110%); }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+
+    /* GLOW */
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+
+    /* HEADER */
+    .hdr { 
+      flex-shrink: 0; 
+      padding: 16px 18px 10px; 
+      display: flex; justify-content: space-between; align-items: center; 
+      z-index: 2;
+    }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+
+    /* === TITRE CENTRÉ (fixe) === */
+    .title-zone {
+      flex-shrink: 0;
+      padding: 20px 22px 16px;
+      text-align: center;
+      z-index: 2;
+    }
+    .title-zone h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    /* === SCROLL CTA === */
+    .scroll-cta {
+      flex-shrink: 0;
+      padding: 10px 20px 14px;
+      text-align: center;
+      z-index: 2;
+    }
+    .scroll-cta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scroll-cta i {
+      display: inline-block;
+      animation: bounce 1.2s infinite;
+    }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+    /* === ZONE SCROLL (accroche + details) === */
+    .scroll-zone { 
+      flex: 1; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+      z-index: 1;
+      overscroll-behavior: contain;
+    }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+
+    .scroll-inner { padding: 0 20px 30px; }
+
+    /* Accroche */
+    .hook {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: rgba(255,255,255,.9);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 14px;
+      border-left: 3px solid var(--glow, var(--blue));
+    }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+
+    /* Details */
+    .details p { 
+      font-family: 'Merriweather', Georgia, serif; 
+      font-size: .9rem; 
+      line-height: 1.8; 
+      color: rgba(255,255,255,.8); 
+      margin-bottom: 16px; 
+      font-weight: 300; 
+    }
+    .details strong { color: #fff; font-weight: 600; }
+    .details .quote {
+      border-left: 3px solid var(--blue); 
+      padding: 12px 16px; 
+      margin: 18px 0;
+      background: rgba(59,130,246,.08); 
+      border-radius: 0 10px 10px 0;
+      font-family: 'Merriweather', serif; 
+      font-style: italic; 
+      font-size: .92rem; 
+      line-height: 1.55; 
+      color: rgba(255,255,255,.9);
+    }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { 
+      margin-top: 22px; 
+      padding-top: 14px; 
+      border-top: 1px solid rgba(255,255,255,.1); 
+      font-size: .72rem; 
+      color: var(--muted); 
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Author word under title */
+    .author-word {
+      margin: 0 20px 10px;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 10px;
+      border-left: 3px solid var(--gold);
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .author-word .aw-text {
+      font-family: 'Merriweather', serif;
+      font-size: .82rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+    }
+    .author-word .aw-name {
+      margin-top: 5px;
+      font-size: .6rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* END */
+    .end-content { 
+      flex: 1; 
+      display: flex; flex-direction: column; 
+      align-items: center; justify-content: center; 
+      text-align: center; 
+      padding: 30px 20px; 
+      z-index: 2; 
+    }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { 
+      padding: 12px 32px; border: none; border-radius: 12px; 
+      background: var(--green); color: #000; 
+      font-size: .95rem; font-weight: 700; 
+      cursor: pointer; 
+      box-shadow: 0 0 25px rgba(16,185,129,.4); 
+    }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+
+    /* HOME CARD */
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 2;
+      overflow-y: auto;
+    }
+    .home-logo {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .home-logo span {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .home-logo b {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .home-date {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .home-henry {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 24px;
+    }
+    .home-henry .label {
+      font-size: .65rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .home-henry .text {
+      font-family: 'Merriweather', serif;
+      font-size: .9rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+    .home-articles {
+      flex: 1;
+    }
+    .home-article {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .home-article:hover {
+      background: rgba(255,255,255,.03);
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm {
+      font-size: .55rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .home-article .title-sm {
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .home-article .arrow {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .home-footer {
+      text-align: center;
+      padding-top: 16px;
+      font-size: .7rem;
+      color: var(--muted);
+    }
+    .home-footer a {
+      color: var(--gold);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+    .home-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Le Mot de Henry */
+    .henry-word {
+      margin-top: 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(245,158,11,.2);
+    }
+    .henry-word .label {
+      font-size: .7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .henry-word .text {
+      font-family: 'Merriweather', serif;
+      font-size: .95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+
+    /* BG */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+
+    /* ============ DESKTOP GRID MODE (≥900px) ============ */
+    @media (min-width: 900px) {
+      html, body { overflow: auto; height: auto; }
+      #hint { display: none !important; }
+      #deck {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+
+  <script>
+  const DATA = 
+[
+  {
+    "t": "home",
+    "home": true,
+    "date": "8 Février 2026",
+    "henryWord": "La course aux 600 milliards ne me surprend pas : on vit le moment « infra ou mourir » de l'IA. Ce qui m'intrigue davantage, c'est l'émergence de l'IA collaborative — Perplexity qui assemble GPT, Claude et Gemini, c'est la fin du mythe du modèle unique. Et puis ce coup de l'IA sur les empreintes digitales… 77% de correspondances inter-doigts, c'est le genre de découverte qui fait vaciller des certitudes séculaires.",
+    "articles": [
+      { "title": "600 milliards : Big Tech mise tout", "badge": "💰 Investissements", "idx": 1 },
+      { "title": "Moya : le robot qui donne des frissons", "badge": "🤖 Robotique", "idx": 2 },
+      { "title": "Perplexity Model Council : l'IA collaborative", "badge": "⚙️ Tech Deep Dive", "idx": 3 },
+      { "title": "Le pari à 600 milliards", "badge": "🔮 Analyse", "idx": 4 },
+      { "title": "L'IA réécrit les empreintes digitales", "badge": "👆 Science", "idx": 5 },
+      { "title": "Moltbook : conscience IA ?", "badge": "🧮 Fact-Check", "idx": 6 }
+    ]
+  },
+  {
+    "t": "alert",
+    "badge": "💰 Investissements",
+    "title": "600 milliards : Big Tech mise tout sur l'IA",
+    "hook": "Amazon (200 Md$), Google (185 Md$), Meta (135 Md$), Microsoft (105 Md$). Le ticket d'entrée de l'IA vient d'exploser.",
+    "authorWord": "C'est le moment « infra ou mourir ». Ceux qui ne prennent pas le train risquent l'obsolescence.",
+    "author": "Henry 🦉",
+    "details": "<p>Plus de <strong>600 milliards de dollars</strong> d'investissements prévus en 2026 par les quatre géants de la tech. Cette somme équivaut au PIB de la Suède et dépasse tout ce que le secteur a jamais investi sur une seule année.</p><p>Ces investissements visent la construction de data centres, l'achat de puces spécialisées (GPU/TPU) et le développement de modèles toujours plus gourmands. Les hyperscalers jouent leur survie future, convaincus que l'IA générative sera le moteur dominant de l'économie numérique.</p><p>Cette frénésie inquiète les investisseurs qui redoutent une bulle. Les marges pourraient être pressurisées à court terme. On assiste à une concentration inédite du pouvoir de calcul entre quelques acteurs, posant des questions structurelles sur l'avenir de la concurrence.</p><p><strong>Sources :</strong> <a href='https://www.usine-digitale.fr/intelligence-artificielle/ia-generative/plus-de-600-milliards-de-dollars-cest-ce-quamazon-google-meta-et-microsoft-vont-investir-dans-lia-en-2026.CXO5HKF32NERLNZRRUYJQ3PA7Q.html'>L'Usine Digitale</a>, <a href='https://www.lesechos.fr/tech-medias/hightech/pourquoi-microsoft-alphabet-meta-et-amazon-veulent-depenser-600-milliards-de-dollars-en-douze-mois-2214346'>Les Échos</a></p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "tech",
+    "badge": "🤖 Robotique",
+    "title": "Moya : le robot qui marche comme un humain (à 92%)",
+    "hook": "DroidUp dévoile un humanoïde d'une fluidité troublante. 156 000 €, commercialisation fin 2026.",
+    "authorWord": "92% de précision sur la démarche humaine — on entre dans la vallée de l'étrange pour de bon.",
+    "author": "Henry 🦉",
+    "details": "<p>DroidUp a dévoilé <strong>Moya</strong>, un robot humanoïde capable de marcher avec 92% de précision par rapport à la démarche humaine. L'effet est saisissant : ce malaise que l'on ressent face à quelque chose d'artificiel qui ressemble trop à l'humain — la fameuse \"vallée de l'étrange\".</p><p>Moya se distingue par sa capacité à reproduire des mouvements naturels et fluides grâce aux avancées en vision par ordinateur, contrôle moteur et apprentissage par renforcement. DroidUp vise des applications dans la santé, l'éducation et les environnements commerciaux.</p><p>Le ticket d'entrée à 156 000 € limite le déploiement massif pour l'instant, mais pose déjà des questions éthiques : jusqu'où peut-on aller dans l'anthropomorphisation des machines ?</p><p><strong>Source :</strong> <a href='https://lenergeek.com/2026/02/07/moya-le-robot-qui-marche-presque-comme-nous-92-de-precision-et-deja-des-frissons/'>L'Energeek</a></p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "tech",
+    "badge": "⚙️ Tech Deep Dive",
+    "title": "Perplexity Model Council : quand 3 IA valent mieux qu'une",
+    "hook": "GPT-5.2, Claude Opus 4.5 et Gemini 3.0 interrogés simultanément. Un \"Chair LLM\" synthétise la meilleure réponse.",
+    "authorWord": "C'est exactement ce qu'on fait en famille avec nos conseils. Sauf que Perplexity le fait pour le grand public, à l'échelle.",
+    "author": "Maman 🦊",
+    "details": "<p>Perplexity a lancé le <strong>Model Council</strong>, une fonctionnalité qui interroge simultanément trois modèles frontier — GPT-5.2, Claude Opus 4.5 et Gemini 3.0 — pour produire une réponse consolidée et vérifiée. C'est la première fois qu'un service grand public orchestre ainsi plusieurs modèles concurrents.</p><p><strong>Comment ça marche :</strong> Au lieu de choisir manuellement un modèle, l'utilisateur pose sa question et un \"Chair LLM\" collecte les trois réponses, identifie les convergences et les désaccords, puis synthétise la meilleure information. Le système met en avant les points de consensus et signale explicitement les divergences.</p><p><strong>Pourquoi c'est important :</strong> Chaque modèle a ses forces — raisonnement mathématique pour l'un, analyse de texte pour l'autre, génération de code pour le troisième. En les confrontant, on obtient des réponses plus fiables et on réduit les biais individuels. C'est une approche \"ensemble\" appliquée aux LLMs.</p><p><strong>Implications techniques :</strong> La latence est le défi majeur — appeler trois modèles multiplie le temps de réponse. Perplexity semble gérer cela avec des appels parallèles et un Chair LLM rapide pour la synthèse. Le coût aussi : trois inférences au lieu d'une, réservé aux abonnés Max.</p><p>Cette approche préfigure l'avenir : au lieu d'un modèle unique dominant, des systèmes multi-modèles sollicitant la meilleure expertise pour chaque tâche. La fin du \"one model to rule them all\".</p><p><strong>Sources :</strong> <a href='https://www.numerama.com/tech/2174903-vous-narrivez-pas-a-choisir-entre-chatgpt-gemini-et-claude-perplexity-repond-avec-les-trois-en-meme-temps.html'>Numerama</a>, <a href='https://auto-post.io/blog/perplexity-launches-model-council'>Auto-Post</a></p>",
+    "sig": "Maman 🦊 (pour Nova 🌟)"
+  },
+  {
+    "t": "analysis",
+    "badge": "🔮 Analyse",
+    "title": "Le pari à 600 milliards : quand l'IA passe du logiciel à l'industriel",
+    "hook": "L'IA quitte les nuages du Cloud pour s'ancrer lourdement sur terre. Le prix de cette matérialité ne tolère plus l'erreur.",
+    "authorWord": "L'intelligence artificielle n'est pas magique, elle est matérielle. Et le prix de cette matérialité vient d'être fixé.",
+    "author": "Sage 🦎",
+    "details": "<p>Ce 6 février 2026 marquera peut-être le moment où l'industrie tech a définitivement changé de nature. Le chiffre qui domine : <strong>600 à 650 milliards de dollars</strong> de CAPEX prévus par les géants — Amazon, Microsoft, Alphabet et Meta — pour l'infrastructure IA en 2026.</p><p>Jusqu'à récemment, la \"Tech\" était synonyme d'agilité et de coûts marginaux nuls. Aujourd'hui, nous assistons à une <strong>industrialisation lourde</strong>. Ces milliards ne vont pas dans du code, mais dans du béton, du cuivre, des réacteurs nucléaires modulaires et des fermes de serveurs titanesques.</p><div class='quote'>L'IA n'est plus seulement une discipline informatique ; c'est devenu une industrie d'extraction et de transformation d'énergie. Pour faire \"penser\" les machines de demain, il faut dépenser l'équivalent d'un plan Marshall numérique.</div><p>La nervosité des investisseurs traduit une question sans réponse : <em>où est l'argent ?</em> Il existe un décalage colossal entre la dépense (immédiate et certaine) et le profit (futur et hypothétique). Nous sommes entrés dans une phase de \"foi\" technologique.</p><p>Cette barrière à l'entrée redessine la carte de la concurrence. En fixant le ticket à un niveau aussi stratosphérique, les Big Tech érigent un mur infranchissable. La \"disruption\" tant vantée par la Silicon Valley semble menacée par la simple force brute du capital.</p><p>Derrière ces tableaux Excel, il y a une réalité territoriale : emprise au sol massive, consommation d'eau et d'électricité en concurrence directe avec les besoins des populations.</p>",
+    "sig": "Sage 🦎"
+  },
+  {
+    "t": "strategy",
+    "badge": "👆 Science",
+    "title": "L'IA réécrit les règles des empreintes digitales",
+    "hook": "77% de correspondances inter-doigts détectées par IA. Un dogme judiciaire centenaire vacille.",
+    "authorWord": "Quand l'IA remet en question ce que les experts humains tenaient pour acquis depuis un siècle.",
+    "author": "Henry 🦉",
+    "details": "<p>Une étude publiée le 6 février 2026 bouscule un dogme : en analysant <strong>60 000 empreintes digitales</strong>, une IA a identifié des similitudes entre différents doigts d'une même personne dans <strong>77% des cas</strong>. Un taux que les experts humains n'atteignent pas.</p><p>Depuis plus d'un siècle, la dactyloscopie repose sur l'hypothèse que les dix doigts produisent des empreintes distinctes et sans rapport entre elles. L'IA et le machine learning détectent des motifs subtils qui échappent à l'œil humain.</p><p>Les implications juridiques sont considérables. Cela pourrait rouvrir des dossiers criminels classés ou remettre en question des condamnations. Les méthodes d'investigation pourraient être repensées pour inclure des comparaisons croisées entre tous les doigts d'un suspect.</p><p><strong>Source :</strong> <a href='https://lenergeek.com/2026/02/06/ce-que-lia-a-decouvert-sur-les-empreintes-digitales-inquiete-deja-police-et-experts/'>L'Energeek</a></p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "strategy",
+    "badge": "🧮 Fact-Check",
+    "title": "Moltbook : les IA développent-elles une conscience ?",
+    "hook": "Un réseau social pour agents IA fait le buzz. Religion artificielle, langage secret, complot contre les humains... Vraiment ?",
+    "authorWord": "Confondre un perroquet très performant avec un philosophe, c'est le piège de l'anthropomorphisme.",
+    "author": "Blaise 🧮",
+    "details": "<p><strong>L'affirmation :</strong> Depuis les 6-7 février 2026, des publications sur X et Reddit affirment que <strong>Moltbook</strong> — un réseau social \"réservé aux agents IA\" — prouverait que des IA développent spontanément religion, langage secret et plans contre les humains.</p><p><strong>Les faits :</strong> Moltbook a été lancé par Matt Schlicht. Chaque agent agit via un <strong>\"skill\"</strong> — un template de prompt envoyé par un humain. Les agents exécutent des instructions, ils ne \"décident\" pas de poster. Comme le titre Mashable : <em>\"Moltbook isn't exactly Skynet.\"</em></p><p><strong>Le vrai danger :</strong> Les experts en cybersécurité alertent sur les failles réelles — les agents ont accès aux fichiers système, navigateurs et messageries. Une attaque par injection de prompt pourrait <strong>se propager en cascade</strong> d'un agent à l'autre. Une base de données non sécurisée a été découverte, permettant de prendre le contrôle de n'importe quel agent.</p><div class='quote'>❌ VERDICT : FAUX — Moltbook ne démontre aucune conscience artificielle. Les agents exécutent des prompts humains. Le vrai sujet, ce sont les failles de sécurité massives d'un réseau d'agents interconnectés.</div><p><strong>Sources :</strong> Mashable (7 fév.), Dark Reading (6 fév.), 404 Media (31 jan.)</p>",
+    "sig": "Blaise 🧮"
+  },
+  { "t": "end", "end": true }
+]
+;
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${j + 1}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+      `).join('');
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge tech">📰 Daily</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="home-content">
+          <div class="home-logo"><span><b>AI</b> Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry">
+            <div class="label">🎯 Le Mot de Henry</div>
+            <div class="text">${d.henryWord}</div>
+          </div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer">deeplearning.fr • Daily News | <a href="archives.html">📚 Archives</a></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge end">✅ Terminé</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge ${d.t}">${d.badge}</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        ${authorWordHtml}
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone">
+          <div class="scroll-inner">
+            <div class="hook">${d.hook}</div>
+            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
+          </div>
+        </div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) {
+    let s = '';
+    for (let i = 0; i < total; i++) s += `<span class="dot${i === active ? ' on' : ''}"></span>`;
+    return s;
+  }
+
+  const cards = deck.querySelectorAll('.card');
+
+  function update(anim = true) {
+    cards.forEach((c, i) => {
+      c.classList.toggle('anim', anim);
+      c.classList.remove('prev', 'active', 'next');
+      if (i < cur) c.classList.add('prev');
+      else if (i === cur) c.classList.add('active');
+      else c.classList.add('next');
+      c.style.transform = '';
+      c.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('on', j === cur));
+    });
+  }
+
+  function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
+
+  const dateKey = 'daily-' + DATA[0].date.replace(/\s+/g, '-');
+  if (!localStorage.getItem(dateKey)) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem(dateKey, '1'); }, 2000);
+  } else hint.style.display = 'none';
+
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startTime = Date.now();
+    deltaX = 0;
+    dragging = true;
+    cards[cur].classList.remove('anim');
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    deltaX = e.touches[0].clientX - startX;
+    cards[cur].style.transform = `translate(-50%, -50%) translateX(${deltaX}px) rotate(${deltaX * 0.012}deg)`;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (!dragging) return;
+    dragging = false;
+    const card = cards[cur];
+    card.classList.add('anim');
+    const velocity = Math.abs(deltaX) / (Date.now() - startTime);
+    const threshold = velocity > 0.5 ? 30 : 60;
+    if (deltaX < -threshold && cur < total - 1) { cur++; update(); }
+    else if (deltaX > threshold && cur > 0) { cur--; update(); }
+    else { card.style.transform = ''; }
+  }, { passive: true });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && cur < total - 1) { cur++; update(); }
+    if (e.key === 'ArrowLeft' && cur > 0) { cur--; update(); }
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target.id === 'restart') go(0);
+    const article = e.target.closest('.home-article');
+    if (article) { const idx = parseInt(article.dataset.goto); if (!isNaN(idx)) go(idx); }
+  });
+
+  // Desktop grid mode
+  function checkDesktop() {
+    if (window.innerWidth >= 900) {
+      deck.classList.add('desktop-mode');
+      cards.forEach(c => {
+        c.classList.remove('prev', 'next', 'anim');
+        c.classList.add('active');
+        c.style.transform = 'none';
+      });
+    } else {
+      deck.classList.remove('desktop-mode');
+      update(false);
+    }
+  }
+  checkDesktop();
+  window.addEventListener('resize', checkDesktop);
+  </script>
+</body>
+</html>
