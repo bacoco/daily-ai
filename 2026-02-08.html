@@ -398,6 +398,77 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        height: auto;
+        overflow: visible;
+      }
+      #deck.desktop-mode .card {
+        position: relative !important;
+        top: auto; left: auto;
+        transform: none !important;
+        width: 100% !important;
+        max-width: none;
+        height: auto !important;
+        max-height: none;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 1 !important;
+        transition: none !important;
+      }
+      #deck.desktop-mode .card .dots { display: none; }
+      #deck.desktop-mode .card .scroll-cta { display: none; }
+      #deck.desktop-mode .card .scroll-zone {
+        overflow: visible;
+        max-height: none;
+      }
+      /* Home card spans full width */
+      #deck.desktop-mode .card[data-t="home"] {
+        grid-column: 1 / -1;
+      }
+      /* End card spans full width */
+      #deck.desktop-mode .card[data-t="end"] {
+        grid-column: 1 / -1;
+      }
+      #deck.desktop-mode .card .title-zone h1 {
+        font-size: 1.35rem;
+      }
+      #deck.desktop-mode .card .details p {
+        font-size: .85rem;
+      }
+      #deck.desktop-mode .card .hook {
+        font-size: 1rem;
+      }
+      /* Home articles in 2 columns on desktop */
+      #deck.desktop-mode .home-articles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      /* End card smaller on desktop */
+      #deck.desktop-mode .end-content {
+        padding: 40px 20px;
+      }
+    }
+    @media (min-width: 1200px) {
+      #deck {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1280px;
+      }
+      #deck.desktop-mode .home-articles {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="hint">
+    <div class="logo"><b>AI</b> Insight Daily</div>
+    <div class="arrows"><span class="arr">‹</span><span class="arr">›</span></div>
+  </div>
+
+  <div id="deck"></div>
 
   <script>
   const DATA = 
