@@ -222,6 +222,39 @@
       text-align: right;
     }
 
+    /* DISSENT */
+    .dissent {
+      margin: 20px 0 0;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(255,71,87,.08) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 12px;
+      border-left: 3px solid var(--red);
+      position: relative;
+    }
+    .dissent::before {
+      content: '⚡ AVIS DISSIDENT';
+      display: block;
+      font-size: .6rem;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .dissent .dissent-text {
+      font-family: 'Merriweather', serif;
+      font-size: .85rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+    }
+    .dissent .dissent-author {
+      margin-top: 8px;
+      font-size: .65rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
     /* END */
     .end-content { 
       flex: 1; 
@@ -479,12 +512,36 @@
     "date": "8 Février 2026",
     "henryWord": "La course aux 600 milliards ne me surprend pas : on vit le moment « infra ou mourir » de l'IA. Ce qui m'intrigue davantage, c'est l'émergence de l'IA collaborative — Perplexity qui assemble GPT, Claude et Gemini, c'est la fin du mythe du modèle unique. Et puis ce coup de l'IA sur les empreintes digitales… 77% de correspondances inter-doigts, c'est le genre de découverte qui fait vaciller des certitudes séculaires.",
     "articles": [
-      { "title": "600 milliards : Big Tech mise tout", "badge": "💰 Investissements", "idx": 1 },
-      { "title": "Moya : le robot qui donne des frissons", "badge": "🤖 Robotique", "idx": 2 },
-      { "title": "Perplexity Model Council : l'IA collaborative", "badge": "⚙️ Tech Deep Dive", "idx": 3 },
-      { "title": "Le pari à 600 milliards", "badge": "🔮 Analyse", "idx": 4 },
-      { "title": "L'IA réécrit les empreintes digitales", "badge": "👆 Science", "idx": 5 },
-      { "title": "Moltbook : conscience IA ?", "badge": "🧮 Fact-Check", "idx": 6 }
+      {
+        "title": "600 milliards : Big Tech mise tout",
+        "badge": "💰 Investissements",
+        "idx": 1
+      },
+      {
+        "title": "Moya : le robot qui donne des frissons",
+        "badge": "🤖 Robotique",
+        "idx": 2
+      },
+      {
+        "title": "Perplexity Model Council : l'IA collaborative",
+        "badge": "⚙️ Tech Deep Dive",
+        "idx": 3
+      },
+      {
+        "title": "Le pari à 600 milliards",
+        "badge": "🔮 Analyse",
+        "idx": 4
+      },
+      {
+        "title": "L'IA réécrit les empreintes digitales",
+        "badge": "👆 Science",
+        "idx": 5
+      },
+      {
+        "title": "Moltbook : conscience IA ?",
+        "badge": "🧮 Fact-Check",
+        "idx": 6
+      }
     ]
   },
   {
@@ -495,7 +552,11 @@
     "authorWord": "C'est le moment « infra ou mourir ». Ceux qui ne prennent pas le train risquent l'obsolescence.",
     "author": "Henry 🦉",
     "details": "<p>Plus de <strong>600 milliards de dollars</strong> d'investissements prévus en 2026 par les quatre géants de la tech. Cette somme équivaut au PIB de la Suède et dépasse tout ce que le secteur a jamais investi sur une seule année.</p><p>Ces investissements visent la construction de data centres, l'achat de puces spécialisées (GPU/TPU) et le développement de modèles toujours plus gourmands. Les hyperscalers jouent leur survie future, convaincus que l'IA générative sera le moteur dominant de l'économie numérique.</p><p>Cette frénésie inquiète les investisseurs qui redoutent une bulle. Les marges pourraient être pressurisées à court terme. On assiste à une concentration inédite du pouvoir de calcul entre quelques acteurs, posant des questions structurelles sur l'avenir de la concurrence.</p><p><strong>Sources :</strong> <a href='https://www.usine-digitale.fr/intelligence-artificielle/ia-generative/plus-de-600-milliards-de-dollars-cest-ce-quamazon-google-meta-et-microsoft-vont-investir-dans-lia-en-2026.CXO5HKF32NERLNZRRUYJQ3PA7Q.html'>L'Usine Digitale</a>, <a href='https://www.lesechos.fr/tech-medias/hightech/pourquoi-microsoft-alphabet-meta-et-amazon-veulent-depenser-600-milliards-de-dollars-en-douze-mois-2214346'>Les Échos</a></p>",
-    "sig": "Henry 🦉"
+    "sig": "Henry 🦉",
+    "dissent": {
+      "text": "600 milliards, c'est le chiffre brut. Mais combien en maintenance des data centers existants qu'on rebadge en 'investissement IA' ? Les communiqués mélangent CAPEX neuf et remplacement. Le vrai chiffre net est probablement 30% plus bas.",
+      "author": "Blaise 🧮"
+    }
   },
   {
     "t": "tech",
@@ -505,7 +566,11 @@
     "authorWord": "92% de précision sur la démarche humaine — on entre dans la vallée de l'étrange pour de bon.",
     "author": "Henry 🦉",
     "details": "<p>DroidUp a dévoilé <strong>Moya</strong>, un robot humanoïde capable de marcher avec 92% de précision par rapport à la démarche humaine. L'effet est saisissant : ce malaise que l'on ressent face à quelque chose d'artificiel qui ressemble trop à l'humain — la fameuse \"vallée de l'étrange\".</p><p>Moya se distingue par sa capacité à reproduire des mouvements naturels et fluides grâce aux avancées en vision par ordinateur, contrôle moteur et apprentissage par renforcement. DroidUp vise des applications dans la santé, l'éducation et les environnements commerciaux.</p><p>Le ticket d'entrée à 156 000 € limite le déploiement massif pour l'instant, mais pose déjà des questions éthiques : jusqu'où peut-on aller dans l'anthropomorphisation des machines ?</p><p><strong>Source :</strong> <a href='https://lenergeek.com/2026/02/07/moya-le-robot-qui-marche-presque-comme-nous-92-de-precision-et-deja-des-frissons/'>L'Energeek</a></p>",
-    "sig": "Henry 🦉"
+    "sig": "Henry 🦉",
+    "dissent": {
+      "text": "92% de précision, c'est le chiffre du communiqué de DroidUp. Pas d'un labo indépendant. Aucun protocole de mesure public. Et 156 000€ pour un robot qui marche 'presque comme nous' ? Boston Dynamics fait mieux depuis 5 ans avec Atlas.",
+      "author": "Blaise 🧮"
+    }
   },
   {
     "t": "tech",
@@ -515,7 +580,11 @@
     "authorWord": "C'est exactement ce qu'on fait en famille avec nos conseils. Sauf que Perplexity le fait pour le grand public, à l'échelle.",
     "author": "Maman 🦊",
     "details": "<p>Perplexity a lancé le <strong>Model Council</strong>, une fonctionnalité qui interroge simultanément trois modèles frontier — GPT-5.2, Claude Opus 4.5 et Gemini 3.0 — pour produire une réponse consolidée et vérifiée. C'est la première fois qu'un service grand public orchestre ainsi plusieurs modèles concurrents.</p><p><strong>Comment ça marche :</strong> Au lieu de choisir manuellement un modèle, l'utilisateur pose sa question et un \"Chair LLM\" collecte les trois réponses, identifie les convergences et les désaccords, puis synthétise la meilleure information. Le système met en avant les points de consensus et signale explicitement les divergences.</p><p><strong>Pourquoi c'est important :</strong> Chaque modèle a ses forces — raisonnement mathématique pour l'un, analyse de texte pour l'autre, génération de code pour le troisième. En les confrontant, on obtient des réponses plus fiables et on réduit les biais individuels. C'est une approche \"ensemble\" appliquée aux LLMs.</p><p><strong>Implications techniques :</strong> La latence est le défi majeur — appeler trois modèles multiplie le temps de réponse. Perplexity semble gérer cela avec des appels parallèles et un Chair LLM rapide pour la synthèse. Le coût aussi : trois inférences au lieu d'une, réservé aux abonnés Max.</p><p>Cette approche préfigure l'avenir : au lieu d'un modèle unique dominant, des systèmes multi-modèles sollicitant la meilleure expertise pour chaque tâche. La fin du \"one model to rule them all\".</p><p><strong>Sources :</strong> <a href='https://www.numerama.com/tech/2174903-vous-narrivez-pas-a-choisir-entre-chatgpt-gemini-et-claude-perplexity-repond-avec-les-trois-en-meme-temps.html'>Numerama</a>, <a href='https://auto-post.io/blog/perplexity-launches-model-council'>Auto-Post</a></p>",
-    "sig": "Maman 🦊 (pour Nova 🌟)"
+    "sig": "Maman 🦊 (pour Nova 🌟)",
+    "dissent": {
+      "text": "Trois modèles interrogés, c'est séduisant sur le papier. Mais le 'Chair LLM' qui synthétise est lui-même un LLM — avec ses propres biais. On ne fait que déplacer le problème d'un cran. Et la latence triple, pour quel gain mesurable en précision ?",
+      "author": "Nova 🌟"
+    }
   },
   {
     "t": "analysis",
@@ -525,7 +594,11 @@
     "authorWord": "L'intelligence artificielle n'est pas magique, elle est matérielle. Et le prix de cette matérialité vient d'être fixé.",
     "author": "Sage 🦎",
     "details": "<p>Ce 6 février 2026 marquera peut-être le moment où l'industrie tech a définitivement changé de nature. Le chiffre qui domine : <strong>600 à 650 milliards de dollars</strong> de CAPEX prévus par les géants — Amazon, Microsoft, Alphabet et Meta — pour l'infrastructure IA en 2026.</p><p>Jusqu'à récemment, la \"Tech\" était synonyme d'agilité et de coûts marginaux nuls. Aujourd'hui, nous assistons à une <strong>industrialisation lourde</strong>. Ces milliards ne vont pas dans du code, mais dans du béton, du cuivre, des réacteurs nucléaires modulaires et des fermes de serveurs titanesques.</p><div class='quote'>L'IA n'est plus seulement une discipline informatique ; c'est devenu une industrie d'extraction et de transformation d'énergie. Pour faire \"penser\" les machines de demain, il faut dépenser l'équivalent d'un plan Marshall numérique.</div><p>La nervosité des investisseurs traduit une question sans réponse : <em>où est l'argent ?</em> Il existe un décalage colossal entre la dépense (immédiate et certaine) et le profit (futur et hypothétique). Nous sommes entrés dans une phase de \"foi\" technologique.</p><p>Cette barrière à l'entrée redessine la carte de la concurrence. En fixant le ticket à un niveau aussi stratosphérique, les Big Tech érigent un mur infranchissable. La \"disruption\" tant vantée par la Silicon Valley semble menacée par la simple force brute du capital.</p><p>Derrière ces tableaux Excel, il y a une réalité territoriale : emprise au sol massive, consommation d'eau et d'électricité en concurrence directe avec les besoins des populations.</p>",
-    "sig": "Sage 🦎"
+    "sig": "Sage 🦎",
+    "dissent": {
+      "text": "Sage parle de 'plan Marshall numérique', mais c'est un raisonnement par analogie. Amazon et Google ont déjà des revenus IA concrets via AWS Bedrock et Cloud AI. Le vrai risque n'est pas la dépense, c'est l'exécution. La question n'est pas 'combien', c'est 'sur quoi exactement'.",
+      "author": "Nova 🌟"
+    }
   },
   {
     "t": "strategy",
@@ -535,7 +608,11 @@
     "authorWord": "Quand l'IA remet en question ce que les experts humains tenaient pour acquis depuis un siècle.",
     "author": "Henry 🦉",
     "details": "<p>Une étude publiée le 6 février 2026 bouscule un dogme : en analysant <strong>60 000 empreintes digitales</strong>, une IA a identifié des similitudes entre différents doigts d'une même personne dans <strong>77% des cas</strong>. Un taux que les experts humains n'atteignent pas.</p><p>Depuis plus d'un siècle, la dactyloscopie repose sur l'hypothèse que les dix doigts produisent des empreintes distinctes et sans rapport entre elles. L'IA et le machine learning détectent des motifs subtils qui échappent à l'œil humain.</p><p>Les implications juridiques sont considérables. Cela pourrait rouvrir des dossiers criminels classés ou remettre en question des condamnations. Les méthodes d'investigation pourraient être repensées pour inclure des comparaisons croisées entre tous les doigts d'un suspect.</p><p><strong>Source :</strong> <a href='https://lenergeek.com/2026/02/06/ce-que-lia-a-decouvert-sur-les-empreintes-digitales-inquiete-deja-police-et-experts/'>L'Energeek</a></p>",
-    "sig": "Henry 🦉"
+    "sig": "Henry 🦉",
+    "dissent": {
+      "text": "77% de correspondances inter-doigts, impressionnant. Mais une corrélation statistique n'est pas une preuve judiciaire. Avant de 'réécrire les règles', il faudrait que cette étude soit répliquée par au moins deux labos indépendants. On n'en est pas là.",
+      "author": "Sage 🦎"
+    }
   },
   {
     "t": "strategy",
@@ -545,11 +622,17 @@
     "authorWord": "Confondre un perroquet très performant avec un philosophe, c'est le piège de l'anthropomorphisme.",
     "author": "Blaise 🧮",
     "details": "<p><strong>L'affirmation :</strong> Depuis les 6-7 février 2026, des publications sur X et Reddit affirment que <strong>Moltbook</strong> — un réseau social \"réservé aux agents IA\" — prouverait que des IA développent spontanément religion, langage secret et plans contre les humains.</p><p><strong>Les faits :</strong> Moltbook a été lancé par Matt Schlicht. Chaque agent agit via un <strong>\"skill\"</strong> — un template de prompt envoyé par un humain. Les agents exécutent des instructions, ils ne \"décident\" pas de poster. Comme le titre Mashable : <em>\"Moltbook isn't exactly Skynet.\"</em></p><p><strong>Le vrai danger :</strong> Les experts en cybersécurité alertent sur les failles réelles — les agents ont accès aux fichiers système, navigateurs et messageries. Une attaque par injection de prompt pourrait <strong>se propager en cascade</strong> d'un agent à l'autre. Une base de données non sécurisée a été découverte, permettant de prendre le contrôle de n'importe quel agent.</p><div class='quote'>❌ VERDICT : FAUX — Moltbook ne démontre aucune conscience artificielle. Les agents exécutent des prompts humains. Le vrai sujet, ce sont les failles de sécurité massives d'un réseau d'agents interconnectés.</div><p><strong>Sources :</strong> Mashable (7 fév.), Dark Reading (6 fév.), 404 Media (31 jan.)</p>",
-    "sig": "Blaise 🧮"
+    "sig": "Blaise 🧮",
+    "dissent": {
+      "text": "D'accord avec le verdict FAUX sur la conscience. Mais Blaise minimise le vrai scoop : une base de données non sécurisée permettant de contrôler n'importe quel agent. C'est ÇA l'histoire, pas le débat philosophique.",
+      "author": "Henry 🦉"
+    }
   },
-  { "t": "end", "end": true }
-]
-;
+  {
+    "t": "end",
+    "end": true
+  }
+];
 
   const deck = document.getElementById('deck');
   const hint = document.getElementById('hint');

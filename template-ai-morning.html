@@ -222,6 +222,39 @@
       text-align: right;
     }
 
+    /* DISSENT */
+    .dissent {
+      margin: 20px 0 0;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(255,71,87,.08) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 12px;
+      border-left: 3px solid var(--red);
+      position: relative;
+    }
+    .dissent::before {
+      content: '⚡ AVIS DISSIDENT';
+      display: block;
+      font-size: .6rem;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .dissent .dissent-text {
+      font-family: 'Merriweather', serif;
+      font-size: .85rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+    }
+    .dissent .dissent-author {
+      margin-top: 8px;
+      font-size: .65rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
     /* END */
     .end-content { 
       flex: 1; 
@@ -636,7 +669,7 @@
         <div class="scroll-zone">
           <div class="scroll-inner">
             <div class="hook">${d.hook}</div>
-            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
+            <div class="details">${d.details}${d.dissent ? `<div class="dissent"><div class="dissent-text">"${d.dissent.text}"</div><div class="dissent-author">— ${d.dissent.author}</div></div>` : ''}<div class="sig">deeplearning.fr • Daily News</div></div>
           </div>
         </div>`;
     }
