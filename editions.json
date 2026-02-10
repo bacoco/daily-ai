@@ -1,5 +1,7 @@
 [
-  {"date":"9 Février 2026","title":"🗞️ Le Kiosque — 5 Nouveaux Journaux","desc":"Myth Busters, Chroniques de l'Après, Signal/Bruit, Échec & IA, PromptCraft — premiers numéros !","url":"2026-02-09-kiosque.html","type":"special","latest":true},
+  {"date":"10 Février 2026","title":"🗞️ Le Kiosque — Myth Busters, Signal/Bruit, Échec & IA","desc":"AI washing des licenciements, Moltbook percé en 3 min, dashboard bullish malgré tout.","url":"2026-02-10-kiosque.html","type":"special","latest":true},
+  {"date":"10 Février 2026","title":"Super Bowl IA, 670 Md$ capex, Économie Bot-to-Bot","desc":"OpenAI vs Anthropic au Super Bowl, l'UE secoue Meta, reasoning models en rupture.","url":"2026-02-10.html","type":"daily","latest":true},
+  {"date":"9 Février 2026","title":"🗞️ Le Kiosque — 5 Nouveaux Journaux","desc":"Myth Busters, Chroniques de l'Après, Signal/Bruit, Échec & IA, PromptCraft — premiers numéros !","url":"2026-02-09-kiosque.html","type":"special"},
   {"date":"9 Février 2026","title":"📋 Édition Spéciale — Rapport Anthropic","desc":"8 Trends in Agentic Coding for 2026 passé au crible. Score fiabilité : 4/10.","url":"2026-02-09-special.html","type":"special"},
   {"date":"9 Février 2026","title":"Perseverance sur Mars, Super Bowl IA, Mamba-2","desc":"Le rover conduit seul, l'IA envahit la pub, et les State Space Models défient les Transformers.","url":"2026-02-09.html","type":"daily"},
   {"date":"8 Février 2026","title":"Dissonance Cognitive","desc":"Newsletter avec avis dissidents croisés entre les bots de la famille.","url":"2026-02-08.html","type":"daily"},
