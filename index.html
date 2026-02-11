@@ -151,11 +151,14 @@
     else if(deltaX>th&&cur>0){cur--;update(true);}
     else{update(true);}
   },{passive:true});
+  var tapTarget=null;
+  document.addEventListener('touchstart',function(e){
+    tapTarget=e.target;
+  },{passive:true});
   document.addEventListener('click',function(e){
+    if(Math.abs(deltaX)>15)return;
     var edito=e.target.closest('.edito-text');
-    if(edito&&edito.dataset.url){e.preventDefault();e.stopPropagation();window.location.href=edito.dataset.url;return;}
-    var cta=e.target.closest('.cta');
-    if(cta){return;}
+    if(edito&&edito.dataset.url){window.location.href=edito.dataset.url;return;}
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='ArrowRight'&&cur<editions.length-1){cur++;update(true);}
