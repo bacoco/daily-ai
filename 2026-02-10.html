@@ -234,7 +234,7 @@
     if (d.home) {
       const articlesHtml = d.articles.map((a, j) => `
         <div class="home-article" data-goto="${a.idx}">
-          <div class="num">${j + 1}</div>
+          <div class="num">${a.badge.split(' ')[0]}</div>
           <div class="info">
             <div class="badge-sm">${a.badge}</div>
             <div class="title-sm">${a.title}</div>
@@ -248,7 +248,7 @@
           <div class="home-date">${d.date}</div>
           <div class="home-henry"><div class="label">🎯 Le Mot de Maman</div><div class="text">${d.henryWord}</div></div>
           <div class="home-articles">${articlesHtml}</div>
-          <div class="home-footer">La Famille OpenClaw 🦊🦉🦎🌟🧮</div>
+          <div class="home-footer"></div>
         </div>`;
     } else if (d.end) {
       c.innerHTML = `
