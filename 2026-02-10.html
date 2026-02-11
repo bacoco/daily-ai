@@ -88,7 +88,7 @@
     .card.scrolled .title-zone { padding: 6px 22px 4px; }
     .card.scrolled .title-zone h1 { font-size: .85rem; line-height: 1.15; }
     .card.scrolled .scroll-cta { display: none; }
-    .card.scrolled .author-word { max-height:0; overflow:hidden; margin:0; padding:0; opacity:0; transition:all .2s; }
+    
     .card.scrolled .hdr { padding: 6px 18px 2px; } .card.scrolled .badge { font-size:.5rem; padding:3px 8px; }
     .card.scrolled .home-henry { display: none; }
     .card.scrolled .home-logo { display: none; }
@@ -275,9 +275,9 @@
       c.innerHTML = `
         <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
         <div class="title-zone"><h1>${d.title}</h1></div>
-        ${authorWordHtml}
         <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
         <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
           <div class="hook">${d.hook}</div>
           <div class="details">${d.details}<div class="sig">AI Insight Daily</div></div>
         </div></div>`;
