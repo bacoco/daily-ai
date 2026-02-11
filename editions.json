@@ -5,13 +5,15 @@
     "desc": "2 000 Md$ évaporés en SaaS. Morgan Stanley alerte sur le crédit. Un DA sanctionné pour hallucinations IA. L'open source local explose.",
     "url": "2026-02-11.html",
     "type": "daily",
-    "latest": true
+    "latest": true,
+    "edito": "2 000 milliards de dollars évaporés en bourse sur le SaaS. Morgan Stanley alerte sur le crédit. Pendant ce temps, un procureur du Wisconsin se fait sanctionner pour avoir laissé l'IA écrire ses requêtes. L'IA ne détruit pas le monde — elle détruit la confiance."
   },
   {
     "date": "10 Février 2026",
     "title": "Super Bowl IA, 670 Md$ capex, Économie Bot-to-Bot",
     "desc": "OpenAI vs Anthropic au Super Bowl, l'UE secoue Meta, reasoning models en rupture.",
     "url": "2026-02-10.html",
-    "type": "daily"
+    "type": "daily",
+    "edito": "OpenAI et Anthropic au Super Bowl, 670 milliards de capex IA, l'Europe qui secoue Meta. Pendant ce temps, l'économie Bot-to-Bot avance en silence — et c'est peut-être ça, la vraie révolution."
   }
 ]

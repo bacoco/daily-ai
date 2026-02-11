@@ -6,7 +6,7 @@
   <title>AI Insight Daily</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#000; --card-bg:#0a0a0f; --text:#fff; --muted:#6a6a7a; --blue:#3b82f6; --green:#10b981; --purple:#a78bfa; --gold:#f59e0b; --red:#ff4757; --radius:24px; }
+    :root { --bg:#000; --card-bg:#0a0a0f; --text:#fff; --muted:#6a6a7a; --blue:#3b82f6; --green:#10b981; --purple:#a78bfa; --gold:#f59e0b; --radius:24px; }
     * { box-sizing:border-box; margin:0; padding:0; }
     html, body { height:100%; width:100%; overflow:hidden; background:var(--bg); font-family:'Inter',system-ui,sans-serif; color:var(--text); -webkit-tap-highlight-color:transparent; }
     body::before { content:''; position:fixed; inset:0; pointer-events:none;
@@ -34,35 +34,31 @@
     .card.latest { --glow:var(--green); }
     .card.special { --glow:var(--gold); }
 
-    /* Header */
-    .hdr { flex-shrink:0; padding:16px 20px 8px; display:flex; justify-content:space-between; align-items:center; z-index:2; }
-    .tag { padding:4px 10px; border-radius:6px; font-size:.55rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-    .tag.new { background:var(--green); color:#000; }
-    .tag.daily { background:rgba(59,130,246,.2); color:var(--blue); }
+    .hdr { flex-shrink:0; padding:16px 20px 0; display:flex; justify-content:space-between; align-items:center; z-index:2; }
     .dots { display:flex; gap:5px; }
     .dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.25); }
     .dot.on { background:#fff; box-shadow:0 0 6px rgba(255,255,255,.5); }
+    .tag { padding:4px 10px; border-radius:6px; font-size:.55rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+    .tag.new { background:var(--green); color:#000; }
+    .tag.daily { background:rgba(59,130,246,.2); color:var(--blue); }
 
-    /* Big date */
-    .big-date { padding:10px 24px 0; z-index:2; }
-    .big-date .day { font-size:4.5rem; font-weight:900; line-height:1; letter-spacing:-0.04em;
-      background:linear-gradient(135deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .big-date .monthyear { font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:2px; margin-top:2px; }
-
-    /* Content */
-    .inner { flex:1; padding:20px 24px 24px; display:flex; flex-direction:column; z-index:2; overflow-y:auto; }
-    .ed-title { font-size:1.3rem; font-weight:800; line-height:1.25; letter-spacing:-0.01em; margin-bottom:14px; }
-    .ed-teasers { flex:1; }
-    .teaser { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06); }
-    .teaser:last-child { border-bottom:none; }
-    .teaser .icon { font-size:.95rem; flex-shrink:0; margin-top:2px; }
-    .teaser .txt { font-size:.82rem; line-height:1.45; color:rgba(255,255,255,.7); }
-    .teaser .txt strong { color:var(--text); font-weight:600; }
-    .ed-cta { display:block; text-align:center; padding:15px; border-radius:14px; margin-top:16px;
+    .body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; z-index:2; text-align:center; }
+    .logo { margin-bottom:20px; }
+    .logo span { font-size:1.8rem; font-weight:900; letter-spacing:-0.02em; }
+    .logo b { background:linear-gradient(135deg,var(--blue),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .big-date { margin-bottom:24px; }
+    .big-date .day { font-size:5rem; font-weight:900; line-height:1; letter-spacing:-0.04em; }
+    .big-date .monthyear { font-size:.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:2px; margin-top:4px; }
+    .edito { flex:1; display:flex; align-items:center; }
+    .edito-text { font-family:'Merriweather',Georgia,serif; font-size:.95rem; line-height:1.8; color:rgba(255,255,255,.8); font-weight:300; font-style:italic;
+      padding:20px; background:linear-gradient(135deg,rgba(245,158,11,.06) 0%,rgba(255,255,255,.02) 100%);
+      border-radius:14px; border-left:3px solid var(--gold); text-align:left; max-width:380px; }
+    .edito-label { font-size:.6rem; color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; font-weight:700; font-style:normal; font-family:'Inter',sans-serif; margin-bottom:8px; }
+    .cta { display:block; margin-top:20px; padding:15px 40px; border-radius:14px;
       background:linear-gradient(135deg,var(--blue),var(--purple)); color:#fff;
-      font-size:.95rem; font-weight:700; text-decoration:none;
-      box-shadow:0 0 25px rgba(59,130,246,.3); transition:transform .15s; flex-shrink:0; }
-    .ed-cta:active { transform:scale(.95); }
+      font-size:1rem; font-weight:700; text-decoration:none;
+      box-shadow:0 0 30px rgba(59,130,246,.3); transition:transform .15s; flex-shrink:0; }
+    .cta:active { transform:scale(.95); }
 
     .swipe-hint { position:fixed; bottom:22px; left:50%; transform:translateX(-50%); z-index:20;
       font-size:.6rem; color:var(--muted); letter-spacing:1px;
@@ -74,7 +70,7 @@
       #deck { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:960px; margin:40px auto; padding:0 20px; }
       .card { position:relative!important; top:auto!important; left:auto!important;
         transform:none!important; opacity:1!important; pointer-events:auto!important;
-        width:100%!important; max-width:none!important; height:auto!important; max-height:none!important; min-height:420px; }
+        width:100%!important; max-width:none!important; height:auto!important; max-height:none!important; min-height:500px; }
       .card.behind,.card.prev,.card.far { opacity:1!important; transform:none!important; }
       .swipe-hint { display:none; }
     }
@@ -85,25 +81,8 @@
   <div class="swipe-hint">← swipez entre les éditions →</div>
   <script>
   var editions=[], cur=0, startX=0, deltaX=0, dragging=false, startTime=0;
-
   function dots(a,t){var s='';for(var i=0;i<t;i++)s+='<span class="dot'+(i===a?' on':'')+'"></span>';return s;}
-
-  function parseDate(str){
-    var m=str.match(/(\d+)\s+(\S+)\s+(\d+)/);
-    return m?{day:m[1],month:m[2],year:m[3]}:{day:'',month:'',year:''};
-  }
-
-  function teasers(desc){
-    var parts=desc.split(/[.,;]/).map(function(s){return s.trim();}).filter(function(s){return s.length>12;}).slice(0,4);
-    var icons=['🔴','🔮','🧮','💥'];
-    return parts.map(function(p,i){
-      // Bold first few words
-      var words=p.split(' ');
-      var bold=words.slice(0,3).join(' ');
-      var rest=words.slice(3).join(' ');
-      return '<div class="teaser"><span class="icon">'+icons[i%4]+'</span><span class="txt"><strong>'+bold+'</strong> '+rest+'</span></div>';
-    }).join('');
-  }
+  function parseDate(str){var m=str.match(/(\d+)\s+(\S+)\s+(\d+)/);return m?{day:m[1],month:m[2],year:m[3]}:{day:'',month:'',year:''};}
 
   function build(){
     var deck=document.getElementById('deck');
@@ -115,13 +94,14 @@
       c.dataset.i=i;
       var tagClass=ed.latest?'new':'daily';
       var tagText=ed.latest?'✨ NOUVEAU':'📰 ÉDITION';
+      var editoText=ed.edito||ed.desc;
       c.innerHTML=
         '<div class="hdr"><span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div></div>'+
-        '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
-        '<div class="inner">'+
-          '<div class="ed-title">'+ed.title+'</div>'+
-          '<div class="ed-teasers">'+teasers(ed.desc)+'</div>'+
-          '<a class="ed-cta" href="'+ed.url+'">Lire →</a>'+
+        '<div class="body">'+
+          '<div class="logo"><span><b>AI</b> Insight Daily</span></div>'+
+          '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
+          '<div class="edito"><div class="edito-text"><div class="edito-label">🦊 Le Mot de Maman</div>'+editoText+'</div></div>'+
+          '<a class="cta" href="'+ed.url+'">Lire l\'édition →</a>'+
         '</div>';
       deck.appendChild(c);
     });
