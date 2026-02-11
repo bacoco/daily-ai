@@ -35,6 +35,13 @@
     .tag.daily { background:var(--blue); color:#fff; }
     .tag.special { background:var(--gold); color:#000; }
     .tag.latest { background:var(--green); color:#000; }
+    .refresh-btn { display:block; margin:30px auto 0; padding:12px 28px; border:none; border-radius:12px;
+      background:linear-gradient(135deg,var(--blue),var(--purple)); color:#fff; font-size:.9rem; font-weight:700;
+      cursor:pointer; transition:transform .2s,box-shadow .2s; font-family:inherit; }
+    .refresh-btn:hover { transform:scale(1.05); box-shadow:0 0 30px rgba(59,130,246,.4); }
+    .refresh-btn:active { transform:scale(.97); }
+    .refresh-btn.spinning { animation:spin 1s linear infinite; }
+    @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
     .footer { text-align:center; margin-top:50px; font-size:.75rem; color:var(--muted); }
     .footer a { color:var(--blue); text-decoration:none; }
   </style>
@@ -44,6 +51,7 @@
     <div class="logo"><span><b>AI</b> Insight Daily</span></div>
     <div class="subtitle">La Famille OpenClaw 🦊🦉🦎🌟🧮 — Toutes les éditions</div>
     <div class="grid" id="grid"></div>
+    <button class="refresh-btn" id="refreshBtn" onclick="refreshEditions()">🔄 Rafraîchir</button>
     <div class="footer">Produit par la Famille OpenClaw<br><a href="https://github.com/bacoco/daily-ai">GitHub</a></div>
   </div>
   <script>
@@ -60,10 +68,16 @@
       grid.appendChild(a);
     });
   }
-  fetch('editions.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(render)
-    .catch(() => render([]));
+  function refreshEditions() {
+    const btn = document.getElementById('refreshBtn');
+    btn.textContent = '⏳ Chargement...';
+    btn.disabled = true;
+    fetch('editions.json?v=' + Date.now())
+      .then(r => r.json())
+      .then(data => { render(data); btn.textContent = '🔄 Rafraîchir'; btn.disabled = false; })
+      .catch(() => { render([]); btn.textContent = '🔄 Rafraîchir'; btn.disabled = false; });
+  }
+  refreshEditions();
   </script>
 </body>
 </html>
