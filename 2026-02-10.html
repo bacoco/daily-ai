@@ -58,8 +58,8 @@
       will-change: transform, opacity;
     }
     .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
-    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-110%); }
-    .card.next { opacity: 0; transform: translate(-50%, -50%) translateX(110%); }
+    .card.prev { opacity: .5; transform: translate(-50%, -50%) scale(.92); z-index: 5; }
+    .card.next { opacity: .5; transform: translate(-50%, -50%) scale(.92); z-index: 5; }
     .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
     .card::before {
       content: ''; position: absolute; inset: -1px;
@@ -290,7 +290,7 @@
   const dateKey='daily-10-Février-2026';
   if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
   document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startTime=Date.now();deltaX=0;dragging=true;cards[cur].classList.remove('anim');},{passive:true});
-  document.addEventListener('touchmove',e=>{if(!dragging)return;deltaX=e.touches[0].clientX-startX;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;deltaX=e.touches[0].clientX-startX;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.92+p*0.08;var op=0.5+p*0.5;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
   document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;const card=cards[cur];card.classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX<-threshold&&cur===total-1){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else if(deltaX>threshold&&cur===0){window.location.href='https://bacoco.github.io/daily-ai/';}else{card.style.transform='';}},{passive:true});
   document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
   document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
