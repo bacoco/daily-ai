@@ -83,7 +83,11 @@
     .dots { display: flex; gap: 5px; }
     .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
     .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
-    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .title-zone h1 { transition: font-size .25s, line-height .25s; }
+    .card.scrolled .title-zone { padding: 8px 22px 6px; }
+    .card.scrolled .title-zone h1 { font-size: 1rem; line-height: 1.2; }
+    .card.scrolled .scroll-cta { display: none; }
     .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
     .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; }
     .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
@@ -313,6 +317,15 @@
   function go(i){if(i>=0&&i<total){cur=i;update();}}
   const dateKey='daily-11-Février-2026-v2';
   if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  // Compact title on scroll
+  document.querySelectorAll('.scroll-zone').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 30);
+    }, {passive:true});
+  });
   document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startTime=Date.now();deltaX=0;dragging=true;cards[cur].classList.remove('anim');},{passive:true});
   document.addEventListener('touchmove',e=>{if(!dragging)return;deltaX=e.touches[0].clientX-startX;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.92+p*0.08;var op=0.5+p*0.5;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
   document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur===total-1){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
