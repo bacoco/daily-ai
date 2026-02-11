@@ -88,8 +88,8 @@
     .card.scrolled .title-zone { padding: 6px 22px 4px; }
     .card.scrolled .title-zone h1 { font-size: .85rem; line-height: 1.15; }
     .card.scrolled .scroll-cta { display: none; }
-    .card.scrolled .author-word { display: none; }
-    .card.scrolled .hdr { padding: 8px 18px 4px; }
+    .card.scrolled .author-word { max-height:0; overflow:hidden; margin:0; padding:0; opacity:0; transition:all .2s; }
+    .card.scrolled .hdr { padding: 6px 18px 2px; } .card.scrolled .badge { font-size:.5rem; padding:3px 8px; }
     .card.scrolled .home-henry { display: none; }
     .card.scrolled .home-logo { display: none; }
     .card.scrolled .home-date { margin-bottom: 8px; font-size: .65rem; }
@@ -114,7 +114,7 @@
     .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
     .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
     .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
-    .author-word { margin: 0 20px 10px; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
     .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
     .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
     .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
@@ -327,7 +327,7 @@
     var card = sz.closest('.card');
     if(!card) return;
     sz.addEventListener('scroll', function(){
-      card.classList.toggle('scrolled', sz.scrollTop > 30);
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
     }, {passive:true});
   });
   document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startTime=Date.now();deltaX=0;dragging=true;cards[cur].classList.remove('anim');},{passive:true});
