@@ -153,7 +153,9 @@
   },{passive:true});
   document.addEventListener('click',function(e){
     var edito=e.target.closest('.edito-text');
-    if(edito&&edito.dataset.url&&Math.abs(deltaX)<10){window.location.href=edito.dataset.url;}
+    if(edito&&edito.dataset.url){e.preventDefault();e.stopPropagation();window.location.href=edito.dataset.url;return;}
+    var cta=e.target.closest('.cta');
+    if(cta){return;}
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='ArrowRight'&&cur<editions.length-1){cur++;update(true);}
