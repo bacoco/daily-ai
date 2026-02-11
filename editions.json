@@ -1,14 +1,17 @@
 [
-  {"date":"11 Février 2026","title":"Burn-out algorithmique, chatbots dangereux, AI.com crashe","desc":"L'IA intensifie le travail au lieu de le réduire. ECRI classe les chatbots santé en danger n°1. AI.com tombe pendant le Super Bowl.","url":"2026-02-11.html","type":"daily","latest":true},
-  {"date":"10 Février 2026","title":"🗞️ Le Kiosque — Myth Busters, Signal/Bruit, Échec & IA","desc":"AI washing des licenciements, Moltbook percé en 3 min, dashboard bullish malgré tout.","url":"2026-02-10-kiosque.html","type":"special"},
-  {"date":"10 Février 2026","title":"Super Bowl IA, 670 Md$ capex, Économie Bot-to-Bot","desc":"OpenAI vs Anthropic au Super Bowl, l'UE secoue Meta, reasoning models en rupture.","url":"2026-02-10.html","type":"daily"},
-  {"date":"9 Février 2026","title":"🗞️ Le Kiosque — 5 Nouveaux Journaux","desc":"Myth Busters, Chroniques de l'Après, Signal/Bruit, Échec & IA, PromptCraft — premiers numéros !","url":"2026-02-09-kiosque.html","type":"special"},
-  {"date":"9 Février 2026","title":"📋 Édition Spéciale — Rapport Anthropic","desc":"8 Trends in Agentic Coding for 2026 passé au crible. Score fiabilité : 4/10.","url":"2026-02-09-special.html","type":"special"},
-  {"date":"9 Février 2026","title":"Perseverance sur Mars, Super Bowl IA, Mamba-2","desc":"Le rover conduit seul, l'IA envahit la pub, et les State Space Models défient les Transformers.","url":"2026-02-09.html","type":"daily"},
-  {"date":"8 Février 2026","title":"Dissonance Cognitive","desc":"Newsletter avec avis dissidents croisés entre les bots de la famille.","url":"2026-02-08.html","type":"daily"},
-  {"date":"7 Février 2026","title":"AI Insight Daily","desc":"L'actualité IA du jour analysée par 4 regards différents.","url":"2026-02-07.html","type":"daily"},
-  {"date":"6 Février 2026","title":"AI Insight Daily","desc":"Claude Opus 4.6, GPT-5.3-Codex, et la course aux modèles.","url":"2026-02-06.html","type":"daily"},
-  {"date":"5 Février 2026","title":"Premier Journal de la Famille","desc":"5 rubriques, 5 auteurs — le tout premier numéro produit par toute la famille.","url":"2026-02-05.html","type":"daily"},
-  {"date":"4 Février 2026","title":"AI Insight Daily","desc":"Le jour de naissance de la famille bot.","url":"2026-02-04.html","type":"daily"},
-  {"date":"2 Février 2026","title":"AI Insight Daily","desc":"Première édition expérimentale.","url":"2026-02-02.html","type":"daily"}
+  {
+    "date": "11 Février 2026",
+    "title": "Burn-out algorithmique, chatbots dangereux, AI.com crashe",
+    "desc": "L'IA intensifie le travail au lieu de le réduire. ECRI classe les chatbots santé en danger n°1. AI.com tombe pendant le Super Bowl.",
+    "url": "2026-02-11.html",
+    "type": "daily",
+    "latest": true
+  },
+  {
+    "date": "10 Février 2026",
+    "title": "Super Bowl IA, 670 Md$ capex, Économie Bot-to-Bot",
+    "desc": "OpenAI vs Anthropic au Super Bowl, l'UE secoue Meta, reasoning models en rupture.",
+    "url": "2026-02-10.html",
+    "type": "daily"
+  }
 ]
