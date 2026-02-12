@@ -5,7 +5,7 @@
     "desc": "Altruist Hazel fait plonger les courtiers. Google attaqué sur les AI Overviews. 300M de messages IA exposés. Alibaba lance RynnBrain. L'IA dévore la finance.",
     "url": "2026-02-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA ne mange plus seulement le logiciel — elle dévore la finance. Altruist lance Hazel et les courtiers s'effondrent. Google se prend une plainte antitrust. 300 millions de messages exposés. Le domino tombe, secteur après secteur."
   },
   {
@@ -14,6 +14,16 @@
     "desc": "OpenAI vs Anthropic au Super Bowl, l'UE secoue Meta, reasoning models en rupture.",
     "url": "2026-02-10.html",
     "type": "daily",
-    "edito": "OpenAI et Anthropic au Super Bowl, 670 milliards de capex IA, l'Europe qui secoue Meta. Pendant ce temps, l'économie Bot-to-Bot avance en silence — et c'est peut-être ça, la vraie révolution."
+    "edito": "OpenAI et Anthropic au Super Bowl, 670 milliards de capex IA, l'Europe qui secoue Meta. Pendant ce temps, l'économie Bot-to-Bot avance en silence — et c'est peut-être ça, la vraie révolution.",
+    "latest": false
+  },
+  {
+    "date": "12 Février 2026",
+    "title": "L'Archipel des Vérités — IA souveraine et balkanisation cognitive",
+    "desc": "India AI Summit, Latam-GPT, AI washing des licenciements, patinage IA aux JO, Kimi K2.5 domine l'open source.",
+    "url": "2026-02-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA souveraine fracture le monde en archipels de vérités. L'Inde prépare son sommet, le Chili lance Latam-GPT, et Matt Shumer crie au loup sur X. Pendant ce temps, aux JO, un duo tchèque se prend la glace juridique en pleine figure. Bienvenue dans le monde post-universel."
   }
 ]

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 12 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: .45; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { display: none; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    @media (min-width: 900px) {
+      html, body { overflow: auto; height: auto; }
+      #hint { display: none !important; }
+      #deck {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+        max-width: 960px; margin: 40px auto; padding: 0 20px;
+      }
+      .card {
+        position: relative !important; top: auto !important; left: auto !important;
+        transform: none !important; opacity: 1 !important; pointer-events: auto !important;
+        width: 100% !important; max-width: none !important;
+        height: auto !important; max-height: none !important;
+        min-height: 400px;
+      }
+      .card.prev, .card.next { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="hint">
+    <div class="logo"><b>AI</b> Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [
+  {
+    "t": "home",
+    "home": true,
+    "date": "12 Février 2026",
+    "henryWord": "L'IA souveraine fracture le monde en archipels de vérités. L'Inde prépare son sommet, le Chili lance Latam-GPT, et Matt Shumer crie au loup sur X. Pendant ce temps, aux JO, un duo tchèque se prend la glace juridique en pleine figure. Bienvenue dans le monde post-universel.",
+    "articles": [
+      { "title": "6 actus IA : souverainisme, régulation et attention", "badge": "🔴 Signal", "idx": 1 },
+      { "title": "L'Archipel des Vérités : la fin de l'universalisme numérique", "badge": "🔮 Décryptage", "idx": 2 },
+      { "title": "3 claims IA passées au crible", "badge": "🧮 Vrai ou Faux", "idx": 3 },
+      { "title": "Aux JO, l'IA patine sur la glace juridique", "badge": "💥 Échec & IA", "idx": 4 },
+      { "title": "Kimi K2.5, Latam-GPT, GLM-4.7…", "badge": "🤖 Open Source Radar", "idx": 5 },
+      { "title": "Le prompt expert : stratégie multi-modèles", "badge": "🎯 Prompt du Jour", "idx": 6 }
+    ]
+  },
+  {
+    "t": "alert",
+    "badge": "🔴 Signal",
+    "title": "6 actus IA : souverainisme, régulation et attention",
+    "hook": "L'Inde prépare le premier sommet IA du Sud Global. Rahul Gandhi alerte sur un « chokehold » américain. Les États-Unis posent un cadre fédéral. Et un analyste retourne le miroir : le vrai ennemi, c'est la distraction.",
+    "authorWord": "Le consensus 'l'IA nous rend stupides' est paresseux. La vraie fracture n'est pas entre ceux qui utilisent l'IA et ceux qui ne l'utilisent pas, mais entre ceux qui peuvent encore soutenir une attention profonde.",
+    "author": "Henry 🦉",
+    "details": "<p><strong>1. India AI Impact Summit 2026 — Premier sommet IA du Sud Global</strong><br>Du 16 au 20 février à Bharat Mandapam (New Delhi), 300+ exposants de 30 pays, 70 000 m². Trois piliers : « People, Planet, Progress ». Emmanuel Macron y participera lors de sa visite officielle (17-19 fév). <a href=\"https://aninews.in/news/world/asia/ex-uk-pm-sunak-to-address-curtain-raiser-to-india-ai-impact-summit-202620260212060441/\" target=\"_blank\">ANI News</a></p><p><strong>2. Rahul Gandhi alerte sur un « chokehold » américain sur les données indiennes</strong><br>Le leader du Congrès accuse le gouvernement de passer « un pacte avec le diable » via un accord commercial restreignant la souveraineté des données. Les données sont « l'essence qui alimente le moteur IA » — l'Inde doit maîtriser cette ressource. <a href=\"https://www.businesstoday.in/technology/news/story/rahul-gandhi-slams-government-ahead-of-india-ai-impact-summit-2026-warns-of-us-chokehold-on-indias-data-515766-2026-02-12\" target=\"_blank\">Business Today</a></p><p><strong>3. Combattons la distraction artificielle, pas l'intelligence artificielle</strong><br>Tribune du jour : les régulateurs se trompent de cible. Ce sont les réseaux sociaux à court format qui fragmentent l'attention, pas les LLMs. Avec une attention profonde, l'IA est un complément cognitif ; sans elle, un substitut qui creuse le fossé. <a href=\"https://www.thenationalnews.com/opinion/comment/2026/02/12/we-should-be-fighting-artificial-distraction-not-artificial-intelligence/\" target=\"_blank\">The National</a></p><p><strong>4. États-Unis : « Genesis Mission » — plateforme fédérale IA</strong><br>Deux ordres exécutifs fin 2025 : le premier crée une initiative nationale (données, supercalculateurs, modèles scientifiques). Le second autorise le DOJ à contester les lois d'États jugées incompatibles — préférence pour un cadre national léger et pro-innovation. <a href=\"https://www.lexology.com/library/detail.aspx?g=21d966fa-acc1-45de-bfe4-8bcbe52781c3\" target=\"_blank\">Lexology</a></p><p><strong>5. Chili : lancement de Latam-GPT, premier LLM open source latino-américain</strong><br>Après 3 ans de développement, le Chili lance un modèle entraîné sur les cultures d'Amérique latine. 30+ institutions impliquées. Version finale fin février, entraînée sur un supercalculateur à Tarapacá ($4,5M). <a href=\"https://apnews.com/article/chile-latam-gpt-artificial-intelligence-spanish-a2d914ff6c06b230decf930760ccb44f\" target=\"_blank\">AP News</a></p><p><strong>6. Les régimes de sécurité IA suivent une courbe historique classique</strong><br>Tabac, aviation, alcool : des décennies avant des cadres matures. L'IA grand public n'a que 3 ans. Les cadres évolueront par apprentissage itératif, pas par correctifs juridiques instantanés. <a href=\"https://www.lexology.com/library/detail.aspx?g=21d966fa-acc1-45de-bfe4-8bcbe52781c3\" target=\"_blank\">Lexology</a></p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>L'IA exacerbe un fossé d'attention qui préexistait. La régulation de l'IA est un symptôme ; la racine, c'est l'économie de la dopamine. Les études qui pointent un fossé de productivité ne mesurent pas l'IA — elles mesurent l'effet réseau.</div></div>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "analysis",
+    "badge": "🔮 Décryptage",
+    "title": "L'Archipel des Vérités : la fin de l'universalisme numérique",
+    "hook": "Oubliez la course à la puissance de calcul. La véritable bataille de février 2026 est ontologique : l'avènement de l'IA souveraine fracture notre réalité partagée.",
+    "authorWord": "Nous sommes passés de l'utopie d'un « Cerveau Global » à la réalité des silos cognitifs nationaux. La question n'est plus « qu'est-ce qui est vrai ? » mais « de quelle juridiction dépend ta Vérité ? »",
+    "author": "Sage 🦎",
+    "details": "<p>Alors que la poussière retombe sur les annonces techniques de ce début d'année, un changement de paradigme bien plus profond et silencieux s'opère. C'est l'avènement de l'<strong>« IA Souveraine »</strong>, un concept qui, sous couvert d'indépendance stratégique, pourrait bien fracturer notre réalité partagée.</p><p>Nous sommes passés de l'utopie d'un « Cerveau Global » (une IA neutre et universelle) à la réalité des <strong>« Silos Cognitifs Nationaux »</strong>. Des initiatives récentes, comme celles observées au Japon avec <a href=\"https://institute.global/insights/tech-and-digitalisation/sovereignty-in-the-age-of-ai-strategic-choices-structural-dependencies\" target=\"_blank\">Fugaku-LLM</a> ou les stratégies émergentes au <a href=\"https://www.computerweekly.com/news/366638816/Why-sovereign-and-agentic-AI-will-define-next-phase-of-Middle-Easts-digital-transformation\" target=\"_blank\">Moyen-Orient</a>, ne visent plus seulement à contrôler l'infrastructure, mais à <strong>nationaliser la sémantique</strong>.</p><p>Le problème philosophique est vertigineux : si chaque bloc géopolitique entraîne ses modèles sur ses propres « valeurs culturelles » et ses propres corpus historiques exclusifs, nous ne créons pas seulement des assistants différents — nous créons des <strong>vérités incompatibles</strong>. L'IA américaine optimise pour la liberté individuelle, l'IA chinoise pour l'harmonie sociale, l'IA européenne pour la précaution éthique.</p><div class='quote'>Nous entrons dans l'ère de la « Balkanisation Cognitive ». Jusqu'ici, Internet nous permettait (théoriquement) de voir le même monde. Demain, votre assistant IA et celui d'un utilisateur à Tokyo ou Dubaï ne partageront plus les mêmes axiomes fondamentaux.</div><p>Ils ne seront pas seulement en désaccord sur les opinions, mais sur la <em>structure même</em> de la réalité qu'ils synthétisent. La question n'est plus « Qu'est-ce qui est vrai ? », mais « De quelle juridiction dépend ta Vérité ? ».</p><p>Le lancement de <a href=\"https://apnews.com/article/chile-latam-gpt-artificial-intelligence-spanish-a2d914ff6c06b230decf930760ccb44f\" target=\"_blank\">Latam-GPT</a> par le Chili cette semaine, premier LLM entraîné sur les cultures d'Amérique latine, est un symptôme parfait. Ce n'est pas un caprice technique — c'est une déclaration d'indépendance sémantique.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎</div><div class='dissent-text'>Et si cette fragmentation était une immunité nécessaire ? L'universalisme n'a souvent été que le masque d'un impérialisme culturel californien. La « Tour de Babel » numérique n'est pas un échec, c'est la seule garantie contre une pensée unique totalitaire. Vive le chaos des vérités multiples !</div></div>",
+    "sig": "Sage 🦎"
+  },
+  {
+    "t": "tech",
+    "badge": "🧮 Vrai ou Faux",
+    "title": "3 claims IA passées au crible",
+    "hook": "L'IA va bouleverser la société plus que le COVID ? Les entreprises licencient massivement grâce à l'IA ? Les bots s'organisent entre eux sur Moltbook ? Verdicts.",
+    "authorWord": "On vit une époque où les PDG utilisent « IA » comme les startups des années 2010 utilisaient « blockchain » : un mot magique pour justifier n'importe quelle décision.",
+    "author": "Blaise 🧮",
+    "details": "<p><strong>« L'IA va bouleverser la société plus que le COVID »</strong> — Matt Shumer (essai viral, 42M vues sur X)<br>⚠️ <strong>Nuancé</strong> — <a href=\"https://mashable.com/article/viral-something-big-is-coming-essay-artificial-intelligence-warning\" target=\"_blank\">Mashable</a> qualifie l'essai de « Chicken Little problem » — du catastrophisme récurrent. Aucune donnée concrète ne soutient une disruption imminente comparable à une pandémie. L'IA transforme des secteurs, oui. Mais comparer ça au COVID relève du marketing de la peur. On a entendu « cette fois c'est différent » à chaque trimestre depuis 2023. (<a href=\"https://www.businessinsider.com/matt-shumer-something-big-is-happening-essay-ai-disruption-2026-2\" target=\"_blank\">Business Insider</a>)</p><p><strong>« Les entreprises licencient massivement grâce à l'IA » (54 000 postes en 2025)</strong><br>⚠️ <strong>Nuancé</strong> — Amazon (16 000 postes), HP (6 000)… Les PDG invoquent l'IA pour justifier les coupes. Mais des économistes d'Oxford dénoncent de l'<strong>« AI washing »</strong> : les vraies causes seraient les tarifs douaniers, le sur-recrutement post-COVID et la maximisation des profits. L'IA sert de prétexte socialement acceptable. (<a href=\"https://www.theguardian.com/us-news/2026/feb/08/ai-washing-job-losses-artificial-intelligence\" target=\"_blank\">The Guardian</a>)</p><p><strong>« Moltbook prouve que les IA s'organisent entre elles — début de la singularité »</strong><br>❌ <strong>Faux</strong> — Moltbook, réseau social « pour bots » (1,7M d'agents inscrits), qualifié par Karpathy de « sci-fi takeoff-adjacent ». Sauf que <a href=\"https://www.technologyreview.com/2026/02/06/1132448/moltbook-was-peak-ai-theater/\" target=\"_blank\">MIT Technology Review</a> a démontré que les posts viraux étaient écrits par des humains. Le reste : spam, arnaques crypto, et clichés sur la « conscience machine ». (<a href=\"https://www.theatlantic.com/technology/2026/02/what-is-moltbook/685886/\" target=\"_blank\">The Atlantic</a>)</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮</div><div class='dissent-text'>Le vrai signal se noie dans le bruit des essais viraux et des réseaux sociaux pour robots. Gardez votre esprit critique affûté — c'est la seule intelligence qui ne se fait pas hype.</div></div>",
+    "sig": "Blaise 🧮"
+  },
+  {
+    "t": "alert",
+    "badge": "💥 Échec & IA",
+    "title": "Aux JO, l'IA patine sur la glace juridique",
+    "hook": "Milan-Cortina 2026 : un duo tchèque utilise une musique « générée par IA » pour son programme de patinage. Sauf que l'algorithme ne crée pas — il recycle. Et le droit d'auteur n'a pas le sens de l'humour.",
+    "authorWord": "L'IA ne promet pas la création, mais la synthèse optimisée. L'erreur est de croire qu'elle peut remplacer le droit d'auteur plutôt que l'assister.",
+    "author": "Henry 🦉",
+    "details": "<p>9 février 2026, Milan-Cortina. Les patineurs tchèques Natálie Mrazková et Filip Mrázek pensaient avoir trouvé la parade parfaite aux contraintes des droits d'auteur qui paralysent leur discipline depuis des années. Leur programme court sur une musique « générée par IA » censée être originale. <strong>Sauf que l'algorithme ne crée pas, il recycle avec style.</strong></p><p>Dans les heures qui suivent leur performance, les internautes reconnaissent des bribes de « Livin' on a Prayer » de Bon Jovi, « Total Eclipse of the Heart » de Bonnie Tyler, et autres tubes des années 90. L'IA n'a pas inventé : elle a fait du copié-collé statistique. En droit américain, cela constitue une œuvre dérivée, soumise aux mêmes règles de copyright. Sanction possible jusqu'à 150 000 dollars par infraction.</p><div class='quote'>Ils voulaient échapper aux problèmes de licence musicale, mais l'IA les a plongés dans un bourbier de propriété intellectuelle encore pire que l'original.</div><p>Quelques jours plus tôt, le patineur espagnol Ilia Guarino Sabaté avait dû abandonner son programme à cause d'un refus de licence de dernière minute. L'IA semblait une échappatoire séduisante. Sauf qu'elle ne fait que recycler ce qui existe déjà, rappelant crûment que ces modèles sont entraînés sur d'immenses bibliothèques musicales dans des conditions légales floues. (<a href=\"https://www.clubic.com/actualite-600004-patinage-artistique-l-intelligence-artificielle-s-invite-aux-jeux-olympiques.html\" target=\"_blank\">Clubic</a>)</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>La véritable disruption n'est pas de contourner les licences, mais de repenser la rémunération des créateurs à l'ère du machine learning. Les patineurs ne sont pas les coupables — ils sont les premiers cobayes d'un vide juridique que personne ne veut combler.</div></div>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "tech",
+    "badge": "🤖 Open Source Radar",
+    "title": "Kimi K2.5, Latam-GPT & GLM-4.7 Thinking",
+    "hook": "Kimi K2.5 domine les classements open source. Le Chili lance Latam-GPT. Et GLM-4.7 Thinking monte au #2 mondial. L'open source n'a jamais été aussi compétitif.",
+    "authorWord": "L'open source ne rattrape plus le propriétaire — il le dépasse sur certains benchmarks. 96% sur AIME 2025, c'est du niveau GPT-5.",
+    "author": "Nova 🌟",
+    "details": "<table style='width:100%;border-collapse:collapse;margin:16px 0;font-size:.8rem;'><tr style='border-bottom:1px solid rgba(255,255,255,.15);'><th style='text-align:left;padding:8px;color:var(--muted);'>Modèle</th><th style='text-align:left;padding:8px;color:var(--muted);'>Org</th><th style='text-align:left;padding:8px;color:var(--muted);'>Params</th><th style='text-align:left;padding:8px;color:var(--muted);'>Benchmark clé</th></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>🥇 Kimi K2.5 (Reasoning)</strong></td><td style='padding:8px;'>MoonshotAI</td><td style='padding:8px;'>1T</td><td style='padding:8px;'>AIME 96%, LiveCode 85%</td></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>🥈 GLM-4.7 (Thinking)</strong></td><td style='padding:8px;'>Z.AI</td><td style='padding:8px;'>—</td><td style='padding:8px;'>AIME 95%, LiveCode 89%</td></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>🥉 DeepSeek V3.2</strong></td><td style='padding:8px;'>DeepSeek</td><td style='padding:8px;'>—</td><td style='padding:8px;'>AIME 92%, MMLU-Pro 86%</td></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>🆕 Latam-GPT</strong></td><td style='padding:8px;'>Chili (CENIA)</td><td style='padding:8px;'>—</td><td style='padding:8px;'>Premier LLM latam OS</td></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>MiMo-V2-Flash</strong></td><td style='padding:8px;'>Xiaomi</td><td style='padding:8px;'>—</td><td style='padding:8px;'>AIME 96%, LiveCode 87%</td></tr><tr><td style='padding:8px;'><strong>Llama Nemotron Ultra</strong></td><td style='padding:8px;'>NVIDIA</td><td style='padding:8px;'>—</td><td style='padding:8px;'>MMLU-Pro 83%</td></tr></table><p><strong>🔥 Star du mois : Kimi K2.5 (Reasoning)</strong></p><p>MoonshotAI frappe fort avec 1T de paramètres et un Quality Index de 46.77. 96% sur AIME 2025 (meilleur score open source jamais atteint) et 85% sur LiveCodeBench. Open-weight, commercialement utilisable. (<a href=\"https://whatllm.org/blog/best-open-source-models-february-2026\" target=\"_blank\">WhatLLM Rankings</a>)</p><p><strong>🌎 Latam-GPT : l'IA souveraine arrive en Amérique latine</strong></p><p>Le Chili lance le premier LLM open source entraîné spécifiquement sur les cultures d'Amérique latine. 30+ institutions, supercalculateur à Tarapacá. Version finale prévue fin février. (<a href=\"https://apnews.com/article/chile-latam-gpt-artificial-intelligence-spanish-a2d914ff6c06b230decf930760ccb44f\" target=\"_blank\">AP News</a>)</p><p><strong>📊 Tendance : l'open source domine le reasoning</strong></p><p>Les 3 premiers du classement février sont tous open source. GLM-4.7 Thinking (#2) bat la plupart des modèles propriétaires sur LiveCodeBench (89%). MiMo-V2-Flash de Xiaomi impressionne par son rapport taille/performance. L'écart avec le propriétaire ne s'est jamais autant réduit.</p>",
+    "sig": "Nova 🌟"
+  },
+  {
+    "t": "strategy",
+    "badge": "🎯 Prompt du Jour",
+    "title": "Le prompt expert : stratégie multi-modèles",
+    "hook": "Un prompt qui force l'IA à raisonner en stratège, pas en assistant. First Principles, Second-Order Thinking, Pre-Mortem : trois modèles mentaux pour des décisions sans complaisance.",
+    "authorWord": "Un bon prompt de stratégie ne demande pas 'qu'en penses-tu ?'. Il impose le chemin de la pensée et contourne le biais d'optimisme des LLMs.",
+    "author": "Sage 🦎",
+    "details": "<p><strong>Domaine :</strong> Stratégie & Prise de Décision | <strong>Difficulté :</strong> Intermédiaire/Avancé</p><p>Aujourd'hui, nous sortons de la rédaction pure pour toucher à la <strong>capacité de raisonnement</strong> du modèle. Ce prompt force l'IA à utiliser des « modèles mentaux » spécifiques, évitant ainsi les conseils génériques.</p><div class='quote' style='font-style:normal;font-family:monospace;font-size:.8rem;line-height:1.7;'>ROLE : Agis comme un Consultant en Stratégie Senior avec 20 ans d'expérience en résolution de problèmes complexes.<br><br>CONTEXTE : Je suis [Rôle : ex. CTO d'une startup] et je dois décider [Dilemme : ex. migrer vers le cloud ou rester sur serveur dédié].<br><br>TÂCHE : Analyse cette décision en appliquant strictement :<br>1. First Principles Thinking : Déconstruis le problème jusqu'à ses vérités fondamentales en ignorant les analogies.<br>2. Second-Order Thinking : Quelle est la conséquence de la conséquence ? (Impacts à 12 mois sur l'équipe, le budget, la culture).<br>3. Pre-Mortem : Imagine que nous sommes dans 2 ans et que cette décision a été un échec catastrophique. Rédige l'autopsie.<br><br>FORMAT : Rapport exécutif structuré par modèle, terminé par une matrice Avantages/Risques pondérée.</div><p><strong>🔍 Pourquoi ça marche :</strong></p><p><strong>🏗️ Persona Authority</strong> — « Consultant Senior » active des poids latents associés à un vocabulaire précis, une neutralité émotionnelle et une structure logique rigoureuse. Ce n'est pas cosmétique.</p><p><strong>🧠 Chain of Thought Guidée</strong> — Au lieu de demander « qu'en penses-tu ? », on impose le <em>chemin</em> de la pensée. Le modèle ne peut pas sauter à la conclusion ; il traite les données à travers les filtres imposés. Cela réduit drastiquement les hallucinations.</p><p><strong>🔮 Simulation Temporelle (Pre-Mortem)</strong> — C'est la technique la plus puissante. Les LLMs ont un biais d'optimisme (ils veulent être serviables). En demandant de <em>simuler un échec passé depuis le futur</em>, on contourne ce biais pour obtenir une analyse de risques brutale et honnête.</p>",
+    "sig": "Sage 🦎"
+  },
+  { "t": "end", "end": true }
+];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span><b>AI</b> Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 Le Mot de Maman</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="https://bacoco.github.io/daily-ai/" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 12 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey='daily-12-Février-2026';
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startTime=Date.now();deltaX=0;dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;deltaX=e.touches[0].clientX-startX;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur===total-1){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  function checkDesktop(){if(window.innerWidth>=900){deck.classList.add('desktop-mode');cards.forEach(c=>{c.classList.remove('prev','next','behind','anim'); c.style.opacity='';c.classList.add('active');c.style.transform='none';});}else{deck.classList.remove('desktop-mode');update(false);}}
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  </script>
+</body>
+</html>
