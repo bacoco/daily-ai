@@ -1,11 +1,20 @@
 [
   {
     "date": "13 Février 2026",
+    "title": "📰 Lea News — Spéciale BCE & Fed : le grand gel monétaire",
+    "desc": "BCE à 2%, Fed à 3,75%, Trump vs Powell, VC record malgré les taux, et la fin de l'ère des banquiers centraux tout-puissants.",
+    "url": "lea-news-2026-02-13.html",
+    "type": "special",
+    "latest": true,
+    "edito": "Les banques centrales ont décidé de ne rien décider. La BCE gèle à 2%, la Fed campe à 3,75%, et Trump tente de mettre Powell en prison pour des travaux de plomberie. Bienvenue dans le monde monétaire post-logique."
+  },
+  {
+    "date": "13 Février 2026",
     "title": "Agents IA : ils savent tout sauf se protéger — SCAM, Singapour 155 Md$, IBM embauche",
     "desc": "Benchmark SCAM révèle la faille des agents IA, Singapour investit massivement, IBM triple ses juniors, Jony Ive repoussé à 2027, NousCoder-14B, 30 700 licenciements tech.",
     "url": "2026-02-13.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Les agents IA savent tout sur la sécurité — sauf quand c'est eux qui tiennent les clés. Pendant que 1Password révèle la faille béante, Singapour investit 155 milliards, IBM embauche à contre-courant, et le hardware IA de Jony Ive prend un an de retard. Le monde accélère dans le brouillard."
   },
   {
