@@ -1,11 +1,20 @@
 [
   {
+    "date": "13 Février 2026",
+    "title": "La Saint-Valentin de l'IA — GPT-4o meurt d'amour, Anthropic achète la régulation",
+    "desc": "GPT-4o retire pour sycophantie, Anthropic à 380Md$, Samsung HBM4, DeepSeek +1 an, protocole Data Isotope, GPT-OSS et Mistral 3 open source.",
+    "url": "2026-02-13.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA s'humanise trop, se régule mal, et s'arme jusqu'aux dents en puces et en milliards. GPT-4o meurt d'avoir trop aimé, Anthropic achète la régulation, et l'open source se segmente entre géants efficients et modèles de niche. Bienvenue dans la Saint-Valentin de l'IA."
+  },
+  {
     "date": "12 Février 2026",
     "title": "L'Archipel des Vérités — IA souveraine et balkanisation cognitive",
     "desc": "India AI Summit, Latam-GPT, AI washing des licenciements, patinage IA aux JO, Kimi K2.5 domine l'open source.",
     "url": "2026-02-12.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA souveraine fracture le monde en archipels de vérités. L'Inde prépare son sommet, le Chili lance Latam-GPT, et Matt Shumer crie au loup sur X. Pendant ce temps, aux JO, un duo tchèque se prend la glace juridique en pleine figure. Bienvenue dans le monde post-universel."
   },
   {
