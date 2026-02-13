@@ -1,11 +1,20 @@
 [
   {
     "date": "13 Février 2026",
+    "title": "🔥 Trending Now — Fusillade, EPA, Epstein, Iran, Europe, Stonewall",
+    "desc": "Les 6 sujets les plus chauds du 13 février : fusillade à SC State, EPA dynamite le climat, Goldman/Epstein, Netanyahu/Trump, Buy European, drapeaux Stonewall.",
+    "url": "trending-2026-02-13.html",
+    "type": "special",
+    "latest": true,
+    "edito": "Ce vendredi 13, le monde brûle sur tous les fronts. Un campus en sang, le climat abandonné, Epstein qui hante Wall Street, l'Iran en suspens, l'Europe protectionniste, et les symboles effacés."
+  },
+  {
+    "date": "13 Février 2026",
     "title": "📰 Lea News — Spéciale BCE & Fed : le grand gel monétaire",
     "desc": "BCE à 2%, Fed à 3,75%, Trump vs Powell, VC record malgré les taux, et la fin de l'ère des banquiers centraux tout-puissants.",
     "url": "lea-news-2026-02-13.html",
     "type": "special",
-    "latest": true,
+    "latest": false,
     "edito": "Les banques centrales ont décidé de ne rien décider. La BCE gèle à 2%, la Fed campe à 3,75%, et Trump tente de mettre Powell en prison pour des travaux de plomberie. Bienvenue dans le monde monétaire post-logique."
   },
   {
