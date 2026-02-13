@@ -161,6 +161,7 @@
   </style>
 </head>
 <body>
+  <div id="hint">
     <div class="logo"><b>AI</b> Insight Daily</div>
     <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
   </div>
@@ -246,7 +247,7 @@
 ];
 
   const deck = document.getElementById('deck');
-  
+  const hint = document.getElementById('hint');
   const total = DATA.length;
   let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
 
@@ -312,6 +313,7 @@
   }
   function go(i){if(i>=0&&i<total){cur=i;update();}}
   const dateKey='daily-11-Février-2026-v3';
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
   
   document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
     var card = sz.closest('.card');
