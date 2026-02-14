@@ -40,6 +40,19 @@
       "portalUrl": "flash-juridique/index.html",
       "editionsUrl": "flash-juridique/editions.json",
       "active": true
+    },
+    {
+      "id": "loptimum",
+      "name": "L'Optimum",
+      "emoji": "🎓",
+      "tagline": "L'actualité au service de ta copie — Prépa ECG ESH",
+      "color": "#a78bfa",
+      "frequency": "wed-sun",
+      "latest": "14 February 2026",
+      "latestUrl": "loptimum/2026-02-14.html",
+      "portalUrl": "loptimum/index.html",
+      "editionsUrl": "loptimum/editions.json",
+      "active": true
     }
   ]
 }

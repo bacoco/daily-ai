@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L'Optimum 🎓 — L'actualité au service de ta copie</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;color:#e0e0e0;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
+.header{text-align:center;margin:30px 0}
+.header h1{font-size:2.2rem;color:#a78bfa}
+.header .emoji{font-size:3rem;display:block;margin-bottom:10px}
+.header .tagline{color:#999;font-size:1rem;margin-top:8px;font-style:italic}
+.header .badge{display:inline-block;margin-top:12px;padding:4px 12px;background:rgba(167,139,250,.15);border:1px solid #a78bfa;border-radius:20px;font-size:.75rem;color:#a78bfa}
+.editions{max-width:500px;width:100%;margin:30px 0}
+.edition-link{display:block;background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:16px 20px;margin:10px 0;text-decoration:none;color:#e0e0e0;transition:all .2s}
+.edition-link:hover{border-color:#a78bfa;transform:translateY(-2px)}
+.edition-link .date{font-size:1.1rem;font-weight:600}
+.edition-link .sub{color:#999;font-size:0.85rem;margin-top:4px}
+.back{margin-top:30px}
+.back a{color:#a78bfa;text-decoration:none;font-size:0.9rem}
+.empty{color:#666;text-align:center;margin:40px 0;font-style:italic}
+.disclaimer{max-width:500px;color:#555;font-size:0.7rem;text-align:center;margin-top:40px;padding:20px;border-top:1px solid #222}
+</style>
+</head>
+<body>
+<div class="header">
+<span class="emoji">🎓</span>
+<h1>L'Optimum</h1>
+<div class="tagline">L'actualité au service de ta copie</div>
+<div class="badge">Prépa ECG — Option ESH</div>
+</div>
+<div class="editions" id="editions"></div>
+<div class="back"><a href="../">← Le Kiosque</a></div>
+<div class="disclaimer">L'Optimum est un outil de veille et d'entraînement. Il ne se substitue pas au cours ni aux manuels de référence. Vérifiez les références théoriques avec vos sources académiques.</div>
+<script>
+fetch('editions.json').then(r=>r.json()).then(eds=>{
+  const c=document.getElementById('editions');
+  if(!eds.length){c.innerHTML='<div class="empty">Première édition bientôt disponible</div>';return}
+  eds.forEach(e=>{
+    const a=document.createElement('a');
+    a.className='edition-link';a.href=e.url;
+    a.innerHTML='<div class="date">'+e.date+'</div><div class="sub">'+( e.edito||'')+'</div>';
+    c.appendChild(a);
+  });
+});
+</script>
+</body>
+</html>
