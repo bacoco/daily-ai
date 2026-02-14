@@ -1,11 +1,11 @@
 [
   {
     "date": "14 February 2026",
-    "title": "NEW FORMAT: Flash vs Trend — Storage Squeeze Meets Policy Cliff",
-    "desc": "⚡ Flash first (prices, LNG, power) then 📊 Trends (weather, storage, geopolitics, risk outlook).",
+    "title": "Flash/Trend v2 — All Prices Timestamped, Storage Squeeze Meets Policy Cliff",
+    "desc": "⚡ Flash (prices, LNG, power) with session dates + deltas. 📊 Trends (weather, storage, geopolitics) with explicit timelines.",
     "url": "2026-02-14.html",
     "type": "daily",
     "latest": true,
-    "edito": "New format: ⚡ FLASH cards first (overnight action) then 📊 TREND cards (structural outlook). Storage squeeze, La Niña blocking, and Russian gas ban trifecta."
+    "edito": "v2 — All prices timestamped. ⚡ FLASH (last 24h) then 📊 TREND (structural). HH $3.22 (settle 12 Feb), TTF €31.67 (close 13 Feb), EU storage 35.6% (12 Feb)."
   }
 ]
