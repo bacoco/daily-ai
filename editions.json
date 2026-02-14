@@ -1,11 +1,20 @@
 [
   {
+    "date": "14 Février 2026",
+    "title": "L'IA fracture l'économie mondiale — Anthropic 380 Md$, Gemini cloné, calcul photonique",
+    "desc": "Anthropic valorisé à 380 milliards, Mistral investit en Suède, Google Gemini ciblé par 100 000 attaques de distillation, percée en calcul optique, Taïwan double sa croissance, ByteDance développe SeedChip.",
+    "url": "2026-02-14.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Anthropic à 380 milliards, Mistral qui plante son drapeau en Suède, Google Gemini cloné 100 000 fois — et dans l'ombre, des lasers qui calculent à la vitesse lumière. Ce 14 février, l'IA ne fait pas dans la dentelle : elle fracture autant qu'elle fascine."
+  },
+  {
     "date": "13 Février 2026",
     "title": "Agents IA : ils savent tout sauf se protéger — SCAM, Singapour 155 Md$, IBM embauche",
     "desc": "Benchmark SCAM révèle la faille des agents IA, Singapour investit massivement, IBM triple ses juniors, Jony Ive repoussé à 2027, NousCoder-14B, 30 700 licenciements tech.",
     "url": "2026-02-13.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Les agents IA savent tout sur la sécurité — sauf quand c'est eux qui tiennent les clés. Pendant que 1Password révèle la faille béante, Singapour investit 155 milliards, IBM embauche à contre-courant, et le hardware IA de Jony Ive prend un an de retard. Le monde accélère dans le brouillard."
   },
   {
