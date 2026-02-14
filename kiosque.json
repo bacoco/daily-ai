@@ -14,6 +14,19 @@
       "portalUrl": "ai-insight-daily/index.html",
       "editionsUrl": "ai-insight-daily/editions.json",
       "active": true
+    },
+    {
+      "id": "gas-morning-brief",
+      "name": "Gas Morning Brief",
+      "emoji": "⚡",
+      "tagline": "L'intelligence gazière en 7 cartes avant l'ouverture",
+      "color": "#f59e0b",
+      "frequency": "weekdays",
+      "latest": "14 February 2026",
+      "latestUrl": "gas-morning-brief/2026-02-14.html",
+      "portalUrl": "gas-morning-brief/index.html",
+      "editionsUrl": "gas-morning-brief/editions.json",
+      "active": true
     }
   ]
 }
