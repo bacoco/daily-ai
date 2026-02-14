@@ -84,9 +84,9 @@
     .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
     .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
     .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
-    .card.scrolled .scroll-cta { display: none; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
     .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
-    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
     .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
     .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
     @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
