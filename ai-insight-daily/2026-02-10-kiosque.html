@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Le Kiosque OpenClaw — 10 Février 2026</title>
+  <title>Le Kiosque AI Insight — 10 Février 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     :root { --bg:#000;--card-bg:#0a0a0f;--text:#fff;--muted:#6a6a7a;--red:#ff4757;--blue:#3b82f6;--green:#10b981;--purple:#a78bfa;--gold:#f59e0b;--orange:#f97316;--pink:#ec4899;--radius:24px; }
@@ -214,7 +214,7 @@
 <body>
     <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
   <div id="hint">
-    <div class="logo">Le <b>Kiosque</b> OpenClaw</div>
+    <div class="logo">Le <b>Kiosque</b> AI Insight</div>
     <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
   </div>
   <div id="deck"></div>
@@ -272,7 +272,7 @@
     c.dataset.t=d.t;c.dataset.i=i;
     if(d.home){
       const ah=d.articles.map((a,j)=>`<div class="home-article" data-goto="${a.idx}"><div class="num">${j+1}</div><div class="info"><div class="badge-sm">${a.badge}</div><div class="title-sm">${a.title}</div></div><div class="arrow">›</div></div>`).join('');
-      c.innerHTML=`<div class="hdr"><span class="badge tech">🗞️ Kiosque</span><div class="dots">${dots(i)}</div></div><div class="home-content"><div class="home-logo"><span>Le <b>Kiosque</b></span></div><div class="home-date">${d.date}</div><div class="home-henry"><div class="label">🎯 Le Mot de Maman</div><div class="text">${d.henryWord}</div></div><div class="home-articles">${ah}</div><div class="home-footer">La Famille OpenClaw 🦊🦉🦎🌟🧮</div></div>`;
+      c.innerHTML=`<div class="hdr"><span class="badge tech">🗞️ Kiosque</span><div class="dots">${dots(i)}</div></div><div class="home-content"><div class="home-logo"><span>Le <b>Kiosque</b></span></div><div class="home-date">${d.date}</div><div class="home-henry"><div class="label">🎯 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div><div class="home-articles">${ah}</div><div class="home-footer">La Famille AI Insight 🦊🦉🦎🌟🧮</div></div>`;
     }else if(d.end){
       c.innerHTML=`<div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div><div class="end-content"><div class="em">🗞️</div><h2>Le Kiosque est fermé !</h2><p>3 rubriques découvertes.<br>Rendez-vous demain !</p><a class="btn" href="https://bacoco.github.io/daily-ai/">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button><small>← Swipez pour revenir</small></div>`;
     }else{
