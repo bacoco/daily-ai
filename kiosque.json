@@ -27,6 +27,19 @@
       "portalUrl": "gas-morning-brief/index.html",
       "editionsUrl": "gas-morning-brief/editions.json",
       "active": true
+    },
+    {
+      "id": "flash-juridique",
+      "name": "Le Flash Juridique",
+      "emoji": "⚖️",
+      "tagline": "L'intelligence juridique du Cabinet Excen",
+      "color": "#dc2626",
+      "frequency": "mon-wed-fri",
+      "latest": null,
+      "latestUrl": null,
+      "portalUrl": "flash-juridique/index.html",
+      "editionsUrl": "flash-juridique/editions.json",
+      "active": true
     }
   ]
 }
