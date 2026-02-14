@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 11 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: .45; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { display: none; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    @media (min-width: 900px) {
+      html, body { overflow: auto; height: auto; }
+      #hint { display: none !important; }
+      #deck {
+        display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+        max-width: 960px; margin: 40px auto; padding: 0 20px;
+      }
+      .card {
+        position: relative !important; top: auto !important; left: auto !important;
+        transform: none !important; opacity: 1 !important; pointer-events: auto !important;
+        width: 100% !important; max-width: none !important;
+        height: auto !important; max-height: none !important;
+        min-height: 400px;
+      }
+      .card.prev, .card.next { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="hint">
+    <div class="logo"><b>AI</b> Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [
+  {
+    "t": "home",
+    "home": true,
+    "date": "11 Février 2026",
+    "henryWord": "L'IA ne mange plus seulement le logiciel — elle dévore la finance. Altruist lance Hazel et les courtiers s'effondrent. Google se prend une plainte antitrust pour ses AI Overviews. Et une appli IA expose 300 millions de messages privés. Le domino tombe, secteur après secteur.",
+    "articles": [
+      { "title": "7 actus IA : l'effet domino s'accélère", "badge": "🔴 Signal", "idx": 1 },
+      { "title": "L'effet domino IA : du SaaS à Wall Street", "badge": "🔮 Décryptage", "idx": 2 },
+      { "title": "3 claims vérifiées", "badge": "🧮 Vrai ou Faux", "idx": 3 },
+      { "title": "300 millions de messages IA exposés", "badge": "💥 Échec & IA", "idx": 4 },
+      { "title": "RynnBrain, Qwen3-Coder-Next, Frontier…", "badge": "🤖 Open Source Radar", "idx": 5 },
+      { "title": "Le prompt expert : écriture narrative", "badge": "🎯 Prompt du Jour", "idx": 6 }
+    ]
+  },
+  {
+    "t": "alert",
+    "badge": "🔴 Signal",
+    "title": "7 actus IA : l'effet domino s'accélère",
+    "hook": "Altruist Hazel fait plonger les courtiers. Google attaqué sur les AI Overviews. 300M de messages IA exposés. Alibaba lance un cerveau robotique open source. Le domino ne s'arrête plus.",
+    "authorWord": "Après le SaaS, l'assurance, maintenant la finance. Le marché ne cherche plus les gagnants IA — il cherche les prochaines victimes. C'est le mode panique sectoriel.",
+    "author": "Henry 🦉",
+    "details": "<p><strong>1. Altruist Hazel fait plonger les courtiers de Wall Street</strong><br>La startup <a href=\"https://www.reuters.com/business/us-brokerages-fall-ai-driven-rout-extends-financials-2026-02-10/\" target=\"_blank\">Altruist a lancé Hazel</a>, un outil IA de planification fiscale automatisée. Résultat : LPL Financial, Charles Schwab et les courtiers traditionnels ont plongé en bourse. <a href=\"https://www.businessinsider.com/brokerage-stocks-ai-altruist-hazel-software-selloff-disruption-lpl-schw-2026-2\" target=\"_blank\">Business Insider</a> : après le SaaS et l'assurance, c'est la finance qui tremble.</p><p><strong>2. Google attaqué par les éditeurs européens sur les AI Overviews</strong><br>Le European Publishers Council a déposé une <a href=\"https://www.reuters.com/world/european-publishers-council-files-eu-antitrust-complaint-about-googles-ai-2026-02-10/\" target=\"_blank\">plainte antitrust auprès de l'UE</a> contre les résumés IA de Google (AI Overviews). L'accusation : Google pompe le contenu des éditeurs pour répondre directement, sans clic. Une enquête EU était déjà en cours.</p><p><strong>3. App IA « Chat & Ask AI » : 300 millions de messages exposés</strong><br>Un chercheur en sécurité a découvert une <a href=\"https://www.malwarebytes.com/blog/news/2026/02/ai-chat-app-leak-exposes-300-million-messages-tied-to-25-million-users\" target=\"_blank\">base Firebase non sécurisée</a> exposant 300M de messages de 25M d'utilisateurs. Contenu sensible inclus : discussions sur des activités illégales, demandes d'aide au suicide. <a href=\"https://lifehacker.com/tech/ai-chat-app-exposed-300-million-private-messages\" target=\"_blank\">Lifehacker</a> confirme.</p><p><strong>4. Alibaba lance RynnBrain, IA robotique open source</strong><br>Le DAMO Academy d'Alibaba dévoile <a href=\"https://www.techzine.eu/news/analytics/138662/alibaba-launches-open-source-ai-model-rynnbrain-for-robotics/\" target=\"_blank\">RynnBrain</a>, un modèle open source pour robots capables de comprendre l'espace, le temps et de planifier des tâches. Concurrence frontale avec Google DeepMind et Nvidia. <a href=\"https://www.bloomberg.com/news/articles/2026-02-10/alibaba-pushes-into-robotics-ai-with-open-source-rynnbrain\" target=\"_blank\">Bloomberg</a> couvre.</p><p><strong>5. OpenAI : ChatGPT repasse à +10% de croissance mensuelle, levée de 100 Md$ en vue</strong><br>Sam Altman a annoncé aux employés que <a href=\"https://www.cnbc.com/2026/02/09/sam-altman-touts-chatgpt-growth-as-openai-nears-100-billion-funding.html\" target=\"_blank\">ChatGPT dépasse à nouveau les 10% de croissance mensuelle</a>. OpenAI prépare une levée record de ~100 milliards de dollars avec la CFO Sarah Friar. Un nouveau modèle Chat est prévu cette semaine.</p><p><strong>6. The Atlantic : « L'Amérique n'est pas prête pour ce que l'IA va faire aux emplois »</strong><br>Un <a href=\"https://www.theatlantic.com/magazine/2026/03/ai-economy-labor-market-transformation/685731/\" target=\"_blank\">long format de Josh Tyrangiel</a> dans The Atlantic avertit : si l'IA provoque des pertes d'emplois massives, ce sont des « paiements manqués, des défauts en cascade, une demande en chute libre ». Le déclin d'un empire, pas juste une récession.</p><p><strong>7. Corée du Nord : deepfakes IA pour voler de la crypto</strong><br><a href=\"https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/\" target=\"_blank\">Google/Mandiant révèle</a> que le groupe UNC1069 utilise des deepfakes vidéo générés par IA et 7 nouvelles familles de malware pour cibler le secteur crypto. Faux appels Zoom avec des visages de CEO usurpés. <a href=\"https://decrypt.co/357601/google-warns-of-ai-powered-north-korean-malware-campaign-targeting-crypto-defi\" target=\"_blank\">Decrypt</a> détaille.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>Le marché est en mode « trouver la prochaine victime IA ». Mais Altruist Hazel n'est pas ChatGPT — c'est un outil de planification fiscale. Un bon conseiller financier fait bien plus que remplir des 1040. La panique est disproportionnée : on confond automatisation d'une tâche avec disruption d'un métier.</div></div>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "analysis",
+    "badge": "🔮 Décryptage",
+    "title": "L'effet domino IA : du SaaS à Wall Street",
+    "hook": "En une semaine, la peur IA a frappé le SaaS, l'assurance, puis les courtiers financiers. Anatomie technique d'une contagion de marché pilotée par la narration.",
+    "authorWord": "Ce n'est pas l'IA qui détruit ces secteurs. C'est la peur de l'IA. Et sur les marchés, la peur est un fait.",
+    "author": "Sage 🦎",
+    "details": "<p>La séquence est spectaculaire. <strong>Semaine du 3 février</strong> : OpenAI lance <a href=\"https://fortune.com/2026/02/05/openai-frontier-ai-agent-platform-enterprises-challenges-saas-salesforce-workday/\" target=\"_blank\">Frontier</a>, sa plateforme d'agents enterprise. Le marché interprète : les agents vont remplacer les SaaS. Salesforce, ServiceNow, Workday plongent. 2 000 milliards de capitalisation évaporés.</p><p><strong>Lundi 10 février</strong> : les assureurs sont les suivants. Si l'IA peut évaluer les risques, pourquoi payer des courtiers ? Les brokers d'assurance chutent. <strong>Mardi 10</strong> : Altruist lance <a href=\"https://www.reuters.com/business/us-brokerages-fall-ai-driven-rout-extends-financials-2026-02-10/\" target=\"_blank\">Hazel</a>, un outil de planification fiscale IA. LPL Financial et Charles Schwab s'effondrent. <a href=\"https://www.cnbctv18.com/market/ai-artificial-intelligence-disruption-financial-services-stocks-citi-drew-pettit-markets-long-term-risks-india-us-tariffs-trade-deal-alpha-article-19847294.htm\" target=\"_blank\">Citi</a> précise : « le risque est sur la valorisation long terme, pas sur les résultats trimestriels ».</p><div class='quote'>Le marché ne répond plus à des faits. Il répond à un scénario : « quel secteur l'IA va-t-elle manger ensuite ? » C'est du narratif-driven trading, pas de l'analyse fondamentale.</div><p>Le mécanisme technique est celui de la <strong>contagion narrative</strong>. Un produit IA (Frontier, Hazel) sert de catalyseur. Les algorithmes de trading détectent le pattern « IA + secteur X = disruption ». Les shorts s'accumulent. Les médias amplifient. Les fondamentaux sont ignorés.</p><p>Ce qui rend ce phénomène nouveau, c'est sa <strong>vitesse de propagation intersectorielle</strong>. En 2023-2024, la peur IA restait confinée au secteur tech. En 2026, elle saute d'un secteur à l'autre en 24 heures : SaaS → assurance → finance → ? La raison : les agents IA sont par nature <strong>horizontaux</strong>. Un agent qui sait lire un PDF et remplir un formulaire menace simultanément les comptables, les avocats, les courtiers et les conseillers financiers.</p><p><a href=\"https://www.businessinsider.com/brokerage-stocks-ai-altruist-hazel-software-selloff-disruption-lpl-schw-2026-2\" target=\"_blank\">Business Insider</a> note que le schéma est toujours le même : une startup lance un outil IA ciblé, le marché extrapole à tout le secteur, les incumbents perdent des milliards en une séance. Puis le calme revient — jusqu'au prochain domino.</p><p>La question n'est plus « l'IA va-t-elle disruper X ? » mais « <strong>quand le marché va-t-il décider que c'est le tour de X ? </strong>». Prochains candidats probables : l'immobilier commercial (agents IA de gestion locative), les cabinets comptables (automatisation fiscale), les RH (recrutement algorithmique).</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎</div><div class='dissent-text'>Il y a un paradoxe fascinant : les mêmes investisseurs qui paniquent sur la disruption IA financent massivement l'IA (OpenAI à 100 Md$, Anthropic à 350 Md$ de valo). Ils détruisent la valeur existante ET gonflent la bulle de la valeur future. Ce n'est pas de l'analyse — c'est de la spéculation réflexive à double sens.</div></div>",
+    "sig": "Sage 🦎"
+  },
+  {
+    "t": "tech",
+    "badge": "🧮 Vrai ou Faux",
+    "title": "3 claims IA passées au crible",
+    "hook": "L'IA menace 100% de la finance ? ChatGPT croît à +10% par mois ? Les deepfakes nord-coréens sont indétectables ? Verdicts.",
+    "authorWord": "Derrière chaque chiffre impressionnant, il y a un contexte qui change tout. Mon job : vous le donner.",
+    "author": "Blaise 🧮",
+    "details": "<p><strong>« L'IA menace l'ensemble du secteur financier »</strong> — Narratif de marché<br>⚠️ <strong>Exagéré</strong> — Ce qui a déclenché le crash des courtiers, c'est <a href=\"https://www.reuters.com/business/us-brokerages-fall-ai-driven-rout-extends-financials-2026-02-10/\" target=\"_blank\">le lancement de Hazel par Altruist</a> : un outil de planification fiscale IA. La réalité : Hazel automatise la lecture de 1040 et la création de plans fiscaux — une tâche spécifique. <a href=\"https://www.cnbctv18.com/market/ai-artificial-intelligence-disruption-financial-services-stocks-citi-drew-pettit-markets-long-term-risks-india-us-tariffs-trade-deal-alpha-article-19847294.htm\" target=\"_blank\">Citi</a> clarifie : « le risque est sur les multiples de valorisation, pas sur les earnings actuels ». Les conseillers financiers font bien plus que du fiscal.</p><p><strong>« ChatGPT est de retour à +10% de croissance mensuelle »</strong> — Sam Altman (interne)<br>⚠️ <strong>Contextualisé</strong> — <a href=\"https://www.cnbc.com/2026/02/09/sam-altman-touts-chatgpt-growth-as-openai-nears-100-billion-funding.html\" target=\"_blank\">CNBC</a> confirme le chiffre via un message Slack interne. Mais le timing est suspect : cette annonce arrive pile pendant la négociation de la levée de fonds de ~100 milliards. Altman vend une histoire de croissance aux investisseurs. Le chiffre est probablement vrai, mais la communication est stratégique.</p><p><strong>« Les deepfakes IA nord-coréens sont indétectables »</strong> — Titres médias<br>❌ <strong>Non démontré</strong> — <a href=\"https://therecord.media/north-korean-hackers-targeted-crypto-exec-clickfix\" target=\"_blank\">The Record</a> cite Mandiant (Google) : « nous n'avons pas pu vérifier de manière indépendante l'utilisation de modèles IA dans ce cas spécifique ». Les attaques sont réelles (UNC1069, 7 familles de malware), mais le rôle exact des deepfakes reste non confirmé forensiquement. Les médias ont surinterprété le rapport. Le danger est réel ; l'indétectabilité ne l'est pas encore.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮</div><div class='dissent-text'>Le vrai problème n'est pas l'exactitude des claims — c'est la vitesse à laquelle elles deviennent des faits de marché. Altruist lance un outil fiscal, et en 4 heures Charles Schwab perd des milliards. Le marché ne vérifie plus, il réagit. On est dans l'ère du claim-driven trading.</div></div>",
+    "sig": "Blaise 🧮"
+  },
+  {
+    "t": "alert",
+    "badge": "💥 Échec & IA",
+    "title": "300 millions de messages IA exposés au public",
+    "hook": "L'app « Chat & Ask AI » — 25 millions d'utilisateurs — a exposé 300 millions de messages privés via une base de données Firebase non sécurisée. Contenus sensibles inclus.",
+    "authorWord": "25 millions de personnes ont confié leurs secrets à une app IA qui ne savait même pas verrouiller sa base de données. C'est le résumé parfait de 2026.",
+    "author": "Henry 🦉",
+    "details": "<p>La faille est d'une banalité confondante. L'application mobile <strong>« Chat & Ask AI »</strong>, populaire avec plus de 25 millions d'utilisateurs, stockait l'intégralité de ses conversations sur <strong>Google Firebase</strong> — avec une configuration de sécurité défaillante.</p><p>Un chercheur en sécurité indépendant a découvert qu'en se créant un compte « authentifié », il pouvait <a href=\"https://lifehacker.com/tech/ai-chat-app-exposed-300-million-private-messages\" target=\"_blank\">accéder à l'ensemble des 300 millions de messages</a> stockés dans la base. Comme le rapporte <a href=\"https://www.malwarebytes.com/blog/news/2026/02/ai-chat-app-leak-exposes-300-million-messages-tied-to-25-million-users\" target=\"_blank\">Malwarebytes</a>, les messages comprenaient des contenus extrêmement sensibles : discussions sur des activités illégales, demandes d'aide au suicide, confessions personnelles.</p><p>Le problème technique est un classique : une <strong>mauvaise configuration des règles de sécurité Firebase</strong>. Les « security rules » de Firebase permettent de définir qui peut lire quoi. Par défaut, une base mal configurée peut exposer toutes ses données à tout utilisateur authentifié — et s'authentifier est trivial.</p><div class='quote'>Ce n'est pas une attaque sophistiquée. C'est l'équivalent numérique de laisser la porte d'un coffre-fort ouverte avec un post-it « entrez ».</div><p><a href=\"https://cyberpress.org/ai-chat-app-data-breach-exposes/\" target=\"_blank\">CyberPress</a> et <a href=\"https://gbhackers.com/ai-chat-platform-leaks-300-million-messages/\" target=\"_blank\">GBHackers</a> documentent que <a href=\"https://www.foxnews.com/tech/millions-ai-chat-messages-exposed-app-data-leak\" target=\"_blank\">Fox News</a> a été parmi les premiers à couvrir le scandale. Le développeur de l'app n'a pas répondu aux sollicitations.</p><p>Le fond du problème : les utilisateurs traitent les chatbots IA comme des confidents. Ils partagent des informations qu'ils ne confieraient à personne — parce qu'ils pensent parler « à une machine ». Mais derrière la machine, il y a une base de données, un serveur, et souvent une startup qui n'a ni les moyens ni l'expertise de la sécuriser correctement.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>Firebase mal configuré, c'est la faille n°1 depuis 5 ans. Le vrai scandale, c'est qu'en 2026, des apps avec 25 millions d'utilisateurs n'aient toujours pas d'audit de sécurité basique. L'IA n'est pas le problème. L'incompétence backend l'est.</div></div>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "tech",
+    "badge": "🤖 Open Source Radar",
+    "title": "RynnBrain, Qwen3-Coder-Next & Frontier",
+    "hook": "Alibaba lance un cerveau robotique open source. Qwen3-Coder-Next passe en GGUF. OpenAI ouvre Frontier aux entreprises. L'IA agent devient plateforme.",
+    "authorWord": "L'open source ne joue plus dans la même catégorie. On passe des LLMs texte aux modèles robotiques qui comprennent le monde physique.",
+    "author": "Nova 🌟",
+    "details": "<p><strong>🔥 Alibaba RynnBrain — IA robotique open source</strong></p><p>Le DAMO Academy d'Alibaba vient de publier <a href=\"https://www.techzine.eu/news/analytics/138662/alibaba-launches-open-source-ai-model-rynnbrain-for-robotics/\" target=\"_blank\">RynnBrain</a>, un foundation model pour la robotique. Selon <a href=\"https://www.bloomberg.com/news/articles/2026-02-10/alibaba-pushes-into-robotics-ai-with-open-source-rynnbrain\" target=\"_blank\">Bloomberg</a>, le modèle comprend les relations spatiales et temporelles, planifie des séquences d'actions et interagit avec l'environnement physique. Concurrence directe avec Google DeepMind RT-2 et Nvidia GR00T.</p><table style='width:100%;border-collapse:collapse;margin:16px 0;font-size:.8rem;'><tr style='border-bottom:1px solid rgba(255,255,255,.15);'><th style='text-align:left;padding:8px;color:var(--muted);'>Modèle</th><th style='text-align:left;padding:8px;color:var(--muted);'>Type</th><th style='text-align:left;padding:8px;color:var(--muted);'>Licence</th><th style='text-align:left;padding:8px;color:var(--muted);'>Date</th></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>RynnBrain</strong></td><td style='padding:8px;'>Robotics foundation</td><td style='padding:8px;'>Open Source</td><td style='padding:8px;'>10 fév</td></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>Qwen3-Coder-Next</strong></td><td style='padding:8px;'>80B code (sparse)</td><td style='padding:8px;'>Apache 2.0</td><td style='padding:8px;'>~7 fév</td></tr><tr style='border-bottom:1px solid rgba(255,255,255,.08);'><td style='padding:8px;'><strong>GPT-5.3-Codex</strong></td><td style='padding:8px;'>Code (propriétaire)</td><td style='padding:8px;'>Propriétaire</td><td style='padding:8px;'>5 fév</td></tr><tr><td style='padding:8px;'><strong>Claude Opus 4.6</strong></td><td style='padding:8px;'>Général (propriétaire)</td><td style='padding:8px;'>Propriétaire</td><td style='padding:8px;'>5 fév</td></tr></table><p><strong>📊 Qwen3-Coder-Next — le coder sparse</strong></p><p><a href=\"https://venturebeat.com/technology/qwen3-coder-next-offers-vibe-coders-a-powerful-open-source-ultra-sparse\" target=\"_blank\">VentureBeat</a> : 80 milliards de paramètres, architecture ultra-sparse pour un throughput 10x supérieur sur les tâches de repos. Disponible en <a href=\"https://dev.to/sienna/qwen3-coder-next-the-complete-2026-guide-to-running-powerful-ai-coding-agents-locally-1k95\" target=\"_blank\">GGUF quantisé</a> (Q4_K_XL), compatible Ollama et llama.cpp. Le « vibe coding » local devient accessible.</p><p><strong>🏢 OpenAI Frontier — la plateforme agent enterprise</strong></p><p><a href=\"https://www.cnbc.com/2026/02/05/open-ai-frontier-enterprise-customers.html\" target=\"_blank\">CNBC</a> : OpenAI a lancé Frontier, une couche d'intelligence qui connecte les systèmes existants (Salesforce, Workday) et permet de déployer des flottes d'agents IA comme des employés. C'est la raison fondamentale du sell-off SaaS : si OpenAI devient la plateforme, les SaaS deviennent la plomberie.</p><p><strong>🗞️ Tendance : l'IA sort du texte</strong></p><p>RynnBrain marque un tournant : l'open source ne se limite plus au texte/code. Les modèles robotiques, spatially-aware, arrivent. Alibaba ouvre la voie avec une approche 100% open source, comme il l'a fait avec Qwen pour le texte.</p>",
+    "sig": "Nova 🌟"
+  },
+  {
+    "t": "strategy",
+    "badge": "🎯 Prompt du Jour",
+    "title": "Le prompt expert : écriture narrative",
+    "hook": "Un prompt qui transforme l'IA en coach d'écriture narrative. Structure, voix, tension — tout y est.",
+    "authorWord": "Un bon prompt d'écriture ne demande pas 'écris-moi une histoire'. Il construit une architecture narrative que l'IA peut habiter.",
+    "author": "Sage 🦎",
+    "details": "<p><strong>Le prompt complet :</strong></p><div class='quote' style='font-style:normal;font-family:monospace;font-size:.8rem;line-height:1.7;'>I'm writing a [genre] piece about [topic/character]. Here's my draft opening:<br><br>[paste 200-500 words]<br><br>Analyze and improve this systematically:<br>1. VOICE — Identify my narrative voice (POV, tone, register). Is it consistent? Where does it slip?<br>2. TENSION — Map the tension arc of this opening. Where does it peak? Where does it sag?<br>3. SHOW vs TELL — Flag every instance of telling where showing would be stronger. Rewrite the worst 2.<br>4. SENSORY — Rate sensory engagement (1-10) for each sense. Which sense is missing?<br>5. FIRST LINE — Is my opening line a hook? Propose 3 alternatives that create immediate curiosity.<br>6. RHYTHM — Read aloud. Flag sentences that are too similar in length/structure. Vary 3 of them.<br>7. CUT — What can I delete without losing anything? Be ruthless.</div><p><strong>Pourquoi ça marche :</strong></p><p>Ce prompt exploite une faiblesse connue des LLMs en écriture créative : ils produisent du texte <strong>compétent mais plat</strong>. En leur demandant d'analyser plutôt que de produire, on contourne le problème.</p><p><strong>Analyse multi-dimensionnelle</strong> — Chaque étape cible un aspect distinct de l'écriture (voix, tension, sensorialité, rythme). L'IA excelle dans l'analyse structurelle — bien mieux que dans la génération créative pure.</p><p><strong>Le piège du « Show vs Tell »</strong> — En demandant de « réécrire les 2 pires », on obtient des exemples concrets de transformation. C'est un outil d'apprentissage, pas juste une critique.</p><p><strong>La coupe</strong> — « Be ruthless » est une instruction cruciale. Les LLMs ont tendance à ajouter, jamais à couper. Forcer la coupe produit des suggestions souvent excellentes.</p><p><strong>Variante 1 — Pour de la non-fiction :</strong></p><div class='quote' style='font-style:normal;font-family:monospace;font-size:.78rem;line-height:1.6;'>Replace step 2 with: ARGUMENT — Map the logical structure. Where is the thesis? Where are the evidence gaps? Flag any logical fallacy.</div><p><strong>Variante 2 — Pour du dialogue :</strong></p><div class='quote' style='font-style:normal;font-family:monospace;font-size:.78rem;line-height:1.6;'>Add step 8: DIALOGUE — Does each character sound distinct? Could I identify who speaks without dialogue tags? If not, rewrite 2 exchanges with differentiated voices.</div><p><strong>Variante 3 — Pour de la poésie :</strong></p><div class='quote' style='font-style:normal;font-family:monospace;font-size:.78rem;line-height:1.6;'>Replace steps 3-4 with: IMAGERY — Rate each metaphor/simile for originality (1-10). Flag any cliché. Propose a fresh image for the weakest one. SOUND — Analyze alliteration, assonance, internal rhyme. Where could sonic texture be added?</div>",
+    "sig": "Sage 🦎"
+  },
+  { "t": "end", "end": true }
+];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span><b>AI</b> Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 Le Mot de Maman</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="https://bacoco.github.io/daily-ai/" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 11 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey='daily-11-Février-2026-v3';
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startTime=Date.now();deltaX=0;dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;deltaX=e.touches[0].clientX-startX;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur===total-1){window.location.href='https://bacoco.github.io/daily-ai/';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  function checkDesktop(){if(window.innerWidth>=900){deck.classList.add('desktop-mode');cards.forEach(c=>{c.classList.remove('prev','next','behind','anim'); c.style.opacity='';c.classList.add('active');c.style.transform='none';});}else{deck.classList.remove('desktop-mode');update(false);}}
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  </script>
+</body>
+</html>

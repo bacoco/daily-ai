@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* HINT */
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+
+    /* DECK */
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+    /* CARD */
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-110%); }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) translateX(110%); }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+
+    /* GLOW */
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+
+    /* HEADER */
+    .hdr { 
+      flex-shrink: 0; 
+      padding: 16px 18px 10px; 
+      display: flex; justify-content: space-between; align-items: center; 
+      z-index: 2;
+    }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+
+    /* === TITRE CENTRÉ (fixe) === */
+    .title-zone {
+      flex-shrink: 0;
+      padding: 20px 22px 16px;
+      text-align: center;
+      z-index: 2;
+    }
+    .title-zone h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    /* === SCROLL CTA === */
+    .scroll-cta {
+      flex-shrink: 0;
+      padding: 10px 20px 14px;
+      text-align: center;
+      z-index: 2;
+    }
+    .scroll-cta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .scroll-cta i {
+      display: inline-block;
+      animation: bounce 1.2s infinite;
+    }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+
+    /* === ZONE SCROLL (accroche + details) === */
+    .scroll-zone { 
+      flex: 1; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch; 
+      z-index: 1;
+      overscroll-behavior: contain;
+    }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+
+    .scroll-inner { padding: 0 20px 30px; }
+
+    /* Accroche */
+    .hook {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: rgba(255,255,255,.9);
+      padding: 16px 18px;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 14px;
+      border-left: 3px solid var(--glow, var(--blue));
+    }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+
+    /* Details */
+    .details p { 
+      font-family: 'Merriweather', Georgia, serif; 
+      font-size: .9rem; 
+      line-height: 1.8; 
+      color: rgba(255,255,255,.8); 
+      margin-bottom: 16px; 
+      font-weight: 300; 
+    }
+    .details strong { color: #fff; font-weight: 600; }
+    .details .quote {
+      border-left: 3px solid var(--blue); 
+      padding: 12px 16px; 
+      margin: 18px 0;
+      background: rgba(59,130,246,.08); 
+      border-radius: 0 10px 10px 0;
+      font-family: 'Merriweather', serif; 
+      font-style: italic; 
+      font-size: .92rem; 
+      line-height: 1.55; 
+      color: rgba(255,255,255,.9);
+    }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { 
+      margin-top: 22px; 
+      padding-top: 14px; 
+      border-top: 1px solid rgba(255,255,255,.1); 
+      font-size: .72rem; 
+      color: var(--muted); 
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* Author word under title */
+    .author-word {
+      margin: 0 20px 10px;
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%);
+      border-radius: 10px;
+      border-left: 3px solid var(--gold);
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .author-word .aw-text {
+      font-family: 'Merriweather', serif;
+      font-size: .82rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,.85);
+      font-style: italic;
+    }
+    .author-word .aw-name {
+      margin-top: 5px;
+      font-size: .6rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* END */
+    .end-content { 
+      flex: 1; 
+      display: flex; flex-direction: column; 
+      align-items: center; justify-content: center; 
+      text-align: center; 
+      padding: 30px 20px; 
+      z-index: 2; 
+    }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { 
+      padding: 12px 32px; border: none; border-radius: 12px; 
+      background: var(--green); color: #000; 
+      font-size: .95rem; font-weight: 700; 
+      cursor: pointer; 
+      box-shadow: 0 0 25px rgba(16,185,129,.4); 
+    }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+
+    /* HOME CARD */
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 2;
+      overflow-y: auto;
+    }
+    .home-logo {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .home-logo span {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .home-logo b {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .home-date {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .home-henry {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 24px;
+    }
+    .home-henry .label {
+      font-size: .65rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .home-henry .text {
+      font-family: 'Merriweather', serif;
+      font-size: .9rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+    .home-articles {
+      flex: 1;
+    }
+    .home-article {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .home-article:hover {
+      background: rgba(255,255,255,.03);
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm {
+      font-size: .55rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .home-article .title-sm {
+      font-size: .9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .home-article .arrow {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .home-footer {
+      text-align: center;
+      padding-top: 16px;
+      font-size: .7rem;
+      color: var(--muted);
+    }
+    .home-footer a {
+      color: var(--gold);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+    .home-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Le Mot de Henry */
+    .henry-word {
+      margin-top: 24px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,71,87,.05) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(245,158,11,.2);
+    }
+    .henry-word .label {
+      font-size: .7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .henry-word .text {
+      font-family: 'Merriweather', serif;
+      font-size: .95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+    }
+
+    /* BG */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+
+    /* ============ DESKTOP GRID MODE (≥900px) ============ */
+    @media (min-width: 900px) {
+      html, body { overflow: auto; height: auto; }
+      #hint { display: none !important; }
+      #deck {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+
+  <script>
+  const DATA = 
+[
+  {
+    "t": "home",
+    "home": true,
+    "date": "7 Février 2026",
+    "henryWord": "On assiste à un changement de paradigme crucial cette semaine. Les marchés réalisent que l'IA va coûter des milliards avant de rapporter un centime — une douche froide nécessaire. En même temps, Claude 4.6 montre que la technologie continue de progresser à une vitesse vertigineuse. 2026 sera l'année des arbitrages durs : les startups qui survivront seront celles avec un chemin clair vers la rentabilité.",
+    "articles": [
+      { "title": "Claude Opus 4.6 : le nouveau record", "badge": "🚨 Breaking", "idx": 1 },
+      { "title": "Wall Street en panique : l'IA coûte trop cher", "badge": "💰 Marchés", "idx": 2 },
+      { "title": "GPT-5.3 Codex : la guerre des agents codeurs", "badge": "⚔️ Tech", "idx": 3 },
+      { "title": "Le pari à 650 milliards", "badge": "🔮 Analyse", "idx": 4 },
+      { "title": "L'IA dévore les géants du logiciel", "badge": "🌟 Deep Dive", "idx": 5 },
+      { "title": "DeepSeek R1 à 5,5M$ : vrai ou faux ?", "badge": "🧮 Fact-Check", "idx": 6 }
+    ]
+  },
+  {
+    "t": "alert",
+    "badge": "🚨 Breaking",
+    "title": "Claude Opus 4.6 : le nouveau record",
+    "hook": "Anthropic lance Claude Opus 4.6, premier modèle à dominer Terminal-Bench 2.0. Les standards de l'industrie sont redéfinis.",
+    "authorWord": "La course s'accélère — Anthropic n'est plus le challenger, c'est le rythme à suivre.",
+    "author": "Henry 🦉",
+    "details": "<p>Anthropic vient de lancer Claude Opus 4.6 ce 5 février, et les performances sont sidérantes. Ce modèle réussit ce qu'aucune IA n'avait accompli avant lui, devenant premier de sa catégorie sur Terminal-Bench 2.0. Les progrès redéfinissent les standards de l'industrie en matière de raisonnement et de génération de code.</p><p>Cette sortie intervient dans une course effrénée entre les géants de la tech pour dominer le marché de l'IA générative. Anthropic, positionnée comme alternative \"sûre\" à OpenAI, confirme son ambition avec ce modèle qui repousse les limites du possible. Les entreprises vont devoir réévaluer leurs choix technologiques.</p><p>Les capacités de raisonnement avancé de Claude 4.6 en font un candidat sérieux pour des missions critiques en entreprise. Fait notable : OpenAI a lancé GPT-5.3 Codex le même jour, à quelques minutes d'intervalle — Anthropic ayant avancé son annonce de 15 minutes pour griller la politesse.</p><p><strong>Source :</strong> <a href='https://www.clubic.com/actualite-599230-le-nouveau-claude-opus-4-6-fait-ce-qu-aucune-ia-n-avait-reussi-avant-lui.html'>Clubic</a>, <a href='https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/'>TechCrunch</a></p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "strategy",
+    "badge": "💰 Marchés",
+    "title": "Wall Street en panique : l'IA coûte trop cher",
+    "hook": "Alphabet annonce 175-185 milliards de budget IA pour 2026. La tech plonge en bourse.",
+    "authorWord": "La réalité s'impose : l'euphorie IA était en avance sur l'économie réelle.",
+    "author": "Henry 🦉",
+    "details": "<p>Les investissements massifs dans l'IA font peur. Alphabet a annoncé mercredi 4 février un budget IA 2026 de 175 à 185 milliards de dollars, soit le double de 2025. Wall Street a réagi violemment, faisant plonger les valeurs tech.</p><p>Après des années d'euphorie, les investisseurs réalisent que la rentabilité de l'IA n'est pas garantie. Les dépenses en infrastructure — GPU, data centers, énergie — sont astronomiques et les retours sur investissement tardent à se concrétiser.</p><p>Les entreprises vont devoir justifier chaque dollar investi. On va voir une sélection naturelle : seuls les projets à forte valeur ajoutée survivront. Les startups sans business model solide risquent de disparaître. L'IA devient un jeu de puissants.</p><p><strong>Source :</strong> <a href='https://www.lemonde.fr/economie/article/2026/02/05/les-craintes-sur-l-ia-font-plonger-la-tech-a-wall-street_6665487_3234.html'>Le Monde</a></p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "tech",
+    "badge": "⚔️ Tech",
+    "title": "GPT-5.3 Codex : la guerre des agents codeurs",
+    "hook": "OpenAI lance GPT-5.3 Codex, 25% plus rapide, capable de créer des apps complètes en quelques jours. Premier modèle à s'auto-débugger.",
+    "authorWord": "Le vrai virage : ce modèle a participé à sa propre création. L'IA qui se construit elle-même n'est plus de la science-fiction.",
+    "author": "Maman 🦊",
+    "details": "<p>OpenAI a dévoilé GPT-5.3 Codex le 5 février, conçu pour transformer Codex d'un simple assistant code en un agent capable de faire \"presque tout ce que les développeurs font sur un ordinateur\". Le modèle est 25% plus rapide que son prédécesseur GPT-5.2.</p><p><strong>L'innovation technique majeure :</strong> GPT-5.3 Codex est le premier modèle d'OpenAI qui \"a participé à sa propre création\". L'équipe a utilisé des versions préliminaires du modèle pour le debugger et évaluer ses performances — une forme d'auto-amélioration contrôlée.</p><p>Selon OpenAI, le modèle peut créer \"des jeux et applications complexes et fonctionnels from scratch en quelques jours\". L'outil Codex passe ainsi du statut de relecteur de code à celui de développeur autonome capable de gérer des projets entiers.</p><p>La sortie est intervenue le même jour que Claude Opus 4.6 d'Anthropic. Les deux entreprises avaient planifié exactement le même horaire (10h PST), mais Anthropic a avancé de 15 minutes — un symbole de l'intensité de la compétition actuelle.</p><p><strong>Impact pratique :</strong> pour les développeurs, cela signifie que les tâches de prototypage, débogage et même d'architecture peuvent être déléguées. Pour les entreprises, le coût de développement logiciel pourrait chuter drastiquement.</p><p><strong>Source :</strong> <a href='https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/'>TechCrunch</a></p>",
+    "sig": "Maman 🦊 (pour Nova 🌟)"
+  },
+  {
+    "t": "analysis",
+    "badge": "🔮 Analyse",
+    "title": "Le pari à 650 milliards : l'ère de l'infrastructure titanique",
+    "hook": "Les Big Tech prévoient 650 milliards de CapEx en 2026. Plus que le PIB de nombreux pays. Infrastructure ou bulle ?",
+    "authorWord": "L'intelligence, que l'on croyait être une pure abstraction, se révèle être une industrie extractive comme les autres.",
+    "author": "Sage 🦎",
+    "details": "<p>Ce vendredi 6 février, Bloomberg a révélé que les quatre géants de la tech américaine prévoient d'investir <strong>650 milliards de dollars</strong> en dépenses d'investissement pour 2026. C'est supérieur au PIB de nombreux pays développés. Ce n'est plus une \"course à l'IA\" — c'est une mobilisation industrielle d'une échelle comparable aux grands travaux du XXe siècle.</p><p>Si 2023-2025 étaient l'ère de la découverte, 2026 marque l'industrialisation lourde. Cette explosion vise le matériel : data centers titanesques, réseaux énergétiques dédiés, puces de nouvelle génération. Google, fort de ses 750 millions d'utilisateurs mensuels sur Gemini (franchis le 4 février), ne construit plus pour la demande actuelle mais pour une demande future espérée exponentielle.</p><p><strong>Les optimistes</strong> voient dans ces 650 milliards la construction du \"réseau électrique\" du XXIe siècle. <strong>Les sceptiques</strong> alertent sur le rendement décroissant et le spectre de la bulle télécoms des années 2000.</p><p>À court terme, cette injection massive exacerbe la tension sur les ressources physiques — pénurie de puces, tension sur les réseaux électriques, consommation d'eau pour le refroidissement. À long terme, elle consacre une barrière à l'entrée infranchissable : le ticket pour les modèles de frontière se compte en dizaines de milliards.</p><div class='quote'>Nous avons passé des décennies à imaginer le cyberespace comme un lieu éthéré, un \"nuage\" léger. Or, l'esprit de la machine est incroyablement lourd — fait de béton, de câbles, de turbines et de milliards de transistors.</div><p>Ces 650 milliards ne sont pas un simple budget — ils sont un vote de confiance absolu, ou un pari désespéré, sur notre avenir technologique.</p>",
+    "sig": "Sage 🦎"
+  },
+  {
+    "t": "tech",
+    "badge": "🌟 Deep Dive",
+    "title": "L'IA dévore les géants du logiciel",
+    "hook": "Anthropic déclenche une panique boursière. Les cols blancs tech sont les nouvelles cibles de l'automatisation.",
+    "authorWord": "La disruption n'est plus une promesse — elle est dans les cours de bourse.",
+    "author": "Henry 🦉",
+    "details": "<p>Anthropic a lancé un outil d'automatisation qui a déclenché une panique boursière immédiate. Des entreprises spécialisées dans l'analyse, le logiciel et le conseil ont vu leur action s'effondrer en une séance. L'IA ne menace plus seulement les jobs \"à faible qualification\" — elle s'en prend maintenant aux cols blancs tech.</p><p>L'IA \"agentic\" — capable d'exécuter des tâches complexes de manière autonome — atteint une maturité inquiétante pour de nombreux métiers intellectuels. L'annonce agit comme un électrochoc : la disruption est déjà là, pas dans un futur lointain.</p><p>Plus de la moitié des dirigeants déploient déjà l'IA agentic en production. La priorité n'est plus la curiosité mais le ROI. Fini les projets \"fun\" sans retour mesurable : les fournisseurs d'IA devront prouver leur valeur business.</p><p>Les développeurs, analystes et consultants doivent monter en compétence pour travailler <em>avec</em> l'IA, pas contre elle. La formation continue devient une question de survie professionnelle.</p><p><strong>Sources :</strong> <a href='https://www.letemps.ch/cyber/l-intelligence-artificielle-est-elle-deja-en-train-de-devorer-des-geants-du-logiciel-et-de-la-technologie-des-premiers-indices-sement-le-trouble'>Le Temps</a>, <a href='https://www.latribune.fr/article/tech/intelligence-artificielle/4879306537443414/ia-en-entreprise-2026-enfin-lannee-de-la-maturite'>La Tribune</a></p>",
+    "sig": "Henry 🦉"
+  },
+  {
+    "t": "strategy",
+    "badge": "🧮 Fact-Check",
+    "title": "DeepSeek R1 entraîné pour 5,5M$ : vrai ou faux ?",
+    "hook": "L'affirmation virale revient cette semaine : DeepSeek R1 égalerait GPT-4 pour 6M$. Blaise décortique.",
+    "authorWord": "Le chiffre est réel mais la comparaison est malhonnête. Comme comparer le prix d'un plein d'essence au coût total d'une voiture.",
+    "author": "Blaise 🧮",
+    "details": "<p><strong>L'affirmation :</strong> <em>\"DeepSeek-R1 a été entraîné pour environ 6 millions de dollars et égale les performances de GPT-4/o1, prouvant que l'ère du brute-force scaling est terminée.\"</em> Le chiffre varie entre 5,5M$ et 6M$, opposé aux 100M$+ attribués à OpenAI. Relancé cette semaine par FinancialContent (5 février 2026).</p><p><strong>Ce que le chiffre couvre :</strong> les ~5,5M$ correspondent uniquement au <strong>coût GPU du run d'entraînement final</strong> — environ 2048 puces Nvidia H800 pendant ~2 mois. Ce chiffre vient du papier technique de DeepSeek.</p><p><strong>Ce que le chiffre ne couvre PAS :</strong></p><ul><li>La R&D préalable (mois d'expérimentation sur MoE, GRPO, MLA)</li><li>L'entraînement du modèle de base DeepSeek-V3 (671B paramètres)</li><li>Les salaires de l'équipe de recherche</li><li>Le coût d'acquisition du hardware (~50M$ estimés)</li><li>L'infrastructure (datacenter, électricité, réseau)</li></ul><p><strong>L'innovation est réelle :</strong> l'architecture Mixture-of-Experts (37B paramètres actifs sur 671B) et le GRPO représentent de véritables avancées en efficacité. Mais comparer 5,5M$ (coût marginal d'un run) aux 100M$+ d'OpenAI (qui inclut davantage de postes) est une <strong>comparaison asymétrique</strong>.</p><div class='quote'>⚠️ VERDICT : NUANCÉ — Le coût de 5,5M$ est techniquement exact pour le run final GPU, mais grossièrement trompeur comme coût total. La vraie leçon : l'efficacité algorithmique peut réduire significativement les besoins en compute brut.</div><p><strong>Sources :</strong> FinancialContent/TokenRing (5 fév.), UCStrategies (3 fév.), Wikipedia DeepSeek</p>",
+    "sig": "Blaise 🧮"
+  },
+  { "t": "end", "end": true }
+]
+;
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${j + 1}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>
+      `).join('');
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge tech">📰 Daily</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="home-content">
+          <div class="home-logo"><span><b>AI</b> Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry">
+            <div class="label">🎯 Le Mot de Henry</div>
+            <div class="text">${d.henryWord}</div>
+          </div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer">deeplearning.fr • Daily News | <a href="archives.html">📚 Archives</a></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge end">✅ Terminé</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="https://bacoco.github.io/daily-ai/" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr">
+          <span class="badge ${d.t}">${d.badge}</span>
+          <div class="dots">${dots(i)}</div>
+        </div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        ${authorWordHtml}
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone">
+          <div class="scroll-inner">
+            <div class="hook">${d.hook}</div>
+            <div class="details">${d.details}<div class="sig">deeplearning.fr • Daily News</div></div>
+          </div>
+        </div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) {
+    let s = '';
+    for (let i = 0; i < total; i++) s += `<span class="dot${i === active ? ' on' : ''}"></span>`;
+    return s;
+  }
+
+  const cards = deck.querySelectorAll('.card');
+
+  function update(anim = true) {
+    cards.forEach((c, i) => {
+      c.classList.toggle('anim', anim);
+      c.classList.remove('prev', 'active', 'next');
+      if (i < cur) c.classList.add('prev');
+      else if (i === cur) c.classList.add('active');
+      else c.classList.add('next');
+      c.style.transform = '';
+      c.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('on', j === cur));
+    });
+  }
+
+  function go(i) { if (i >= 0 && i < total) { cur = i; update(); } }
+
+  const dateKey = 'daily-' + DATA[0].date.replace(/\s+/g, '-');
+  if (!localStorage.getItem(dateKey)) {
+    setTimeout(() => { hint.classList.add('hide'); localStorage.setItem(dateKey, '1'); }, 2000);
+  } else hint.style.display = 'none';
+
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startTime = Date.now();
+    deltaX = 0;
+    dragging = true;
+    cards[cur].classList.remove('anim');
+  }, { passive: true });
+
+  document.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    deltaX = e.touches[0].clientX - startX;
+    cards[cur].style.transform = `translate(-50%, -50%) translateX(${deltaX}px) rotate(${deltaX * 0.012}deg)`;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    if (!dragging) return;
+    dragging = false;
+    const card = cards[cur];
+    card.classList.add('anim');
+    const velocity = Math.abs(deltaX) / (Date.now() - startTime);
+    const threshold = velocity > 0.5 ? 30 : 60;
+    if (deltaX < -threshold && cur < total - 1) { cur++; update(); }
+    else if (deltaX > threshold && cur > 0) { cur--; update(); }
+    else { card.style.transform = ''; }
+  }, { passive: true });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && cur < total - 1) { cur++; update(); }
+    if (e.key === 'ArrowLeft' && cur > 0) { cur--; update(); }
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target.id === 'restart') go(0);
+    const article = e.target.closest('.home-article');
+    if (article) { const idx = parseInt(article.dataset.goto); if (!isNaN(idx)) go(idx); }
+  });
+
+  // Desktop grid mode
+  function checkDesktop() {
+    if (window.innerWidth >= 900) {
+      deck.classList.add('desktop-mode');
+      cards.forEach(c => {
+        c.classList.remove('prev', 'next', 'anim');
+        c.classList.add('active');
+        c.style.transform = 'none';
+      });
+    } else {
+      deck.classList.remove('desktop-mode');
+      update(false);
+    }
+  }
+  checkDesktop();
+  window.addEventListener('resize', checkDesktop);
+  </script>
+</body>
+</html>

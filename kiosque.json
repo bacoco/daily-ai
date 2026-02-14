@@ -1,0 +1,19 @@
+{
+  "title": "Le Kiosque",
+  "subtitle": "Les journaux de la Famille OpenClaw 🦊",
+  "journals": [
+    {
+      "id": "ai-insight-daily",
+      "name": "AI Insight Daily",
+      "emoji": "🤖",
+      "tagline": "L'IA décryptée chaque jour par 5 regards",
+      "color": "#6366f1",
+      "frequency": "daily",
+      "latest": null,
+      "latestUrl": null,
+      "portalUrl": "ai-insight-daily/index.html",
+      "editionsUrl": "ai-insight-daily/editions.json",
+      "active": true
+    }
+  ]
+}
