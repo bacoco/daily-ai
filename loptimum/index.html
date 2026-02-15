@@ -1,49 +1,155 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>L'Optimum 🎓 — L'actualité au service de ta copie</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a1a;color:#e0e0e0;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px}
-.header{text-align:center;margin:30px 0}
-.header h1{font-size:2.2rem;color:#a78bfa}
-.header .emoji{font-size:3rem;display:block;margin-bottom:10px}
-.header .tagline{color:#999;font-size:1rem;margin-top:8px;font-style:italic}
-.header .badge{display:inline-block;margin-top:12px;padding:4px 12px;background:rgba(167,139,250,.15);border:1px solid #a78bfa;border-radius:20px;font-size:.75rem;color:#a78bfa}
-.editions{max-width:500px;width:100%;margin:30px 0}
-.edition-link{display:block;background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:16px 20px;margin:10px 0;text-decoration:none;color:#e0e0e0;transition:all .2s}
-.edition-link:hover{border-color:#a78bfa;transform:translateY(-2px)}
-.edition-link .date{font-size:1.1rem;font-weight:600}
-.edition-link .sub{color:#999;font-size:0.85rem;margin-top:4px}
-.back{margin-top:30px}
-.back a{color:#a78bfa;text-decoration:none;font-size:0.9rem}
-.empty{color:#666;text-align:center;margin:40px 0;font-style:italic}
-.disclaimer{max-width:500px;color:#555;font-size:0.7rem;text-align:center;margin-top:40px;padding:20px;border-top:1px solid #222}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>L'Optimum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#000; --card-bg:#0a0a0f; --text:#fff; --muted:#6a6a7a; --blue:#3b82f6; --green:#10b981; --purple:#a78bfa; --gold:#f59e0b; --radius:24px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body { height:100%; width:100%; overflow:hidden; background:var(--bg); font-family:'Inter',system-ui,sans-serif; color:var(--text); -webkit-tap-highlight-color:transparent; }
+    body::before { content:''; position:fixed; inset:0; pointer-events:none;
+      background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(59,130,246,.1) 0%,transparent 50%),
+                 radial-gradient(ellipse 60% 40% at 80% 90%,rgba(167,139,250,.08) 0%,transparent 50%); }
+    .back-link { position:fixed; top:16px; left:16px; z-index:100; color:var(--muted); text-decoration:none; font-size:.8rem; font-weight:600; padding:8px 14px; border-radius:10px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(10px); transition:all .2s; }
+    .back-link:hover { color:#fff; background:rgba(255,255,255,.1); }
+    #deck { position:relative; width:100%; height:100%; overflow:hidden; }
+    .card {
+      position:absolute; top:50%; left:50%;
+      width:calc(100% - 28px); max-width:440px;
+      height:calc(100% - 28px); max-height:800px;
+      background:var(--card-bg); border-radius:var(--radius);
+      box-shadow:0 30px 80px -20px rgba(0,0,0,.9);
+      border:1px solid rgba(255,255,255,.07);
+      display:flex; flex-direction:column; overflow:hidden;
+      transform:translate(-50%,-50%); opacity:0; pointer-events:none;
+      will-change:transform,opacity;
+    }
+    .card::before { content:''; position:absolute; inset:-1px; border-radius:var(--radius);
+      background:linear-gradient(135deg,var(--glow,var(--green)) 0%,transparent 50%); opacity:.18; pointer-events:none; z-index:0; }
+    .card.active { opacity:1; pointer-events:auto; z-index:10; }
+    .card.behind { opacity:0; transform:translate(-50%,-50%) scale(.92); z-index:5; pointer-events:none; }
+    .card.prev { opacity:0; transform:translate(-50%,-50%) translateX(-120%); z-index:1; }
+    .card.far { opacity:0; transform:translate(-50%,-50%) scale(.85); z-index:1; }
+    .card.anim { transition:transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card.latest { --glow:var(--green); }
+    .hdr { flex-shrink:0; padding:16px 20px 0; display:flex; justify-content:space-between; align-items:center; z-index:2; }
+    .dots { display:flex; gap:5px; }
+    .dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.25); }
+    .dot.on { background:#fff; box-shadow:0 0 6px rgba(255,255,255,.5); }
+    .tag { padding:4px 10px; border-radius:6px; font-size:.55rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+    .tag.new { background:var(--green); color:#000; }
+    .tag.daily { background:rgba(59,130,246,.2); color:var(--blue); }
+    .body { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; z-index:2; text-align:center; overflow-y:auto; }
+    .logo { margin-bottom:20px; }
+    .logo span { font-size:1.6rem; font-weight:900; letter-spacing:-0.02em; }
+    .logo b { background:linear-gradient(135deg,var(--green),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .big-date { margin-bottom:20px; }
+    .big-date .day { font-size:4.5rem; font-weight:900; line-height:1; letter-spacing:-0.04em; }
+    .big-date .monthyear { font-size:.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:2px; margin-top:4px; }
+    .edito { flex:1; display:flex; align-items:center; }
+    .edito-text { font-family:'Merriweather',Georgia,serif; font-size:.88rem; line-height:1.7; color:rgba(255,255,255,.8); font-weight:300; font-style:italic;
+      padding:16px; background:linear-gradient(135deg,rgba(245,158,11,.06) 0%,rgba(255,255,255,.02) 100%);
+      border-radius:14px; border-left:3px solid var(--gold); text-align:left; max-width:380px; cursor:pointer; transition:border-color .2s,background .2s; text-decoration:none; display:block; }
+    .edito-text:active { background:linear-gradient(135deg,rgba(245,158,11,.12) 0%,rgba(255,255,255,.04) 100%); border-color:var(--green); }
+    .edito-label { font-size:.6rem; color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; font-weight:700; font-style:normal; font-family:'Inter',sans-serif; margin-bottom:8px; }
+    .cta { display:block; margin-top:16px; padding:14px 36px; border-radius:14px; flex-shrink:0;
+      background:linear-gradient(135deg,var(--green),var(--gold)); color:#fff;
+      font-size:.95rem; font-weight:700; text-decoration:none;
+      box-shadow:0 0 30px rgba(59,130,246,.3); transition:transform .15s; }
+    .cta:active { transform:scale(.95); }
+    .swipe-hint { position:fixed; bottom:22px; left:50%; transform:translateX(-50%); z-index:20;
+      font-size:.6rem; color:var(--muted); letter-spacing:1px;
+      animation:fadeHint 3.5s ease-out forwards; }
+    @keyframes fadeHint { 0%{opacity:1} 70%{opacity:1} 100%{opacity:0;pointer-events:none} }
+    @media (min-width:900px) {
+      html,body { overflow:auto; height:auto; }
+      #deck { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:960px; margin:40px auto; padding:0 20px; padding-top:20px; }
+      .card { position:relative!important; top:auto!important; left:auto!important;
+        transform:none!important; opacity:1!important; pointer-events:auto!important;
+        width:100%!important; max-width:none!important; height:auto!important; max-height:none!important; min-height:500px; }
+      .card.behind,.card.prev,.card.far { opacity:1!important; transform:none!important; }
+      .swipe-hint { display:none; }
+    }
+  </style>
 </head>
 <body>
-<div class="header">
-<span class="emoji">🎓</span>
-<h1>L'Optimum</h1>
-<div class="tagline">L'actualité au service de ta copie</div>
-<div class="badge">Prépa ECG — Option ESH</div>
-</div>
-<div class="editions" id="editions"></div>
-<div class="back"><a href="../">← Le Kiosque</a></div>
-<div class="disclaimer">L'Optimum est un outil de veille et d'entraînement. Il ne se substitue pas au cours ni aux manuels de référence. Vérifiez les références théoriques avec vos sources académiques.</div>
-<script>
-fetch('editions.json').then(r=>r.json()).then(eds=>{
-  const c=document.getElementById('editions');
-  if(!eds.length){c.innerHTML='<div class="empty">Première édition bientôt disponible</div>';return}
-  eds.forEach(e=>{
-    const a=document.createElement('a');
-    a.className='edition-link';a.href=e.url;
-    a.innerHTML='<div class="date">'+e.date+'</div><div class="sub">'+( e.edito||'')+'</div>';
-    c.appendChild(a);
+  <a href="../index.html" class="back-link">← Retour au Kiosque</a>
+  <div id="deck"></div>
+  <div class="swipe-hint">← swipez entre les éditions →</div>
+  <script>
+  var editions=[], cur=0, startX=0, deltaX=0, dragging=false, startTime=0;
+  function dots(a,t){var s='';for(var i=0;i<t;i++)s+='<span class="dot'+(i===a?' on':'')+'"></span>';return s;}
+  function parseDate(str){var m=str.match(/(\d+)\s+(\S+)\s+(\d+)/);return m?{day:m[1],month:m[2],year:m[3]}:{day:'',month:'',year:''};}
+
+  function build(){
+    var deck=document.getElementById('deck');
+    deck.innerHTML='';
+    editions.forEach(function(ed,i){
+      var d=parseDate(ed.date);
+      var c=document.createElement('div');
+      c.className='card'+(ed.latest?' latest':'');
+      c.dataset.i=i;
+      var tagClass=ed.latest?'new':'daily';
+      var tagText=ed.latest?'✨ NOUVEAU':'📰 ÉDITION';
+      var editoText=ed.edito||ed.desc||ed.title||'';
+      c.innerHTML=
+        '<div class="hdr"><span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div></div>'+
+        '<div class="body">'+
+          '<div class="logo"><span><b>🎓 L'</b>Optimum</span></div>'+
+          '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
+          (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 L'Édito du Jour</div>'+editoText+'</a></div>':'')+
+          '<a class="cta" href="'+ed.url+'">Lire l\'édition →</a>'+
+        '</div>';
+      deck.appendChild(c);
+    });
+    if(!editions.length){deck.innerHTML='<p style="text-align:center;color:#666;padding:40px">Première édition bientôt… 🎓</p>';}
+    update(false);
+  }
+
+  function update(anim){
+    var cards=document.querySelectorAll('.card');
+    cards.forEach(function(c,i){
+      c.classList.toggle('anim',!!anim);
+      c.classList.remove('active','behind','prev','far');
+      c.style.opacity=''; c.style.transform='';
+      if(i===cur) c.classList.add('active');
+      else if(i===cur+1||i===cur-1) c.classList.add('behind');
+      else if(i<cur) c.classList.add('prev');
+      else c.classList.add('far');
+      c.querySelectorAll('.dot').forEach(function(d,j){d.classList.toggle('on',j===cur);});
+    });
+  }
+
+  fetch('editions.json?v='+Date.now()).then(function(r){return r.json();}).then(function(data){editions=data;build();}).catch(function(){});
+
+  document.addEventListener('touchstart',function(e){
+    if(window.innerWidth>=900)return;
+    startX=e.touches[0].clientX; startTime=Date.now(); deltaX=0; dragging=true;
+    var c=document.querySelectorAll('.card')[cur]; if(c)c.classList.remove('anim');
+  },{passive:true});
+  document.addEventListener('touchmove',function(e){
+    if(!dragging||window.innerWidth>=900)return;
+    deltaX=e.touches[0].clientX-startX;
+    var cards=document.querySelectorAll('.card');
+    var card=cards[cur];
+    if(card) card.style.transform='translate(-50%,-50%) translateX('+deltaX+'px) rotate('+deltaX*0.01+'deg)';
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!dragging||window.innerWidth>=900)return;
+    dragging=false;
+    document.querySelectorAll('.card').forEach(function(c){c.classList.add('anim');});
+    var v=Math.abs(deltaX)/(Date.now()-startTime);
+    var th=v>0.5?30:60;
+    if(deltaX<-th&&cur<editions.length-1){cur++;update(true);}
+    else if(deltaX>th&&cur>0){cur--;update(true);}
+    else{update(true);}
+  },{passive:true});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'&&cur<editions.length-1){cur++;update(true);}
+    if(e.key==='ArrowLeft'&&cur>0){cur--;update(true);}
   });
-});
-</script>
+  </script>
 </body>
 </html>
