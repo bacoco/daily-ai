@@ -53,6 +53,15 @@
       "portalUrl": "loptimum/index.html",
       "editionsUrl": "loptimum/editions.json",
       "active": true
+    },
+    {
+      "id": "vibe-coding",
+      "name": "Vibe Coding",
+      "emoji": "🎨",
+      "tagline": "Code au feeling, ship au daily",
+      "frequency": "mar-jeu-sam",
+      "url": "vibe-coding/",
+      "color": "#a78bfa"
     }
   ]
 }
