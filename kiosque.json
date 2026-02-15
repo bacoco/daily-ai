@@ -62,7 +62,9 @@
       "frequency": "mar-jeu-sam",
       "url": "vibe-coding/",
       "color": "#a78bfa",
-      "active": true
+      "active": true,
+      "editionsUrl": "vibe-coding/editions.json",
+      "icon": "🎨"
     }
   ]
 }
