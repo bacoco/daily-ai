@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Le Kiosque 🦊</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
@@ -60,7 +63,7 @@
   <div class="grid" id="grid">
     <div class="card-loading">Chargement des journaux…</div>
   </div>
-  <div class="footer">Le Kiosque · Éditions quotidiennes 🦊</div>
+  <div class="footer">Le Kiosque · Éditions quotidiennes 🦊 · <a href="#" id="refreshBtn" style="cursor:pointer">🔄 Rafraîchir</a></div>
 
   <script>
   (function(){
@@ -129,6 +132,7 @@
         console.error(e);
       });
   })();
+  document.getElementById('refreshBtn').addEventListener('click',function(e){e.preventDefault();caches&&caches.keys().then(function(k){k.forEach(function(n){caches.delete(n);});});location.reload(true);});
   </script>
 </body>
 </html>
