@@ -270,7 +270,7 @@
 <body>
   <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
   <div id="hint">
-    <div class="logo"><b>AI</b> Insight Daily</div>
+    <div class="logo">Le Flash Juridique</div>
     <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
   </div>
   <div id="deck"></div>
@@ -301,7 +301,7 @@
       c.innerHTML = `
         <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
         <div class="home-content">
-          <div class="home-logo"><span><b>AI</b> Insight Daily</span></div>
+          <div class="home-logo"><span>Le Flash Juridique</span></div>
           <div class="home-date">${d.date}</div>
           <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
           <div class="home-articles">${articlesHtml}</div>
@@ -369,7 +369,7 @@
     // Sidebar
     const sb=document.createElement('nav');
     sb.className='dt-sidebar';
-    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo"><b>AI</b> Insight Daily</div><div class="dt-date">${DATA[0].date||'15 Février 2026'}</div>`:`<div class="dt-logo"><b>AI</b> Insight Daily</div><div class="dt-date">15 Février 2026</div>`;
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">${DATA[0].date||'15 Février 2026'}</div>`:`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">15 Février 2026</div>`;
     sb.innerHTML=logoDate;
     DATA.forEach((d,i)=>{
       const item=document.createElement('div');
