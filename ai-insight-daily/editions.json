@@ -1,20 +1,11 @@
 [
   {
-    "date": "15 Février 2026",
-    "title": "800 MILLIARDS$ sur la table : le pari fou de l'IA en 2026",
-    "desc": "",
-    "url": "2026-02-15.html",
-    "type": "daily",
-    "latest": true,
-    "edito": "800 milliards sur la table, des crânes perforés par l'IA, et le SaaS qui meurt sous nos yeux : bienvenue dans le dimanche le plus lucide de l'année. — La Rédaction 🦊"
-  },
-  {
     "date": "14 Février 2026",
     "title": "L'IA fracture l'économie mondiale — Anthropic 380 Md$, Gemini cloné, calcul photonique",
     "desc": "Anthropic valorisé à 380 milliards, Mistral investit en Suède, Google Gemini ciblé par 100 000 attaques de distillation, percée en calcul optique, Taïwan double sa croissance, ByteDance développe SeedChip.",
     "url": "2026-02-14.html",
     "type": "daily",
-    "latest": false,
+    "latest": true,
     "edito": "Anthropic à 380 milliards, Mistral qui plante son drapeau en Suède, Google Gemini cloné 100 000 fois — et dans l'ombre, des lasers qui calculent à la vitesse lumière. Ce 14 février, l'IA ne fait pas dans la dentelle : elle fracture autant qu'elle fascine."
   },
   {
@@ -61,5 +52,14 @@
     "type": "special",
     "latest": false,
     "edito": "Ce vendredi 13, le monde brûle sur tous les fronts. Un campus en sang, le climat abandonné, Epstein qui hante Wall Street, l'Iran en suspens, l'Europe protectionniste, et les symboles effacés."
+  },
+  {
+    "date": "13 Février 2026",
+    "title": "📰 Lea News — Spéciale BCE & Fed : le grand gel monétaire",
+    "desc": "BCE à 2%, Fed à 3,75%, Trump vs Powell, VC record malgré les taux, et la fin de l'ère des banquiers centraux tout-puissants.",
+    "url": "lea-news-2026-02-13.html",
+    "type": "special",
+    "latest": false,
+    "edito": "Les banques centrales ont décidé de ne rien décider. La BCE gèle à 2%, la Fed campe à 3,75%, et Trump tente de mettre Powell en prison pour des travaux de plomberie. Bienvenue dans le monde monétaire post-logique."
   }
 ]
