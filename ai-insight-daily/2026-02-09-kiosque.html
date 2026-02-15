@@ -210,7 +210,15 @@
       /* keyboard focus */
       .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
     }
-  </style>
+      .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    </style>
 </head>
 <body>
     <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
