@@ -86,6 +86,7 @@
   function build(){
     var deck=document.getElementById('deck');
     deck.innerHTML='';
+    if(!editions.length){deck.innerHTML='<p style="text-align:center;color:#666;padding:40px">Première édition bientôt… 🎓</p>';return;}
     editions.forEach(function(ed,i){
       var d=parseDate(ed.date);
       var c=document.createElement('div');
@@ -97,14 +98,13 @@
       c.innerHTML=
         '<div class="hdr"><span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div></div>'+
         '<div class="body">'+
-          '<div class="logo"><span><b>🎓 L'</b>Optimum</span></div>'+
+          '<div class="logo"><span><b>🎓 L'Optimum</b></span></div>'+
           '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
           (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 L'Édito du Jour</div>'+editoText+'</a></div>':'')+
-          '<a class="cta" href="'+ed.url+'">Lire l\'édition →</a>'+
+          '<a class="cta" href="'+ed.url+'">Lire l'édition →</a>'+
         '</div>';
       deck.appendChild(c);
     });
-    if(!editions.length){deck.innerHTML='<p style="text-align:center;color:#666;padding:40px">Première édition bientôt… 🎓</p>';}
     update(false);
   }
 
