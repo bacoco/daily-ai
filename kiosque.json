@@ -60,11 +60,11 @@
       "emoji": "🎨",
       "tagline": "Code au feeling, ship au daily",
       "frequency": "mar-jeu-sam",
-      "url": "vibe-coding/",
       "color": "#a78bfa",
       "active": true,
       "editionsUrl": "vibe-coding/editions.json",
-      "icon": "🎨"
+      "icon": "🎨",
+      "portalUrl": "vibe-coding/index.html"
     }
   ]
 }
