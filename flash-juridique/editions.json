@@ -1,7 +1,17 @@
 [
   {
+    "date": "15 Février 2026",
+    "title": "Affaire Adama Traoré — Non-lieu définitif",
+    "desc": "",
+    "url": "2026-02-15.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "AI Act, rétractation en un clic, facturation électronique obligatoire : cette semaine, le droit bouge vite. L'essentiel pour ne pas être pris de court."
+  },
+  {
     "date": "14 Février 2026",
     "url": "2026-02-14.html",
-    "edito": "Assurance-vie, fiscalité 2026, partage de la valeur, prud'hommes, NIS2 et outils pratiques."
+    "edito": "Assurance-vie, fiscalité 2026, partage de la valeur, prud'hommes, NIS2 et outils pratiques.",
+    "latest": false
   }
 ]
