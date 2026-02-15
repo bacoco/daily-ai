@@ -61,7 +61,8 @@
       "tagline": "Code au feeling, ship au daily",
       "frequency": "mar-jeu-sam",
       "url": "vibe-coding/",
-      "color": "#a78bfa"
+      "color": "#a78bfa",
+      "active": true
     }
   ]
 }
