@@ -9,8 +9,8 @@
       "tagline": "L'IA décryptée chaque jour par 5 regards",
       "color": "#6366f1",
       "frequency": "daily",
-      "latest": null,
-      "latestUrl": null,
+      "latest": "15 Février 2026",
+      "latestUrl": "ai-insight-daily/2026-02-15.html",
       "portalUrl": "ai-insight-daily/index.html",
       "editionsUrl": "ai-insight-daily/editions.json",
       "active": true
@@ -35,8 +35,8 @@
       "tagline": "L'intelligence juridique du Cabinet Excen",
       "color": "#dc2626",
       "frequency": "mon-wed-fri",
-      "latest": "14 February 2026",
-      "latestUrl": "flash-juridique/2026-02-14.html",
+      "latest": "15 Février 2026",
+      "latestUrl": "flash-juridique/2026-02-15.html",
       "portalUrl": "flash-juridique/index.html",
       "editionsUrl": "flash-juridique/editions.json",
       "active": true
@@ -48,8 +48,8 @@
       "tagline": "L'actualité au service de ta copie — Prépa ECG ESH",
       "color": "#a78bfa",
       "frequency": "wed-sun",
-      "latest": "14 February 2026",
-      "latestUrl": "loptimum/2026-02-14.html",
+      "latest": "15 Février 2026",
+      "latestUrl": "loptimum/2026-02-15.html",
       "portalUrl": "loptimum/index.html",
       "editionsUrl": "loptimum/editions.json",
       "active": true
@@ -64,7 +64,9 @@
       "active": true,
       "editionsUrl": "vibe-coding/editions.json",
       "icon": "🎨",
-      "portalUrl": "vibe-coding/index.html"
+      "portalUrl": "vibe-coding/index.html",
+      "latest": "15 Février 2026",
+      "latestUrl": "vibe-coding/2026-02-15.html"
     }
   ]
 }

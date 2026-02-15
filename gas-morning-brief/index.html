@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -77,7 +77,7 @@
 <body>
   <a href="../index.html" class="back-link">← Retour au Kiosque</a>
   <div id="deck"></div>
-  <div class="swipe-hint">← swipez entre les éditions →</div>
+  <div class="swipe-hint">← swipe between editions →</div>
   <script>
   var editions=[], cur=0, startX=0, deltaX=0, dragging=false, startTime=0;
   function dots(a,t){var s='';for(var i=0;i<t;i++)s+='<span class="dot'+(i===a?' on':'')+'"></span>';return s;}
@@ -86,22 +86,22 @@
   function build(){
     var deck=document.getElementById('deck');
     deck.innerHTML='';
-    if(!editions.length){deck.innerHTML='<p style="text-align:center;color:#666;padding:40px">Première édition bientôt… ⚡</p>';return;}
+    if(!editions.length){deck.innerHTML='<p style="text-align:center;color:#666;padding:40px">First edition coming soon… ⚡</p>';return;}
     editions.forEach(function(ed,i){
       var d=parseDate(ed.date);
       var c=document.createElement('div');
       c.className='card'+(ed.latest?' latest':'');
       c.dataset.i=i;
       var tagClass=ed.latest?'new':'daily';
-      var tagText=ed.latest?'✨ NOUVEAU':'📰 ÉDITION';
+      var tagText=ed.latest?'✨ NEW':'📰 EDITION';
       var editoText=ed.edito||ed.desc||ed.title||'';
       c.innerHTML=
         '<div class="hdr"><span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div></div>'+
         '<div class="body">'+
           '<div class="logo"><span><b>⚡ Gas</b> Morning Brief</span></div>'+
           '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
-          (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 L'Édito du Jour</div>'+editoText+'</a></div>':'')+
-          '<a class="cta" href="'+ed.url+'">Lire l'édition →</a>'+
+          (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 Editor's Note</div>'+editoText+'</a></div>':'')+
+          '<a class="cta" href="'+ed.url+'">Read this edition →</a>'+
         '</div>';
       deck.appendChild(c);
     });
