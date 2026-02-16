@@ -1,11 +1,20 @@
 [
   {
+    "date": "16 Février 2026",
+    "title": "Gas prices edge higher into weekend — TTF €32.36, HH $3.24",
+    "desc": "",
+    "url": "2026-02-16.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Storage anxiety meets stratospheric uncertainty. TTF holds €32 as EU inventories slide toward decade lows, while a polar vortex disruption could extend heating season into March. The Merz ETS bombshell adds a volatility layer — but the real story is whether record LNG inflows and weak Asian demand can offset the tightest European storage setup since 2018."
+  },
+  {
     "date": "14 February 2026",
     "title": "Flash/Trend v2 — All Prices Timestamped, Storage Squeeze Meets Policy Cliff",
     "desc": "⚡ Flash (prices, LNG, power) with session dates + deltas. 📊 Trends (weather, storage, geopolitics) with explicit timelines.",
     "url": "2026-02-14.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "v2 — All prices timestamped. ⚡ FLASH (last 24h) then 📊 TREND (structural). HH $3.22 (settle 12 Feb), TTF €31.67 (close 13 Feb), EU storage 35.6% (12 Feb)."
   }
 ]
