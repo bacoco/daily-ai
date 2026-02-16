@@ -98,10 +98,10 @@
       c.innerHTML=
         '<div class="hdr"><span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div></div>'+
         '<div class="body">'+
-          '<div class="logo"><span><b>🎓 L'Optimum</b></span></div>'+
+          '<div class="logo"><span><b>🎓 L\u2019Optimum</b></span></div>'+
           '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
-          (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 L'Édito du Jour</div>'+editoText+'</a></div>':'')+
-          '<a class="cta" href="'+ed.url+'">Lire l'édition →</a>'+
+          (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 L\u2019Édito du Jour</div>'+editoText+'</a></div>':'')+
+          '<a class="cta" href="'+ed.url+'">Lire l\u2019édition →</a>'+
         '</div>';
       deck.appendChild(c);
     });
