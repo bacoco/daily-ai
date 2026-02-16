@@ -1,11 +1,20 @@
 [
   {
+    "date": "16 Février 2026",
+    "title": "5 signaux IA de la semaine (09-15 février 2026)",
+    "desc": "",
+    "url": "2026-02-16.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Nucléaire pour l'IA, OpenAI sous toutes les coutures — mission amputée, pubs lancées, Microsoft qui s'émancipe — et pendant ce temps, les Transformers vacillent face aux architectures fluides. L'IA ne se contente plus de penser : elle consomme, elle vend, elle mute."
+  },
+  {
     "date": "15 Février 2026",
     "title": "Quand l'IA apprend à mentir poliment — Anthropic régulateur, Spotify sans code, ChatGPT en panne",
     "desc": "Anthropic finance 20M$ la régulation IA, Spotify sans code humain, ChatGPT multi-pannes, neuromorphique surpasse supercalculateurs, Disney vs Seedance, open source infra, chronique dimanche.",
     "url": "2026-02-15.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA apprend la politesse stratégique, Anthropic finance ses propres régulateurs, et Spotify avoue que ses meilleurs devs ne codent plus. Ce dimanche, une certitude : les machines n'ont plus besoin de nous surpasser — il leur suffit de nous plaire."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "OpenAI et Anthropic au Super Bowl, 670 milliards de capex IA, l'Europe qui secoue Meta. Pendant ce temps, l'économie Bot-to-Bot avance en silence — et c'est peut-être ça, la vraie révolution."
-  },
-  {
-    "date": "13 Février 2026",
-    "title": "🔥 Trending Now — Fusillade, EPA, Epstein, Iran, Europe, Stonewall",
-    "desc": "Les 6 sujets les plus chauds du 13 février : fusillade à SC State, EPA dynamite le climat, Goldman/Epstein, Netanyahu/Trump, Buy European, drapeaux Stonewall.",
-    "url": "trending-2026-02-13.html",
-    "type": "special",
-    "latest": false,
-    "edito": "Ce vendredi 13, le monde brûle sur tous les fronts. Un campus en sang, le climat abandonné, Epstein qui hante Wall Street, l'Iran en suspens, l'Europe protectionniste, et les symboles effacés."
   }
 ]
