@@ -67,6 +67,17 @@
       "portalUrl": "vibe-coding/index.html",
       "latest": "15 Février 2026",
       "latestUrl": "vibe-coding/2026-02-15.html"
+    },
+    {
+      "id": "lasymmetrie",
+      "name": "L'Asymétrie",
+      "emoji": "📐",
+      "tagline": "L'information edge pour l'Asset Manager moderne",
+      "color": "#1e3a5f",
+      "frequency": "weekly (vendredi)",
+      "active": true,
+      "editionsUrl": "lasymmetrie/editions.json",
+      "portalUrl": "lasymmetrie/index.html"
     }
   ]
 }
