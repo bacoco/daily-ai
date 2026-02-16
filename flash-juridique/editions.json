@@ -1,11 +1,20 @@
 [
   {
+    "date": "16 Février 2026",
+    "title": "Reclassement : le contrôle effectif élargi",
+    "desc": "",
+    "url": "2026-02-16.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Reclassement élargi, ACRE rabotée, forfait-jours sous surveillance : cette semaine, le droit du travail et de l'entreprise bougent dans tous les sens. Le fil rouge ? Les employeurs doivent vérifier leurs conventions, leurs exonérations et leurs obligations — avant que la jurisprudence ne le fasse pour eux."
+  },
+  {
     "date": "15 Février 2026",
     "title": "Affaire Adama Traoré — Non-lieu définitif",
     "desc": "",
     "url": "2026-02-15.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "AI Act, rétractation en un clic, facturation électronique obligatoire : cette semaine, le droit bouge vite. L'essentiel pour ne pas être pris de court."
   },
   {
