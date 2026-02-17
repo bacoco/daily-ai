@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Février 2026",
+    "title": "GitHub Copilot JetBrains (maj 13 fév) : Agent Skills en preview",
+    "desc": "",
+    "url": "2026-02-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Mardi chargé ! Un ouvrier du BTP qui ship une app complète avec Cursor, une faille zero-click qui fait froid dans le dos, et Claude Code qui met une raclée à Copilot Workspace. La morale du jour : le vibe coding démocratise tout — y compris les risques. Bonne lecture 🎨"
+  },
+  {
     "date": "16 Février 2026",
     "title": "Taskade Genesis : le vibe coding collaboratif en temps réel",
     "desc": "",
     "url": "2026-02-16.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Karpathy enterre le vibe coding le jour de son anniversaire, Orchids se fait hacker en live sur la BBC, et DeepSeek V4 débarque demain pour tout bousculer — sacrée semaine ! 🔥 Entre les outils qui se battent pour ta productivité et les questions de fond sur l'avenir du métier, une chose est sûre : le vibe évolue, et nous avec. Bonne lecture !"
   },
   {
