@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Février 2026",
+    "title": "Transparence salariale : la France a 4 mois pour transposer la directive UE",
+    "desc": "",
+    "url": "2026-02-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Transparence salariale, dette souveraine, guerre commerciale : trois fronts, un fil rouge — les institutions tentent de reprendre la main sur les forces du marché. De la directive européenne sur les écarts salariaux au vote du Sénat US contre les tarifs Trump, en passant par l'alerte du CBO sur la trajectoire budgétaire américaine, cette édition te donne les théories (Arrow, Barro, Ricardo, List) et les amorces pour en faire des copies solides."
+  },
+  {
     "date": "15 Février 2026",
     "title": "Croissance française : 0,2 à 0,3 % au T1 2026",
     "desc": "",
     "url": "2026-02-15.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Croissance en berne, BCE en pause, Italie qui nous double : cette semaine dessine le portrait d'une France à la croisée des chemins. Entre hystérésis post-crises et rigidités structurelles, les théories ESH prennent vie sous nos yeux. De quoi alimenter tes copies — et tes khôlles."
   },
   {
