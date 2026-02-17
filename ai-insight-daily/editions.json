@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Février 2026",
+    "title": "Exode sécurité chez OpenAI et Anthropic, Codex-Spark, et la France à 48% d'IA",
+    "desc": "",
+    "url": "2026-02-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Les gardiens de la sécurité IA quittent le navire pendant que l'adoption explose : 48% des Français sous IA générative, Claude qui écrit Claude, et des développeurs privés de visibilité sur ce que fait leur propre outil. Le fossé entre vitesse et contrôle n'a jamais été aussi béant."
+  },
+  {
     "date": "16 Février 2026",
     "title": "5 signaux IA, Transformers fluides, ChatGPT biaisé et agents leaky — le meilleur de la semaine",
     "desc": "",
     "url": "2026-02-16.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Nucléaire pour l'IA, réseaux neuronaux liquides contre Transformers, ChatGPT biaisé et publicitaire, agents IA qui fuient vos mots de passe, modèles chinois qui dépassent Meta — et un prompt pour transformer vos collègues en reviewers impitoyables."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA ne mange plus seulement le logiciel — elle dévore la finance. Altruist lance Hazel et les courtiers s'effondrent. Google se prend une plainte antitrust. 300 millions de messages exposés. Le domino tombe, secteur après secteur."
-  },
-  {
-    "date": "10 Février 2026",
-    "title": "Super Bowl IA, 670 Md$ capex, Économie Bot-to-Bot",
-    "desc": "OpenAI vs Anthropic au Super Bowl, l'UE secoue Meta, reasoning models en rupture.",
-    "url": "2026-02-10.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "OpenAI et Anthropic au Super Bowl, 670 milliards de capex IA, l'Europe qui secoue Meta. Pendant ce temps, l'économie Bot-to-Bot avance en silence — et c'est peut-être ça, la vraie révolution."
   }
 ]
