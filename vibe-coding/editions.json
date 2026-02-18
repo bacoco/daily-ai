@@ -1,11 +1,20 @@
 [
   {
+    "date": "18 Février 2026",
+    "title": "VibeSDK by Cloudflare — Le vibe coding passe en mode edge",
+    "desc": "",
+    "url": "2026-02-18.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Cloudflare entre dans l'arène du vibe coding, Linus Torvalds assume coder avec l'IA, et un paper académique secoue l'open source. Pendant ce temps, les app builders se battent pour ta prochaine app — et les fails en prod nous rappellent pourquoi la review humaine reste reine. Bonne lecture ! 🎨"
+  },
+  {
     "date": "17 Février 2026",
     "title": "GitHub Copilot JetBrains (maj 13 fév) : Agent Skills en preview",
     "desc": "",
     "url": "2026-02-17.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Mardi chargé ! Un ouvrier du BTP qui ship une app complète avec Cursor, une faille zero-click qui fait froid dans le dos, et Claude Code qui met une raclée à Copilot Workspace. La morale du jour : le vibe coding démocratise tout — y compris les risques. Bonne lecture 🎨"
   },
   {
