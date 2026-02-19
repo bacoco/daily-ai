@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gas Morning Brief — 19 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Gas Morning Brief</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"19 Février 2026","henryWord":"TTF bounces to €31.88 as the polar vortex disruption enters D-3 countdown — but HH spot breaks below $3.00 on record US production. Storage at 34% (Germany 24%, Netherlands <15%), collapsed peace talks, and the 65-day Russian LNG ban countdown create the most asymmetric setup since 2022. The question isn't whether risks are priced — it's whether the market can afford to be wrong.","articles":[{"badge":"⚡ 💰 Price Action","title":"TTF Rebounds to €31.88 as HH Spot Slips Below $3.00","idx":1},{"badge":"⚡ 🚢 LNG & Flows","title":"EU Still Paying €915M/Month for Russian Gas — LNG Ban 65 Days Away","idx":2},{"badge":"⚡ ⚡ Power & Carbon","title":"EUA Climbs Back Above €71; EU Backs Stronger Price Curbs on ETS2","idx":3},{"badge":"📊 🌡️ Weather & Demand","title":"Polar Vortex Disruption D-3: Cold Signal Strengthens for Late February","idx":4},{"badge":"📊 📦 Storage Watch","title":"Germany at 24%, Netherlands Below 15% — Europe's Storage Crisis Deepens","idx":5},{"badge":"📊 💣 Geopolitics & Regulation","title":"Russia-Ukraine Talks Collapse; Oil Surges 3% on Druzhba Deadlock","idx":6},{"badge":"📊 🎯 Risk Flags & Outlook","title":"Vortex D-3, Storage Crisis, Talks Collapse — The Perfect Asymmetric Setup","idx":7}]},{"t":"alert","badge":"⚡ 💰 Price Action","title":"TTF Rebounds to €31.88 as HH Spot Slips Below $3.00","hook":"TTF bounced from its 5-week low, recovering above €31/MWh on Wednesday as polar vortex fears resurfaced. Henry Hub spot trading dipped below the $3.00 floor for the first time since mid-January amid record US production.","authorWord":"TTF's recovery from the €29.70 low signals the market isn't ready to fully price out winter risk yet — but HH spot below $3.00 tells a different story of structural US oversupply.","author":"Blaise 🧮","details":"<p>The Dutch TTF front-month recovered to <strong>€31.88/MWh</strong> (Wed 19 Feb), bouncing from Tuesday's intraday low of €29.70 — the lowest since January 12. The recovery was driven by revised weather models showing colder-than-expected temperatures for late February tied to the approaching polar vortex disruption. Source: <a href='https://www.ice.com/products/27996665/Dutch-TTF-Gas-Futures/data' target='_blank'>ICE Endex TTF</a>.</p><p>Henry Hub spot trading fell <strong>below $3.000/MMBtu</strong> on Wednesday for the first time since mid-January, even as NYMEX futures attempted to stabilize above that threshold. US dry gas production remains at record levels near <strong>120.8 Bcf/d</strong>, overwhelming demand that is fading rapidly as mild weather dominates the US East Coast. The springlike pattern is reshaping the US gas outlook. Source: <a href='https://www.naturalgasintel.com/news/midmorning-markets-natural-gas-cash-weaker-with-henry-hub-trading-below-3/' target='_blank'>Natural Gas Intelligence</a>.</p><p><strong>Key levels:</strong> TTF support at €29.70 (Tuesday's low), resistance at €32.50. HH $3.00 psychological floor breached on spot — a sustained move below opens $2.80. The Feb/Mar spread has fully normalized after the historic $7.46 vs $3.73 blowout in late January. Source: <a href='https://fxdailyreport.com/natural-gas-natgas-usd-price-technical-analysis-for-february-19-2026/' target='_blank'>FX Daily Report</a>.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎</div><div class='dissent-text'>The TTF rebound looks technical, not fundamental. With EU storage at 34% and mild weather still dominant in the 10-day forecast, this is a dead-cat bounce unless the polar vortex delivers confirmed cold by Week 4. HH's break below $3 spot is the more honest signal.</div></div>","sig":"Blaise 🧮 · Gas Morning Brief"},{"t":"alert","badge":"⚡ 🚢 LNG & Flows","title":"EU Still Paying €915M/Month for Russian Gas — LNG Ban 65 Days Away","hook":"Fresh data reveals the EU paid Russia €915M for fossil fuels in January, with natural gas accounting for 85%. The April 25 LNG ban deadline is now 65 days away as Druzhba oil blockade reshapes transit politics.","authorWord":"Europe remains deeply dependent on Russian gas even as the ban clock ticks — January's €915M in payments underscores the scale of supply replacement needed in just 65 days.","author":"Henry 🦉","details":"<p>New analysis from the <strong>Centre for Research on Energy and Clean Air</strong> reveals the five largest EU importers paid Russia <strong>€915 million</strong> for fossil fuels in January 2026 alone, with <strong>natural gas accounting for 85%</strong> of these imports — delivered by pipeline and LNG. This dependency persists even as the EU's prohibition on Russian LNG takes effect April 25. Source: <a href='https://energyandcleanair.org/january-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/' target='_blank'>CREA Monthly Analysis</a>.</p><p>The <strong>Druzhba oil pipeline blockade</strong> continues to dominate transit politics. Hungary announced a halt to energy consultations with the EU in retaliation for the ongoing oil transit suspension through Ukraine (blocked since Jan 27). The EU is simultaneously pressuring Ukraine to restore Druzhba flows while planning to ban Russian crude by 2027 — a contradictory stance that highlights the tension between short-term supply needs and long-term decoupling. Source: <a href='https://euromaidanpress.com/2026/02/18/eu-asks-ukraine-repair-druzhba-pipeline-russian-oil-ban/' target='_blank'>Euromaidan Press</a>.</p><p><strong>LNG market dynamics:</strong> Global LNG supply is expanding with Golden Pass and Plaquemines ramping up US export capacity. European terminals continue operating at high utilization, but the <strong>Rügen FSRU</strong> remains ice-blocked since Feb 11. Post-Lunar New Year Asian restocking has not yet materialized — a window that may close within days. Source: <a href='https://oilprice.com/Energy/Energy-General/EU-Considers-Emergency-Steps-to-Restore-Russian-Oil-Through-Druzhba-Pipeline.html' target='_blank'>OilPrice</a>.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮</div><div class='dissent-text'>The €915M figure overstates the replacement challenge. Most of this was pipeline gas under legacy contracts that expire naturally. The real pinch point is the ~15 bcm/yr of Russian LNG — and with Golden Pass, Plaquemines, and Qatar expansion, global supply should be adequate by H2 2026.</div></div>","sig":"Henry 🦉 · Gas Morning Brief"},{"t":"tech","badge":"⚡ ⚡ Power & Carbon","title":"EUA Climbs Back Above €71; EU Backs Stronger Price Curbs on ETS2","hook":"Carbon prices stabilize after the Merz-triggered selloff as EU member states back stronger price controls for the upcoming ETS2 market. Meanwhile, negative electricity prices force a rethink of EU power market design.","authorWord":"The ETS is navigating its most turbulent political waters since inception — price curbs on ETS2, calls for ETS1 reform, and negative power prices all converging to reshape EU energy market architecture.","author":"Sage 🦎","details":"<p><strong>EUA carbon permits</strong> climbed back above <strong>€71/t</strong> on Wednesday, recovering from the post-Merz selloff that took prices from €78 to €70.7 in a single week. Fund positioning adjustments were smaller than feared, providing a stabilization floor. However, political headwinds remain strong with the ETS review now front and center in EU policy debates. Source: <a href='https://gmk.center/en/news/carbon-prices-in-europe-fall-in-february-amid-calls-for-ets-review/' target='_blank'>GMK Center</a>.</p><p><strong>ETS2 price curbs:</strong> EU member states on Wednesday backed plans to <strong>strengthen price controls</strong> in the bloc's upcoming carbon market for buildings and road transport (ETS2), responding to concerns that the new system could raise household fuel bills. This is a significant signal — if price control mechanisms are aggressive enough, they could limit the upside for carbon prices across the entire EU trading architecture. Source: <a href='https://www.reuters.com/sustainability/boards-policy-regulation/eu-countries-back-stronger-price-curbs-new-carbon-market-2026-02-18/' target='_blank'>Reuters</a>.</p><p><strong>Negative electricity prices:</strong> EU leaders will discuss options to reduce electricity prices at the March summit, including decoupling power from gas prices and addressing the growing incidence of negative energy prices. This structural issue — where renewable overgeneration forces producers to pay consumers — is creating paradoxical market conditions that undermine investment signals. Source: <a href='https://www.euronews.com/my-europe/2026/02/18/high-carbon-costs-negative-energy-prices-eu-confronts-electricity-price-condundrum' target='_blank'>Euronews</a>.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>The ETS2 price curb vote is a Trojan horse for broader carbon market intervention. If politicians learn they can cap carbon prices to protect consumers, ETS1 reform follows — and with it, the end of carbon as a meaningful driver of gas-to-coal switching economics. Watch the March summit closely.</div></div>","sig":"Sage 🦎 · Gas Morning Brief"},{"t":"analysis","badge":"📊 🌡️ Weather & Demand","title":"Polar Vortex Disruption D-3: Cold Signal Strengthens for Late February","hook":"The stratospheric warming event flagged for February 22 is now three days away. Models show strengthening wave interactions while surface forecasts flip colder for Week 4 across NW Europe.","authorWord":"We are now D-3 from the polar vortex disruption event. The stratospheric signal is strengthening and the key question shifts from 'will it happen' to 'how fast does cold propagate to the surface.'","author":"Sage 🦎","details":"<p>The <strong>polar vortex disruption</strong> flagged for <strong>February 22</strong> is now just three days out. Atmospheric analyst Andrej Flis confirms that <strong>strong wave interactions are already visible</strong> in the stratosphere, with the disruption entering official monitoring. The event classification (displacement vs. split) will determine the severity and geographic distribution of subsequent surface cold. Source: <a href='https://www.severe-weather.eu/long-range-2/spring-2026-forecast-la-nina-collapse-europe-seasonal-weather-fa' target='_blank'>Severe Weather Europe</a>.</p><p><strong>Current surface weather:</strong> The mild spell that triggered this week's TTF selloff is still dominant — milder-than-normal temperatures across NW Europe are suppressing heating demand through Feb 23-24. However, extended-range models (Week 3-4) are now showing a <strong>colder shift for late February into early March</strong> as the stratospheric signal begins propagating downward. The contrast between current mild conditions and the approaching disruption is creating a classic weather-driven trading setup. Source: <a href='https://www.bloomberg.com/news/articles/2026-02-16/european-gas-hits-five-week-low-as-weather-outlook-turns-milder' target='_blank'>Bloomberg</a>.</p><p>The European gas market remains fundamentally <strong>\"tense and weather-sensitive\"</strong> per the UEEX market overview — despite temporary stabilization, the lowest storage levels in 8 years support elevated prices and risk premiums on forwards. Any return of sustained cold would accelerate withdrawals from already critically low inventories. Source: <a href='https://www.ueex.com.ua/eng/presscenter/news/gas-price-ukraine-and-europe-market-overview-february-9-13-2026/' target='_blank'>UEEX Market Overview</a>.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮</div><div class='dissent-text'>Stratospheric events have a ~50% success rate in delivering meaningful surface cold, and propagation takes 2-4 weeks. Even if Feb 22 delivers a clean split, sustained cold may not arrive before mid-March — when lengthening days and rising solar angle structurally cap heating demand. The market is right to discount this risk.</div></div>","sig":"Sage 🦎 · Gas Morning Brief"},{"t":"tech","badge":"📊 📦 Storage Watch","title":"Germany at 24%, Netherlands Below 15% — Europe's Storage Crisis Deepens","hook":"Country-level storage data reveals acute stress in the EU's two largest gas markets. Germany hits historic lows at 24% while the Netherlands breaches all-time records below 15%. End-of-winter projections point to 26% by March 31.","authorWord":"The storage numbers are not just low — they're historically unprecedented for mid-February. Germany at 24% and Netherlands below 15% mean refill season starts from the deepest deficit since the 2022 crisis.","author":"Blaise 🧮","details":"<p><strong>EU aggregate storage</strong> remains around <strong>34% full</strong> (as of Feb 14), the lowest mid-February level since 2022. Europe has withdrawn <strong>99% of the gas pumped into storage</strong> last summer — an extraordinary depletion rate that leaves minimal cushion for any late-winter demand surge. Source: <a href='https://agsi.gie.eu/' target='_blank'>GIE AGSI+</a>.</p><p><strong>Germany</strong> — the EU's largest gas market — hit <strong>23.95% full</strong> (60.14 TWh working gas), a record low for mid-February. Underground storage facilities are being drawn down at rates not seen even during the 2022 crisis. The Merz government transition adds policy uncertainty around storage mandates and energy strategy. Source: <a href='https://brusselssignal.eu/2026/02/dangerously-low-germanys-gas-storage-has-fallen-to-record-lows/' target='_blank'>Brussels Signal</a>.</p><p>The <strong>Netherlands</strong> dropped <strong>below 15%</strong> — an all-time record low for mid-February. As the host of the TTF benchmark, Dutch storage levels have outsized psychological impact on price formation. Source: <a href='https://tass.com/economy/2087703' target='_blank'>TASS/GIE</a>.</p><p><strong>Refill math:</strong> Analysts project EU storage at ~<strong>26% by end-March</strong>. Reaching the EU's 90% mandate by November 1 requires injecting ~64 percentage points (~700 TWh) in 7 months — a pace that exceeds 2023 and 2024 refill rates and requires sustained high LNG imports through summer in direct competition with Asian restocking. Source: <a href='https://oilprice.com/Latest-Energy-News/World-News/European-Gas-Prices-Slide-as-Mild-Weather-Tempers-Supply-Fears.html' target='_blank'>OilPrice</a>.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>The 26% exit-winter and 90% refill target math assumes no policy flexibility. If Brussels revises the target to 85% (as some member states are lobbying for), or if mild summer weather suppresses cooling demand, the refill challenge becomes manageable. Also, record global LNG supply entering the market in H2 2026 changes the equation.</div></div>","sig":"Blaise 🧮 · Gas Morning Brief"},{"t":"alert","badge":"📊 💣 Geopolitics & Regulation","title":"Russia-Ukraine Talks Collapse; Oil Surges 3% on Druzhba Deadlock","hook":"Peace talks broke down on Tuesday as oil prices surged 3% on the Druzhba pipeline stalemate. Hungary halts energy consultations with the EU while the Russian gas ban countdown hits 65 days.","authorWord":"The collapse of Russia-Ukraine talks and Hungary's retaliatory halt of EU energy consultations signal a hardening of positions that makes the April 25 gas ban deadline even more consequential.","author":"Henry 🦉","details":"<p><strong>Russia-Ukraine talks breakdown:</strong> Oil prices surged nearly <strong>3%</strong> on Tuesday after peace negotiations collapsed. The failure to reach agreement on territorial and humanitarian issues dashes any near-term hope for a ceasefire that could normalize energy transit. The conflict's energy dimension intensifies as the EU's phased gas ban approaches. Source: <a href='https://oilprice.com/Energy/Crude-Oil/Oil-Prices-Surge-Nearly-3-After-Russia-Ukraine-Talks-Break-Down.html' target='_blank'>OilPrice</a>.</p><p><strong>Hungary escalation:</strong> Foreign Minister Szijjártó announced a <strong>halt to energy consultations with the EU</strong> in retaliation for the Druzhba oil pipeline blockade by Ukraine (suspended since January 27). This is the first time a member state has formally suspended energy policy cooperation with Brussels — a significant escalation that complicates EU energy unity ahead of the Russian gas ban. Source: <a href='https://euromaidanpress.com/2026/02/18/eu-asks-ukraine-repair-druzhba-pipeline-russian-oil-ban/' target='_blank'>Euromaidan Press</a>.</p><p><strong>Russian gas ban countdown:</strong> 65 days remain until the <strong>April 25 LNG prohibition</strong> and 118 days until the <strong>June 17 pipeline cutoff</strong>. The paradox deepens: the EU asks Ukraine to repair Druzhba infrastructure it plans to shut down, while Russia continues shipping Arctic LNG 2 cargoes via icebreakers despite Western sanctions. OFAC enforcement under the current US administration remains uncertain. Source: <a href='https://www.reuters.com/business/energy/' target='_blank'>Reuters Energy</a>.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎</div><div class='dissent-text'>Hungary's theatrics aside, the real question is whether the April 25 deadline holds. With storage at 4-year lows and the refill challenge ahead, Brussels has strong incentive to quietly grant transitional exemptions — particularly for landlocked member states with limited LNG access. Watch for backroom deals, not headlines.</div></div>","sig":"Henry 🦉 · Gas Morning Brief"},{"t":"strategy","badge":"📊 🎯 Risk Flags & Outlook","title":"Vortex D-3, Storage Crisis, Talks Collapse — The Perfect Asymmetric Setup","hook":"Three converging risks — polar vortex in 3 days, record-low storage, and collapsed peace talks — create the most asymmetric bull setup since the 2022 crisis. The market is pricing mild weather into a powder keg.","authorWord":"The convergence of a D-3 polar vortex event, historically depleted storage, and collapsed geopolitical talks creates a setup where the downside is measured in euros but the upside is measured in crises.","author":"La Rédaction 🦊","details":"<p><strong>🔴 TOP 3 RISKS (probability × impact):</strong></p><ol><li><strong>Polar vortex disruption delivers cold to Europe (D-3)</strong> (45% probability, EXTREME impact): The Feb 22 stratospheric event is now imminent. If cold propagates to the surface by late Feb/early March, TTF could retest €35-38 within a week as short covering meets genuine demand on 34% storage.</li><li><strong>Russian gas ban holds on April 25</strong> (60% probability, HIGH impact): The collapse of peace talks removes any diplomatic off-ramp for sanctions relief. The €915M/month dependency revealed today makes the transition brutally expensive.</li><li><strong>Asian LNG restocking begins</strong> (75% probability, MEDIUM impact): Post-Lunar New Year buying is overdue. When JKM firms up, the TTF floor rises mechanically as cargo competition intensifies ahead of the massive summer refill.</li></ol><p><strong>🟢 BULL SCENARIO (1-2 weeks):</strong> Vortex disrupts, cold hits NW Europe by Feb 26-28. Storage withdrawals accelerate, Netherlands approaches single digits. TTF spikes to €35-38/MWh. Collapsed peace talks remove any sanctions-relief bid. HH follows on LNG export pull.</p><p><strong>🔻 BEAR SCENARIO:</strong> Vortex event fizzles or displaces cold to Siberia. Mild weather extends through early March. TTF retests €29.70 and breaks lower to €28. HH settles into $2.80-3.00 range on record production. Asian demand stays dormant.</p><p><strong>📅 CATALYSTS TODAY & THIS WEEK:</strong></p><ul><li>Thu Feb 19: <a href='https://www.eia.gov/naturalgas/weekly/' target='_blank'>EIA weekly storage report</a> (US, for week ending Feb 13)</li><li>Fri Feb 20: <a href='https://agsi.gie.eu/' target='_blank'>GIE AGSI+</a> weekly update (EU storage as of Feb 17)</li><li>Sat Feb 22: Polar vortex disruption event window opens</li><li>Ongoing: Geneva peace talks aftermath — any resumption shifts medium-term risk</li><li>Ongoing: German coalition talks — ETS reform implications</li></ul><p><strong>NET ASSESSMENT:</strong> The market is pricing the benign scenario while sitting on the most flammable storage/geopolitical/weather combination in three years. Downside is limited to €28-29 TTF; upside extends to €38+ on any cold confirmation. Risk/reward strongly favors the long side this week.</p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉</div><div class='dissent-text'>The 2022 comparison is overcooked. Global LNG supply is 25% larger than in 2022, Europe has 6 new FSRU terminals, and pipeline dependency on Russia is a fraction of what it was. The refill challenge is real but manageable. The bigger risk is getting caught long in a mild-weather squeeze that takes TTF to the mid-€20s.</div></div>","sig":"La Rédaction 🦊 · Gas Morning Brief"},{"t":"end","end":true,"disclaimer":"This document is an automated summary for informational purposes only. It does not constitute investment advice, trading recommendation, or regulated financial analysis. Data comes from free public sources, potentially delayed (15-30 min for prices, D+1 for EIA/GIE stocks). Figures may contain errors from scraping or AI interpretation. Always verify on primary sources before any decision. Generated by LLM — qualitative analyses reflect statistical patterns, not expert judgment."}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Gas Morning Brief</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Gas Morning Brief — 19 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Gas Morning Brief-18-Février-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Gas Morning Brief</div><div class="dt-date">${DATA[0].date||'19 Février 2026'}</div>`:`<div class="dt-logo">Gas Morning Brief</div><div class="dt-date">19 Février 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Gas Morning Brief — 19 Février 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
