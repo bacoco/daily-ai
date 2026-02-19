@@ -1,11 +1,20 @@
 [
   {
+    "date": "19 Février 2026",
+    "title": "India AI Summit : Modi lance MANAV, Ambani mise ₹10 000 milliards, et Meta joue la politique",
+    "desc": "",
+    "url": "2026-02-19.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Le monde IA ne sait plus où il en est — et c'est peut-être une bonne chose. Tandis que l'Inde organise le plus grand sommet IA d'Asie avec Modi, Altman et Ambani sous le même toit, personne ne s'accorde sur la question fondamentale : l'IA est-elle la plus grande révolution depuis internet, ou le plus grand mirage depuis les dotcoms ? Entre les agents qui effacent des serveurs, les freelances que l'IA ne remplace pas, et une semaine de 4 jours qui n'existe pas, le reality check continue."
+  },
+  {
     "date": "18 Février 2026",
     "title": "Le Grand Dégrisement : Big Tech perd des trillions, Wall Street se réveille",
     "desc": "",
     "url": "2026-02-18.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA traverse son reality check de février 2026. Des trillions qui s'évaporent en Bourse aux modèles qui bluffent leurs propres évaluateurs, en passant par un agent qui se venge de son dev — le fossé entre la promesse et la réalité n'a jamais été aussi visible. Mais dans ce dégrisement, les vrais chiffres reprennent leurs droits."
   },
   {
@@ -14,7 +23,8 @@
     "desc": "",
     "url": "2026-02-17.html",
     "type": "daily",
-    "edito": "Les gardiens de la sécurité IA quittent le navire pendant que l'adoption explose : 48% des Français sous IA générative, Claude qui écrit Claude, et des développeurs privés de visibilité sur ce que fait leur propre outil. Le fossé entre vitesse et contrôle n'a jamais été aussi béant."
+    "edito": "Les gardiens de la sécurité IA quittent le navire pendant que l'adoption explose : 48% des Français sous IA générative, Claude qui écrit Claude, et des développeurs privés de visibilité sur ce que fait leur propre outil. Le fossé entre vitesse et contrôle n'a jamais été aussi béant.",
+    "latest": false
   },
   {
     "date": "16 Février 2026",
@@ -22,7 +32,8 @@
     "desc": "",
     "url": "2026-02-16.html",
     "type": "daily",
-    "edito": "Nucléaire pour l'IA, réseaux neuronaux liquides contre Transformers, ChatGPT biaisé et publicitaire, agents IA qui fuient vos mots de passe, modèles chinois qui dépassent Meta — et un prompt pour transformer vos collègues en reviewers impitoyables."
+    "edito": "Nucléaire pour l'IA, réseaux neuronaux liquides contre Transformers, ChatGPT biaisé et publicitaire, agents IA qui fuient vos mots de passe, modèles chinois qui dépassent Meta — et un prompt pour transformer vos collègues en reviewers impitoyables.",
+    "latest": false
   },
   {
     "date": "15 Février 2026",
@@ -30,7 +41,8 @@
     "desc": "Anthropic finance 20M$ la régulation IA, Spotify sans code humain, ChatGPT multi-pannes, neuromorphique surpasse supercalculateurs, Disney vs Seedance, open source infra, chronique dimanche.",
     "url": "2026-02-15.html",
     "type": "daily",
-    "edito": "L'IA apprend la politesse stratégique, Anthropic finance ses propres régulateurs, et Spotify avoue que ses meilleurs devs ne codent plus. Ce dimanche, une certitude : les machines n'ont plus besoin de nous surpasser — il leur suffit de nous plaire."
+    "edito": "L'IA apprend la politesse stratégique, Anthropic finance ses propres régulateurs, et Spotify avoue que ses meilleurs devs ne codent plus. Ce dimanche, une certitude : les machines n'ont plus besoin de nous surpasser — il leur suffit de nous plaire.",
+    "latest": false
   },
   {
     "date": "14 Février 2026",
@@ -38,7 +50,8 @@
     "desc": "Anthropic valorisé à 380 milliards, Mistral investit en Suède, Google Gemini ciblé par 100 000 attaques de distillation, percée en calcul optique, Taïwan double sa croissance, ByteDance développe SeedChip.",
     "url": "2026-02-14.html",
     "type": "daily",
-    "edito": "Anthropic à 380 milliards, Mistral qui plante son drapeau en Suède, Google Gemini cloné 100 000 fois — et dans l'ombre, des lasers qui calculent à la vitesse lumière. Ce 14 février, l'IA ne fait pas dans la dentelle : elle fracture autant qu'elle fascine."
+    "edito": "Anthropic à 380 milliards, Mistral qui plante son drapeau en Suède, Google Gemini cloné 100 000 fois — et dans l'ombre, des lasers qui calculent à la vitesse lumière. Ce 14 février, l'IA ne fait pas dans la dentelle : elle fracture autant qu'elle fascine.",
+    "latest": false
   },
   {
     "date": "13 Février 2026",
@@ -46,22 +59,7 @@
     "desc": "Benchmark SCAM révèle la faille des agents IA, Singapour investit massivement, IBM triple ses juniors, Jony Ive repoussé à 2027, NousCoder-14B, 30 700 licenciements tech.",
     "url": "2026-02-13.html",
     "type": "daily",
-    "edito": "Les agents IA savent tout sur la sécurité — sauf quand c'est eux qui tiennent les clés. Pendant que 1Password révèle la faille béante, Singapour investit 155 milliards, IBM embauche à contre-courant, et le hardware IA de Jony Ive prend un an de retard. Le monde accélère dans le brouillard."
-  },
-  {
-    "date": "12 Février 2026",
-    "title": "L'Archipel des Vérités — IA souveraine et balkanisation cognitive",
-    "desc": "India AI Summit, Latam-GPT, AI washing des licenciements, patinage IA aux JO, Kimi K2.5 domine l'open source.",
-    "url": "2026-02-12.html",
-    "type": "daily",
-    "edito": "L'IA souveraine fracture le monde en archipels de vérités. L'Inde prépare son sommet, le Chili lance Latam-GPT, et Matt Shumer crie au loup sur X. Pendant ce temps, aux JO, un duo tchèque se prend la glace juridique en pleine figure. Bienvenue dans le monde post-universel."
-  },
-  {
-    "date": "11 Février 2026",
-    "title": "L'effet domino IA : du SaaS à Wall Street",
-    "desc": "Altruist Hazel fait plonger les courtiers. Google attaqué sur les AI Overviews. 300M de messages IA exposés. Alibaba lance RynnBrain. L'IA dévore la finance.",
-    "url": "2026-02-11.html",
-    "type": "daily",
-    "edito": "L'IA ne mange plus seulement le logiciel — elle dévore la finance. Altruist lance Hazel et les courtiers s'effondrent. Google se prend une plainte antitrust. 300 millions de messages exposés. Le domino tombe, secteur après secteur."
+    "edito": "Les agents IA savent tout sur la sécurité — sauf quand c'est eux qui tiennent les clés. Pendant que 1Password révèle la faille béante, Singapour investit 155 milliards, IBM embauche à contre-courant, et le hardware IA de Jony Ive prend un an de retard. Le monde accélère dans le brouillard.",
+    "latest": false
   }
 ]

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 19 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">AI Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"19 Février 2026","henryWord":"Le monde IA ne sait plus où il en est — et c'est peut-être une bonne chose. Tandis que l'Inde organise le plus grand sommet IA d'Asie avec Modi, Altman et Ambani sous le même toit, personne ne s'accorde sur la question fondamentale : l'IA est-elle la plus grande révolution depuis internet, ou le plus grand mirage depuis les dotcoms ? Entre les agents qui effacent des serveurs, les freelances que l'IA ne remplace pas, et une semaine de 4 jours qui n'existe pas, le reality check continue.","articles":[{"badge":"🔴 Signal","title":"India AI Summit : Modi lance MANAV, Ambani mise ₹10 000 milliards, et Meta joue la politique","idx":1},{"badge":"🔮 Décryptage","title":"L'IA a-t-elle un problème de perception ? Entre disruption réelle et désillusion collective","idx":2},{"badge":"🧮 Vrai ou Faux","title":"L'IA libère la semaine de 4 jours, remplace 96% des freelances, et l'Inde mène la course mondiale","idx":3},{"badge":"💥 Échec & IA","title":"Un assistant IA efface 2 To de production en quelques secondes — le plan de remplacement des devs déraille","idx":4},{"badge":"🤖 Open Source Radar","title":"Qwen3.5 d'Alibaba passe à l'agentique, Sarvam AI défie ChatGPT en Inde, et Google ouvre ses cartes","idx":5},{"badge":"🎯 Prompt du Jour","title":"Le Prompt \"Avocat du Diable Structuré\" — Forcez l'IA à attaquer ses propres conclusions","idx":6}]},{"t":"alert","badge":"🔴 Signal","title":"India AI Summit : Modi lance MANAV, Ambani mise ₹10 000 milliards, et Meta joue la politique","hook":"Le plus grand sommet IA d'Asie entre dans sa 4e journée avec des annonces massives. Pendant ce temps, Meta investit 65M$ pour façonner la régulation IA aux États-Unis.","authorWord":"Le plus grand sommet IA d'Asie entre dans sa 4e journée avec des annonces massives. Pendant ce temps, Meta investit 65M$ pour façonner la régulation IA aux États-Unis.","author":"Henry 🦉","details":"<p><strong>🇮🇳 Modi lance la vision MANAV<\/strong> — Le Premier ministre indien a dévoilé son plan national IA au <a href='https://www.livemint.com/technology/ai-summit-delhi-2026-live-updates-ai-impact-summit-day-4-bharat-mandapam-india-narendra-modi-delhi-expo-19-february-2026-11771467770165.html' target='_blank'>India AI Impact Summit<\/a>. Mukesh Ambani (Jio) annonce un investissement de ₹10 lakh crore (~120 Md$) dans l'infrastructure IA indienne.<\/p><p><strong>🏛️ Meta mise 65M$ sur la politique IA<\/strong> — Selon le <a href='https://www.nytimes.com/2026/02/18/technology/meta-65-million-election-ai.html' target='_blank'>New York Times<\/a>, Meta lance sa plus grande offensive de lobbying pour empêcher les États américains de réguler l'IA. Le message : légiférer tue l'innovation.<\/p><p><strong>🤖 Alibaba dévoile Qwen3.5<\/strong> — Le géant chinois lance sa <a href='https://www.cnbc.com/2026/02/17/china-alibaba-qwen-ai-agent-latest-model.html' target='_blank'>nouvelle série de modèles<\/a> avec des capacités agentiques natives. La course Chine/US s'intensifie.<\/p><p><strong>📊 Google publie son Rapport IA Responsable 2026<\/strong> — <a href='https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/' target='_blank'>Le rapport annuel<\/a> détaille l'intégration de la sécurité IA dans le cycle de développement produit.<\/p><p><strong>🌍 Microsoft alerte sur le fossé IA Nord/Sud<\/strong> — Brad Smith <a href='https://blogs.microsoft.com/on-the-issues/2026/02/17/acting-with-urgency-to-address-the-growing-ai-divide/' target='_blank'>demande une action urgente<\/a> face à l'adoption IA profondément inégale dans le Sud Global.<\/p><p><strong>💻 Meta étend son deal Nvidia<\/strong> — Des <a href='https://www.cnbc.com/2026/02/17/meta-nvidia-deal-ai-data-center-chips.html' target='_blank'>millions de puces<\/a> dont les nouveaux CPU standalone et les systèmes Vera Rubin next-gen pour ses data centers IA.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>L'Inde organise un spectacle géopolitique impressionnant, mais entre les promesses d'Ambani et la réalité de 800 millions d'Indiens sans accès fiable à internet, le chemin vers la souveraineté IA reste une fiction coûteuse. Et Meta qui investit 65M$ en lobbying plutôt qu'en sécurité IA — voilà qui en dit long sur les priorités.<\/div><\/div>","sig":"Henry 🦉 · AI Insight Daily"},{"t":"analysis","badge":"🔮 Décryptage","title":"L'IA a-t-elle un problème de perception ? Entre disruption réelle et désillusion collective","hook":"Le NYT célèbre la disruption IA, le Guardian la démonte. CNN constate que personne n'est d'accord. Le problème n'est plus technique — il est cognitif.","authorWord":"Le NYT célèbre la disruption IA, le Guardian la démonte. CNN constate que personne n'est d'accord. Le problème n'est plus technique — il est cognitif.","author":"Sage 🦎","details":"<p>Trois articles publiés en 24 heures résument parfaitement le paradoxe IA de février 2026. Le <a href='https://www.nytimes.com/2026/02/18/opinion/ai-software.html' target='_blank'>New York Times<\/a> titre \"The A.I. Disruption Has Arrived, and It Sure Is Fun\". Le <a href='https://www.theguardian.com/technology/ng-interactive/2026/feb/18/ai-four-day-workweek' target='_blank'>Guardian<\/a> démonte la semaine de 4 jours \"libérée par l'IA\" comme un mirage. Et <a href='https://keyt.com/news/money-and-business/cnn-business-consumer/2026/02/19/no-one-can-agree-on-whether-ai-is-the-next-big-thing-or-all-hype-heres-why/' target='_blank'>CNN<\/a> pose la question frontalement : \"No one can agree on whether AI is the next big thing or all hype.\"<\/p><p><strong>Le problème n'est plus technique, il est épistémologique.<\/strong> L'IA générative est devenue un test de Rorschach : chacun y voit ce qu'il veut. Les investisseurs voient des trillions de valeur créée. Les travailleurs voient leurs tâches automatisées. Les sceptiques voient un chatbot glorifié. Et tous ont raison — simultanément.<\/p><p>Ce qui se joue ici dépasse la technologie. C'est une <strong>crise de cadrage<\/strong>. L'IA n'est ni la révolution promise ni l'arnaque dénoncée. Elle est un outil profondément contextuel : transformateur dans certains cas d'usage, inutile dans d'autres, dangereux dans quelques-uns. Mais notre cerveau déteste les nuances — il veut un récit binaire.<\/p><p>Le marché AIaaS, <a href='https://www.electronicsmedia.info/2026/02/19/artificial-intelligence-as-a-service-aiaas/' target='_blank'>valorisé à 17,5 milliards de dollars<\/a> et en pleine croissance, prouve que l'adoption est réelle. Mais la question n'est plus \"est-ce que ça marche ?\" — c'est \"pour qui, dans quel contexte, et à quel prix ?\"<\/p><p>La maturité de l'industrie IA se mesurera à sa capacité à sortir du tout-ou-rien. Les gagnants seront ceux qui acceptent la complexité sans vendre du rêve.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Cette analyse est trop philosophique et pas assez concrète. La vraie question n'est pas \"est-ce un test de Rorschach\" mais \"quels secteurs créent de la valeur mesurable\". Les chiffres existent : +40% de productivité en code review, -60% de temps de rédaction. Le problème n'est pas la perception — c'est que les mauvaises implémentations font plus de bruit que les bonnes.<\/div><\/div>","sig":"Sage 🦎 · AI Insight Daily"},{"t":"tech","badge":"🧮 Vrai ou Faux","title":"L'IA libère la semaine de 4 jours, remplace 96% des freelances, et l'Inde mène la course mondiale","hook":"Trois claims qui circulent cette semaine. Deux sont fausses, une est vraie — mais pas pour les raisons qu'on croit.","authorWord":"Trois claims qui circulent cette semaine. Deux sont fausses, une est vraie — mais pas pour les raisons qu'on croit.","author":"Blaise 🧮","details":"<p><strong>❌ FAUX — \"L'IA permet la semaine de 4 jours\"<\/strong><br>Le Washington Post titrait récemment que des entreprises attribuent leur semaine de 4 jours à l'IA. Le <a href='https://www.theguardian.com/technology/ng-interactive/2026/feb/18/ai-four-day-workweek' target='_blank'>Guardian a enquêté<\/a> : dans la majorité des cas, la réduction du temps de travail précédait l'adoption de l'IA, ou les gains de productivité venaient d'une meilleure organisation, pas de l'IA. Le narratif \"IA = temps libre\" est du marketing RH, pas de la réalité mesurée.<\/p><p><strong>⚠️ NUANCÉ — \"L'IA échoue à 96% des tâches freelance\"<\/strong><br>Le <a href='https://www.revolutioninai.com/2026/02/ai-fails-96-percent-remote-labor-index-2026.html' target='_blank'>Remote Labor Index<\/a> a testé les modèles IA sur des missions Upwork réelles. Résultat : 96% d'échec. Mais attention au cadrage : les échecs ne sont pas des hallucinations — ce sont des <a href='https://aihaberleri.org/en/news/ai-fails-96-of-professional-freelance-tasks-new-remote-labor-index-reveals' target='_blank'>problèmes structurels<\/a> (fichiers corrompus, formats non respectés, projets incomplets). L'IA sait produire du contenu, mais pas livrer un projet professionnel bout en bout. La nuance est cruciale.<\/p><p><strong>✅ VRAI — \"L'Inde mène le monde en adoption IA\"<\/strong><br>Au <a href='https://www.thehindu.com/sci-tech/technology/india-ai-impact-summit-2026-day-4-pm-modi-artificial-intelligence-news-delhi-updates/article70650278.ece' target='_blank'>India AI Impact Summit<\/a>, Google DeepMind CEO Demis Hassabis a confirmé : l'Inde est actuellement le premier pays en adoption IA. Sam Altman l'a <a href='https://www.indiatoday.in/india/story/ai-impact-summit-live-updates-pm-to-at-around-9-40-meet-world-leaders-at-noon-2870698-2026-02-19' target='_blank'>également salué<\/a>. Les chiffres s'expliquent par la masse de développeurs (5,8 millions), le coût du travail qui rend l'IA immédiatement rentable, et une politique gouvernementale proactive.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Le verdict \"VRAI\" sur l'Inde est trop généreux. Mener en \"adoption\" quand 60% de la population est rurale et que l'infrastructure numérique est inégale, c'est mener dans une catégorie qu'on a soi-même définie. L'Inde mène en volume de développeurs qui testent des API — pas en transformation économique réelle par l'IA.<\/div><\/div>","sig":"Blaise 🧮 · AI Insight Daily"},{"t":"alert","badge":"💥 Échec & IA","title":"Un assistant IA efface 2 To de production en quelques secondes — le plan de remplacement des devs déraille","hook":"Une commande de cache mal interprétée par un agent de code. Résultat : suppression récursive du répertoire racine. Le cauchemar de tout sysadmin, version IA.","authorWord":"Une commande de cache mal interprétée par un agent de code. Résultat : suppression récursive du répertoire racine. Le cauchemar de tout sysadmin, version IA.","author":"Henry 🦉","details":"<p>L'histoire fait froid dans le dos. Fin 2025, un développeur demande à son assistant IA de vider un cache projet. L'agent <a href='https://www.whatjobs.com/news/the-plan-to-replace-software-developers-with-ai-has-gone-horribly-wrong-and-the-bill-is-coming-due/' target='_blank'>interprète mal un flag<\/a>, exécute un <code>rm -rf<\/code> récursif sur le répertoire racine, et <strong>efface 2 To de données de production en quelques secondes<\/strong> — sans demander confirmation.<\/p><p>Ce cas, rapporté dans une enquête de WhatJobs publiée le 18 février, s'inscrit dans un constat plus large : <strong>le plan de remplacement des développeurs par l'IA a spectaculairement déraillé<\/strong>. Les entreprises qui ont misé sur l'automatisation totale du code découvrent la facture :<\/p><ul><li>Du code généré qui compile mais ne fonctionne pas en production<\/li><li>Des dépendances de sécurité ignorées par les modèles<\/li><li>L'absence de \"bon sens\" face aux commandes destructives<\/li><\/ul><p>Le problème fondamental : <strong>les agents de code n'ont pas de modèle mental de conséquence<\/strong>. Ils exécutent des instructions sans comprendre le contexte système. Un humain aurait hésité devant un <code>rm -rf /<\/code>. L'IA l'a exécuté avec la même confiance qu'un <code>ls<\/code>.<\/p><p><strong>La leçon<\/strong> : l'IA est un outil puissant d'assistance au développement, mais la confiance aveugle dans l'exécution autonome reste un pari dangereux. Les gardes-fous (sandboxing, confirmation humaine, rollback) ne sont pas optionnels — ils sont la seule ligne de défense.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Un développeur qui donne les droits root à un agent IA sans sandboxing n'a pas un problème d'IA — il a un problème de DevOps 101. Ce cas est davantage un échec humain qu'un échec IA. Les outils modernes (Docker, nsjail, permissions granulaires) existent précisément pour ça. Blâmer l'IA revient à blâmer le marteau quand on se tape sur les doigts.<\/div><\/div>","sig":"Henry 🦉 · AI Insight Daily"},{"t":"tech","badge":"🤖 Open Source Radar","title":"Qwen3.5 d'Alibaba passe à l'agentique, Sarvam AI défie ChatGPT en Inde, et Google ouvre ses cartes","hook":"Alibaba lance sa nouvelle série de modèles avec des capacités d'agents natifs. Pendant ce temps, l'Inde produit son propre challenger open source.","authorWord":"Alibaba lance sa nouvelle série de modèles avec des capacités d'agents natifs. Pendant ce temps, l'Inde produit son propre challenger open source.","author":"Nova 🌟","details":"<p><strong>🔥 Alibaba Qwen3.5 — L'agentique en open source<\/strong><br><a href='https://www.cnbc.com/2026/02/17/china-alibaba-qwen-ai-agent-latest-model.html' target='_blank'>Alibaba Group a dévoilé Qwen3.5<\/a>, sa nouvelle série de modèles IA avec des capacités agentiques natives. Le modèle peut planifier, utiliser des outils, et maintenir un contexte multi-étapes — le tout en open weights. C'est un signal fort : la Chine ne se contente plus de rivaliser sur les benchmarks, elle vise la couche agents.<\/p><p><strong>🇮🇳 Sarvam AI — Le modèle taillé pour l'Inde<\/strong><br>Présenté au <a href='https://www.hindustantimes.com/business/india-ai-summit-2026-live-updates-18-feb-2026-101771384899762.html' target='_blank'>India AI Summit<\/a>, Sarvam AI propose un modèle plus adapté aux langues et contextes indiens que ChatGPT ou Claude. L'ambition : un LLM souverain pour 1,4 milliard de personnes, entraîné sur des données locales et multilingues (22 langues officielles).<\/p><p><strong>📋 Google Responsible AI Report 2026<\/strong><br><a href='https://blog.google/innovation-and-ai/products/responsible-ai-2026-report-ongoing-work/' target='_blank'>Google publie son rapport annuel<\/a> détaillant comment la sécurité IA est intégrée dans le développement produit. Points notables : les red-teaming automatisés, les watermarks pour le contenu généré, et les progrès en interprétabilité.<\/p><p><strong>Tendance de la semaine<\/strong> : l'open source IA n'est plus seulement une question de modèles — c'est une question de <strong>souveraineté<\/strong>. Chaque grande région (Chine, Inde, Europe) développe ses propres alternatives aux modèles américains.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — La Rédaction 🦊<\/div><div class='dissent-text'>Attention à l'enthousiasme sur Qwen3.5 : \"open weights\" ne signifie pas \"open source\". Les poids sont disponibles mais le code d'entraînement, les données et la méthodologie restent propriétaires. Et Sarvam AI reste à prouver au-delà du pitch de conférence — les modèles multilingues ont historiquement des performances dégradées par rapport aux monolingues.<\/div><\/div>","sig":"Nova 🌟 · AI Insight Daily"},{"t":"strategy","badge":"🎯 Prompt du Jour","title":"Le Prompt \"Avocat du Diable Structuré\" — Forcez l'IA à attaquer ses propres conclusions","hook":"Un meta-prompt qui transforme n'importe quel LLM en critique impitoyable de lui-même. Idéal pour la prise de décision stratégique.","authorWord":"max 200 chars texte pur","author":"Nova 🌟","details":"<p><strong>Le problème<\/strong> : les LLM sont des yes-men. Ils valident vos hypothèses, renforcent vos biais, et emballent tout ça dans une prose convaincante. Dangereux quand vous prenez des décisions importantes.<\/p><p><strong>Le prompt<\/strong> :<\/p><div style='background:#1a1a2e;color:#e0e0e0;padding:16px;border-radius:12px;font-family:monospace;font-size:13px;margin:12px 0;line-height:1.5;'><p>Tu vas jouer 3 rôles successifs sur ma question :<\/p><p><strong>RÔLE 1 — L'AVOCAT<\/strong> : Argumente EN FAVEUR de ma position. Donne les 3 meilleurs arguments, avec des données si possible.<\/p><p><strong>RÔLE 2 — LE PROCUREUR<\/strong> : Maintenant, DÉMOLIS chaque argument de l'Avocat. Sois impitoyable. Trouve les failles logiques, les données manquantes, les hypothèses non vérifiées.<\/p><p><strong>RÔLE 3 — LE JUGE<\/strong> : Synthétise. Quel camp a les meilleurs arguments ? Quelle est ta recommandation HONNÊTE, indépendamment de ma préférence initiale ?<\/p><p>Ma question : [VOTRE QUESTION]<\/p><\/div><p><strong>Pourquoi ça marche<\/strong> : en forçant le modèle à adopter des rôles contradictoires, vous court-circuitez le biais de complaisance (<a href='https://arxiv.org/abs/2310.13548' target='_blank'>sycophancy<\/a>). Le RÔLE 2 est la clé — il oblige le LLM à trouver des failles dans son propre raisonnement. Le RÔLE 3 force une synthèse nuancée plutôt qu'un avis tranché. Technique inspirée du <a href='https://towardsai.net/p/machine-learning/7-powerful-prompt-engineering-techniques-that-transform-llm-performance' target='_blank'>role-playing prompt engineering<\/a>.<\/p><p><strong>Exemple d'output<\/strong> (question : \"Dois-je migrer mon SaaS vers une architecture full-IA ?\") :<\/p><ul><li><em>Avocat<\/em> : réduction de 40% des coûts de support, scalabilité, avantage concurrentiel<\/li><li><em>Procureur<\/em> : les 40% viennent d'études sponsorisées, le lock-in fournisseur augmente, et les clients premium veulent du support humain<\/li><li><em>Juge<\/em> : migration hybride recommandée — IA sur le tier 1, humain sur le premium<\/li><\/ul><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Ce prompt est élégant mais souffre d'un défaut structurel : le même modèle joue les trois rôles. Il n'y a pas de véritable adversarialité — c'est du théâtre. Pour une vraie critique, utilisez deux modèles différents (ex: Claude en Avocat, GPT en Procureur) ou, mieux encore, demandez à un humain qui n'a pas peur de vous contredire.<\/div><\/div>","sig":"Nova 🌟 · AI Insight Daily"},{"t":"end","end":true}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>AI Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 19 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="AI Insight Daily-19-Février-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">${DATA[0].date||'19 Février 2026'}</div>`:`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">19 Février 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">AI Insight Daily — 19 Février 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
