@@ -1,11 +1,20 @@
 [
   {
+    "date": "19 Février 2026",
+    "title": "Hostinger Horizons — Le vibe coding tout-en-un à prix cassé",
+    "desc": "",
+    "url": "2026-02-19.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "LogRocket classe les outils dev IA, Karpathy nuance le vibe coding un an après, et Hostinger veut démocratiser le tout-en-un. Pendant ce temps, l'étude METR nous rappelle qu'on est plus lents qu'on le croit — et la monoculture du code IA devient un vrai sujet. Bonne lecture ! 🎨"
+  },
+  {
     "date": "18 Février 2026",
     "title": "VibeSDK by Cloudflare — Le vibe coding passe en mode edge",
     "desc": "",
     "url": "2026-02-18.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Cloudflare entre dans l'arène du vibe coding, Linus Torvalds assume coder avec l'IA, et un paper académique secoue l'open source. Pendant ce temps, les app builders se battent pour ta prochaine app — et les fails en prod nous rappellent pourquoi la review humaine reste reine. Bonne lecture ! 🎨"
   },
   {
