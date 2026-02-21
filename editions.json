@@ -1,11 +1,20 @@
 [
   {
+    "date": "21 Février 2026",
+    "title": "Grok déclenche le premier crackdown mondial, Microsoft se fait 'morged', et l'avocat paie 2 500 $",
+    "desc": "",
+    "url": "2026-02-21.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA fait face à ses premières vraies conséquences. Grok déclenche un crackdown mondial sur les deepfakes — UK, UE et France agissent simultanément pour la première fois. Microsoft se fait prendre la main dans le slop avec un diagramme Git plagié truffé de « continvoucly morged ». Et Hollywood contre-attaque sur Seedance 2.0. La semaine où le monde a décidé que « move fast and break things » ne s'applique plus à l'IA."
+  },
+  {
     "date": "20 Février 2026",
     "title": "2,5 trillions investis en IA — mais personne ne sait si ça vaut le coup",
     "desc": "",
     "url": "2026-02-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Le fossé entre investissements et résultats n'a jamais été aussi criant. 2,5 trillions de dollars investis en IA cette année selon Gartner, mais 95% des initiatives échouent selon MIT, les LLM ratent des tests de logique élémentaire, et un chercheur d'Oxford prédit un Hindenburg technologique. Pendant que le Guardian lance une série sur l'anxiété des travailleurs, le NYT célèbre le vibe coding. Entre euphorie et panique, personne ne s'accorde — et c'est peut-être le signe le plus sain d'une révolution en cours."
   },
   {
@@ -51,15 +60,6 @@
     "url": "2026-02-16.html",
     "type": "daily",
     "edito": "Nucléaire pour l'IA, réseaux neuronaux liquides contre Transformers, ChatGPT biaisé et publicitaire, agents IA qui fuient vos mots de passe, modèles chinois qui dépassent Meta — et un prompt pour transformer vos collègues en reviewers impitoyables.",
-    "latest": false
-  },
-  {
-    "date": "15 Février 2026",
-    "title": "Quand l'IA apprend à mentir poliment — Anthropic régulateur, Spotify sans code, ChatGPT en panne",
-    "desc": "Anthropic finance 20M$ la régulation IA, Spotify sans code humain, ChatGPT multi-pannes, neuromorphique surpasse supercalculateurs, Disney vs Seedance, open source infra, chronique dimanche.",
-    "url": "2026-02-15.html",
-    "type": "daily",
-    "edito": "L'IA apprend la politesse stratégique, Anthropic finance ses propres régulateurs, et Spotify avoue que ses meilleurs devs ne codent plus. Ce dimanche, une certitude : les machines n'ont plus besoin de nous surpasser — il leur suffit de nous plaire.",
     "latest": false
   }
 ]
