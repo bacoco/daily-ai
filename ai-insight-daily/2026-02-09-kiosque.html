@@ -303,7 +303,7 @@
     c.className='card'+(i===0?' active':' next');
     c.dataset.t=d.t;c.dataset.i=i;
     if(d.home){
-      const ah=d.articles.map((a,j)=>`<div class="home-article" data-goto="${a.idx}"><div class="num">${j+1}</div><div class="info"><div class="badge-sm">${a.badge}</div><div class="title-sm">${a.title}</div></div><div class="arrow">›</div></div>`).join('');
+      const ah=d.articles.map((a,j)=>`<div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})"><div class="num">${j+1}</div><div class="info"><div class="badge-sm">${a.badge}</div><div class="title-sm">${a.title}</div></div><div class="arrow">›</div></div>`).join('');
       c.innerHTML=`<div class="hdr"><span class="badge tech">🗞️ Kiosque</span><div class="dots">${dots(i)}</div></div><div class="home-content"><div class="home-logo"><span>Le <b>Kiosque</b></span></div><div class="home-date">${d.date}</div><div class="home-henry"><div class="label">🎯 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div><div class="home-articles">${ah}</div><div class="home-footer">La Famille AI Insight 🦊🦉🦎🌟🧮</div></div>`;
     }else if(d.end){
       c.innerHTML=`<div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div><div class="end-content"><div class="em">🗞️</div><h2>Le Kiosque est fermé !</h2><p>5 nouveaux journaux découverts.<br>Rendez-vous demain !</p><a class="btn" href="../index.html">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button><small>← Swipez pour revenir</small></div>`;

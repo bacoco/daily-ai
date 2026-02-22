@@ -304,7 +304,7 @@
     c.dataset.i = i;
     if (d.home) {
       const articlesHtml = d.articles.map((a, j) => `
-        <div class="home-article" data-goto="${a.idx}">
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
           <div class="num">${a.badge.split(' ')[0]}</div>
           <div class="info">
             <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
