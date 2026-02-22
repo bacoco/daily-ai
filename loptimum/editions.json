@@ -1,11 +1,20 @@
 [
   {
+    "date": "22 Février 2026",
+    "title": "Budget 2026 : déficit à 5 % du PIB, la France sous surveillance",
+    "desc": "",
+    "url": "2026-02-22.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Budget 2026 promulgué sous contrainte, Cour suprême américaine qui invalide les droits de douane, gigafactory à Dunkerque : trois signaux qui dessinent le même paysage — celui d'États cherchant à reprendre la main, tantôt freinés par leurs institutions, tantôt portés par une ambition industrielle renouvelée. De Keynes à Rodrik en passant par Schumpeter, cette édition te donne les théories et les amorces pour transformer l'actualité en copies solides."
+  },
+  {
     "date": "17 Février 2026",
     "title": "Transparence salariale : la France a 4 mois pour transposer la directive UE",
     "desc": "",
     "url": "2026-02-17.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Transparence salariale, dette souveraine, guerre commerciale : trois fronts, un fil rouge — les institutions tentent de reprendre la main sur les forces du marché. De la directive européenne sur les écarts salariaux au vote du Sénat US contre les tarifs Trump, en passant par l'alerte du CBO sur la trajectoire budgétaire américaine, cette édition te donne les théories (Arrow, Barro, Ricardo, List) et les amorces pour en faire des copies solides."
   },
   {
