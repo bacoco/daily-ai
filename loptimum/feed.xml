@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>L'Optimum</title>
+    <link>https://bacoco.github.io/daily-ai/loptimum/</link>
+    <description>L'actualité au service de ta copie</description>
+    <language>fr</language>
+    <lastBuildDate>Sun, 22 Feb 2026 08:02:00 GMT</lastBuildDate>
+    <atom:link href="https://bacoco.github.io/daily-ai/loptimum/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Budget 2026 : déficit à 5 % du PIB, la France sous surveillance]]></title>
+      <link>https://bacoco.github.io/daily-ai/loptimum/2026-02-22.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/loptimum/2026-02-22.html</guid>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Budget 2026 promulgué sous contrainte, Cour suprême américaine qui invalide les droits de douane, gigafactory à Dunkerque : trois signaux qui dessinent le même paysage — celui d'États cherchant à reprendre la main, tantôt freinés par leurs institutions, tantôt portés par une ambition industrielle renouvelée. De Keynes à Rodrik en passant par Schumpeter, cette édition te donne les théories et les amorces pour transformer l'actualité en copies solides.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Transparence salariale : la France a 4 mois pour transposer la directive UE]]></title>
+      <link>https://bacoco.github.io/daily-ai/loptimum/2026-02-17.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/loptimum/2026-02-17.html</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Transparence salariale, dette souveraine, guerre commerciale : trois fronts, un fil rouge — les institutions tentent de reprendre la main sur les forces du marché. De la directive européenne sur les écarts salariaux au vote du Sénat US contre les tarifs Trump, en passant par l'alerte du CBO sur la trajectoire budgétaire américaine, cette édition te donne les théories (Arrow, Barro, Ricardo, List) et les amorces pour en faire des copies solides.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Croissance française : 0,2 à 0,3 % au T1 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/loptimum/2026-02-15.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/loptimum/2026-02-15.html</guid>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Croissance en berne, BCE en pause, Italie qui nous double : cette semaine dessine le portrait d'une France à la croisée des chemins. Entre hystérésis post-crises et rigidités structurelles, les théories ESH prennent vie sous nos yeux. De quoi alimenter tes copies — et tes khôlles.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Édition du 14 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/loptimum/2026-02-14.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/loptimum/2026-02-14.html</guid>
+      <pubDate>Sat, 14 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Chômage à 8% (Okun, segmentation) · Trump vs libre-échange (List, Krugman) · 14% sous le seuil de pauvreté (Castel, Piketty)]]></description>
+    </item>
+  </channel>
+</rss>

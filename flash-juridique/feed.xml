@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Le Flash Juridique</title>
+    <link>https://bacoco.github.io/daily-ai/flash-juridique/</link>
+    <description>L'intelligence juridique du Cabinet Excen</description>
+    <language>fr</language>
+    <lastBuildDate>Sun, 22 Feb 2026 08:02:00 GMT</lastBuildDate>
+    <atom:link href="https://bacoco.github.io/daily-ai/flash-juridique/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Arrêt « Larzul 3 » : la Cour de cassation cadre l'annulation des décisions en SAS]]></title>
+      <link>https://bacoco.github.io/daily-ai/flash-juridique/2026-02-18.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/flash-juridique/2026-02-18.html</guid>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Entre un arrêt structurant sur la gouvernance des SAS, la refonte brutale de l'ACRE pour les créateurs d'entreprise et l'entrée en application progressive de l'AI Act européen, cette édition illustre un fil rouge : le droit se durcit pour ceux qui ne l'anticipent pas. Dirigeants, la conformité n'attend plus.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Reclassement : le contrôle effectif élargi]]></title>
+      <link>https://bacoco.github.io/daily-ai/flash-juridique/2026-02-16.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/flash-juridique/2026-02-16.html</guid>
+      <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Reclassement élargi, ACRE rabotée, forfait-jours sous surveillance : cette semaine, le droit du travail et de l'entreprise bougent dans tous les sens. Le fil rouge ? Les employeurs doivent vérifier leurs conventions, leurs exonérations et leurs obligations — avant que la jurisprudence ne le fasse pour eux.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Affaire Adama Traoré — Non-lieu définitif]]></title>
+      <link>https://bacoco.github.io/daily-ai/flash-juridique/2026-02-15.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/flash-juridique/2026-02-15.html</guid>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[AI Act, rétractation en un clic, facturation électronique obligatoire : cette semaine, le droit bouge vite. L'essentiel pour ne pas être pris de court.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Édition du 14 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/flash-juridique/2026-02-14.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/flash-juridique/2026-02-14.html</guid>
+      <pubDate>Sat, 14 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Assurance-vie, fiscalité 2026, partage de la valeur, prud'hommes, NIS2 et outils pratiques.]]></description>
+    </item>
+  </channel>
+</rss>
