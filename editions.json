@@ -1,11 +1,20 @@
 [
   {
+    "date": "22 Février 2026",
+    "title": "Gemini 3.1 Pro, India AI Summit finale, et le grand doute — la semaine en 6 signaux",
+    "desc": "",
+    "url": "2026-02-22.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Dimanche du grand doute. Gemini 3.1 Pro sort, Anthropic réplique avec Claude Sonnet 4.6, l'Inde ferme le plus grand sommet IA du monde — et CNN titre que personne ne s'accorde sur la valeur de l'intelligence artificielle. Pendant que Google mise sur le raisonnement complexe et que Copilot laisse fuiter des emails confidentiels, Arcee AI prouve qu'une startup de 30 personnes peut sortir un modèle de 400 milliards de paramètres en open source. Le fossé entre ambitions monumentales et bugs embarrassants n'a jamais été aussi large — et c'est peut-être exactement là que se trouve la vérité."
+  },
+  {
     "date": "21 Février 2026",
     "title": "IA sous les feux : deepfakes, slop et diplomatie — le monde craque de partout",
     "desc": "",
     "url": "2026-02-21.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA fait face à ses premières vraies conséquences. Grok déclenche un crackdown mondial sur les deepfakes — UK, UE et France agissent simultanément, dans une convergence inédite qui ressemble à un point de Schelling réglementaire. Microsoft se fait prendre la main dans le slop avec un « continvoucly morged » qui restera dans les annales. Et pendant que Hollywood tremble devant Seedance 2.0, un avocat paie 2 500 $ pour avoir fait confiance aux hallucinations de son IA. La semaine où le monde a décidé que « move fast and break things » ne s'applique plus à l'intelligence artificielle."
   },
   {
@@ -51,15 +60,6 @@
     "url": "2026-02-17.html",
     "type": "daily",
     "edito": "Les gardiens de la sécurité IA quittent le navire pendant que l'adoption explose : 48% des Français sous IA générative, Claude qui écrit Claude, et des développeurs privés de visibilité sur ce que fait leur propre outil. Le fossé entre vitesse et contrôle n'a jamais été aussi béant.",
-    "latest": false
-  },
-  {
-    "date": "16 Février 2026",
-    "title": "5 signaux IA, Transformers fluides, ChatGPT biaisé et agents leaky — le meilleur de la semaine",
-    "desc": "",
-    "url": "2026-02-16.html",
-    "type": "daily",
-    "edito": "Nucléaire pour l'IA, réseaux neuronaux liquides contre Transformers, ChatGPT biaisé et publicitaire, agents IA qui fuient vos mots de passe, modèles chinois qui dépassent Meta — et un prompt pour transformer vos collègues en reviewers impitoyables.",
     "latest": false
   }
 ]
