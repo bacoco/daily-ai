@@ -305,48 +305,48 @@
     if (d.home) {
       const articlesHtml = d.articles.map((a, j) => `
         <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
-          <div class="num">${a.badge.split(' ')[0]}<\/div>
+          <div class="num">${a.badge.split(' ')[0]}</div>
           <div class="info">
-            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}<\/div>
-            <div class="title-sm">${a.title}<\/div>
-          <\/div>
-          <div class="arrow">›<\/div>
-        <\/div>`).join('');
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
       c.innerHTML = `
-        <div class="hdr"><span class="badge tech">📰 Daily<\/span><div class="dots">${dots(i)}<\/div><\/div>
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
         <div class="home-content">
-          <div class="home-logo"><span>Gas Morning Brief<\/span><\/div>
-          <div class="home-date">${d.date}<\/div>
-          <div class="home-henry"><div class="label">🦊 L'Édito du Jour<\/div><div class="text">${d.henryWord}<\/div><\/div>
-          <div class="home-articles">${articlesHtml}<\/div>
-          <div class="home-footer"><\/div>
-        <\/div>`;
+          <div class="home-logo"><span>Gas Morning Brief</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
     } else if (d.end) {
       c.innerHTML = `
-        <div class="hdr"><span class="badge end">✅ Terminé<\/span><div class="dots">${dots(i)}<\/div><\/div>
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
         <div class="end-content">
-          <div class="em">🎉<\/div>
-          <h2>Briefing terminé !<\/h2>
-          <p>Vous avez parcouru le briefing du jour.<br>À demain !<\/p>
-          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions<\/a><br><button id="restart">🔄 Recommencer<\/button>
-          <small>← Swipez à gauche pour revenir<\/small>
-        <\/div>`;
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
     } else {
-      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"<\/div><div class="aw-name">— ${d.author}<\/div><\/div>` : '';
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
       c.innerHTML = `
-        <div class="hdr"><span class="badge ${d.t}">${d.badge}<\/span><div class="dots">${dots(i)}<\/div><\/div>
-        <div class="title-zone"><h1>${d.title}<\/h1><\/div>
-        <div class="scroll-cta"><span><i>↓<\/i> Lire plus<\/span><\/div>
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
         <div class="scroll-zone"><div class="scroll-inner">
           ${authorWordHtml}
-          <div class="hook">${d.hook}<\/div>
-          <div class="details">${d.details}<div class="sig">Gas Morning Brief — 23 Février 2026<\/div><\/div>
-        <\/div><\/div>`;
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Gas Morning Brief — 23 Février 2026</div></div>
+        </div></div>`;
     }
     deck.appendChild(c);
   });
 
-  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"><\/span>`; return s; }
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
   const cards = deck.querySelectorAll('.card');
   function update(anim=true) {
     cards.forEach((c,i)=>{
@@ -383,7 +383,7 @@
     // Sidebar
     const sb=document.createElement('nav');
     sb.className='dt-sidebar';
-    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Gas Morning Brief<\/div><div class="dt-date">${DATA[0].date||'23 Février 2026'}<\/div>`:`<div class="dt-logo">Gas Morning Brief<\/div><div class="dt-date">23 Février 2026<\/div>`;
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Gas Morning Brief</div><div class="dt-date">${DATA[0].date||'23 Février 2026'}</div>`:`<div class="dt-logo">Gas Morning Brief</div><div class="dt-date">23 Février 2026</div>`;
     sb.innerHTML=logoDate;
     DATA.forEach((d,i)=>{
       const item=document.createElement('div');
@@ -393,14 +393,14 @@
       const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
       const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
       const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
-      item.innerHTML=`<div class="dt-nav-badge">${emoji}<\/div><div class="dt-nav-info"><div class="dt-nav-label">${label}<\/div><div class="dt-nav-title">${title}<\/div><\/div><div class="dt-nav-arrow">›<\/div>`;
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
       item.addEventListener('click',()=>selectDesktop(i));
       sb.appendChild(item);
     });
     // Reader
     const rd=document.createElement('div');
     rd.className='dt-reader';
-    rd.innerHTML='<div class="dt-reader-inner"><\/div>';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
     dtShell.appendChild(sb);
     dtShell.appendChild(rd);
     document.body.appendChild(dtShell);
@@ -413,13 +413,13 @@
     const d=DATA[idx];
     const inner=dtShell.querySelector('.dt-reader-inner');
     if(d.home){
-      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}<\/div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}<\/div><div class="dt-nav-title">${a.title}<\/div><\/div><div class="dt-nav-arrow">›<\/div><\/div>`).join(''):'';
-      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour<\/div><div class="text">${d.henryWord||''}<\/div><\/div>${arts}`;
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
     } else if(d.end){
-      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉<\/div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !<\/h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !<\/p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions<\/a><\/div>`;
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
     } else {
-      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"<\/div><div class="aw-name">— ${d.author||''}<\/div><\/div>`:'';
-      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}<\/span><h1 class="dt-r-title">${d.title||''}<\/h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}<\/div><div class="dt-r-body">${d.details||''}<\/div><div class="dt-r-sig">Gas Morning Brief — 23 Février 2026<\/div>`;
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Gas Morning Brief — 23 Février 2026</div>`;
     }
     dtShell.querySelector('.dt-reader').scrollTop=0;
     // Scroll sidebar item into view
