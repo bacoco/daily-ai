@@ -1,11 +1,20 @@
 [
   {
+    "date": "23 Février 2026",
+    "title": "TTF Settles €33.52 as Iran Spike Unwinds — HH Breaks Below $3",
+    "desc": "",
+    "url": "2026-02-23.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Monday open after a volatile week: TTF pulled back to €33.52 from Thursday's Iran spike, but the structural story hasn't changed — EU storage at 30.9% is a record low for late February, and the refill arithmetic demands aggressive buying through summer. Carbon's political rout adds another layer of uncertainty. The week ahead brings the EU's 20th sanctions package and Norway's Ormen Lange return — catalysts that could reset the range."
+  },
+  {
     "date": "20 Février 2026",
     "title": "HH March Settles Below $3 as EIA Draw Fails to Inspire — TTF Holds €31.88",
     "desc": "",
     "url": "2026-02-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "HH breaks below $3 on a yawn-inducing EIA print while EU storage scrapes multi-year lows at 33%. The market is sleepwalking into refill season — record LNG arrivals mask a structural deficit that one March cold snap could expose. Watch the tails, not the base case."
   },
   {
@@ -53,4 +62,4 @@
     "edito": "v2 — All prices timestamped. ⚡ FLASH (last 24h) then 📊 TREND (structural). HH $3.22 (settle 12 Feb), TTF €31.67 (close 13 Feb), EU storage 35.6% (12 Feb).",
     "latest": false
   }
-] 
+]
