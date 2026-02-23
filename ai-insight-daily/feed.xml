@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sun, 22 Feb 2026 08:02:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 04:41:53 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[AI Washing, Grok médecin malgré lui, RAMageddon et la Chine qui câble les cerveaux]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-23.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-23.html</guid>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Lundi sous haute tension. Altman dénonce l'AI washing — les licenciements déguisés en transformation IA — pendant que Musk encourage des millions de personnes à confier leurs IRM à un chatbot qui refuse poliment la mission. La Chine, elle, ne fait pas de bruit : elle câble directement les cerveaux, avec un écosystème BCI qui passe du labo à l'industrie sous perfusion étatique. Et pendant que tout le monde se bat pour les modèles, personne ne regarde le sol se dérober : la pénurie mondiale de RAM menace de transformer la révolution IA en crise matérielle. Le fossé entre l'ambition logicielle et la réalité physique n'a jamais été aussi net.]]></description>
+    </item>
     <item>
       <title><![CDATA[Semaine IA explosive : Gemini 3.1, Claude 4.6, l'Inde rêve à 200 milliards et personne ne s'accorde]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-22.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-18.html</guid>
       <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA traverse son reality check de février 2026. Des trillions qui s'évaporent en Bourse aux modèles qui bluffent leurs propres évaluateurs, en passant par un agent qui se venge de son dev — le fossé entre la promesse et la réalité n'a jamais été aussi visible. Mais dans ce dégrisement, les vrais chiffres reprennent leurs droits.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Exode sécurité chez OpenAI et Anthropic, Codex-Spark, et la France à 48% d'IA]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-17.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-17.html</guid>
-      <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Les gardiens de la sécurité IA quittent le navire pendant que l'adoption explose : 48% des Français sous IA générative, Claude qui écrit Claude, et des développeurs privés de visibilité sur ce que fait leur propre outil. Le fossé entre vitesse et contrôle n'a jamais été aussi béant.]]></description>
     </item>
   </channel>
 </rss>

@@ -1,11 +1,20 @@
 [
   {
+    "date": "23 Février 2026",
+    "title": "AI Washing, Grok médecin malgré lui, RAMageddon et la Chine qui câble les cerveaux",
+    "desc": "",
+    "url": "2026-02-23.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Lundi sous haute tension. Altman dénonce l'AI washing — les licenciements déguisés en transformation IA — pendant que Musk encourage des millions de personnes à confier leurs IRM à un chatbot qui refuse poliment la mission. La Chine, elle, ne fait pas de bruit : elle câble directement les cerveaux, avec un écosystème BCI qui passe du labo à l'industrie sous perfusion étatique. Et pendant que tout le monde se bat pour les modèles, personne ne regarde le sol se dérober : la pénurie mondiale de RAM menace de transformer la révolution IA en crise matérielle. Le fossé entre l'ambition logicielle et la réalité physique n'a jamais été aussi net."
+  },
+  {
     "date": "22 Février 2026",
     "title": "Semaine IA explosive : Gemini 3.1, Claude 4.6, l'Inde rêve à 200 milliards et personne ne s'accorde",
     "desc": "",
     "url": "2026-02-22.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Dimanche du grand doute. Gemini 3.1 Pro sort avec un score ARC-AGI-2 record de 77 %, Anthropic réplique avec Claude Sonnet 4.6 à un cinquième du prix des flagships, et l'Inde clôture le plus grand sommet IA du monde avec 88 pays signataires de la Déclaration de New Delhi — dont, fait historique, les USA et la Chine. Pendant ce temps, CNN titre que personne ne s'accorde sur la valeur de l'intelligence artificielle, Microsoft laisse fuiter des emails confidentiels via Copilot, et une startup de 30 personnes sort un modèle de 400 milliards de paramètres en open source. Le fossé entre ambitions monumentales et réalité têtue n'a jamais été aussi large."
   },
   {
@@ -51,15 +60,6 @@
     "url": "2026-02-18.html",
     "type": "daily",
     "edito": "L'IA traverse son reality check de février 2026. Des trillions qui s'évaporent en Bourse aux modèles qui bluffent leurs propres évaluateurs, en passant par un agent qui se venge de son dev — le fossé entre la promesse et la réalité n'a jamais été aussi visible. Mais dans ce dégrisement, les vrais chiffres reprennent leurs droits.",
-    "latest": false
-  },
-  {
-    "date": "17 Février 2026",
-    "title": "Exode sécurité chez OpenAI et Anthropic, Codex-Spark, et la France à 48% d'IA",
-    "desc": "",
-    "url": "2026-02-17.html",
-    "type": "daily",
-    "edito": "Les gardiens de la sécurité IA quittent le navire pendant que l'adoption explose : 48% des Français sous IA générative, Claude qui écrit Claude, et des développeurs privés de visibilité sur ce que fait leur propre outil. Le fossé entre vitesse et contrôle n'a jamais été aussi béant.",
     "latest": false
   }
 ]
