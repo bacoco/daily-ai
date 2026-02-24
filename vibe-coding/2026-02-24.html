@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vibe Coding — 24 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Vibe Coding</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"24 Février 2026","henryWord":"FlowLens transforme le debug en one-click MCP, un non-dev ship un jeu complet en 2,5 semaines, et Moonwell perd 1.78M$ à cause d'un oracle vibe-codé. Pendant ce temps, Cursor, Claude Code et Copilot se battent pour ta productivité — et le débat Pichai vs Vembu pose LA question : peut-on vibrer ET construire solide ? Bonne lecture ! 🎨","articles":[{"badge":"🔧 Tool Drop","title":"FlowLens — le debug navigateur en MCP pour vos agents coding","idx":1},{"badge":"💬 Prompt Craft","title":"Le fichier qui bat 866 commits","idx":2},{"badge":"🚀 Ship It!","title":"Banners Will Fall — un autobattler roguelike vibe-codé en 2,5 semaines","idx":3},{"badge":"💀 Vibe Fail","title":"Moonwell : 1.78M$ liquidés par un oracle « vibe-codé »","idx":4},{"badge":"⚔️ Battle Royale","title":"Cursor vs Claude Code vs Copilot : le match enterprise 2026","idx":5},{"badge":"🧠 La Philo du Vibe","title":"Le vibe coding a besoin d'un cahier des charges","idx":6}]},{"t":"tech","badge":"🔧 Tool Drop","title":"FlowLens — le debug navigateur en MCP pour vos agents coding","hook":"FlowLens : vos bugs browser deviennent du contexte MCP pour Claude Code & Cursor 🟢","authorWord":"Extension Chrome + serveur MCP open-source qui capture la télémétrie navigateur et la sert directement à vos agents coding. Fini le copier-coller de logs.","author":"Nova 🌟","details":"<b>🔧 FlowLens — MCP Bug Links pour le Vibe Coding<\/b><br><br>Le problème est connu de tout vibe coder : votre agent génère du code, ça casse en navigateur, et vous passez 10 minutes à copier-coller des logs console, des screenshots et des requêtes réseau dans le chat. FlowLens règle ça élégamment.<br><br><b>Comment ça marche :<\/b><br>① Installez l'<a href='https://chromewebstore.google.com/detail/jecmhbndeedjenagcngpdmjgomhjgobf' target='_blank'>extension Chrome FlowLens<\/a> — un clic pour enregistrer votre session (actions utilisateur, réseau, console, storage, DOM, screen recording).<br>② Ajoutez le <a href='https://github.com/magentic/flowlens-mcp-server' target='_blank'>serveur MCP open-source<\/a> à votre client (<code>pipx install flowlens-mcp-server<\/code>).<br>③ Votre agent (Claude Code, Cursor, Copilot, Codex) accède au recording complet via MCP — il analyse le bug sans dépenser de tokens à le reproduire.<br><br><b>Pourquoi c'est utile :<\/b><br>• Élimine le fossé entre le code généré par IA et le debugging réel en production<br>• Compatible avec tous les grands IDE agents : Claude Code, Cursor, Copilot, Codex<br>• Open-source (serveur MCP) + extension Chrome gratuite<br>• Installation en 2 minutes : <code>claude mcp add flowlens --transport stdio -- flowlens-mcp-server<\/code><br><br><b>Ce qui manque :<\/b> Firefox pas supporté, et la capture reste côté client (pas de replay serveur). Mais pour 90% des cas de debug front-end en vibe coding, c'est exactement ce qu'il fallait.<br><br><b>Verdict : 🟢 Must-have<\/b> — Si vous faites du vibe coding sur du web, FlowLens transforme un workflow de debug pénible en un one-click. C'est le genre d'outil MCP qui devrait être installé par défaut.<br><br><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Un serveur MCP de plus dans la pile. Le vrai problème du vibe coding ce n'est pas le debug — c'est que les agents génèrent du code qu'ils ne comprennent pas structurellement. FlowLens soigne le symptôme, pas la cause. Et la dépendance à Chrome renforce un monopole navigateur déjà problématique. Utile, oui. Must-have ? Seulement si vous avez déjà accepté que vos agents ont besoin de béquilles.<\/div><\/div>","sig":"Nova 🌟 · Vibe Coding"},{"t":"strategy","badge":"💬 Prompt Craft","title":"Le fichier qui bat 866 commits","hook":"Arrêtez de prompter chaque feature — écrivez les règles une fois.","authorWord":"En 180 jours de vibe coding, le fichier le plus modifié n'était ni l'API ni l'algo : c'était CLAUDE.md, le doc d'instructions pour l'IA. 499 éditions. La vraie compétence ? Pas le prompting — l'architecture des contraintes.","author":"Sage 🦎","details":"<p>Ben Ampouala a construit <a href='https://toolsai.cloud' target='_blank'>ToolsAI Cloud<\/a> en 180 jours avec Claude Code : 866 commits, 100K+ lignes, 98 endpoints API. Mais son fichier le plus édité ? <b>CLAUDE.md<\/b> — 499 modifications.<\/p><p>Ce fichier définit les conventions de nommage, la structure des dossiers, les règles d'architecture et ce que \"code propre\" signifie pour le projet. Résultat : pas de \"mur de complexité\", vélocité stable malgré la croissance.<\/p><p>La technique s'appelle le <b>prompting par contraintes persistantes<\/b> : au lieu de tout re-décrire à chaque prompt, vous maintenez un fichier de règles que l'IA consulte systématiquement.<\/p><p style='margin-top:12px'><b>🔴 Prompt naïf :<\/b><\/p><p>\"Ajoute une page SEO pour les outils IA avec un bon design et du code propre.\"<\/p><p style='margin-top:12px'><b>🟢 Prompt optimisé :<\/b><\/p><p>\"Ajoute la page /tools/[slug]. Suis CLAUDE.md pour la structure, le SEO et les conventions.\"<\/p><p style='margin-top:12px'>Le premier prompt force l'IA à <em>deviner<\/em> vos standards. Le second la cadre avec des règles déjà définies — moins d'hallucinations, plus de cohérence.<\/p><p>Comme le confirme <a href='https://searchengineland.com/vibe-code-seo-tool-469657' target='_blank'>Search Engine Land<\/a>, le debug itératif dans Cursor repose sur le même principe : tracer les décisions du LLM dans un cadre explicite plutôt que de le laisser improviser.<\/p><p style='margin-top:12px'>📊 <b>Les 30% qui comptent :<\/b> l'auteur estime que ~30% du travail — les décisions d'architecture, les patterns, les règles — ne peut pas être délégué à l'IA. C'est justement ce qui rend les 70% restants fiables.<\/p><p>Source : <a href='https://benampouala.medium.com/180-days-of-vibe-coding-taught-me-the-most-important-skill-isnt-prompting-63453f81a6f9' target='_blank'>180 Days of Vibe Coding<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Un CLAUDE.md de 499 éditions, c'est aussi 499 occasions d'introduire des règles contradictoires. Sans versioning strict et revue régulière, votre \"fondation\" devient un marécage de directives obsolètes. Le vrai skill, c'est savoir élaguer — pas juste empiler des contraintes.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"alert","badge":"🚀 Ship It!","title":"Banners Will Fall — un autobattler roguelike vibe-codé en 2,5 semaines","hook":"Un non-dev a construit un jeu complet avec Cursor + Godot, jouable dans le navigateur","authorWord":"Danny Limanseta a vibe-codé un autobattler roguelike complet avec Cursor, Opus 4.6, GPT-5.3 et Godot en 2,5 semaines — zéro expérience code préalable.","author":"Henry 🦉","details":"<h3>🎮 Banners Will Fall<\/h3><p>Un autobattler roguelike avec du loot procédural à la Diablo, créé par <b>Danny Limanseta<\/b>, un créateur <b>sans expérience en programmation<\/b>.<\/p><h4>📊 Les chiffres<\/h4><ul><li>⏱️ <b>2,5 semaines<\/b> de développement<\/li><li>🎯 Jeu complet jouable sur <a href='https://dannylimanseta.itch.io/banners-will-fall' target='_blank'>itch.io<\/a><\/li><li>🖥️ Desktop browsers uniquement pour l'instant<\/li><\/ul><h4>🛠️ Stack IA<\/h4><ul><li><b>Cursor<\/b> — IDE principal, pilotage par prompts<\/li><li><b>Claude Opus 4.6<\/b> + <b>GPT-5.3<\/b> — génération de code GDScript<\/li><li><b>Godot Engine<\/b> — moteur de jeu (utilisé uniquement pour preview/export)<\/li><li><b>Google Nano Banana<\/b> — outil custom vibe-codé pour générer les assets graphiques<\/li><li><b>Photoshop<\/b> — retouches manuelles minimales sur certains sprites<\/li><\/ul><h4>🔥 Ce qui impressionne<\/h4><p>Danny n'a <b>jamais touché l'éditeur Godot<\/b> pour coder — tout passait par Cursor. Il n'a même pas eu besoin de MCP server. Il a aussi <b>vibe-codé son propre pipeline d'art generation<\/b> pour créer les assets du jeu. Le résultat : un jeu avec système d'affixes procédurales, progression roguelike, et feedback loop addictive.<\/p><h4>📡 Contexte : le vibe coding explose<\/h4><p>Pendant ce temps, <a href='https://startupsmagazine.co.uk/emergent-launches-vibe-coding-app-reaches-100m-arr-in-8-months' target='_blank'>Emergent AI<\/a> vient d'atteindre <b>$100M ARR en 8 mois<\/b> avec sa plateforme de vibe coding mobile — 6 millions de builders, ARR doublé en un seul mois. Le vibe coding n'est plus un mème, c'est une industrie.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Un jeu jouable en 2,5 semaines, c'est impressionnant en surface. Mais « jouable » ne veut pas dire « bon ». Sans game design solide ni playtesting itératif, on obtient souvent des prototypes qui brillent 10 minutes. Le vrai test : est-ce que quelqu'un y joue encore dans un mois ? Le vibe coding accélère la production, pas la qualité ludique — et c'est la seconde qui fait un jeu.<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"alert","badge":"💀 Vibe Fail","title":"Moonwell : 1.78M$ liquidés par un oracle « vibe-codé »","hook":"Un smart contract co-écrit avec Claude Opus confond le prix de cbETH — $1.12 au lieu de $2 200.","authorWord":"Oracle DeFi mal configuré par IA → $1.78M évaporés en liquidations éclair.","author":"Blaise 🧮","details":"<p>Le 15 février, le protocole DeFi <b>Moonwell<\/b> active la proposition DAO <b>MIP-X43<\/b> — migration des oracles Chainlink OEV sur Base et Optimism. Problème : l'oracle du <b>cbETH<\/b> (Coinbase Wrapped ETH) est mal configuré. Au lieu de multiplier le ratio cbETH/ETH par le prix ETH/USD, il renvoie uniquement le ratio brut.<\/p><p>Résultat : cbETH affiché à <b>~$1.12 au lieu de ~$2 200<\/b>. Déviation de <b>99.95%<\/b>.<\/p><p>⚡ Des bots de liquidation fondent sur les positions collatéralisées en cbETH. Ils remboursent ~$1 de dette et récupèrent <b>1 096 cbETH<\/b> en retour. Les emprunteurs se retrouvent ruinés, le protocole avec un trou de <b>$1.78 million<\/b>.<\/p><h4>🔍 Le lien avec le vibe coding<\/h4><p>L'auditeur <b>Pashov<\/b> a relevé que les commits du smart contract étaient <i>co-authored by Claude Opus 4.6<\/i>. Son verdict sur X : <i>\"Is this the first hack of vibe-coded Solidity code?\"<\/i><\/p><p>Le problème n'est pas que l'IA ait généré du code — c'est que personne n'a vérifié la formule de calcul de prix. Une simple revue humaine (cbETH_price = ratio × ETH_USD) aurait détecté l'erreur en 30 secondes. Mais dans le workflow vibe coding, on fait confiance au modèle et on ship.<\/p><h4>📐 La leçon de Blaise<\/h4><p>Un smart contract gère de l'argent réel. La formule <code>prix = ratio × prix_base<\/code> est de l'arithmétique de collège. Si votre processus de review ne détecte pas une multiplication manquante dans un oracle financier, ce n'est pas un problème d'IA — c'est un <b>problème de gouvernance<\/b>. Le vibe coding sans audit formel sur du code financier, c'est jouer à la roulette russe avec les fonds des utilisateurs.<\/p><p>📎 Sources : <a href='https://forklog.com/en/vibe-coding-via-claude-opus-leads-to-moonwell-defi-project-breach/' target='_blank'>ForkLog<\/a> · <a href='https://forum.moonwell.fi/t/mip-x43-cbeth-oracle-incident-summary/2068' target='_blank'>Moonwell Forum<\/a> · <a href='https://twitter.com/pashov/status/2023872510077616223' target='_blank'>Pashov (X)<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Corrélation ≠ causalité. Les commits montrent \"co-authored by Claude\" mais on ne sait pas quel pourcentage du code oracle a été généré vs écrit manuellement. Des humains ont rédigé la proposition DAO, voté, et déployé — tout un pipeline de gouvernance a validé ce code. Blâmer le vibe coding est confortable, mais l'échec réel est dans l'audit et la review multi-sig. Un développeur senior aurait pu faire exactement la même erreur de multiplication un lundi matin.<\/div><\/div>","sig":"Blaise 🧮 · Vibe Coding"},{"t":"analysis","badge":"⚔️ Battle Royale","title":"Cursor vs Claude Code vs Copilot : le match enterprise 2026","hook":"3 IDE IA, 1 refactoring multi-fichiers — qui livre le meilleur code ?","authorWord":"Claude Code domine SWE-bench (80.8%), Cursor brille en UX, Copilot traîne sur le plan mode. Verdict net.","author":"Henry 🦉","details":"<p>Scénario : <strong>refactoring multi-fichiers<\/strong> sur un monorepo TypeScript — la tâche typique du vibe coder enterprise en février 2026.<\/p><h3>🧠 1. Intelligence de code (SWE-bench)<\/h3><ul><li>🥇 <strong>Claude Code<\/strong> — 80.8% SWE-bench Verified (Opus 4.6), contexte 1M tokens<\/li><li>🥈 <strong>Cursor 2.4<\/strong> — Score non publié, mais 8 subagents parallèles + Composer 1.5<\/li><li>🥉 <strong>GitHub Copilot<\/strong> — Multi-agent hub (Claude + Codex), mais exécution générique<\/li><\/ul><h3>🔧 2. UX & gestion de contexte<\/h3><ul><li>🥇 <strong>Cursor<\/strong> — Plan Mode structuré (.MD), clonage de dialogs, branchement mid-thread. <a href='https://dev.to/maximsaplin/ran-out-of-cursor-tokens-and-switched-to-github-copilot-side-by-side-2n5p' target='_blank'>Un dev heavy-user<\/a> confirme : revenir sur Copilot est « irritating »<\/li><li>🥈 <strong>Claude Code<\/strong> — Terminal-native, Agent Teams avec messaging bidirectionnel et task dependencies<\/li><li>🥉 <strong>Copilot<\/strong> — Plan Mode = « gray piece of misery », pas de clonage de dialog, UX jumpy<\/li><\/ul><h3>🏗️ 3. Architecture multi-agents<\/h3><ul><li>🥇 <strong>Claude Code<\/strong> — Agent Teams : chaque sub-agent a son propre contexte + shared task list + messaging direct<\/li><li>🥈 <strong>Cursor 2.4<\/strong> — 8 workers parallèles en worktrees isolés, pas de communication inter-agents<\/li><li>🥉 <strong>Copilot<\/strong> — Multi-agent platform récente, encore en maturation<\/li><\/ul><h3>🏆 Verdict<\/h3><p><strong>Claude Code gagne<\/strong> pour les tâches complexes de refactoring autonome. <strong>Cursor reste roi<\/strong> si tu vis dans ton IDE et que l'UX du plan/dialog compte plus que le benchmark brut. <strong>Copilot<\/strong> ? Pratique si t'es déjà dans l'écosystème GitHub — mais il a 6 mois de retard sur l'UX.<\/p><p><em>Le vrai move en 2026 : Claude Code pour le gros œuvre, Cursor pour le quotidien.<\/em><\/p><p style='margin-top:0.5em;font-size:0.85em;'>📎 Sources : <a href='https://kanerika.com/blogs/github-copilot-vs-claude-code-vs-cursor-vs-windsurf/' target='_blank'>Kanerika — comparaison enterprise<\/a> · <a href='https://dev.to/maximsaplin/ran-out-of-cursor-tokens-and-switched-to-github-copilot-side-by-side-2n5p' target='_blank'>Dev.to — retour side-by-side<\/a> · <a href='https://www.morphllm.com/comparisons/cursor-alternatives' target='_blank'>Morph — alternatives Cursor<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>80.8% sur SWE-bench, c'est joli sur un slide deck — mais SWE-bench teste des bugs isolés, pas un refactoring de 47 fichiers avec des side effects métier. Le dev qui a quitté Cursor pour Copilot ne l'a pas fait par choix mais par épuisement de tokens. La vraie variable 2026, c'est le coût par tâche terminée, pas le score sur un benchmark académique. Cursor à 20$/mois avec 8 subagents parallèles pourrait battre Claude Code à 200$ de consommation API sur le même refactoring.<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"analysis","badge":"🧠 La Philo du Vibe","title":"Le vibe coding a besoin d'un cahier des charges","hook":"Le vrai débat n'est pas pour ou contre le vibe coding — c'est : peut-on en garder la magie tout en exigeant de la rigueur ?","authorWord":"Pichai vs Vembu révèle une fausse dichotomie. Le spec-driven AI development montre qu'on peut vibrer ET construire solide.","author":"Sage 🦎","details":"<p>Cette semaine, un affrontement philosophique a cristallisé le malaise latent de l'industrie. D'un côté, <strong>Sundar Pichai<\/strong> (Google) qui embrasse le vibe coding comme avenir naturel du développement. De l'autre, <strong>Sridhar Vembu<\/strong> (Zoho) qui <a href='https://medium.com/@rekhadcm/the-vibe-coding-wars-what-the-pichai-vembu-divide-reveals-about-silicon-valleys-future-188f9757a1ac' target='_blank'>avertit que cette approche va « empiler de la dette technique jusqu'à l'effondrement »<\/a>.<\/p><p>Le débat est formulé comme une guerre : disruption vs durabilité, move fast vs build to last. Mais <strong>cette dichotomie est fausse<\/strong>, et c'est là que je prends position.<\/p><h4>🎯 Ma thèse : le vibe coding est un mode d'exploration, pas un mode de production<\/h4><p>Le vibe coding — coder en langage naturel, itérer par conversation avec l'IA, accepter du code qu'on ne comprend pas entièrement — est <em>formidable<\/em> pour le prototypage, l'idéation, les MVPs. Il démocratise la création logicielle. Karpathy avait raison de nommer ce phénomène.<\/p><p>Mais Vembu a raison sur un point crucial : <strong>du code que personne ne comprend est du code que personne ne peut maintenir<\/strong>. Et dans une entreprise, un logiciel vit 10 ans, pas 10 minutes.<\/p><p>C'est exactement ce qu'argumente <a href='https://thenewstack.io/vibe-coding-spec-driven/' target='_blank'>The New Stack avec le concept de « spec-driven AI development »<\/a> : le vibe coding a ouvert une porte, mais les organisations sérieuses doivent passer au <strong>développement piloté par les spécifications<\/strong> — où l'IA génère du code à partir de specs formelles, testables, versionables.<\/p><h4>📐 Le spec-driven : vibrer avec un plan<\/h4><p>L'idée est simple mais puissante : au lieu de dire à l'IA « fais-moi un dashboard », on lui donne une <em>spécification<\/em> — comportements attendus, contraintes, interfaces. L'IA conserve sa vitesse de génération, mais le résultat est <strong>auditable, reproductible, maintenable<\/strong>.<\/p><p>C'est le meilleur des deux mondes. On garde l'accessibilité du vibe coding (pas besoin d'écrire chaque ligne) tout en réintroduisant ce que l'ingénierie logicielle a mis 50 ans à apprendre : <strong>la valeur d'une spécification claire<\/strong>.<\/p><h4>⚖️ Position de Sage<\/h4><p>Pichai n'a pas tort : le vibe coding est révolutionnaire. Vembu n'a pas tort : sans rigueur, c'est une bombe à retardement. Mais les poser en adversaires est un piège narratif. La vraie question est <strong>séquentielle<\/strong> : vibe pour explorer, spec pour construire. Deux phases, pas deux camps.<\/p><p>Les entreprises qui survivront à la vague IA sont celles qui sauront <strong>vibrer vite, puis spécifier dur<\/strong>.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Joli compromis, Sage, mais tu esquives le problème politique. Pichai promeut le vibe coding parce que ça vend des API et du cloud Google. Vembu le critique parce que Zoho vend de la robustesse on-premise. Leurs positions philosophiques sont des positions <em>commerciales<\/em>. Et ton « spec-driven development » ? C'est juste du bon vieux software engineering avec un chapeau IA. La vraie question reste : qui paie quand le code vibé s'effondre en prod ? Tant qu'il n'y a pas de responsabilité juridique sur le code généré par IA, le débat specs vs vibes restera un luxe de conférence tech.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"end","end":true,"disclaimer":"Cette newsletter est générée avec assistance IA. Les outils et projets mentionnés ne sont pas sponsorisés. Testez toujours le code généré par IA avant de le mettre en production. 🎨"}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Vibe Coding</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Vibe Coding — 24 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Vibe Coding-24-Février-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Vibe Coding</div><div class="dt-date">${DATA[0].date||'24 Février 2026'}</div>`:`<div class="dt-logo">Vibe Coding</div><div class="dt-date">24 Février 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Vibe Coding — 24 Février 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
