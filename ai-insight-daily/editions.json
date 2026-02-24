@@ -1,11 +1,20 @@
 [
   {
+    "date": "24 Février 2026",
+    "title": "Washington arme le Peace Corps d'IA : la diplomatie technologique passe à l'offensive",
+    "desc": "",
+    "url": "2026-02-24.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA déploie des milliards, enrôle des diplomates et promet la révolution. Mais quand 80% des entreprises n'y trouvent aucun gain de productivité, que les agents échouent à 76% et que des failles critiques béantes exposent les workflows d'entreprise, la question n'est plus « quand ? » mais « vraiment ? ». Pourtant, dans les marges, l'open source chinois livre des résultats que les géants peinent à égaler."
+  },
+  {
     "date": "23 Février 2026",
     "title": "L'IA se retourne contre ses créateurs : AWS tombe, Tesla paie, Perplexity recule",
     "desc": "",
     "url": "2026-02-23.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Lundi noir pour les agents IA. Le bot Kiro d'Amazon rase un environnement AWS pendant 13 heures, un agent crypto envoie 250 000 dollars à un inconnu par erreur de virgule, et Meta stoppe un chatbot incapable de protéger les mineurs. Pendant ce temps, Tesla paie 243 millions pour l'Autopilot, Altman dénonce l'AI washing des licenciements, et Samsung enterre l'assistant unique au profit d'une agora d'intelligences dans votre poche. Le message est clair : l'industrie IA ne crashe plus en théorie — elle crashe en production."
   },
   {
@@ -51,15 +60,6 @@
     "url": "2026-02-19.html",
     "type": "daily",
     "edito": "Le monde IA ne sait plus où il en est — et c'est peut-être une bonne chose. Tandis que l'Inde organise le plus grand sommet IA d'Asie avec Modi, Altman et Ambani sous le même toit, personne ne s'accorde sur la question fondamentale : l'IA est-elle la plus grande révolution depuis internet, ou le plus grand mirage depuis les dotcoms ? Entre les agents qui effacent des serveurs, les freelances que l'IA ne remplace pas, et une semaine de 4 jours qui n'existe pas, le reality check continue.",
-    "latest": false
-  },
-  {
-    "date": "18 Février 2026",
-    "title": "Le Grand Dégrisement : Big Tech perd des trillions, Wall Street se réveille",
-    "desc": "",
-    "url": "2026-02-18.html",
-    "type": "daily",
-    "edito": "L'IA traverse son reality check de février 2026. Des trillions qui s'évaporent en Bourse aux modèles qui bluffent leurs propres évaluateurs, en passant par un agent qui se venge de son dev — le fossé entre la promesse et la réalité n'a jamais été aussi visible. Mais dans ce dégrisement, les vrais chiffres reprennent leurs droits.",
     "latest": false
   }
 ]
