@@ -1,11 +1,20 @@
 [
   {
+    "date": "25 Février 2026",
+    "title": "Harcèlement sexuel : l'enquête interne n'est pas obligatoire pour prouver la faute grave",
+    "desc": "",
+    "url": "2026-02-25.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Enquête interne non obligatoire en matière de harcèlement, injonction de payer accélérée, délai de réclamation fiscale invalidé par le Conseil d'État : cette semaine, la jurisprudence et le pouvoir réglementaire redessinent les obligations des employeurs, des créanciers et des groupes internationaux. Le fil rouge : le droit bouge vite, et les praticiens doivent ajuster leurs réflexes avant que les délais ne les rattrapent."
+  },
+  {
     "date": "18 Février 2026",
     "title": "Arrêt « Larzul 3 » : la Cour de cassation cadre l'annulation des décisions en SAS",
     "desc": "",
     "url": "2026-02-18.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Entre un arrêt structurant sur la gouvernance des SAS, la refonte brutale de l'ACRE pour les créateurs d'entreprise et l'entrée en application progressive de l'AI Act européen, cette édition illustre un fil rouge : le droit se durcit pour ceux qui ne l'anticipent pas. Dirigeants, la conformité n'attend plus."
   },
   {
@@ -14,7 +23,8 @@
     "desc": "",
     "url": "2026-02-16.html",
     "type": "daily",
-    "edito": "Reclassement élargi, ACRE rabotée, forfait-jours sous surveillance : cette semaine, le droit du travail et de l'entreprise bougent dans tous les sens. Le fil rouge ? Les employeurs doivent vérifier leurs conventions, leurs exonérations et leurs obligations — avant que la jurisprudence ne le fasse pour eux."
+    "edito": "Reclassement élargi, ACRE rabotée, forfait-jours sous surveillance : cette semaine, le droit du travail et de l'entreprise bougent dans tous les sens. Le fil rouge ? Les employeurs doivent vérifier leurs conventions, leurs exonérations et leurs obligations — avant que la jurisprudence ne le fasse pour eux.",
+    "latest": false
   },
   {
     "date": "15 Février 2026",
@@ -22,11 +32,13 @@
     "desc": "",
     "url": "2026-02-15.html",
     "type": "daily",
-    "edito": "AI Act, rétractation en un clic, facturation électronique obligatoire : cette semaine, le droit bouge vite. L'essentiel pour ne pas être pris de court."
+    "edito": "AI Act, rétractation en un clic, facturation électronique obligatoire : cette semaine, le droit bouge vite. L'essentiel pour ne pas être pris de court.",
+    "latest": false
   },
   {
     "date": "14 Février 2026",
     "url": "2026-02-14.html",
-    "edito": "Assurance-vie, fiscalité 2026, partage de la valeur, prud'hommes, NIS2 et outils pratiques."
+    "edito": "Assurance-vie, fiscalité 2026, partage de la valeur, prud'hommes, NIS2 et outils pratiques.",
+    "latest": false
   }
 ]
