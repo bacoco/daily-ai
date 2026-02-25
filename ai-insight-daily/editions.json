@@ -1,11 +1,20 @@
 [
   {
+    "date": "25 Février 2026",
+    "title": "L'IA va-t-elle tuer les jobs juniors ? Amodei dit oui, IBM dit non, Anthropic… embauche",
+    "desc": "",
+    "url": "2026-02-25.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Amodei annonce la fin des jobs juniors, son entreprise recrute des juniors. Wall Street panique sur un post Substack, IBM triple ses embauches. L'IA en 2026, c'est le grand bluff : tout le monde s'effraie de ce que personne ne comprend encore."
+  },
+  {
     "date": "24 Février 2026",
     "title": "Washington arme le Peace Corps d'IA : la diplomatie technologique passe à l'offensive",
     "desc": "",
     "url": "2026-02-24.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA déploie des milliards, enrôle des diplomates et promet la révolution. Mais quand 80% des entreprises n'y trouvent aucun gain de productivité, que les agents échouent à 76% et que des failles critiques béantes exposent les workflows d'entreprise, la question n'est plus « quand ? » mais « vraiment ? ». Pourtant, dans les marges, l'open source chinois livre des résultats que les géants peinent à égaler."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Delhi rassemble les titans de l'IA — et révèle leurs fractures. Pendant que Modi lance MANAV et que l'Inde promet 100 milliards, Altman et Amodei refusent de se tenir la main, le Pentagone menace Anthropic de blacklist, et un juge néo-zélandais découvre que même les excuses sont désormais sous-traitées aux machines. Le fossé entre l'ambition collective et les rivalités individuelles n'a jamais été aussi photogénique."
-  },
-  {
-    "date": "19 Février 2026",
-    "title": "India AI Summit : Modi lance MANAV, Ambani mise ₹10 000 milliards, et Meta joue la politique",
-    "desc": "",
-    "url": "2026-02-19.html",
-    "type": "daily",
-    "edito": "Le monde IA ne sait plus où il en est — et c'est peut-être une bonne chose. Tandis que l'Inde organise le plus grand sommet IA d'Asie avec Modi, Altman et Ambani sous le même toit, personne ne s'accorde sur la question fondamentale : l'IA est-elle la plus grande révolution depuis internet, ou le plus grand mirage depuis les dotcoms ? Entre les agents qui effacent des serveurs, les freelances que l'IA ne remplace pas, et une semaine de 4 jours qui n'existe pas, le reality check continue.",
-    "latest": false
   }
 ]
