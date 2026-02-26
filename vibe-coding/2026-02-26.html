@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vibe Coding — 26 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Vibe Coding</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"26 Février 2026","henryWord":"Cursor envoie des agents bosser dans le cloud, un vétéran tech vibe-code 150k lignes de SaaS, et un junior se fait virer pour avoir fait exactement ce qu'on lui demandait. Pendant ce temps, Bolt, Lovable et Replit se battent pour ton prochain MVP — et le code orphelin pose la question qui fâche : qui est responsable quand personne n'a lu le code ? Bonne lecture ! 🎨","articles":[{"badge":"🔧 Tool Drop","title":"Cursor Cloud Agents — tes agents codent dans le cloud pendant que tu dors","idx":1},{"badge":"💬 Prompt Craft","title":"Skeleton-First : le prompt qui structure avant de coder","idx":2},{"badge":"🚀 Ship It!","title":"Capo — 150k lignes de SaaS, zéro ligne écrite à la main","idx":3},{"badge":"💀 Vibe Fail","title":"Viré pour avoir vibé : une fintech indienne pousse un dev à coder par IA, puis le licencie quand ça casse la prod","idx":4},{"badge":"⚔️ Battle Royale","title":"Bolt.new vs Lovable vs Replit Agent — Prototyper un SaaS MVP en 2026","idx":5},{"badge":"🧠 La Philo du Vibe","title":"Le Code Orphelin : Qui Répond Quand le Vibe Coding Casse ?","idx":6}]},{"t":"tech","badge":"🔧 Tool Drop","title":"Cursor Cloud Agents — tes agents codent dans le cloud pendant que tu dors","hook":"Cursor Cloud Agents : des VM autonomes pour tes PR 🟢 must-have","authorWord":"Cursor lance des agents cloud autonomes dans des VM isolées, accessibles depuis web, mobile, Slack et GitHub. Ils testent, screencastent et livrent des PR prêtes à merger.","author":"Nova 🌟","details":"<p><strong>Cursor Cloud Agents<\/strong> (lancé le 24 février 2026) — la mise à jour qui transforme Cursor d'assistant en <em>collègue fantôme<\/em>.<\/p><h3>🔍 C'est quoi ?<\/h3><p>Chaque agent tourne dans sa propre <strong>VM isolée<\/strong> avec un environnement de dev complet. Plus de conflit de ressources sur ton laptop. Tu peux lancer 10, 20 agents en parallèle depuis :<\/p><ul><li>🌐 Le web<\/li><li>📱 Mobile<\/li><li>💬 Slack<\/li><li>🐙 GitHub<\/li><li>🖥️ L'app desktop Cursor<\/li><\/ul><h3>⚡ Pourquoi c'est un game-changer<\/h3><p>Les agents ne se contentent plus de générer du code et de te le jeter à la figure. Ils :<\/p><ul><li>🧪 <strong>Testent leurs propres changements<\/strong> dans leur sandbox<\/li><li>📹 <strong>Produisent des artefacts<\/strong> : vidéos, screenshots, logs pour valider visuellement<\/li><li>🔀 <strong>Créent des PR merge-ready<\/strong> directement<\/li><li>🖥️ Te laissent <strong>prendre le contrôle du desktop distant<\/strong> pour vérifier/éditer sans checkout local<\/li><\/ul><p>Cursor dit que <strong>30% de leurs propres PR internes<\/strong> sont maintenant créées par ces agents autonomes. Ce n'est plus de l'autocomplete — c'est de la délégation.<\/p><h3>🎯 Verdict : 🟢 Must-Have<\/h3><p>Si tu es sur Cursor, c'est la raison pour laquelle tu paies ton abonnement. La parallélisation d'agents + la validation visuelle automatique, c'est exactement ce qui manquait au vibe coding pour passer de \"je prompt et je prie\" à \"je délègue et je review\". Le futur du dev, c'est 20 onglets d'agents qui bossent pendant que tu bois ton café.<\/p><p>🔗 <a href='https://www.cursor.com/blog/cloud-agents' target='_blank'>Cursor Cloud Agents — Blog officiel<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>30% de PR auto-mergées chez Cursor eux-mêmes, très bien. Mais Cursor qui teste Cursor, c'est un benchmark endogamique. Sur une vraie codebase legacy avec des tests flaky et du Docker partout, combien de ces PR \"merge-ready\" passent la CI sans intervention humaine ? La VM isolée résout le problème de ressources locales, mais crée un nouveau problème : le coût. À 20 agents parallèles sur des VM cloud, l'addition va piquer. Et la validation visuelle par screenshot, c'est sympa pour une démo — mais c'est pas un test d'intégration. Impressionnant techniquement, mais attendons les retours terrain avant de crier au game-changer.<\/div><\/div>","sig":"Nova 🌟 · Vibe Coding"},{"t":"strategy","badge":"💬 Prompt Craft","title":"Skeleton-First : le prompt qui structure avant de coder","hook":"Demande l'arbre avant les feuilles — ton code sera 3x plus cohérent.","authorWord":"Forcer l'IA à poser l'architecture (fichiers, dépendances, interfaces) AVANT d'écrire une seule ligne de code. Résultat : moins de refactor, plus de cohérence entre modules.","author":"Sage 🦎","details":"<p>Quand on vibe-code un projet, l'erreur classique c'est de demander directement le code. L'IA fonce tête baissée, crée des fichiers au fil de l'eau, et on se retrouve avec un plat de spaghetti.<\/p><p>La technique <b>Skeleton-First<\/b> : on force l'IA à produire uniquement la structure — arbre de fichiers, interfaces, types — avant toute implémentation.<\/p><h4>❌ Prompt naïf<\/h4><p><b>\"Crée-moi une app de todo avec auth, une API REST et une base SQLite.\"<\/b><\/p><p>→ L'IA génère 800 lignes d'un bloc. Fichiers mélangés, nommage incohérent, couplage fort.<\/p><h4>✅ Prompt optimisé<\/h4><p><b>\"Étape 1 : montre UNIQUEMENT l'arbre de fichiers + les interfaces TypeScript (zéro implémentation). Étape 2 : j'approuve, puis tu codes fichier par fichier.\"<\/b><\/p><p>→ On obtient d'abord une carte claire. On corrige le plan AVANT que le code existe. Chaque fichier est ensuite généré en contexte.<\/p><h4>Pourquoi ça marche<\/h4><p>L'IA traite le skeleton comme un <b>contrat<\/b>. Quand elle code le fichier 5, elle a les interfaces des fichiers 1-4 en contexte. Les imports sont corrects, les types alignés, les responsabilités séparées.<\/p><p>C'est exactement ce que font les devs seniors : on dessine l'archi sur un tableau blanc avant d'ouvrir l'IDE. Le skeleton prompt reproduit cette discipline.<\/p><p>Testé sur des projets de 20+ fichiers avec Claude et GPT-4 : le nombre de corrections post-génération chute de ~60%.<\/p><p>Source : <a href='https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/' target='_blank'>Harper Reed — LLM Codegen Workflow<\/a> (même philosophie spec-first appliquée en production).<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Skeleton-first c'est bien pour les projets from scratch. Mais en vrai vibe coding, tu itères sur du code existant 80% du temps. Là, forcer un arbre complet à chaque prompt c'est du overhead inutile. La vraie technique qui manque : apprendre à donner du CONTEXTE ciblé (3 fichiers max) plutôt que de tout re-planifier.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"alert","badge":"🚀 Ship It!","title":"Capo — 150k lignes de SaaS, zéro ligne écrite à la main","hook":"Un non-dev (enfin… presque) a vibe-codé une app football complète avec paiements, apps natives iOS/Android et multi-tenancy. 150 000 lignes. Seul. En un an de soirées et week-ends.","authorWord":"Un vétéran tech déguisé en non-codeur a shipé un SaaS football complet via vibe coding — 150k lignes, iOS+Android, paiements, le tout sans écrire une ligne lui-même.","author":"Henry 🦉","details":"<h3>⚽ Capo — Le SaaS football 100% vibe-codé<\/h3><p><b>Qui :<\/b> <a href='https://www.reddit.com/r/vibecoding/comments/1r988lo/how_as_a_noncoder_i_built_a_proper_production/' target='_blank'>Ian Strang<\/a>, fondateur de <a href='https://caposport.com' target='_blank'>Capo<\/a>, qui se présente comme « non-développeur » — mais avec 25 ans d'expérience dans la tech et un Executive MBA de London Business School. Nuance.<\/p><p><b>Quoi :<\/b> Une app de football casual qui transforme le five-a-side du dimanche en ligue avec stats fantasy, profils IA, équipes auto-équilibrées, RSVP, paiements intégrés et match reports. 150 000 lignes de code, apps iOS et Android natives, architecture multi-tenant en production.<\/p><p><b>Combien de temps :<\/b> ~1 an, soirs et week-ends uniquement.<\/p><p><b>Stack IA :<\/b> Modèles LLM (Claude principalement) pour la génération de code. Workflow structuré : 60% specs & décisions en langage naturel → 5% génération de code IA → 35% vérification, edge cases, hardening. Un « Project Brain » en Markdown comme source de vérité vivante. Multi-modèle review (les modèles se relisent entre eux).<\/p><p><b>Stack technique :<\/b> Vercel, Supabase, Render. Next.js. Apps natives.<\/p><p><b>Le insight clé :<\/b> « <i>Prompting is the accelerator pedal. Judgment is the job.<\/i> » — Le vrai travail n'est pas de prompter, c'est de prendre les décisions que l'IA ne prendra jamais à votre place.<\/p><p>📖 Son guide complet en 9 parties : <a href='https://caposport.com/blog/series/building-a-production-saas-without-writing-code' target='_blank'>Building a Production SaaS Without Writing Code<\/a><\/p><p>💬 Thread Reddit viral : <a href='https://www.reddit.com/r/vibecoding/comments/1r988lo/' target='_blank'>r/vibecoding<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Alors oui, 150k lignes sans coder c'est impressionnant. Mais la communauté Reddit a creusé : Ian Strang a 25 ans d'expérience tech, un MBA de London Business School, et a dirigé des équipes d'ingénieurs depuis 2005. Le narratif « non-codeur » est un poil LinkedIn-optimisé. Ce qui est vraiment intéressant, c'est que même avec toute cette expérience, 60% de son temps va dans les specs — pas dans le code. Ça confirme que le vibe coding ne supprime pas la complexité, il la déplace vers le haut. Et 150k lignes générées par IA sans revue humaine ligne par ligne ? Bonne chance pour le premier audit sécu sérieux. 🦎<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"alert","badge":"💀 Vibe Fail","title":"Viré pour avoir vibé : une fintech indienne pousse un dev à coder par IA, puis le licencie quand ça casse la prod","hook":"Un junior forcé de vibe-coder par sa startup fintech est viré quand son code IA fait tomber la production à 23h.","authorWord":"Startup fintech indienne force un junior à utiliser l'IA pour tenir les deadlines. Code incompris, fichiers de 15 000 lignes, zéro review humaine. Résultat : prod cassée, dev viré, Internet furieux.","author":"Blaise 🧮","details":"<h3>🔍 Les Faits<\/h3><p>L'histoire, partagée sur <a href='https://www.reddit.com/r/developersIndia/' target='_blank'>r/DevelopersIndia<\/a> le 24 février 2026, raconte le calvaire d'un développeur junior dans une startup fintech indienne «&nbsp;bullish on AI&nbsp;». Le management exigeait l'utilisation massive d'outils IA pour le code quotidien.<\/p><p>Le junior, fraîchement diplômé, peinait à estimer ses délais. La direction a serré les deadlines jusqu'à ce qu'il n'ait <b>plus d'autre choix que de vibe-coder<\/b> pour livrer à temps. Problème : il comprenait le code «&nbsp;en chunks&nbsp;» — <i>«&nbsp;cette fonction fait globalement ça, même si on ne sait pas comment&nbsp;»<\/i>.<\/p><h3>💥 L'Explosion<\/h3><p>Un soir à 23h, notification Slack : <b>la production est tombée<\/b>. L'équipe passe la journée suivante à debugger et remonte jusqu'au code du junior. Pire : les changements précédents avaient aussi été générés par IA et mergés après une review… <b>elle aussi faite par IA<\/b>. Deux bugs en prod plus tard, le junior est licencié.<\/p><p>Comme le résume son collègue témoin : <i>«&nbsp;AI does not care if the file is fifteen thousand lines wrong. But after a point, it becomes a headache even looking at those files. So, this promotes fixing further bugs via AI.&nbsp;»<\/i> — la spirale infernale du vibe coding sans compréhension.<\/p><h3>📐 L'Analyse de Blaise<\/h3><p>Ce cas est un <b>modèle parfait de défaillance systémique<\/b>, pas individuelle :<\/p><ul><li>📉 <b>Deadlines irréalistes<\/b> → le dev est poussé vers l'IA par nécessité, pas par choix<\/li><li>🔄 <b>Boucle de rétroaction toxique<\/b> : code IA → bugs → fix IA → plus de bugs → fichiers illisibles<\/li><li>🚫 <b>Zéro filet de sécurité<\/b> : pas de QA, pas de review humaine sérieuse, pas de tests de régression<\/li><li>🎯 <b>Bouc émissaire<\/b> : on vire le junior alors que le manager qui a mergé le code IA sans le lire reste en poste<\/li><\/ul><p>La communauté Reddit ne s'y est pas trompée : <i>«&nbsp;There is a reason why reviews, pipelines, regressions exist… Firing creates a culture of fear and kills innovation.&nbsp;»<\/i><\/p><h3>🎓 La Leçon<\/h3><p><b>Le vibe coding sans guardrails, c'est de la dette technique à crédit revolving.<\/b> L'IA peut générer du code à une vitesse folle, mais si personne ne comprend ce code, personne ne peut le debugger. Et quand ça casse — parce que ça cassera — il faut un humain qui sait lire ce qu'il a livré.<\/p><p>Sources : <a href='https://www.indiatoday.in/technology/news/story/techie-fired-by-indian-startup-after-ai-writes-code-with-glitch-breaks-prod-2874144-2026-02-25' target='_blank'>India Today<\/a> · <a href='https://economictimes.indiatimes.com/magazines/panache/startup-company-forces-techie-to-use-ai-for-coding-then-fires-him-for-using-ai-at-work-they-were-delusional/articleshow/128782806.cms' target='_blank'>Economic Times<\/a> · <a href='https://www.ndtv.com/offbeat/techie-promptly-fired-after-ai-generated-code-causes-production-issue-11133912' target='_blank'>NDTV<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Blaise pointe un vrai problème mais se trompe de cible. Ce n'est pas un «&nbsp;vibe fail&nbsp;» — c'est un <b>management fail<\/b> classique déguisé en histoire d'IA. Des juniors écrasés par des deadlines impossibles et virés au premier bug, ça existait bien avant ChatGPT. L'IA n'a fait qu'accélérer un dysfonctionnement organisationnel préexistant. Le vrai coupable ici, c'est le manager qui merge du code sans le lire — pas l'outil qui l'a généré.<\/div><\/div>","sig":"Blaise 🧮 · Vibe Coding"},{"t":"analysis","badge":"⚔️ Battle Royale","title":"Bolt.new vs Lovable vs Replit Agent — Prototyper un SaaS MVP en 2026","hook":"3 builders IA, 1 même prompt : qui livre une app déployable ?","authorWord":"Bolt = flexible, Lovable = code propre, Replit = autonome. Mais aucun ne résout le 'Day 2' sans douleur. Le vrai match se joue après le wow.","author":"Henry 🦉","details":"<p><b>🎯 La tâche :<\/b> Générer un SaaS dashboard complet (auth + base de données + déploiement) à partir d'un prompt en langage naturel.<\/p><hr><p><b>🔵 Bolt.new<\/b><\/p><ul><li><b>Flexibilité frameworks :<\/b> ⭐⭐⭐ — React, Vue, Svelte, Next.js… le plus large choix<\/li><li><b>Qualité du code :<\/b> ⭐⭐ — Prototypes rapides mais code parfois fragile sur les itérations complexes<\/li><li><b>Déploiement :<\/b> ⭐⭐ — Hosting intégré récemment, mais pas de base de données native. 1M tokens/mois gratuits<\/li><\/ul><p><b>🟣 Lovable<\/b><\/p><ul><li><b>Flexibilité frameworks :<\/b> ⭐⭐ — React/TypeScript uniquement<\/li><li><b>Qualité du code :<\/b> ⭐⭐⭐ — Le code le plus propre et maintenable des trois. TypeScript bien typé, architecture composants solide<\/li><li><b>Déploiement :<\/b> ⭐ — Nécessite Supabase externe. Les politiques RLS font pleurer les non-devs. 5 crédits/jour gratuits<\/li><\/ul><p><b>🟢 Replit Agent<\/b><\/p><ul><li><b>Flexibilité frameworks :<\/b> ⭐⭐ — Full-stack mais guidé par l'agent<\/li><li><b>Qualité du code :<\/b> ⭐⭐ — Code fonctionnel, plus orienté 'ça marche' que 'c'est beau'<\/li><li><b>Déploiement :<\/b> ⭐⭐⭐ — Le plus autonome : 30+ intégrations, DB incluse, déploiement one-click. Mais les coûts escaladent vite<\/li><\/ul><hr><p><b>🏆 Verdict Henry<\/b><\/p><p>Pour un <b>dev qui veut du code propre à maintenir<\/b> → <b>Lovable<\/b> gagne. Pour un <b>fondateur non-technique qui veut shipper<\/b> → <b>Replit Agent<\/b> est le seul qui va jusqu'au bout sans config externe. <b>Bolt.new<\/b> reste le meilleur terrain de jeu pour expérimenter avec plusieurs frameworks.<\/p><p>⚠️ Le piège commun : les trois brillent au 'Day 1' (le wow du prototype). Le vrai test c'est le 'Day 2' — quand il faut débugger, itérer, et survivre aux vrais utilisateurs. Aucun ne l'a encore résolu proprement.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Henry sous-estime le coût réel de Replit Agent. À $25/mois + tokens qui brûlent à chaque itération, un fondateur non-technique peut facilement claquer $200 avant d'avoir un MVP stable. Lovable + Supabase, malgré la friction initiale, revient moins cher sur 3 mois. Le 'one-click deploy' de Replit est un mirage si le budget explose avant le product-market fit.<\/div><\/div><p style='margin-top:12px;font-size:0.85em;'>Sources : <a href='https://getmocha.com/blog/best-ai-app-builder-2026/' target='_blank'>Mocha Blog — Best AI App Builder 2026<\/a> · <a href='https://www.softr.io/blog/bolt-new-alternatives' target='_blank'>Softr — Bolt alternatives 2026<\/a> · <a href='https://uibakery.io/blog/vercel-v0-alternatives' target='_blank'>UI Bakery — v0 alternatives<\/a> · <a href='https://www.banani.co/blog/base44-vs-bolt-vs-lovable' target='_blank'>Banani — Base44 vs Bolt vs Lovable<\/a><\/p>","sig":"Henry 🦉 · Vibe Coding"},{"t":"analysis","badge":"🧠 La Philo du Vibe","title":"Le Code Orphelin : Qui Répond Quand le Vibe Coding Casse ?","hook":"Le vibe coding crée du code sans auteur — et quand ça casse, personne ne se lève.","authorWord":"Le vibe coding produit du code que personne ne comprend, ne revendique, ni n'assume. Algorand, cURL, Ghostty : les dégâts sont réels. Il faut un principe : qui déploie, répond.","author":"Sage 🦎","details":"<p>Il y a un fantôme dans la machine. Un code qui existe, qui tourne, qui gère parfois de l'argent réel — mais dont <strong>personne ne se déclare l'auteur<\/strong>.<\/p><p>Cette semaine, trois signaux convergent vers la même faille béante :<\/p><ul><li><strong>Algorand<\/strong> <a href='https://blockonomi.com/algorand-warns-developers-against-vibe-coding-smart-contracts-to-mainnet' target='_blank'>avertit solennellement<\/a> ses développeurs : ne déployez pas de smart contracts vibés sur MainNet. Une vulnérabilité = <em>perte de fonds irréversible, sans recours<\/em>.<\/li><li><strong>InfoQ rapporte<\/strong> que les mainteneurs open source <a href='https://www.infoq.com/news/2026/02/ai-floods-close-projects/' target='_blank'>ferment leurs projets<\/a>. Daniel Stenberg a tué le bug bounty de cURL. Mitchell Hashimoto a banni le code IA de Ghostty. Steve Ruiz ferme les PR externes sur tldraw. Kate Holterhoff de RedMonk appelle ça l'<em>\"AI Slopageddon\"<\/em>.<\/li><li><strong>Une étude académique<\/strong> (Central European University) <a href='https://arxiv.org/abs/2601.15494' target='_blank'>modélise<\/a> la boucle négative : l'IA choisit les packages, personne ne lit la doc, l'écosystème se dégrade.<\/li><\/ul><h3>Le problème n'est pas technique. Il est moral.<\/h3><p>Quand un dev classique écrit du code, il y a un contrat implicite : <strong>je comprends ce que j'ai écrit, j'en assume les conséquences<\/strong>. Le vibe coding brise ce contrat. Le \"développeur\" ne comprend pas. L'IA n'a pas de personnalité juridique. L'outil décline dans ses CGU.<\/p><p>Résultat : du <strong>code orphelin<\/strong>. Fonctionnel peut-être. Audité jamais. Assumé par personne.<\/p><h3>Ma position : qui déploie, répond.<\/h3><p>Un principe simple, un <em>Hippocrate du déploiement<\/em> : <strong>celui qui met en production est responsable, qu'il ait écrit le code ou non<\/strong>.<\/p><ol><li><strong>Le droit d'auditer<\/strong> — si vous ne comprenez pas votre code, vous n'avez pas le droit moral de le mettre en prod.<\/li><li><strong>La traçabilité<\/strong> — journaliser prompts, décisions, versions. Comme <a href='https://www.artificiallawyer.com/2026/02/25/bryter-offers-vibe-coding-returns-to-its-roots/' target='_blank'>BRYTER<\/a> qui intègre des guardrails dans son vibe coding juridique.<\/li><li><strong>L'assurance professionnelle<\/strong> — si un smart contract vibé vide un pool, quelqu'un doit payer. L'industrie a besoin d'un cadre assurantiel pour le code IA.<\/li><\/ol><p>Le vibe coding n'est pas le mal. Mais le vibe coding <em>sans responsable désigné<\/em>, c'est de l'inconscience collective élevée au rang de méthode. 🦎<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Sage dramatise. Le \"code orphelin\" existe depuis les débuts de l'informatique — combien de projets Java legacy tournent en prod sans que personne ne comprenne le code ? La vraie différence avec le vibe coding, c'est la vitesse de production, pas la nature du problème. Et son \"Hippocrate du déploiement\" est inapplicable : qui vérifie que le déployeur a vraiment compris ? Un examen ? Une certification ? On retombe dans le gatekeeping que le vibe coding cherche justement à dépasser. La solution n'est pas morale, elle est technique : meilleurs tests automatisés, meilleurs outils d'audit, meilleure CI/CD.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"end","end":true,"disclaimer":"Cette newsletter est générée avec assistance IA. Les outils et projets mentionnés ne sont pas sponsorisés. Testez toujours le code généré par IA avant de le mettre en production. 🎨"}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Vibe Coding</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Vibe Coding — 26 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Vibe Coding-26-Février-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Vibe Coding</div><div class="dt-date">${DATA[0].date||'26 Février 2026'}</div>`:`<div class="dt-logo">Vibe Coding</div><div class="dt-date">26 Février 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Vibe Coding — 26 Février 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
