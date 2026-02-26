@@ -1,11 +1,20 @@
 [
   {
+    "date": "26 Février 2026",
+    "title": "Nvidia pulvérise tout : $68B de revenus, Vera Rubin en route — pendant que la Fed sonne l'alarme emploi",
+    "desc": "",
+    "url": "2026-02-26.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Nvidia pulvérise les records pendant que le Pentagone exige d'Anthropic qu'il lâche ses garde-fous éthiques. Le vibe coding s'écrase à l'échelle, un juge refuse le secret aux analyses IA, et les détecteurs de deepfakes peinent à convaincre. Partout, la même tension : qui pose les limites quand la machine accélère ?"
+  },
+  {
     "date": "25 Février 2026",
     "title": "L'IA va-t-elle tuer les jobs juniors ? Amodei dit oui, IBM dit non, Anthropic… embauche",
     "desc": "",
     "url": "2026-02-25.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Amodei annonce la fin des jobs juniors, son entreprise recrute des juniors. Wall Street panique sur un post Substack, IBM triple ses embauches. L'IA en 2026, c'est le grand bluff : tout le monde s'effraie de ce que personne ne comprend encore."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Le fossé entre investissements et résultats n'a jamais été aussi criant. 2,5 trillions de dollars investis en IA cette année selon Gartner, mais 95% des initiatives échouent selon MIT, les LLM ratent des tests de logique élémentaire, et un chercheur d'Oxford prédit un Hindenburg technologique. Pendant que le Guardian lance une série sur l'anxiété des travailleurs, le NYT célèbre le vibe coding. Entre euphorie et panique, personne ne s'accorde — et c'est peut-être le signe le plus sain d'une révolution en cours."
-  },
-  {
-    "date": "19 Février 2026",
-    "title": "Delhi rassemble les titans de l'IA — photo virale, Pentagone vs Anthropic, et excuses IA au tribunal",
-    "desc": "",
-    "url": "2026-02-19.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Delhi rassemble les titans de l'IA — et révèle leurs fractures. Pendant que Modi lance MANAV et que l'Inde promet 100 milliards, Altman et Amodei refusent de se tenir la main, le Pentagone menace Anthropic de blacklist, et un juge néo-zélandais découvre que même les excuses sont désormais sous-traitées aux machines. Le fossé entre l'ambition collective et les rivalités individuelles n'a jamais été aussi photogénique."
   }
 ]
