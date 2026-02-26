@@ -1,11 +1,20 @@
 [
   {
+    "date": "26 Février 2026",
+    "title": "HH Bounces Off 5-Month Low at $2.86 — TTF Holds €31.50 as Regas Margins Turn Positive",
+    "desc": "",
+    "url": "2026-02-26.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "The warm reprieve is a mirage. Storage at 30% with the Russian LNG ban activating in five weeks means the refill math is brutal — and a stratospheric vortex disruption could extend winter demand just as the market prices spring. Asymmetry favours upside protection."
+  },
+  {
     "date": "25 Février 2026",
     "title": "HH Slides to $3.17 on Warmer Shift — TTF Drifts Lower to €31.25; NBP Mar Jumps 7%",
     "desc": "",
     "url": "2026-02-25.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "EU storage at historic lows meets record LNG arrivals and fracturing sanctions unity — the market is pricing a comfortable spring while sitting on the thinnest cushion since 2022. The council validated 15 of 21 trade ideas, flagging dangerous concentration in long-Europe positions. Watch Thursday's EIA print and GIE weekly for the next directional catalyst."
   },
   {
@@ -51,15 +60,6 @@
     "url": "2026-02-18.html",
     "type": "daily",
     "edito": "Gas markets are pricing a premature spring while sitting on the thinnest storage cushion since 2022. The polar vortex disruption entering monitoring this week and the 67-day countdown to the EU Russian LNG ban suggest the downside from here is limited — but the upside tail risk is severe.",
-    "latest": false
-  },
-  {
-    "date": "17 Février 2026",
-    "title": "TTF Gaps to €30.67 on Monday Open — HH Breaks $3 for First Time Since October",
-    "desc": "",
-    "url": "2026-02-17.html",
-    "type": "daily",
-    "edito": "TTF gaps 5.6% lower to €30.67 as HH breaks $3 — the market is pricing spring while storage sits at 34%. This week's polar vortex window and Thursday's EIA report will determine whether this is capitulation or a bear trap.",
     "latest": false
   }
 ]
