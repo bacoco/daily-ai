@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 26 Feb 2026 04:49:24 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 04:46:38 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Le plus gros fonds souverain du monde lâche Claude sur l'éthique — et l'IA redessine la carte du pouvoir]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-27.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-27.html</guid>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent.]]></description>
+    </item>
     <item>
       <title><![CDATA[Nvidia pulvérise tout : $68B de revenus, Vera Rubin en route — pendant que la Fed sonne l'alarme emploi]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-26.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-21.html</guid>
       <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA fait face à ses premières vraies conséquences. Grok déclenche un crackdown mondial sur les deepfakes — UK, UE et France agissent simultanément, dans une convergence inédite qui ressemble à un point de Schelling réglementaire. Microsoft se fait prendre la main dans le slop avec un « continvoucly morged » qui restera dans les annales. Et pendant que Hollywood tremble devant Seedance 2.0, un avocat paie 2 500 $ pour avoir fait confiance aux hallucinations de son IA. La semaine où le monde a décidé que « move fast and break things » ne s'applique plus à l'intelligence artificielle.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[2,5 trillions investis en IA — mais personne ne sait si ça vaut le coup]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-20.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-20.html</guid>
-      <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Le fossé entre investissements et résultats n'a jamais été aussi criant. 2,5 trillions de dollars investis en IA cette année selon Gartner, mais 95% des initiatives échouent selon MIT, les LLM ratent des tests de logique élémentaire, et un chercheur d'Oxford prédit un Hindenburg technologique. Pendant que le Guardian lance une série sur l'anxiété des travailleurs, le NYT célèbre le vibe coding. Entre euphorie et panique, personne ne s'accorde — et c'est peut-être le signe le plus sain d'une révolution en cours.]]></description>
     </item>
   </channel>
 </rss>

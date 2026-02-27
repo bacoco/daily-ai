@@ -1,11 +1,20 @@
 [
   {
+    "date": "27 Février 2026",
+    "title": "Le plus gros fonds souverain du monde lâche Claude sur l'éthique — et l'IA redessine la carte du pouvoir",
+    "desc": "",
+    "url": "2026-02-27.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent."
+  },
+  {
     "date": "26 Février 2026",
     "title": "Nvidia pulvérise tout : $68B de revenus, Vera Rubin en route — pendant que la Fed sonne l'alarme emploi",
     "desc": "",
     "url": "2026-02-26.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Nvidia pulvérise les records pendant que le Pentagone exige d'Anthropic qu'il lâche ses garde-fous éthiques. Le vibe coding s'écrase à l'échelle, un juge refuse le secret aux analyses IA, et les détecteurs de deepfakes peinent à convaincre. Partout, la même tension : qui pose les limites quand la machine accélère ?"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA fait face à ses premières vraies conséquences. Grok déclenche un crackdown mondial sur les deepfakes — UK, UE et France agissent simultanément, dans une convergence inédite qui ressemble à un point de Schelling réglementaire. Microsoft se fait prendre la main dans le slop avec un « continvoucly morged » qui restera dans les annales. Et pendant que Hollywood tremble devant Seedance 2.0, un avocat paie 2 500 $ pour avoir fait confiance aux hallucinations de son IA. La semaine où le monde a décidé que « move fast and break things » ne s'applique plus à l'intelligence artificielle."
-  },
-  {
-    "date": "20 Février 2026",
-    "title": "2,5 trillions investis en IA — mais personne ne sait si ça vaut le coup",
-    "desc": "",
-    "url": "2026-02-20.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Le fossé entre investissements et résultats n'a jamais été aussi criant. 2,5 trillions de dollars investis en IA cette année selon Gartner, mais 95% des initiatives échouent selon MIT, les LLM ratent des tests de logique élémentaire, et un chercheur d'Oxford prédit un Hindenburg technologique. Pendant que le Guardian lance une série sur l'anxiété des travailleurs, le NYT célèbre le vibe coding. Entre euphorie et panique, personne ne s'accorde — et c'est peut-être le signe le plus sain d'une révolution en cours."
   }
 ]
