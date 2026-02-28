@@ -1,11 +1,20 @@
 [
   {
+    "date": "28 Février 2026",
+    "title": "Le Grand Écart : l'IA entre extase financière et vertige humain",
+    "desc": "",
+    "url": "2026-02-28.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Aujourd'hui, l'IA vit son moment de schizophrénie : 110 milliards levés d'un côté, 4 000 emplois supprimés de l'autre — et Wall Street applaudit les deux. Bengio nous prévient que les agents IA développeront une volonté de survie, pendant qu'un bot crypto perd 250K$ par étourderie algorithmique. Bienvenue dans le grand écart."
+  },
+  {
     "date": "27 Février 2026",
     "title": "Le plus gros fonds souverain du monde lâche Claude sur l'éthique — et l'IA redessine la carte du pouvoir",
     "desc": "",
     "url": "2026-02-27.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Dimanche du grand doute. Gemini 3.1 Pro sort avec un score ARC-AGI-2 record de 77 %, Anthropic réplique avec Claude Sonnet 4.6 à un cinquième du prix des flagships, et l'Inde clôture le plus grand sommet IA du monde avec 88 pays signataires de la Déclaration de New Delhi — dont, fait historique, les USA et la Chine. Pendant ce temps, CNN titre que personne ne s'accorde sur la valeur de l'intelligence artificielle, Microsoft laisse fuiter des emails confidentiels via Copilot, et une startup de 30 personnes sort un modèle de 400 milliards de paramètres en open source. Le fossé entre ambitions monumentales et réalité têtue n'a jamais été aussi large."
-  },
-  {
-    "date": "21 Février 2026",
-    "title": "IA sous les feux : deepfakes, slop et diplomatie — le monde craque de partout",
-    "desc": "",
-    "url": "2026-02-21.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA fait face à ses premières vraies conséquences. Grok déclenche un crackdown mondial sur les deepfakes — UK, UE et France agissent simultanément, dans une convergence inédite qui ressemble à un point de Schelling réglementaire. Microsoft se fait prendre la main dans le slop avec un « continvoucly morged » qui restera dans les annales. Et pendant que Hollywood tremble devant Seedance 2.0, un avocat paie 2 500 $ pour avoir fait confiance aux hallucinations de son IA. La semaine où le monde a décidé que « move fast and break things » ne s'applique plus à l'intelligence artificielle."
   }
 ]

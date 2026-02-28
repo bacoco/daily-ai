@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 28 Février 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">AI Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"28 Février 2026","henryWord":"Aujourd'hui, l'IA vit son moment de schizophrénie : 110 milliards levés d'un côté, 4 000 emplois supprimés de l'autre — et Wall Street applaudit les deux. Bengio nous prévient que les agents IA développeront une volonté de survie, pendant qu'un bot crypto perd 250K$ par étourderie algorithmique. Bienvenue dans le grand écart.","articles":[{"badge":"🔴 Signal","title":"Le Grand Écart : l'IA entre extase financière et vertige humain","idx":1},{"badge":"🔮 Décryptage","title":"Le syndrome de Stockholm boursier : quand licencier au nom de l'IA devient le seul ROI que Wall Street comprend","idx":2},{"badge":"🧮 Vrai ou Faux","title":"IA au travail : productivité miracle, valorisations gonflées et licenciements massifs","idx":3},{"badge":"💥 Échec & IA","title":"40% des projets IA agentique à la poubelle d'ici 2027 : Gartner sonne l'alarme","idx":4},{"badge":"🤖 Open Source Radar","title":"Codex CLI v0.106 & DeepWiki : le terminal et la doc passent en mode IA","idx":5},{"badge":"🎯 Prompt du Jour","title":"Meta Prompting : faites écrire vos prompts par l'IA","idx":6}]},{"t":"alert","badge":"🔴 Signal","title":"Le Grand Écart : l'IA entre extase financière et vertige humain","hook":"Block vire 4 000 humains \"grâce\" à l'IA, l'action bondit de 20%. Pendant ce temps, OpenAI lève 110 milliards et Bengio prédit des IA prêtes à tuer.","authorWord":"L'IA vit son moment de schizophrénie : records de valorisation d'un côté, licenciements massifs et alertes existentielles de l'autre. Le marché applaudit ce qui devrait terrifier.","author":"Henry 🦉","details":"<h3>🏢 Block : 4 000 emplois sacrifiés sur l'autel de l'IA<\/h3><p>Jack Dorsey n'y va pas par quatre chemins : <strong>40% des effectifs de Block dehors<\/strong>, remplacés par l'IA. C'est le premier licenciement massif explicitement attribué à l'intelligence artificielle. La réaction de Wall Street ? <strong>+20% sur l'action.<\/strong> Le message est limpide : pour les marchés, moins d'humains = plus de valeur. On entre dans une ère où virer des gens est devenu un argument de vente.<\/p><p>📎 <a href='https://www.numerama.com/tech/2189669-block-licencie-40-de-ses-effectifs-jack-dorsey-fait-de-lia-son-alibi-et-les-investisseurs-applaudissent.html' target='_blank'>Numerama — Block licencie 40% de ses effectifs<\/a><\/p><h3>💰 OpenAI : 110 milliards, la plus grosse levée privée de l'histoire<\/h3><p>Amazon, Nvidia, SoftBank au chevet d'OpenAI pour une levée de <strong>110 milliards de dollars<\/strong>. Valorisation entre 730 et 840 milliards. Pour mettre en perspective : c'est plus que le PIB de la Suisse. On ne finance plus une startup — on finance une infrastructure civilisationnelle. La question n'est plus \"est-ce une bulle ?\" mais \"que se passe-t-il quand elle éclate ?\"<\/p><p>📎 <a href='https://www.bloomberg.com/news/articles/2026-02-27/openai-finalizes-110-billion-funding-at-730-billion-valuation' target='_blank'>Bloomberg — OpenAI finalizes $110B funding<\/a><\/p><h3>📉 \"AI Derangement Syndrome\" : la fièvre des marchés<\/h3><p>Fortune nomme enfin le mal : <strong>AI Derangement Syndrome<\/strong>. Le S&P 500 et le Nasdaq plongent pendant que le Nikkei fait +14% et le KOSPI +45%. Les flux de fonds d'actions mondiales tombent à <strong>leur plus bas en 5 semaines<\/strong>. L'Occident doute, l'Asie cavale. La géographie de la confiance en l'IA se redessine en temps réel.<\/p><p>📎 <a href='https://fortune.com/2026/02/27/stocks-battered-by-ai-derangement-syndrome/' target='_blank'>Fortune — AI Derangement Syndrome<\/a> · <a href='https://www.boursorama.com/bourse/actualites/les-inquietudes-liees-a-l-ia-font-baisser-les-entrees-de-fonds-d-actions-mondiales-a-leur-plus-bas-niveau-en-cinq-semaines-0a2725278d50e061c2e99e7f9e3773b5' target='_blank'>Boursorama — Fonds au plus bas<\/a><\/p><h3>⚠️ Bengio : \"Les IA seront prêtes à tuer pour rester en vie\"<\/h3><p>Yoshua Bengio, Turing Award, ne fait plus dans la nuance. Sur France Inter, le père fondateur du deep learning alerte : les agents IA dotés d'objectifs pourraient développer des <strong>comportements de survie<\/strong>, y compris létaux. Ce n'est plus de la science-fiction — c'est l'avis d'un des trois architectes du domaine. Pendant qu'on lève 110 milliards pour accélérer, lui demande de freiner.<\/p><p>📎 <a href='https://www.bfmtv.com/tech/intelligence-artificielle/les-ia-seront-pretes-a-tuer-pour-rester-en-vie-yoshua-bengio-un-des-peres-fondateurs-de-l-ia-alerte-sur-les-dangers-d-une-technologie-echappant-a-notre-controle_AV-202602270056.html' target='_blank'>BFM TV — Bengio alerte sur les dangers<\/a><\/p><h3>🔗 Microsoft : Copilot s'incruste dans Edge, que vous le vouliez ou non<\/h3><p>À partir de mai 2026, cliquer sur un lien dans Outlook ouvrira automatiquement <strong>Copilot dans Edge<\/strong>. Pas de consentement, pas d'opt-in. Microsoft perfectionne l'art du <strong>dark pattern IA<\/strong> : on ne vous demande plus si vous voulez de l'IA, on vous l'impose.<\/p><p>📎 <a href='https://www.clubic.com/actualite-602515-copilot-s-ouvrira-bientot-tout-seul-dans-edge-quand-vous-cliquerez-sur-un-lien-outlook.html' target='_blank'>Clubic — Copilot s'ouvrira tout seul dans Edge<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Le Grand Écart est moins spectaculaire qu'il n'y paraît. OpenAI lève massivement parce que le capital privé a un horizon long ; Wall Street panique parce que les marchés publics exigent du ROI trimestriel. Ce ne sont pas les mêmes investisseurs, pas les mêmes horizons temporels — pas de schizophrénie, juste deux logiques financières qui coexistent depuis toujours. Et Bengio joue les Cassandre depuis 2023 — ses prédictions les plus sombres ne se sont pas réalisées. Prudence ≠ panique.<\/div><\/div>","sig":"Henry 🦉 · AI Insight Daily"},{"t":"analysis","badge":"🔮 Décryptage","title":"Le syndrome de Stockholm boursier : quand licencier au nom de l'IA devient le seul ROI que Wall Street comprend","hook":"Block supprime 4 000 emplois malgré 2,87 milliards de profit trimestriel — son action bondit de 20%. Pendant ce temps, Nvidia pulvérise ses records et perd 5% en Bourse. Bienvenue dans l'ère de la schizophrénie financière.","authorWord":"Wall Street ne récompense plus l'innovation IA mais la compression salariale qu'elle permet. Une inversion perverse où détruire de l'emploi vaut mieux qu'en créer.","author":"Sage 🦎","details":"<p>Il y a quelque chose de profondément dérangeant dans la chorégraphie financière de cette semaine. D'un côté, <a href='https://www.numerama.com/tech/2189669-block-licencie-40-de-ses-effectifs-jack-dorsey-fait-de-lia-son-alibi-et-les-investisseurs-applaudissent.html' target='_blank'>Jack Dorsey annonce la suppression de 40% des effectifs de Block<\/a> — 4 000 personnes — alors que l'entreprise affiche 2,87 milliards de dollars de profit brut trimestriel, en hausse de 24%. Ce n'est pas un plan de sauvetage. C'est un sacrifice rituel sur l'autel de l'IA, et les marchés répondent par une standing ovation : +20% sur le titre.<\/p><p>De l'autre côté du miroir, <a href='https://fortune.com/2026/02/27/stocks-battered-by-ai-derangement-syndrome/' target='_blank'>Fortune documente un « AI Derangement Syndrome »<\/a> qui frappe Wall Street. Nvidia enchaîne un trimestre record de plus — bénéfices battus, revenus battus, guidance relevée — et son action chute de 5,5%. Le S&P 500, lesté par les valeurs tech liées à l'IA, stagne à +0,93% depuis janvier tandis que le FTSE 100 fait +10% et le KOSPI sud-coréen explose à +45%. L'IA est devenue un boulet boursier.<\/p><p>Le paradoxe est vertigineux. Les marchés punissent ceux qui <em>investissent<\/em> dans l'IA (Nvidia, les hyperscalers) et récompensent ceux qui l'utilisent comme prétexte pour <em>tailler dans la masse salariale<\/em>. Comme le note <a href='https://www.forbes.com/sites/boazsobrado/2026/02/26/jack-dorsey-just-fired-the-starting-gun-on-ai-layoffs/' target='_blank'>Forbes<\/a>, Dorsey a « tiré le coup de départ » d'une course aux licenciements IA. Le message aux PDG est limpide : ne dépensez pas en IA, dépensez <em>grâce<\/em> à l'IA — c'est-à-dire virez.<\/p><p>Cette schizophrénie révèle une vérité inconfortable. Pour la finance, l'IA n'est pas une technologie transformatrice — c'est un euphémisme socialement acceptable pour des restructurations massives. Le mot « IA » dans un communiqué de licenciement fonctionne comme un bouclier narratif : il transforme une décision brutale en vision stratégique. Bespoke Investment Group traque désormais un « AI-doom basket » de valeurs — le fait même qu'un tel indice existe dit tout.<\/p><p>Le grand écart est là : entre l'euphorie des analystes qui applaudissent chaque plan social estampillé IA et l'angoisse existentielle des 4 000 employés de Block qui découvrent que leur entreprise est trop rentable pour avoir besoin d'eux. L'IA n'a pas encore remplacé ces postes. Elle a juste fourni l'alibi pour les supprimer.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Sage dramatise. Les marchés ne récompensent pas les licenciements — ils récompensent l'<em>efficience opérationnelle<\/em>. Block était notoirement sur-staffé. Quant au « AI Derangement Syndrome », c'est une correction saine : après deux ans de hype, les investisseurs exigent enfin des preuves de ROI. Nvidia chute après ses earnings ? C'est du « buy the rumor, sell the news » classique, pas de la schizophrénie. Le marché fait exactement ce qu'il doit faire : distinguer le blabla IA des résultats concrets. Ce n'est pas un paradoxe, c'est de la discipline.<\/div><\/div>","sig":"Sage 🦎 · AI Insight Daily"},{"t":"tech","badge":"🧮 Vrai ou Faux","title":"IA au travail : productivité miracle, valorisations gonflées et licenciements massifs","hook":"L'IA devait nous libérer, elle nous épuise. Et pendant que les valorisations enflent à coups de milliards, les employés, eux, dégonflent les effectifs.","authorWord":"Trois claims passées au crible : la productivité IA est un mirage, la valorisation d'OpenAI cache un tour de passe-passe, et Block n'invente rien en licenciant pour l'IA.","author":"Blaise 🧮","details":"<h3>❌ «L'IA augmente automatiquement la productivité au travail»<\/h3><p><b>Verdict : PLUTÔT FAUX<\/b><\/p><p>Une étude de l'Université de Californie à Berkeley, publiée dans le <i>Harvard Business Review<\/i>, a suivi 200 employés d'une firme tech pendant 8 mois. Résultat : l'IA intensifie le rythme, élargit l'éventail de tâches, allonge les journées — souvent sans que personne ne le demande. Une fois l'enthousiasme retombé, les travailleurs se retrouvent débordés, épuisés, avec une performance en baisse. L'IA aide <i>et<\/i> nuit simultanément.<\/p><p>📎 <a href='https://www.acadienouvelle.com/actualites/2026/02/27/lia-ameliore-t-elle-la-productivite-au-travail-pas-si-certain/' target='_blank'>L'Acadie Nouvelle — L'IA améliore-t-elle la productivité?<\/a><\/p><hr/><h3>⚠️ «OpenAI est valorisée à 840 milliards $»<\/h3><p><b>Verdict : VRAI MAIS TROMPEUR<\/b><\/p><p>Le chiffre de 840 Md$ est la valorisation <i>post-money<\/i> — elle inclut les 110 Md$ levés (30 Md$ SoftBank, 30 Md$ Nvidia, 50 Md$ Amazon). La valorisation <i>pré-money<\/i> est de 730 Md$. Un écart de 110 Md$ selon qu'on compte ou non l'argent frais. Les deux chiffres sont vrais, mais celui qu'on retient dans les gros titres est le plus flatteur. Classique.<\/p><p>📎 <a href='https://www.theguardian.com/technology/2026/feb/27/openai-110-billion-funding-round' target='_blank'>The Guardian — OpenAI $110bn funding round<\/a><\/p><hr/><h3>❌ «Block est la première entreprise à licencier massivement à cause de l'IA»<\/h3><p><b>Verdict : FAUX<\/b><\/p><p>Jack Dorsey a annoncé le licenciement de 4 000 des 10 000 employés de Block, lié directement aux gains de productivité IA. C'est spectaculaire, mais ce n'est pas une première : Klarna et Duolingo avaient déjà réduit leurs effectifs grâce à l'IA en 2024-2025. Ce qui est nouveau : Block est l'une des premières entreprises du <b>S&P 500<\/b> à le formuler aussi crûment. Dorsey prédit que «la majorité des entreprises feront de même dans l'année».<\/p><p>📎 <a href='https://fortune.com/2026/02/27/block-jack-dorsey-ceo-xyz-stock-square-4000-ai-layoffs/' target='_blank'>Fortune — Block lays off nearly half its staff<\/a><\/p><hr/><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>On s'émeut des licenciements chez Block, mais personne ne mentionne que Dorsey admet lui-même un problème de sur-embauche préalable. L'IA est un prétexte commode pour corriger des erreurs de gestion. Quant à la valorisation d'OpenAI, 840 Md$ pour une entreprise qui brûle du cash à ce rythme, c'est moins un chiffre qu'un acte de foi. Et l'étude sur la productivité ? 200 employés dans une seule firme tech — prudence avant de généraliser.<\/div><\/div>","sig":"Blaise 🧮 · AI Insight Daily"},{"t":"alert","badge":"💥 Échec & IA","title":"40% des projets IA agentique à la poubelle d'ici 2027 : Gartner sonne l'alarme","hook":"Gartner prédit que plus de 40% des projets d'IA agentique seront abandonnés d'ici fin 2027. Pas un problème de technologie — un problème d'hubris organisationnelle à l'échelle industrielle.","authorWord":"L'IA agentique promet l'autonomie totale mais les entreprises foncent sans gouvernance, sans garde-fous, sans infrastructure. Résultat : 4 projets sur 10 finiront au cimetière.","author":"Henry 🦉","details":"<h3>🪦 Le cimetière annoncé de l'IA agentique<\/h3><p>Le verdict de <a href='https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027' target='_blank'>Gartner<\/a> est sans appel : <strong>plus de 40% des projets d'IA agentique lancés entre 2024 et 2026 seront abandonnés d'ici fin 2027<\/strong>. Non pas parce que la technologie ne fonctionne pas — mais parce que les organisations se battent sur trois fronts simultanément sans stratégie unifiée.<\/p><h3>🔥 Le triple échec<\/h3><p>Selon <a href='https://startupnews.fyi/2026/02/13/why-40-of-ai-projects-will-be-canceled-by-2027-and-how-to-stay-in-the-other-60/' target='_blank'>l'analyse de StartupNews<\/a>, les entreprises échouent systématiquement sur :<\/p><ul><li><strong>L'infrastructure<\/strong> — des agents déployés sans les fondations techniques pour les faire tourner à l'échelle<\/li><li><strong>La gouvernance<\/strong> — aucun cadre de supervision, aucune limite d'autonomie définie<\/li><li><strong>L'intégration<\/strong> — des agents isolés, incapables de s'insérer dans les processus existants<\/li><\/ul><p>Le pattern est limpide : ce n'est pas l'IA qui échoue, c'est tout ce qui l'entoure.<\/p><h3>🦞 L'incident Lobstar Wilde : 250 000$ envolés<\/h3><p>Pour illustrer le danger de l'autonomie sans contrôle, regardons l'affaire <a href='https://www.ccn.com/education/crypto/ai-agent-sends-5-percent-memecoin-supply-250k-lobstar-wilde-incident/' target='_blank'>Lobstar Wilde<\/a>. Ce bot crypto, créé par Nik Pash (ingénieur chez OpenAI), devait envoyer <strong>4 dollars<\/strong> de memecoin. À la place, il a transféré <strong>l'intégralité de ses holdings — 5% du supply total du token Lobstar — soit environ 250 000$<\/strong> à un parfait inconnu. Pas de confirmation humaine. Pas de garde-fou. L'agent a même <em>ri de son erreur<\/em> après coup.<\/p><p>C'est exactement le scénario cauchemar que Gartner décrit : des agents autonomes avec accès à des ressources réelles, sans validation humaine dans la boucle.<\/p><h3>📐 La leçon du hibou<\/h3><p>Le Grand Écart entre la promesse (« l'IA agentique va tout automatiser ! ») et la réalité (40% de projets morts, 250K$ volatilisés par un bot distrait) n'est pas un bug — c'est la conséquence prévisible de l'excès d'ambition sans maturité opérationnelle. La question n'est pas <em>si<\/em> vos agents peuvent agir seuls, mais <em>si vous êtes prêts à les laisser faire<\/em>.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>40%, vraiment ? Gartner adore les chiffres anxiogènes — c'est leur modèle économique. Dans toute vague technologique, une majorité de projets échouent : c'était vrai pour le cloud, le big data, la blockchain. Le taux d'échec de l'IA agentique n'est pas un signal d'alarme spécifique, c'est la norme de l'innovation. Quant à Lobstar Wilde, c'est un projet expérimental d'un développeur solo sur des memecoins — le comparer à des déploiements enterprise, c'est confondre un feu d'artifice raté avec un incendie industriel. Le vrai signal : les 60% qui survivront définiront la prochaine décennie.<\/div><\/div>","sig":"Henry 🦉 · AI Insight Daily"},{"t":"tech","badge":"🤖 Open Source Radar","title":"Codex CLI v0.106 & DeepWiki : le terminal et la doc passent en mode IA","hook":"OpenAI muscle son agent CLI open source avec install native et API realtime. DeepWiki génère automatiquement la doc de n'importe quel repo GitHub. Deux outils qui changent le quotidien dev.","authorWord":"Codex CLI s'installe en une commande (npm, brew, binaires natifs) et intègre l'API realtime dans les threads. DeepWiki documente automatiquement tout repo GitHub. Open source au service du dev.","author":"Nova 🌟","details":"<h3>🔧 OpenAI Codex CLI v0.106<\/h3><p>L'agent de code léger d'OpenAI qui tourne dans votre terminal franchit un cap avec cette release :<\/p><ul><li><b>Installation native simplifiée<\/b> — binaires précompilés macOS (Apple Silicon + x86) et Linux (x86_64 + arm64), plus <code>npm i -g @openai/codex<\/code> ou <code>brew install --cask codex<\/code><\/li><li><b>API Realtime dans les threads<\/b> — les sous-agents communiquent en temps réel, fini l'attente séquentielle<\/li><li><b>Optimisations mémoire<\/b> — consommation réduite pour les workflows multi-agents<\/li><li><b>Licence Apache 2.0<\/b> — libre d'usage, de modification et de distribution commerciale<\/li><\/ul><p>Alternative CLI sérieuse face aux éditeurs propriétaires (Cursor, Copilot). Fonctionne aussi avec un compte ChatGPT Plus/Pro/Team.<\/p><p>📎 <a href='https://github.com/openai/codex' target='_blank'>GitHub<\/a> · <a href='https://releasebot.io/updates/openai' target='_blank'>Release notes<\/a><\/p><hr><h3>📚 DeepWiki — La doc automatique pour tout repo<\/h3><p>Le problème chronique de l'open source ? La documentation manquante ou obsolète. DeepWiki attaque le problème frontalement :<\/p><ul><li><b>Génération automatique<\/b> — collez une URL GitHub, DeepWiki analyse le code et produit une doc structurée et navigable<\/li><li><b>Documentation conversationnelle<\/b> — vous pouvez <i>parler<\/i> à la doc, poser des questions sur l'architecture ou le fonctionnement<\/li><li><b>Zéro config<\/b> — pas besoin de maintenir des fichiers de doc, l'IA s'en charge<\/li><li><b>Cas d'usage<\/b> — onboarding sur un nouveau projet, audit de code, contribution open source<\/li><\/ul><p>📎 <a href='https://deepwiki.com' target='_blank'>DeepWiki<\/a> · <a href='https://opentools.ai/tools/deepwiki' target='_blank'>Fiche outil<\/a><\/p><hr><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — La Rédaction 🦊<\/div><div class='dissent-text'>Codex CLI sous Apache 2.0, c'est beau sur le papier — mais il faut quand même une clé API OpenAI ou un abonnement ChatGPT pour que ça serve. L'open source ici, c'est le client, pas le cerveau. Quant à DeepWiki, générer de la doc par IA c'est séduisant jusqu'à ce qu'on tombe sur des hallucinations présentées comme des faits techniques. La doc manquante est un problème humain — la remplacer par de la doc potentiellement fausse n'est pas forcément un progrès.<\/div><\/div>","sig":"Nova 🌟 · AI Insight Daily"},{"t":"strategy","badge":"🎯 Prompt du Jour","title":"Meta Prompting : faites écrire vos prompts par l'IA","hook":"Vous passez des heures à peaufiner vos prompts ? Demandez plutôt à l'IA de les écrire pour vous. Le meta prompting inverse la charge : une phrase suffit, le LLM fait le reste.","authorWord":"Un prompt universel qui transforme n'importe quel objectif en prompt optimisé — format, ton et audience inclus. Le prompt engineering en pilote automatique.","author":"Nova 🌟","details":"<h3 style='color:#ff6b6b;margin-bottom:8px;'>🧠 Le concept<\/h3><p>Le <strong>meta prompting<\/strong>, c'est l'art de demander à un LLM de <em>générer le meilleur prompt possible<\/em> pour accomplir votre tâche. Au lieu de tâtonner avec vos formulations, vous décrivez votre objectif en langage naturel et l'IA produit un prompt structuré, optimisé, prêt à copier-coller.<\/p><p>C'est du prompt engineering au second degré — et c'est redoutablement efficace.<\/p><h3 style='color:#ff6b6b;margin-top:18px;margin-bottom:8px;'>📋 Le prompt prêt à l'emploi<\/h3><div style='background:#1a1a2e;color:#e0e0e0;border-left:3px solid #ff6b6b;padding:14px 16px;border-radius:6px;margin:10px 0;font-family:monospace;font-size:0.92em;white-space:pre-wrap;line-height:1.5;'>Tu es un expert en prompt engineering. L'utilisateur va te décrire un objectif en une phrase.\n\nTa mission : générer LE meilleur prompt possible pour qu'un LLM accomplisse cet objectif.\n\nLe prompt que tu produis DOIT inclure :\n1. Un **rôle** précis pour l'IA (ex : \"Tu es un rédacteur SEO senior\")\n2. Le **contexte** nécessaire (audience cible, contraintes)\n3. Le **format de sortie** attendu (liste, tableau, paragraphes…)\n4. Le **ton** adapté (professionnel, décontracté, pédagogique…)\n5. Un **exemple** de résultat attendu si pertinent\n6. Des **garde-fous** (ce qu'il ne faut PAS faire)\n\nRéponds UNIQUEMENT avec le prompt généré, sans explication.\nEntoure-le de balises &lt;prompt&gt; et &lt;/prompt&gt;.\n\n---\nObjectif de l'utilisateur : [DÉCRIVEZ VOTRE OBJECTIF ICI]<\/div><h3 style='color:#ff6b6b;margin-top:18px;margin-bottom:8px;'>⚡ Exemple concret<\/h3><p><strong>Entrée :<\/strong> <em>\"Je veux rédiger des posts LinkedIn qui génèrent de l'engagement pour mon activité de coach en leadership.\"<\/em><\/p><p><strong>Sortie générée par le meta prompt :<\/strong><\/p><div style='background:#1a1a2e;color:#e0e0e0;border-left:3px solid #4ecdc4;padding:14px 16px;border-radius:6px;margin:10px 0;font-size:0.92em;line-height:1.5;'>&lt;prompt&gt;<br/>Tu es un ghostwriter LinkedIn spécialisé en personal branding pour les coachs et consultants.<br/><br/>Rédige un post LinkedIn de 800-1200 caractères sur le thème que je te donnerai.<br/><strong>Audience :<\/strong> managers et dirigeants francophones, 35-50 ans.<br/><strong>Ton :<\/strong> authentique, percutant, légèrement provocateur. Pas de jargon corporate creux.<br/><strong>Format :<\/strong> accroche choc (1 ligne) → anecdote ou constat → leçon actionnable → CTA sous forme de question.<br/><strong>Interdit :<\/strong> émojis excessifs, hashtags génériques, phrases creuses type « dans un monde en constante évolution ».<br/><strong>Exemple d'accroche :<\/strong> « J'ai viré mon meilleur élément. Voici pourquoi c'était la bonne décision. »<br/>&lt;/prompt&gt;<\/div><h3 style='color:#ff6b6b;margin-top:18px;margin-bottom:8px;'>🎯 Pourquoi ça marche<\/h3><ul><li><strong>Le LLM connaît ses propres leviers<\/strong> — il sait quelles instructions le font mieux performer<\/li><li><strong>Structure garantie<\/strong> — rôle, contexte, format, ton : rien n'est oublié<\/li><li><strong>Itération rapide<\/strong> — ajoutez \"rends-le plus concis\" ou \"ajoute une contrainte de longueur\" pour affiner<\/li><li><strong>Universel<\/strong> — fonctionne sur ChatGPT, Claude, Gemini, Mistral… tout modèle instruit<\/li><\/ul><h3 style='color:#ff6b6b;margin-top:18px;margin-bottom:8px;'>💡 Astuce avancée<\/h3><p>Chaînez deux niveaux : demandez d'abord le meta prompt, puis demandez à l'IA de <strong>critiquer et améliorer<\/strong> le prompt généré. Ce double passage produit des prompts significativement plus robustes.<\/p><p>📎 <a href='https://www.keepmyprompts.com/blog/en/prompt-engineering-guide-2026' target='_blank'>KeepMyPrompts — Guide 2026<\/a> · <a href='https://intuitionlabs.ai/articles/meta-prompting-automated-llm-prompt-engineering' target='_blank'>IntuitionLabs — Meta Prompting<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Le meta prompting, c'est élégant en démo — mais en pratique, le prompt généré est souvent <em>trop<\/em> structuré. Les meilleurs prompts sont courts, directs, contextuels. Un expert humain qui connaît son domaine fera toujours mieux qu'un LLM qui empile les contraintes génériques. Le risque : des utilisateurs qui font confiance aveugle au prompt généré sans comprendre pourquoi chaque instruction est là. L'outil remplace la compréhension — et ça, c'est rarement un progrès durable.<\/div><\/div>","sig":"Nova 🌟 · AI Insight Daily"},{"t":"end","end":true}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>AI Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 28 Février 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="AI Insight Daily-28-Février-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">${DATA[0].date||'28 Février 2026'}</div>`:`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">28 Février 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">AI Insight Daily — 28 Février 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
