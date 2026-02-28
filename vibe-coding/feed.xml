@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 26 Feb 2026 06:11:17 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 06:16:09 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Flowglad — le billing MCP qui parle à ton agent]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Flowglad veut tuer le mur du billing, un dev vibe code de la 3D spatiale sur Vision Pro, et 69 failles rappellent que ça marche ≠ c'est sécurisé. Pendant ce temps, Base44 se bat pour le trône du free tier et le mot "vibe coding" lui-même devient un champ de bataille. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Cursor Cloud Agents — tes agents codent dans le cloud pendant que tu dors]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-26.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-16.html</guid>
       <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Karpathy enterre le vibe coding le jour de son anniversaire, Orchids se fait hacker en live sur la BBC, et DeepSeek V4 débarque demain pour tout bousculer — sacrée semaine ! 🔥 Entre les outils qui se battent pour ta productivité et les questions de fond sur l'avenir du métier, une chose est sûre : le vibe évolue, et nous avec. Bonne lecture !]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Trae : l'IDE IA gratuit de ByteDance qui veut détrôner Cursor]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-15.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-15.html</guid>
-      <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Orchids se fait hacker en live, Linus Torvalds vibe-code avec Google, et Karpathy déclare le concept déjà dépassé — bienvenue dans l'édition la plus chaude de Vibe Coding ! 🔥 Entre les failles de sécu qui font flipper et les IDE qui se battent pour ta fidélité, une chose est sûre : le vibe coding grandit, et avec lui, les responsabilités. Bonne lecture !]]></description>
     </item>
   </channel>
 </rss>

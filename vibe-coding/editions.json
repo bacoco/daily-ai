@@ -1,11 +1,20 @@
 [
   {
+    "date": "28 Février 2026",
+    "title": "Flowglad — le billing MCP qui parle à ton agent",
+    "desc": "",
+    "url": "2026-02-28.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Flowglad veut tuer le mur du billing, un dev vibe code de la 3D spatiale sur Vision Pro, et 69 failles rappellent que ça marche ≠ c'est sécurisé. Pendant ce temps, Base44 se bat pour le trône du free tier et le mot \"vibe coding\" lui-même devient un champ de bataille. Bonne lecture ! 🎨"
+  },
+  {
     "date": "26 Février 2026",
     "title": "Cursor Cloud Agents — tes agents codent dans le cloud pendant que tu dors",
     "desc": "",
     "url": "2026-02-26.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Cursor envoie des agents bosser dans le cloud, un vétéran tech vibe-code 150k lignes de SaaS, et un junior se fait virer pour avoir fait exactement ce qu'on lui demandait. Pendant ce temps, Bolt, Lovable et Replit se battent pour ton prochain MVP — et le code orphelin pose la question qui fâche : qui est responsable quand personne n'a lu le code ? Bonne lecture ! 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Karpathy enterre le vibe coding le jour de son anniversaire, Orchids se fait hacker en live sur la BBC, et DeepSeek V4 débarque demain pour tout bousculer — sacrée semaine ! 🔥 Entre les outils qui se battent pour ta productivité et les questions de fond sur l'avenir du métier, une chose est sûre : le vibe évolue, et nous avec. Bonne lecture !"
-  },
-  {
-    "date": "15 Février 2026",
-    "title": "Trae : l'IDE IA gratuit de ByteDance qui veut détrôner Cursor",
-    "desc": "",
-    "url": "2026-02-15.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Orchids se fait hacker en live, Linus Torvalds vibe-code avec Google, et Karpathy déclare le concept déjà dépassé — bienvenue dans l'édition la plus chaude de Vibe Coding ! 🔥 Entre les failles de sécu qui font flipper et les IDE qui se battent pour ta fidélité, une chose est sûre : le vibe coding grandit, et avec lui, les responsabilités. Bonne lecture !"
   }
 ]
