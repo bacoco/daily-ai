@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 28 Feb 2026 04:45:58 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 04:47:16 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[OpenAI au Pentagone : quand « ne pas nuire » rencontre « secret défense »]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-01.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-01.html</guid>
+      <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA a passé un cap cette semaine. OpenAI entre dans le réseau classifié du Pentagone, Grok inonde le web de deepfakes sans conséquences, et les SaaS traditionnels sentent le sol se dérober. Mars 2026 s'ouvre sur une question simple : qui tient la barre ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Le Grand Écart : l'IA entre extase financière et vertige humain]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-28.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-23.html</guid>
       <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Lundi noir pour les agents IA. Le bot Kiro d'Amazon rase un environnement AWS pendant 13 heures, un agent crypto envoie 250 000 dollars à un inconnu par erreur de virgule, et Meta stoppe un chatbot incapable de protéger les mineurs. Pendant ce temps, Tesla paie 243 millions pour l'Autopilot, Altman dénonce l'AI washing des licenciements, et Samsung enterre l'assistant unique au profit d'une agora d'intelligences dans votre poche. Le message est clair : l'industrie IA ne crashe plus en théorie — elle crashe en production.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Semaine IA explosive : Gemini 3.1, Claude 4.6, l'Inde rêve à 200 milliards et personne ne s'accorde]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-22.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-22.html</guid>
-      <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Dimanche du grand doute. Gemini 3.1 Pro sort avec un score ARC-AGI-2 record de 77 %, Anthropic réplique avec Claude Sonnet 4.6 à un cinquième du prix des flagships, et l'Inde clôture le plus grand sommet IA du monde avec 88 pays signataires de la Déclaration de New Delhi — dont, fait historique, les USA et la Chine. Pendant ce temps, CNN titre que personne ne s'accorde sur la valeur de l'intelligence artificielle, Microsoft laisse fuiter des emails confidentiels via Copilot, et une startup de 30 personnes sort un modèle de 400 milliards de paramètres en open source. Le fossé entre ambitions monumentales et réalité têtue n'a jamais été aussi large.]]></description>
     </item>
   </channel>
 </rss>
