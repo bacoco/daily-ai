@@ -1,11 +1,20 @@
 [
   {
+    "date": "1 Mars 2026",
+    "title": "Inflation : rebond à 1 % en février 2026",
+    "desc": "",
+    "url": "2026-03-01.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Inflation qui rebondit, mur budgétaire de 40 milliards en 2027, climat des affaires sous sa moyenne : trois signaux qui dessinent le trilemme de la France début 2026 — stabiliser les prix, assainir les finances publiques et soutenir la confiance, sans casser la croissance. De Friedman à Blanchard en passant par Keynes, cette édition te donne les théories, les chiffres et les amorces pour transformer l'actualité en copies solides."
+  },
+  {
     "date": "25 Février 2026",
     "title": "La BCE gèle ses taux : le statu quo s'installe en zone euro",
     "desc": "",
     "url": "2026-02-25.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "BCE en pause, dette sous tension, industrie allemande en crise : trois signaux qui dessinent une Europe piégée entre ses propres règles et la réalité de ses fragilités structurelles. De Taylor à Schumpeter en passant par Domar, cette édition te donne les théories, les chiffres et les amorces pour transformer l'actualité en copies qui marquent."
   },
   {
