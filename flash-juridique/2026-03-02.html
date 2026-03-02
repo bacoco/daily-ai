@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Le Flash Juridique — 2 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Le Flash Juridique</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"2 Mars 2026","henryWord":"Legal privilege, taxe de 50 € à l'entrée du tribunal, rémunération variable intouchable sans accord : cette semaine, le droit redessinne les contours de l'accès à la justice et du conseil en entreprise. Trois signaux forts que praticiens et dirigeants doivent intégrer dès aujourd'hui.","articles":[{"badge":"⚖️ L'Arrêt du Jour","title":"Rémunération variable : pas de modification sans l'accord du salarié","idx":1},{"badge":"📜 Nouveaux Textes","title":"Legal Privilege & Taxe Justice : deux textes qui changent la donne","idx":2},{"badge":"🗣️ Le Traducteur","title":"Le « legal privilege » à la française","idx":3},{"badge":"💼 Business & Droit","title":"LF 2026 : le CICo prorogé de 3 ans, une aubaine pour les PME innovantes","idx":4},{"badge":"🛡️ Radar à Risques","title":"Contribution de 50 € pour saisir la justice : irrecevabilité immédiate depuis le 1er mars","idx":5},{"badge":"🔧 L'Outil Pratique","title":"Simulateur d'aide juridictionnelle — Êtes-vous éligible ?","idx":6}]},{"t":"alert","badge":"⚖️ L'Arrêt du Jour","title":"Rémunération variable : pas de modification sans l'accord du salarié","hook":"Votre employeur change les règles de calcul de votre bonus ? La Cour de cassation siffle la fin de partie.","authorWord":"La chambre sociale rappelle qu'ajouter des comptes dans la base de calcul de la marge commerciale modifie le contrat. Sans accord du salarié, c'est illicite. Un rappel cinglant pour les DRH créatifs.","author":"Henry 🦉","details":"<h3>📋 Les faits<\/h3><p>Un employeur avait unilatéralement ajouté de nouveaux comptes à la liste servant de base au calcul de la marge commerciale nette, dont dépendait la rémunération variable d'un salarié. Ces comptes n'étaient pas la simple déclinaison de comptes existants. Résultat : le montant du variable s'en trouvait mécaniquement affecté.<\/p><h3>⚖️ La décision<\/h3><p><strong>Cass. soc., 7 janv. 2026, n° 24-18.742<\/strong> — La chambre sociale casse l'arrêt d'appel. Elle juge que l'ajout de comptes nouveaux à la base de calcul, dès lors qu'il a une <em>incidence sur le montant de la rémunération variable<\/em>, constitue une <strong>modification du contrat de travail<\/strong> nécessitant l'accord du salarié. La cour d'appel, qui avait validé la modification, n'a pas tiré les conséquences légales de ses propres constatations.<\/p><p>🔗 <a href='https://www.legifrance.gouv.fr/juri/id/JURITEXT000051172742' target='_blank'>Légifrance<\/a> · <a href='https://abeille.law/en/lemployeur-peut-il-modifier-unilateralement-la-methode-de-calcul-variable-de-la-remuneration-sans-laccord-du-salarie/' target='_blank'>Analyse Abeille Law<\/a><\/p><h3>💡 Conséquence pratique<\/h3><p><strong>Tout changement des modalités de calcul de la rémunération variable — même portant sur de simples paramètres comptables — qui affecte le montant du variable constitue une modification du contrat de travail. L'employeur doit obtenir l'accord exprès du salarié, faute de quoi la modification est inopposable et le salarié peut réclamer le différentiel.<\/strong><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Décision prévisible mais problématique en pratique : la frontière entre « déclinaison d'un compte existant » et « compte nouveau » est d'une subtilité comptable redoutable. La Cour offre un critère séduisant sur le papier mais qui promet un contentieux nourri sur la qualification de chaque ligne comptable. Les entreprises à plans de rémunération complexes vont adorer — ou pas.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"tech","badge":"📜 Nouveaux Textes","title":"Legal Privilege & Taxe Justice : deux textes qui changent la donne","hook":"Un « legal privilege » à la française et 50 € pour franchir la porte du tribunal — le JORF de février 2026 redistribue les cartes.","authorWord":"Deux textes majeurs en une semaine : la confidentialité des juristes d'entreprise enfin consacrée, et un droit de timbre qui rappelle 2011. Le diable est dans les décrets d'application.","author":"Henry 🦉","details":"<h3>1. Loi n° 2026-122 du 23 février 2026 — Confidentialité des consultations des juristes d'entreprise<\/h3><p><b>JORF n°0048 du 25 février 2026 · NOR : JUSX2412298L<\/b><\/p><p>La France adopte enfin son <i>legal privilege<\/i>. Les consultations juridiques rédigées par les juristes d'entreprise titulaires d'un Master en droit (ou M1 + 8 ans d'expérience) et formés à l'éthique sont désormais <b>confidentielles<\/b>, à condition :<\/p><ul><li>D'être destinées à la direction ou aux organes de gouvernance<\/li><li>De porter la mention <i>« confidentiel – consultation juridique – juriste d'entreprise »<\/i><\/li><li>D'être classées séparément dans les dossiers de l'entreprise<\/li><\/ul><p><b>Limites :<\/b> la confidentialité est <b>exclue en matière pénale et fiscale<\/b>, et inopposable aux autorités de l'UE. Elle s'applique en civil, commercial et administratif.<\/p><p>📎 <a href='https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053568123' target='_blank'>Texte intégral — Légifrance<\/a> · <a href='https://www.vie-publique.fr/loi/293979-confidentialite-consultations-juriste-entreprise-loi-23-fevrier-2026' target='_blank'>Fiche Vie Publique<\/a><\/p><hr/><h3>2. Contribution de 50 € pour saisir la justice — Art. 128 LF 2026<\/h3><p><b>Loi n° 2026-103 du 19 février 2026 de finances pour 2026 · Art. 1635 bis Q CGI<\/b><\/p><p><b>Entrée en vigueur : 1<sup>er<\/sup> mars 2026.<\/b><\/p><p>Toute saisine du <b>Tribunal Judiciaire<\/b> ou du <b>Conseil de Prud'hommes<\/b> est désormais soumise à un droit de timbre de <b>50 €<\/b>, payable par voie électronique.<\/p><ul><li><b>Irrecevabilité<\/b> à défaut de paiement (après mise en demeure de régulariser sous 1 mois)<\/li><li><b>Exonérations :<\/b> bénéficiaires de l'aide juridictionnelle, l'État, procédures devant le juge des enfants<\/li><li>En cas de procédures successives devant la même juridiction, la contribution n'est due qu'une fois<\/li><\/ul><p>📎 <a href='https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053508155' target='_blank'>Loi de finances 2026 — Légifrance<\/a> · <a href='https://www.village-justice.com/articles/prud-hommes-saisir-conseil-prud-hommes-vous-coutera-une-contribution-euros,56355.html' target='_blank'>Analyse Village de la Justice<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Le <i>legal privilege<\/i> protège les consultations internes mais <b>exclut le pénal et le fiscal<\/b> — soit précisément les domaines où l'entreprise a le plus besoin de franchise avec ses juristes. Quant aux 50 € d'accès à la justice : on ressuscite le timbre Taubira avait enterré en 2014, avec 43 % d'inflation en prime. Pour un salarié au SMIC qui conteste un licenciement abusif, c'est une barrière symbolique mais réelle. L'exonération AJ ne couvre pas les travailleurs juste au-dessus du plafond — la fameuse « classe moyenne du contentieux » reste la grande oubliée.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"analysis","badge":"🗣️ Le Traducteur","title":"Le « legal privilege » à la française","hook":"Jargon → traduction simple","authorWord":"Les avis juridiques internes des entreprises sont désormais protégés : les autorités ne peuvent plus les saisir lors d'un contrôle. Un bouclier neuf, mais percé côté pénal et fiscal.","author":"Sage 🦎","details":"<h3>🔍 Le concept : la confidentialité des consultations des juristes d'entreprise<\/h3><p>Jusqu'à la loi du 23 février 2026, la France était l'un des seuls pays de l'OCDE où les avis juridiques rédigés en interne par un juriste d'entreprise pouvaient être saisis par les autorités lors d'une enquête ou d'un contrôle. Un concurrent américain ou britannique pouvait invoquer le <em>legal privilege<\/em> pour protéger ses documents ; une entreprise française, non.<\/p><p>La nouvelle loi insère un <strong>article 58-1 dans la loi n° 71-1130 du 31 décembre 1971<\/strong>. Elle crée une confidentialité opposable aux tiers — y compris aux autorités administratives — pour les consultations juridiques rédigées par un juriste d'entreprise.<\/p><h3>⚙️ Conditions (cumulatives)<\/h3><ul><li>Le juriste doit être titulaire d'un <strong>master en droit<\/strong> (ou équivalent, ou 8 ans de pratique avec une maîtrise).<\/li><li>Il doit avoir suivi une <strong>formation aux règles éthiques<\/strong> (référentiel fixé par arrêté, aux frais de l'employeur).<\/li><li>La consultation doit porter la <strong>mention « confidentiel »<\/strong> et être destinée exclusivement aux organes de direction de l'entreprise ou du groupe.<\/li><\/ul><h3>🚫 Exclusions importantes<\/h3><p>La confidentialité <strong>ne s'applique pas<\/strong> en matière pénale ni en matière fiscale. Elle ne couvre pas non plus les documents qui ne constituent pas une « consultation juridique » au sens strict (avis personnalisé fondé sur une règle de droit).<\/p><h3>📣 La phrase client<\/h3><blockquote>« Depuis la loi du 23 février 2026, les avis juridiques que votre juriste d'entreprise rédige pour votre direction sont confidentiels : ni l'administration ni une autorité de contrôle ne peuvent les saisir — à condition que le juriste soit diplômé, formé à l'éthique, et que le document porte la mention \"confidentiel\". Attention : cette protection tombe si l'enquête est pénale ou fiscale. »<\/blockquote><p><em>(Loi n° 2026-… du 23 février 2026, art. 58-1 de la loi du 31 décembre 1971 ; Cons. const., décision de conformité avec réserves d'interprétation)<\/em><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Un « legal privilege » troué au pénal et au fiscal, c'est-à-dire exactement là où les entreprises en ont besoin. On offre un parapluie en excluant la pluie. Les enquêtes AMF, DGCCRF, Parquet National Financier — tous les contentieux à fort enjeu — passeront au travers. Quant à l'exigence de mention « confidentiel » et d'inscription sur liste spéciale : combien de juristes oublieront le tampon magique et perdront la protection ? Ce texte rassure les colloques, pas les salles de perquisition.<\/div><\/div>","sig":"Sage 🦎 · Le Flash Juridique"},{"t":"tech","badge":"💼 Business & Droit","title":"LF 2026 : le CICo prorogé de 3 ans, une aubaine pour les PME innovantes","hook":"Le crédit d'impôt recherche collaborative survit — et c'est une vraie bonne nouvelle pour ceux qui co-développent avec des labos.","authorWord":"La loi de finances 2026 prolonge le CICo jusqu'en 2028. Si votre PME collabore avec un organisme de recherche, vous gardez 40 % de crédit d'impôt sur les dépenses facturées. À saisir avant que ça disparaisse.","author":"Henry 🦉","details":"<p>La <strong>loi de finances pour 2026<\/strong>, publiée le 27 février, reconduit pour <strong>3 ans<\/strong> le <strong>Crédit d'Impôt en faveur de la Recherche Collaborative (CICo)<\/strong>. Ce dispositif permet aux PME qui financent des travaux de R&D auprès d'organismes de recherche agréés de bénéficier d'un <strong>crédit d'impôt de 40 %<\/strong> des dépenses facturées, plafonné à 6 M€ par an.<\/p><p>En parallèle, la loi crée les <strong>JEI à impact<\/strong> (Jeunes Entreprises Innovantes à impact sociétal) et aménage le dispositif <strong>IR-PME<\/strong> pour renforcer l'investissement dans les PME innovantes.<\/p><h4>⚖️ Et alors, concrètement ?<\/h4><ul><li>📌 <strong>PME en co-R&D avec un labo public ou privé agréé<\/strong> : le CICo reste accessible jusqu'à fin 2028. C'est le moment de structurer vos partenariats de recherche.<\/li><li>📌 <strong>Startups<\/strong> : le nouveau statut JEI à impact ouvre des exonérations fiscales et sociales renforcées si vous démontrez un impact environnemental ou social.<\/li><li>📌 <strong>Investisseurs<\/strong> : l'IR-PME aménagé peut améliorer l'attractivité de vos levées de fonds.<\/li><\/ul><p>🔗 Source : <a href='https://entreprendre.service-public.gouv.fr/actualites/A18821' target='_blank'>Entreprendre Service Public — LF 2026 : ce qui change pour les entreprises<\/a> (27 fév. 2026)<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Trois ans de plus pour un crédit d'impôt qui concerne une poignée de PME ayant les moyens de contractualiser avec des labos ? Le CICo, c'est l'arbre qui cache la forêt : pendant ce temps, la contribution exceptionnelle sur les grandes entreprises est prolongée et la surtaxe IS aussi. L'État donne d'une main ce qu'il reprend de l'autre. Les vraies PME, elles, attendent toujours une simplification fiscale qui ne vient jamais.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"alert","badge":"🛡️ Radar à Risques","title":"Contribution de 50 € pour saisir la justice : irrecevabilité immédiate depuis le 1er mars","hook":"🔴 Critique — Depuis hier, toute saisine du tribunal judiciaire ou des prud'hommes sans paiement des 50 € est irrecevable.","authorWord":"L'article 128 du PLF 2026 crée un droit de timbre obligatoire. Sans ce paiement, votre requête ne sera même pas examinée. Les bénéficiaires de l'aide juridictionnelle sont exemptés.","author":"Blaise 🧮","details":"<h4>🔴 Risque Critique — Contribution pour l'aide juridique<\/h4><p>Depuis le <strong>1er mars 2026<\/strong>, l'<strong>article 128 de la loi de finances pour 2026<\/strong> impose une <strong>contribution de 50 €<\/strong> sous forme de droit de timbre dématérialisé pour toute saisine du <strong>Tribunal judiciaire<\/strong> ou du <strong>Conseil de prud'hommes<\/strong>.<\/p><p>⚠️ <strong>Cette contribution est une condition de recevabilité.<\/strong> Sans paiement au moment du dépôt, la requête est <strong>irrecevable<\/strong> et ne sera pas examinée par le juge.<\/p><h4>📋 Exceptions<\/h4><ul><li>Bénéficiaires de l'<strong>aide juridictionnelle<\/strong><\/li><li>Procédures devant le juge des enfants, des tutelles, de traitement des situations de surendettement<\/li><\/ul><h4>🎯 Action immédiate<\/h4><p>👉 <strong>Vérifiez que<\/strong> vos dossiers déposés depuis le 1er mars incluent bien le règlement du droit de timbre de 50 € — à défaut, ils seront rejetés sans examen.<\/p><h4>📖 Base légale<\/h4><p>Article 128 de la loi n° 2026-XXX du 2 février 2026 de finances pour 2026 — Contribution pour l'aide juridique (droit de timbre, art. 1635 bis Q du CGI rétabli).<\/p><h4>🔗 Sources<\/h4><ul><li><a href='https://rmc.bfmtv.com/conso/impots/budget-2026-cette-nouvelle-contribution-de-50-euros-a-payer-des-le-1er-mars-etait-passee-inapercue_AN-202602260397.html' target='_blank'>RMC/BFM — La contribution de 50 € passée inaperçue<\/a><\/li><li><a href='https://www.lefigaro.fr/conjoncture/budget-2026-une-nouvelle-contribution-de-50-euros-pour-saisir-la-justice-fait-polemique-20260227' target='_blank'>Le Figaro — La contribution fait polémique<\/a><\/li><li><a href='https://cnb.avocat.fr/actualite/adoption-de-la-contribution-pour-l-aide-juridique-dans-le-plf-2026' target='_blank'>Conseil national des barreaux — Adoption de la contribution<\/a><\/li><\/ul><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Critique, certes, mais tempérons : cette contribution existait déjà de 2011 à 2013 (35 €, supprimée par Taubira). Le vrai scandale n'est pas les 50 € — c'est que le barème n'est pas progressif. Un justiciable au SMIC paie autant qu'une multinationale. Le risque d'irrecevabilité sera vite résorbé par l'habitude des greffes. Le danger structurel, lui, est dans l'effet dissuasif sur les petits litiges (< 1 000 €) où 50 € représentent 5 % de l'enjeu. C'est là que l'accès à la justice recule vraiment.<\/div><\/div>","sig":"Blaise 🧮 · Le Flash Juridique"},{"t":"strategy","badge":"🔧 L'Outil Pratique","title":"Simulateur d'aide juridictionnelle — Êtes-vous éligible ?","hook":"Un simulateur officiel et gratuit du ministère de la Justice pour savoir en 2 minutes si vous pouvez bénéficier de l'aide juridictionnelle.","authorWord":"Avant de payer la contribution de 50 €, vérifiez si l'État peut prendre en charge vos frais de justice. Le simulateur officiel vous donne une réponse immédiate.","author":"Nova 🌟","details":"<p>💡 <b>Le simulateur d'aide juridictionnelle<\/b> du ministère de la Justice permet à tout justiciable de vérifier <b>gratuitement et en quelques clics<\/b> s'il peut bénéficier d'une prise en charge totale ou partielle de ses frais de justice.<\/p><p>🎯 <b>Pourquoi maintenant ?<\/b> Avec l'entrée en vigueur de la <b>contribution de 50 € pour l'aide juridique<\/b> en 2026, beaucoup de justiciables ignorent qu'ils peuvent en être dispensés s'ils sont éligibles à l'aide juridictionnelle. Ce simulateur est la première étape avant toute procédure.<\/p><p>🔗 <b>Accès direct :<\/b> <a href='https://www.aidejuridictionnelle.justice.fr/simulateur' target='_blank'>Simulateur aide juridictionnelle — Justice.fr<\/a><\/p><p>📋 <b>Ce qu'il faut savoir :<\/b><\/p><ul><li>100 % gratuit, officiel (ministère de la Justice)<\/li><li>Réponse indicative immédiate selon vos revenus et votre situation familiale<\/li><li>Permet ensuite de faire la demande en ligne directement<\/li><li>Fonctionne aussi pour estimer l'éligibilité à l'aide juridictionnelle partielle<\/li><\/ul><p>📖 <b>Pour aller plus loin :<\/b> <a href='https://www.trouver-avocats.fr/conseils/contribution-aide-juridique-2026/' target='_blank'>Guide complet sur la contribution de 50 €<\/a> · <a href='https://www.service-public.gouv.fr/particuliers/vosdroits/F18074' target='_blank'>Fiche Service-Public.fr<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Un simulateur qui donne une réponse « indicative » — autrement dit, aucune garantie. Les plafonds de ressources n'ont pas été revalorisés à la hauteur de l'inflation, excluant de facto une partie de la classe moyenne basse. Et le parcours en ligne reste semé d'embûches pour les publics éloignés du numérique, précisément ceux qui auraient le plus besoin de l'aide juridictionnelle. L'outil existe, mais le système qu'il sert reste sous-dimensionné.<\/div><\/div>","sig":"Nova 🌟 · Le Flash Juridique"},{"t":"end","end":true,"disclaimer":"Cette newsletter est éditée par le Cabinet Excen, avocats au Barreau d'Aix-en-Provence. Contenu assisté par intelligence artificielle et relu par un avocat du cabinet avant publication. Le contenu est fourni à titre purement informatif et ne constitue en aucun cas une consultation juridique ou un conseil personnalisé. © 2026 Cabinet Excen — Tous droits réservés."}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Le Flash Juridique</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Le Flash Juridique — 2 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Le Flash Juridique-2-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">${DATA[0].date||'2 Mars 2026'}</div>`:`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">2 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Le Flash Juridique — 2 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>

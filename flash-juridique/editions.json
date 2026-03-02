@@ -1,11 +1,20 @@
 [
   {
+    "date": "2 Mars 2026",
+    "title": "Rémunération variable : pas de modification sans l'accord du salarié",
+    "desc": "",
+    "url": "2026-03-02.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Legal privilege, taxe de 50 € à l'entrée du tribunal, rémunération variable intouchable sans accord : cette semaine, le droit redessinne les contours de l'accès à la justice et du conseil en entreprise. Trois signaux forts que praticiens et dirigeants doivent intégrer dès aujourd'hui."
+  },
+  {
     "date": "27 Février 2026",
     "title": "Don de parts de SARL sans notaire = nullité absolue",
     "desc": "",
     "url": "2026-02-27.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Donation de parts sans notaire annulée après vingt ans, plafonnement CPF entré en vigueur, congés payés désormais intégrés au calcul des heures supplémentaires : cette semaine, formalisme et conformité s'imposent à chaque étage — de la transmission d'entreprise à la paie, en passant par la protection des données."
   },
   {
