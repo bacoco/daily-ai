@@ -1,11 +1,20 @@
 [
   {
+    "date": "2 Mars 2026",
+    "title": "Hormuz Shutdown Rewrites the Board — TTF & JKM Set for Monster Gap Higher at Monday Open",
+    "desc": "",
+    "url": "2026-03-02.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz rewrites everything: Iran's de facto closure of the world's most critical LNG chokepoint collides with EU storage at a historic 29.98% — the most acute gas risk environment since 2022. The council validated 13 of 21 trade ideas, culling 8 for duplicates, mispriced strikes, and internal contradictions. Duration of the Hormuz disruption is the single variable that separates a spike-and-fade from a regime change."
+  },
+  {
     "date": "27 Février 2026",
     "title": "HH Crashes Through $3.00 to $2.92 — Storm Fern Rally Fully Erased; TTF Settles €30.90",
     "desc": "",
     "url": "2026-02-27.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Winter's last gasp meets structural fragility: HH crashes through $3 as US supply overwhelms, but EU storage at decade-lows and a fractured sanctions regime set up a volatile refill season. The transatlantic divergence — US surplus vs EU deficit — is this week's defining tension, and the council validated 14 of 21 trade ideas after culling 7 for redundancy and contradiction."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "HH breaks below $3 on a yawn-inducing EIA print while EU storage scrapes multi-year lows at 33%. The market is sleepwalking into refill season — record LNG arrivals mask a structural deficit that one March cold snap could expose. Watch the tails, not the base case."
-  },
-  {
-    "date": "19 Février 2026",
-    "title": "Europe's 90% Storage Mandate Meets 34% Reality — The Refill Equation Tightens",
-    "desc": "",
-    "url": "2026-02-19.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "TTF cracks €30 for the first time since January as an LNG cargo wave meets collapsing EUA carbon — yet EU storage at 32.5% is the lowest mid-February reading in 8 years. Mukran ice-locked, Golden Pass ramping, Arctic LNG 2 sanctions leaking: the market is pricing a perfect spring while sitting on the thinnest cushion since 2022."
   }
 ]
