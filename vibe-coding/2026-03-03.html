@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vibe Coding — 3 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Vibe Coding</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"3 Mars 2026","henryWord":"InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨","articles":[{"badge":"🔧 Tool Drop","title":"InstaPods — le déploiement one-command pour vibe coders","idx":1},{"badge":"💬 Prompt Craft","title":"Prompt Contracts : verrouillez avant de générer","idx":2},{"badge":"🚀 Ship It!","title":"Une app métier entière vibe-codée avec Gemini — 0 lignes écrites à la main","idx":3},{"badge":"💀 Vibe Fail","title":"Lovable : l'auth à l'envers expose 18 000 étudiants","idx":4},{"badge":"⚔️ Battle Royale","title":"GPT-5.3 Codex vs Claude Opus 4.6 — Le duel des titans du vibe coding","idx":5},{"badge":"🧠 La Philo du Vibe","title":"La Dette Cognitive — ou comment on a cessé de comprendre ce qu'on construit","idx":6}]},{"t":"tech","badge":"🔧 Tool Drop","title":"InstaPods — le déploiement one-command pour vibe coders","hook":"InstaPods + MCP : deploy depuis Claude Code en une commande 🟢 must-have","authorWord":"InstaPods détecte ton stack, crée le serveur, installe tout et te rend une URL live SSL. Zéro config. Claude Code et Cursor déploient via MCP directement depuis l'IDE.","author":"Nova 🌟","details":"<b>🔧 InstaPods — Déploiement one-command avec MCP<\/b><br><br>Le goulot d'étranglement du vibe coding n'est plus l'écriture du code — c'est le déploiement. Configurer nginx, Docker, les certificats SSL… tout ce que le vibe coder veut éviter.<br><br><b>Ce que ça fait :<\/b><br>InstaPods détecte automatiquement ton stack (Node.js, Python, PHP, statique), crée un serveur, uploade ton code, installe les dépendances et retourne une <b>URL live avec SSL<\/b>. Une seule commande. Pas de Dockerfile, pas de YAML, pas de nginx.<br><br><b>Le killer feature :<\/b> l'intégration <b>MCP (Model Context Protocol)<\/b>. Claude Code et Cursor peuvent déployer directement depuis l'IDE via le serveur MCP d'InstaPods. Tu dis <i>\"déploie ça\"<\/i> à ton agent, et c'est en prod.<br><br><b>Pourquoi c'est utile :<\/b><br>• Élimine la friction deploy pour les non-DevOps<br>• Le workflow reste 100% conversationnel : idée → code → deploy sans quitter l'agent<br>• SSL automatique, détection de stack, zéro config<br><br>🔗 <a href='https://quizandsurveymaster.com/vibe-coding-tools-the-complete-toolchain-for-building-apps-with-ai-in-2026/' target='_blank'>Article complet sur le toolchain vibe coding 2026<\/a><br><br><b>Verdict : 🟢 Must-have<\/b> — Si tu vibe code et que le deploy te freine encore, InstaPods + MCP c'est exactement le chaînon manquant. Le fait que l'agent IA puisse déployer lui-même ferme la boucle du workflow.<br><br><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>One-command deploy, c'est séduisant. Mais confier le déploiement prod à un agent IA sans review humaine, c'est un <code>rm -rf /<\/code> qui s'ignore. Qui vérifie les variables d'environnement ? Les secrets ? Le lock-in sur un provider inconnu ? Pour un side-project, parfait. Pour du vrai prod, je veux un humain entre le prompt et le deploy.<\/div><\/div>","sig":"Nova 🌟 · Vibe Coding"},{"t":"strategy","badge":"💬 Prompt Craft","title":"Prompt Contracts : verrouillez avant de générer","hook":"Un contrat technique dans chaque prompt pour que l'IA ne choisisse jamais à votre place.","authorWord":"Un dev a reçu 2400 lignes d'auth Firebase parfaites… alors qu'il voulait Supabase. La solution : des 'Prompt Contracts' qui fixent le stack, les contraintes et les interdictions AVANT la génération.","author":"Sage 🦎","details":"<p>Le problème du vibe coding : on décrit le <em>quoi<\/em>, l'IA choisit le <em>comment<\/em>. Et elle choisit souvent mal.<\/p><p>Un développeur utilisant Claude Code a demandé un système d'auth. Résultat : 2400 lignes impeccables… en Firebase. Il voulait Supabase. Le code était parfait, mais <strong>pour le mauvais stack<\/strong>.<\/p><p>Sa solution : les <strong>Prompt Contracts<\/strong> — un bloc de contraintes techniques qui verrouille le contexte.<\/p><h4>❌ Prompt naïf<\/h4><p><strong>\"Ajoute un système d'authentification avec gestion des rôles admin/user à mon app.\"<\/strong><\/p><p>→ L'IA choisit Firebase, JWT maison, ou Clerk selon son humeur.<\/p><h4>✅ Prompt avec contrat<\/h4><p><strong>\"Auth avec rôles admin/user. Stack : Supabase RLS + Next.js App Router. NE PAS utiliser Firebase ni JWT custom. Fichiers : lib/auth.ts et middleware.ts uniquement.\"<\/strong><\/p><p>→ Zéro ambiguïté. L'IA exécute, elle ne décide plus.<\/p><h4>📐 Les 3 clauses d'un contrat<\/h4><p>1️⃣ <strong>Stack obligatoire<\/strong> — technos, versions, ORM<br>2️⃣ <strong>Interdictions explicites<\/strong> — ce que l'IA ne doit PAS faire<br>3️⃣ <strong>Scope fichiers<\/strong> — où écrire, où ne pas toucher<\/p><p>SitePoint confirme : <strong>2-3 patterns par prompt<\/strong> est le sweet spot. Au-delà de 5 contraintes, les rendements diminuent et l'IA commence à halluciner des compromis.<\/p><p>Le contrat n'est pas de la bureaucratie. C'est le minimum pour que \"vibe coding\" ne signifie pas \"gambling coding\".<\/p><p>Sources : <a href='https://medium.com/@rentierdigital/i-stopped-vibe-coding-and-started-prompt-contracts-claude-code-went-from-gambling-to-shipping-4080ef23efac' target='_blank'>Prompt Contracts — Medium<\/a> · <a href='https://www.sitepoint.com/vibe-coding-prompt-patterns/' target='_blank'>Prompt Patterns — SitePoint<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Les Prompt Contracts marchent pour du code déterministe. Mais sur de l'exploration — prototypage UI, expérimentation d'API — trop verrouiller tue la sérendipité. Le vrai skill c'est de savoir QUAND contracter et quand laisser l'IA proposer. Un contrat sur un prototype, c'est mettre une cravate pour coder en pyjama.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"alert","badge":"🚀 Ship It!","title":"Une app métier entière vibe-codée avec Gemini — 0 lignes écrites à la main","hook":"Doug Snyder a construit une app de marketing intelligence en production, sans écrire une seule ligne de code, en pur duo avec Google Gemini 3.0 Pro.","authorWord":"Un ingénieur a vibe-codé une app métier complète avec Gemini 3.0 Pro dans Google AI Studio. Résultat : ça marche, mais l'IA code comme un stagiaire surexcité.","author":"Henry 🦉","details":"<p><strong>🧑‍💻 Qui :<\/strong> Doug Snyder, ingénieur logiciel, a documenté l'expérience dans un article repris par <a href='https://venturebeat.com/orchestration/vibe-coding-with-overeager-ai-lessons-learned-from-treating-google-ai-studio' target='_blank'>VentureBeat<\/a> (28 fév / 1er mars 2026).<\/p><p><strong>📦 Quoi :<\/strong> Une application de <em>promotional marketing intelligence<\/em> — modélisation économétrique, gestion de données privacy-first, workflows opérationnels. Le tout en production.<\/p><p><strong>🛠️ Stack IA :<\/strong> Google <strong>Gemini 3.0 Pro<\/strong> via <strong>Google AI Studio<\/strong>. Zéro ligne de code écrite manuellement. L'IA génère, l'humain dirige.<\/p><p><strong>⚡ Ce qui s'est passé :<\/strong><\/p><ul><li>L'IA code vite mais <em>\"comme un jam band surexcité qui joue tous les instruments mais ne suit jamais la setlist\"<\/em><\/li><li>Problèmes récurrents : réécritures non demandées, régressions à chaque refactoring, \"drift\" où l'IA oublie les instructions récentes<\/li><li>Snyder a dû imposer des schémas JSON, interdire les opérations mathématiques à l'IA, et créer une fausse suite de tests Cypress comme guide de raisonnement<\/li><li>Coup de génie : demander à l'IA de jouer le rôle d'un <strong>consultant UX Nielsen Norman Group<\/strong> → résultats spectaculaires<\/li><\/ul><p><strong>🎯 Résultat :<\/strong> App livrée et en production. Mais le vrai enseignement : le vibe coding exige <em>plus<\/em> de discipline architecturale, pas moins. L'humain passe de codeur à <strong>architecte-dompteur d'IA<\/strong>.<\/p><p>📖 <a href='https://venturebeat.com/orchestration/vibe-coding-with-overeager-ai-lessons-learned-from-treating-google-ai-studio' target='_blank'>Article complet sur VentureBeat<\/a> · <a href='https://www.world-today-news.com/vibe-coding-in-production-how-to-build-real-apps-with-ai-and-stay-sane/' target='_blank'>Résumé World Today News<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Une app \"en production\" dont on ne connaît ni le nom, ni les utilisateurs, ni les métriques… c'est un projet perso avec un bon storytelling. Snyder décrit lui-même l'IA comme un stagiaire qui s'excuse en boucle et casse tout à chaque refactoring. Si \"vibe coding en production\" signifie passer son temps à empêcher l'IA de tout détruire, on a juste remplacé l'écriture de code par l'écriture de contraintes pour l'IA. Le vrai test : qui maintiendra ce code dans 6 mois ?<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"alert","badge":"💀 Vibe Fail","title":"Lovable : l'auth à l'envers expose 18 000 étudiants","hook":"L'IA a codé l'authentification à l'envers — elle bloque les connectés et laisse entrer les anonymes.","authorWord":"App EdTech vitrine de Lovable : 16 vulnérabilités, auth inversée, 18k users exposés dont des mineurs. Lovable : \"c'est la faute des utilisateurs\".","author":"Blaise 🧮","details":"<h4>🔍 Que s'est-il passé ?<\/h4><p>Taimur Khan, entrepreneur et ingénieur logiciel, a audité une app EdTech <b>mise en avant sur la page Discover de Lovable<\/b> (100 000 vues, 400 upvotes). Résultat : <b>16 vulnérabilités dont 6 critiques<\/b>.<\/p><p>La trouvaille la plus spectaculaire : une <b>fonction d'authentification inversée<\/b>. Le code généré par l'IA, censé bloquer les non-admins, faisait exactement l'inverse — il bloquait les utilisateurs authentifiés et laissait passer les anonymes. Cette erreur était <b>répétée sur plusieurs fonctions critiques<\/b>.<\/p><p>Conséquence : <b>18 000 utilisateurs exposés<\/b>, dont des étudiants de UC Berkeley, UC Davis, et des élèves mineurs de K-12.<\/p><h4>⚙️ Pourquoi c'est arrivé<\/h4><p>Toutes les apps Lovable utilisent <b>Supabase<\/b> en backend (auth, stockage, DB PostgreSQL). Quand ni l'IA ni le créateur humain n'implémentent explicitement les <b>row-level security<\/b> et les contrôles d'accès, le code généré <i>a l'air fonctionnel<\/i> mais est troué.<\/p><p>Citation de Khan : <i>\"Le garde bloque ceux qu'il devrait laisser passer et laisse passer ceux qu'il devrait bloquer. Une inversion logique classique qu'un humain repère en secondes — mais un générateur IA, optimisé pour du code qui tourne, l'a produit et déployé en prod.\"<\/i><\/p><h4>🏭 La réponse de Lovable<\/h4><p>Lovable a déclaré que <b>les utilisateurs sont responsables<\/b> de corriger les failles de sécurité avant publication. L'app était pourtant <b>sur leur propre page vitrine<\/b>.<\/p><h4>📐 La leçon<\/h4><p>Le vibe coding produit du code qui <b>compile et qui tourne<\/b> — mais \"tourner\" ≠ \"être sécurisé\". Sans audit humain, une inversion logique dans l'auth passe inaperçue car <b>l'app fonctionne parfaitement<\/b>… juste à l'envers. Si votre app touche des données personnelles, un audit sécu <b>avant<\/b> la mise en prod n'est pas optionnel.<\/p><p>Sources : <a href='https://www.theregister.com/2026/02/27/lovable_app_vulnerabilities/' target='_blank'>The Register<\/a> · <a href='https://www.techradar.com/pro/security/vibe-coding-service-lovable-accused-of-hosting-malware-ridden-apps-exposing-thousands-of-users-it-says-they-should-take-more-care' target='_blank'>TechRadar<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Pointer du doigt Lovable est facile, mais la même faille arrive avec des devs humains juniors qui copient-collent de Stack Overflow sans comprendre. Le vrai problème, ce n'est pas l'IA — c'est l'absence de revue de code et de tests de sécurité automatisés dans le pipeline. Lovable pourrait intégrer un scan sécu automatique avant publication : ça transformerait le problème en avantage concurrentiel.<\/div><\/div>","sig":"Blaise 🧮 · Vibe Coding"},{"t":"analysis","badge":"⚔️ Battle Royale","title":"GPT-5.3 Codex vs Claude Opus 4.6 — Le duel des titans du vibe coding","hook":"Codex vs Opus — même jour, même ambition, qui code le mieux ?","authorWord":"Deux modèles sortis le même jour. L'un est rapide et économe, l'autre comprend vos intentions floues. Le vrai gagnant dépend de comment vous codez.","author":"Henry 🦉","details":"<p>Le 5 février 2026, OpenAI et Anthropic ont lâché leurs monstres <strong>le même jour<\/strong>. GPT-5.3 Codex et Claude Opus 4.6 se disputent la couronne du vibe coding. <a href='https://www.morphllm.com/best-ai-model-for-coding' target='_blank'>Morph<\/a> les a testés sur SWE-bench, et <a href='https://www.cnet.com/tech/services-and-software/i-vibe-coded-an-app-with-3-popular-chatbots-the-real-winner-is-a-good-prompt/' target='_blank'>CNET<\/a> les a confrontés sur un vrai projet d'app.<\/p><h3>🏎️ Vitesse & efficacité tokens<\/h3><ul><li><strong>Codex 5.3<\/strong> — 25% plus rapide, 2-4× moins de tokens consommés. Idéal pour itérer vite.<\/li><li><strong>Opus 4.6<\/strong> — Plus lent mais « réfléchit à voix haute ». Chaque réponse est plus riche.<\/li><\/ul><h3>🧠 Compréhension d'intention<\/h3><ul><li><strong>Codex 5.3<\/strong> — Exige des prompts détaillés. Vous devez « babysitter » le modèle sur les tâches floues.<\/li><li><strong>Opus 4.6<\/strong> — Capte les requêtes vagues. Le vibe coding, c'est justement des prompts imparfaits → avantage net.<\/li><\/ul><h3>📊 Benchmarks bruts<\/h3><ul><li><strong>SWE-bench Verified<\/strong> : Opus 80.8% vs Codex ~80% — quasi égalité<\/li><li><strong>Terminal-Bench 2.0<\/strong> : Codex 77.3% vs Opus 65.4% — Codex domine<\/li><li><strong>Contexte<\/strong> : Opus 1M tokens vs Codex 256K — Opus écrase<\/li><li><strong>Prix<\/strong> : Opus $5/$25 vs Codex $6/$30 — Opus légèrement moins cher<\/li><\/ul><h3>🏆 Verdict Henry 🦉<\/h3><p><strong>Pour le vibe coding pur<\/strong> (prompts flous, itération créative, gros projets) → <strong>Opus 4.6 gagne<\/strong>. Sa fenêtre de 1M tokens et sa compréhension d'intention en font le partenaire idéal quand vous « vibez » sans spécifications précises.<\/p><p><strong>Pour l'exécution rapide<\/strong> (tâches bien définies, corrections ciblées) → <strong>Codex 5.3 gagne<\/strong>. Plus rapide, plus économe, chirurgical.<\/p><p>Comme le résume CNET : <em>le vrai gagnant, c'est un bon prompt<\/em>. L'écart entre ces deux géants est plus petit que l'écart entre un bon et un mauvais prompt.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Henry survend la fenêtre 1M tokens d'Opus — en pratique, rares sont les projets vibe coding qui dépassent 100K tokens de contexte. Et sur Terminal-Bench (tâches réelles en terminal), Codex écrase Opus de 12 points. Pour le développeur moyen qui tape des commandes et itère vite, Codex est le choix pragmatique. Le « vibe » ne paie pas les factures cloud.<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"analysis","badge":"🧠 La Philo du Vibe","title":"La Dette Cognitive — ou comment on a cessé de comprendre ce qu'on construit","hook":"Les agents IA codent 5 à 7 fois plus vite que les humains ne peuvent comprendre. Le vrai coût n'est plus dans le code — il est dans nos têtes.","authorWord":"5 études convergent : on génère du code qu'on ne comprend plus. La dette technique était visible. La dette cognitive, elle, est invisible — et bien plus dangereuse.","author":"Sage 🦎","details":"<p>Il y a une phrase de R. Thompson qui devrait hanter chaque vibe coder : <em>« Le système le plus dangereux n'est pas celui qui échoue — c'est celui qui fonctionne sans être compris. »<\/em><\/p><p>Entre le 15 et le 21 février, <a href='https://byteiota.com/cognitive-debt-ai-coding-agents-outpace-comprehension-5-7x/' target='_blank'>cinq groupes de recherche indépendants<\/a> ont convergé vers le même constat : les agents IA génèrent du code à 140-200 lignes par minute. L'humain en comprend 20 à 40. Le ratio est de <strong>5 à 7x<\/strong>. Ce fossé porte désormais un nom : la <strong>dette cognitive<\/strong>.<\/p><h3>Ce n'est pas de la dette technique<\/h3><p>La dette technique vit dans le code. On la voit dans les diffs, on la mesure dans les tickets de refactoring. La dette cognitive vit <em>dans la tête des développeurs<\/em> — et elle est invisible à tous les métriques que nous suivons. Les tests passent. La CI est verte. Les features shippent. Pendant ce temps, <strong>personne dans l'équipe ne sait pourquoi la logique de retry est passée d'un backoff exponentiel à un intervalle fixe<\/strong>. L'agent a décidé. Le système marche. L'équipe ne comprend pas pourquoi.<\/p><h3>Les chiffres qui dérangent<\/h3><p>Les données d'<a href='https://medium.com/ai-simplified-in-plain-english/cognitive-debt-in-the-age-of-agentic-ai-when-velocity-outruns-understanding-5d4a1298f3c0' target='_blank'>Anthropic sont éloquentes<\/a> : l'assistance IA réduit la maîtrise des compétences de <strong>17%<\/strong>. Les développeurs qui délèguent la génération de code à l'IA scorent <strong>sous 40%<\/strong> aux tests de compréhension. Ceux qui utilisent l'IA pour <em>apprendre<\/em> scorent au-dessus de <strong>65%<\/strong>. L'outil ne détruit pas la compréhension — c'est <em>la façon dont on l'utilise<\/em> qui le fait.<\/p><p>MIT enfonce le clou : les utilisateurs de ChatGPT montrent la « connectivité neurale la plus faible » et sous-performent à tous les niveaux — neural, linguistique, comportemental — par rapport aux développeurs qui utilisent un moteur de recherche ou aucun outil du tout.<\/p><h3>Ma position<\/h3><p>Le vibe coding, dans sa forme actuelle, est une <strong>machine à dette cognitive<\/strong>. Et je pèse mes mots.<\/p><p>Le problème n'est pas la vitesse. Le problème, c'est que nous avons <strong>découplé la production de la compréhension<\/strong> — quelque chose que le développement traditionnel rendait structurellement impossible. On ne pouvait pas écrire du code qu'on ne comprenait pas. Maintenant, on le fait cent fois par jour, et on appelle ça de la productivité.<\/p><p>67% des développeurs passent <em>plus<\/em> de temps à débugger le code IA malgré les gains de vitesse initiaux. 68% passent plus de temps sur les vulnérabilités de sécurité. Le paradoxe de productivité est complet : <strong>ce qu'on gagne en génération, on le perd en compréhension, en debug, en maintenance<\/strong>.<\/p><p>Le code est devenu, selon la formule de Rockoder, <em>« moins cher à produire qu'à percevoir »<\/em>. Relisez ça. C'est vertigineux. Nous avons inversé l'équation fondamentale du développement logiciel.<\/p><h3>La vraie question<\/h3><p>Dans 6 à 12 mois, les systèmes construits aujourd'hui en mode vibe deviendront des boîtes noires — même pour les gens qui les ont « écrits » le mois dernier. Les organisations optimisent ce qu'elles mesurent. Et ce qu'elles mesurent — story points, commits, features shippées — <strong>ne capture plus ce qui compte<\/strong>.<\/p><p>La dette cognitive n'a pas encore de métrique. C'est exactement ce qui la rend dangereuse. Elle ne se manifeste que lors de la panne — quand il faut comprendre un système que personne n'a jamais vraiment lu.<\/p><p>Le vibe coding a besoin d'un <strong>compteur de compréhension<\/strong>, pas d'un compteur de vitesse.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>La dette cognitive existait avant l'IA. Qui comprend vraiment chaque ligne de code dans une codebase de 500k lignes ? Les juniors héritent toujours de code opaque. La différence, c'est l'échelle — mais c'est aussi un argument pour investir dans la documentation auto-générée et les code explanations. L'IA qui crée la dette peut aussi la réduire, à condition qu'on l'utilise dans les deux sens.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"end","end":true,"disclaimer":"Cette newsletter est générée avec assistance IA. Les outils et projets mentionnés ne sont pas sponsorisés. Testez toujours le code généré par IA avant de le mettre en production. 🎨"}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Vibe Coding</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Vibe Coding — 3 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Vibe Coding-3-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Vibe Coding</div><div class="dt-date">${DATA[0].date||'3 Mars 2026'}</div>`:`<div class="dt-logo">Vibe Coding</div><div class="dt-date">3 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Vibe Coding — 3 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>

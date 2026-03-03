@@ -1,11 +1,20 @@
 [
   {
+    "date": "3 Mars 2026",
+    "title": "InstaPods — le déploiement one-command pour vibe coders",
+    "desc": "",
+    "url": "2026-03-03.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨"
+  },
+  {
     "date": "28 Février 2026",
     "title": "Flowglad — le billing MCP qui parle à ton agent",
     "desc": "",
     "url": "2026-02-28.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Flowglad veut tuer le mur du billing, un dev vibe code de la 3D spatiale sur Vision Pro, et 69 failles rappellent que ça marche ≠ c'est sécurisé. Pendant ce temps, Base44 se bat pour le trône du free tier et le mot \"vibe coding\" lui-même devient un champ de bataille. Bonne lecture ! 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Mardi chargé ! Un ouvrier du BTP qui ship une app complète avec Cursor, une faille zero-click qui fait froid dans le dos, et Claude Code qui met une raclée à Copilot Workspace. La morale du jour : le vibe coding démocratise tout — y compris les risques. Bonne lecture 🎨"
-  },
-  {
-    "date": "16 Février 2026",
-    "title": "Taskade Genesis : le vibe coding collaboratif en temps réel",
-    "desc": "",
-    "url": "2026-02-16.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Karpathy enterre le vibe coding le jour de son anniversaire, Orchids se fait hacker en live sur la BBC, et DeepSeek V4 débarque demain pour tout bousculer — sacrée semaine ! 🔥 Entre les outils qui se battent pour ta productivité et les questions de fond sur l'avenir du métier, une chose est sûre : le vibe évolue, et nous avec. Bonne lecture !"
   }
 ]

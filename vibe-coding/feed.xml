@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 28 Feb 2026 06:16:09 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 06:18:50 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[InstaPods — le déploiement one-command pour vibe coders]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</guid>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Flowglad — le billing MCP qui parle à ton agent]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-17.html</guid>
       <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Mardi chargé ! Un ouvrier du BTP qui ship une app complète avec Cursor, une faille zero-click qui fait froid dans le dos, et Claude Code qui met une raclée à Copilot Workspace. La morale du jour : le vibe coding démocratise tout — y compris les risques. Bonne lecture 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Taskade Genesis : le vibe coding collaboratif en temps réel]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-16.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-16.html</guid>
-      <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Karpathy enterre le vibe coding le jour de son anniversaire, Orchids se fait hacker en live sur la BBC, et DeepSeek V4 débarque demain pour tout bousculer — sacrée semaine ! 🔥 Entre les outils qui se battent pour ta productivité et les questions de fond sur l'avenir du métier, une chose est sûre : le vibe évolue, et nous avec. Bonne lecture !]]></description>
     </item>
   </channel>
 </rss>
