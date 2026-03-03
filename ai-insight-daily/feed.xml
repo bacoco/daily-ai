@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Mon, 02 Mar 2026 04:44:08 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 04:47:40 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Les IA sur-privilégiées causent 4,5× plus d'incidents de sécurité]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-03.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-03.html</guid>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA a promis l'autonomie, elle livre la fragilité. 76 % des agents échouent en production, les systèmes sur-privilégiés multiplient les incidents par 4,5, et même le prompt engineering se demande s'il est encore vivant. Mais dans ce reality check, les réponses émergent : interprétabilité mécaniste, modèles frugaux on-device, et techniques anti-hallucinations. L'heure n'est plus aux cathédrales — c'est aux fondations qu'on travaille.]]></description>
+    </item>
     <item>
       <title><![CDATA[Deux licornes IA en 24h : l'interprétabilité vaut désormais des milliards]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-02.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-25.html</guid>
       <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Amodei annonce la fin des jobs juniors, son entreprise recrute des juniors. Wall Street panique sur un post Substack, IBM triple ses embauches. L'IA en 2026, c'est le grand bluff : tout le monde s'effraie de ce que personne ne comprend encore.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Washington arme le Peace Corps d'IA : la diplomatie technologique passe à l'offensive]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-24.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-24.html</guid>
-      <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA déploie des milliards, enrôle des diplomates et promet la révolution. Mais quand 80% des entreprises n'y trouvent aucun gain de productivité, que les agents échouent à 76% et que des failles critiques béantes exposent les workflows d'entreprise, la question n'est plus « quand ? » mais « vraiment ? ». Pourtant, dans les marges, l'open source chinois livre des résultats que les géants peinent à égaler.]]></description>
     </item>
   </channel>
 </rss>
