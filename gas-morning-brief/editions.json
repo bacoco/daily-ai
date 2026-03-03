@@ -1,11 +1,20 @@
 [
   {
+    "date": "3 Mars 2026",
+    "title": "TTF Prints €14 Intraday Range — Biggest Single-Session Swing Since 2022 Energy Crisis",
+    "desc": "",
+    "url": "2026-03-03.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Qatar's Ras Laffan shutdown transforms Hormuz from tail risk to live crisis — TTF's €14 intraday range signals a market groping for equilibrium between insurance-driven supply panic and coal-gas switching ceilings. With storage at 30% and a vortex split extending heating demand into March, the council validated 16 of 21 trade ideas, culling 5 duplicates and contradictions. Duration of the Qatar shutdown is the single variable separating a spike-and-fade from a 2022 redux."
+  },
+  {
     "date": "2 Mars 2026",
     "title": "Hormuz Shutdown Rewrites the Board — TTF & JKM Set for Monster Gap Higher at Monday Open",
     "desc": "",
     "url": "2026-03-02.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz rewrites everything: Iran's de facto closure of the world's most critical LNG chokepoint collides with EU storage at a historic 29.98% — the most acute gas risk environment since 2022. The council validated 13 of 21 trade ideas, culling 8 for duplicates, mispriced strikes, and internal contradictions. Duration of the Hormuz disruption is the single variable that separates a spike-and-fade from a regime change."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "TTF holds €31.55 as EU storage scrapes 30.9% — a 10pp YoY deficit and the lowest late-Feb reading since 2022. Record LNG arrivals (14.2 Mt) meet depleted Norwegian hydro, an April 25 Russian LNG ban, and Hormuz drills. EUA crashes 23% on Merz ETS bombshell. The refill math barely works — if it doesn't, Q3 reprices violently."
-  },
-  {
-    "date": "20 Février 2026",
-    "title": "HH March Settles Below $3 as EIA Draw Fails to Inspire — TTF Holds €31.88",
-    "desc": "",
-    "url": "2026-02-20.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "HH breaks below $3 on a yawn-inducing EIA print while EU storage scrapes multi-year lows at 33%. The market is sleepwalking into refill season — record LNG arrivals mask a structural deficit that one March cold snap could expose. Watch the tails, not the base case."
   }
 ]

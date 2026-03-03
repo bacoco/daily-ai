@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/gas-morning-brief/</link>
     <description>L'intelligence gazière en 7 cartes avant l'ouverture — pour traders commodity gaz</description>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Mar 2026 05:54:37 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2026 05:48:52 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/gas-morning-brief/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[TTF Prints €14 Intraday Range — Biggest Single-Session Swing Since 2022 Energy Crisis]]></title>
+      <link>https://bacoco.github.io/daily-ai/gas-morning-brief/2026-03-03.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/gas-morning-brief/2026-03-03.html</guid>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Qatar's Ras Laffan shutdown transforms Hormuz from tail risk to live crisis — TTF's €14 intraday range signals a market groping for equilibrium between insurance-driven supply panic and coal-gas switching ceilings. With storage at 30% and a vortex split extending heating demand into March, the council validated 16 of 21 trade ideas, culling 5 duplicates and contradictions. Duration of the Qatar shutdown is the single variable separating a spike-and-fade from a 2022 redux.]]></description>
+    </item>
     <item>
       <title><![CDATA[Hormuz Shutdown Rewrites the Board — TTF & JKM Set for Monster Gap Higher at Monday Open]]></title>
       <link>https://bacoco.github.io/daily-ai/gas-morning-brief/2026-03-02.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/gas-morning-brief/2026-02-23.html</guid>
       <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[TTF holds €31.55 as EU storage scrapes 30.9% — a 10pp YoY deficit and the lowest late-Feb reading since 2022. Record LNG arrivals (14.2 Mt) meet depleted Norwegian hydro, an April 25 Russian LNG ban, and Hormuz drills. EUA crashes 23% on Merz ETS bombshell. The refill math barely works — if it doesn't, Q3 reprices violently.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[HH March Settles Below $3 as EIA Draw Fails to Inspire — TTF Holds €31.88]]></title>
-      <link>https://bacoco.github.io/daily-ai/gas-morning-brief/2026-02-20.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/gas-morning-brief/2026-02-20.html</guid>
-      <pubDate>Fri, 20 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[HH breaks below $3 on a yawn-inducing EIA print while EU storage scrapes multi-year lows at 33%. The market is sleepwalking into refill season — record LNG arrivals mask a structural deficit that one March cold snap could expose. Watch the tails, not the base case.]]></description>
     </item>
   </channel>
 </rss>
