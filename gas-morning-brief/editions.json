@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Mars 2026",
+    "title": "Day 2: Profit-Taking Pulls TTF Off €65 High — But €50 Holds",
+    "desc": "",
+    "url": "2026-03-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Day 3 of Hormuz with no diplomatic off-ramp: TTF pulled back to €53 from Monday's €65 panic spike, but the 30% storage floor just broke. The council validated 16 trade ideas out of 21 — the JKM-TTF parity spread and cheap Apr €65 calls stand out as the highest-conviction asymmetric plays. The refill math at €53+ TTF is brutal; this summer will test every assumption."
+  },
+  {
     "date": "3 Mars 2026",
     "title": "TTF Prints €14 Intraday Range — Biggest Single-Session Swing Since 2022 Energy Crisis",
     "desc": "",
     "url": "2026-03-03.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Qatar's Ras Laffan shutdown transforms Hormuz from tail risk to live crisis — TTF's €14 intraday range signals a market groping for equilibrium between insurance-driven supply panic and coal-gas switching ceilings. With storage at 30% and a vortex split extending heating demand into March, the council validated 16 of 21 trade ideas, culling 5 duplicates and contradictions. Duration of the Qatar shutdown is the single variable separating a spike-and-fade from a 2022 redux."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Hormuz tensions collide with EU storage at historic lows — the gas market is caught between record LNG arrivals and a geopolitical tinderbox. The 30.8% storage level and Alpine hydro deficit make this week's data releases critical inflection points for Q2 positioning."
-  },
-  {
-    "date": "23 Février 2026",
-    "title": "TTF Holds Above €31 as NBP Spikes on Front-Month Squeeze; HH Steady Post-Storm Normalisation",
-    "desc": "",
-    "url": "2026-02-23.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "TTF holds €31.55 as EU storage scrapes 30.9% — a 10pp YoY deficit and the lowest late-Feb reading since 2022. Record LNG arrivals (14.2 Mt) meet depleted Norwegian hydro, an April 25 Russian LNG ban, and Hormuz drills. EUA crashes 23% on Merz ETS bombshell. The refill math barely works — if it doesn't, Q3 reprices violently."
   }
 ]
