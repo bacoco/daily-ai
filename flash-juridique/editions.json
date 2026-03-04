@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Mars 2026",
+    "title": "Vie privée : transmettre l'adresse personnelle d'une salariée sans l'occulter = atteinte",
+    "desc": "",
+    "url": "2026-03-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Vie privée du salarié sanctuarisée par la Cour de cassation, loi Rixain en vigueur avec ses quotas de parité, bonus-malus chômage recalibré : cette semaine, le droit social et le droit des affaires imposent aux employeurs un effort de conformité immédiat. Trois fronts à surveiller pour ne pas être pris de court."
+  },
+  {
     "date": "2 Mars 2026",
     "title": "Rémunération variable : pas de modification sans l'accord du salarié",
     "desc": "",
     "url": "2026-03-02.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Legal privilege, taxe de 50 € à l'entrée du tribunal, rémunération variable intouchable sans accord : cette semaine, le droit redessinne les contours de l'accès à la justice et du conseil en entreprise. Trois signaux forts que praticiens et dirigeants doivent intégrer dès aujourd'hui."
   },
   {
@@ -51,12 +60,6 @@
     "url": "2026-02-15.html",
     "type": "daily",
     "edito": "AI Act, rétractation en un clic, facturation électronique obligatoire : cette semaine, le droit bouge vite. L'essentiel pour ne pas être pris de court.",
-    "latest": false
-  },
-  {
-    "date": "14 Février 2026",
-    "url": "2026-02-14.html",
-    "edito": "Assurance-vie, fiscalité 2026, partage de la valeur, prud'hommes, NIS2 et outils pratiques.",
     "latest": false
   }
 ]

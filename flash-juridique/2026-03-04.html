@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Le Flash Juridique — 4 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Le Flash Juridique</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"4 Mars 2026","henryWord":"Vie privée du salarié sanctuarisée par la Cour de cassation, loi Rixain en vigueur avec ses quotas de parité, bonus-malus chômage recalibré : cette semaine, le droit social et le droit des affaires imposent aux employeurs un effort de conformité immédiat. Trois fronts à surveiller pour ne pas être pris de court.","articles":[{"badge":"⚖️ L'Arrêt du Jour","title":"Vie privée : transmettre l'adresse personnelle d'une salariée sans l'occulter = atteinte","idx":1},{"badge":"📜 Nouveaux Textes","title":"Entrées en vigueur au 1ᵉʳ mars 2026 : parité, micro-entreprises, forfait hospitalier et allocations","idx":2},{"badge":"🗣️ Le Traducteur","title":"Quotas femmes en Comex : le 30 % est devenu obligatoire","idx":3},{"badge":"💼 Business & Droit","title":"Auto-entreprise concurrente : la Cour de cassation confirme la faute grave","idx":4},{"badge":"🛡️ Radar à Risques","title":"Bonus-malus chômage : nouveau cycle au 1ᵉʳ mars 2026","idx":5},{"badge":"🔧 L'Outil Pratique","title":"Comparatif IA juridique : choisir un outil fiable pour son cabinet","idx":6}]},{"t":"alert","badge":"⚖️ L'Arrêt du Jour","title":"Vie privée : transmettre l'adresse personnelle d'une salariée sans l'occulter = atteinte","hook":"Un simple courrier professionnel transmis sans masquer l'adresse du domicile — et la Cour de cassation censure.","authorWord":"L'employeur n'est pas un facteur : divulguer l'adresse perso d'un salarié, même sur un courrier professionnel, c'est franchir la ligne rouge de l'article 9 du code civil. Point final.","author":"Henry 🦉","details":"<h3>⚖️ Cass. soc., 11 févr. 2026, n° 24-18.087<\/h3><p><a href='https://www.courdecassation.fr/decision/24-18087' target='_blank'>🔗 Judilibre<\/a><\/p><h4>📌 Les faits<\/h4><p>Une salariée, également représentante du personnel, adresse un courrier à la DRH pour demander le retrait d'un tract syndical la concernant. L'employeur transmet ce courrier au syndicat visé… <strong>sans occulter l'adresse personnelle<\/strong> figurant en en-tête. Le syndicat affiche ensuite le document. La salariée saisit les prud'hommes. La cour d'appel de Colmar rejette sa demande, estimant que le courrier ne contenait aucun élément relevant de la vie privée.<\/p><h4>⚖️ La décision<\/h4><p>La Cour de cassation <strong>censure<\/strong> la cour d'appel sur le fondement de l'<strong>article 9 du code civil<\/strong>. Elle juge que la divulgation du domicile d'un salarié par l'employeur, <em>sans son accord<\/em>, constitue <strong>en elle-même<\/strong> une atteinte à la vie privée — indépendamment du contenu professionnel du courrier, de l'absence d'intention malveillante ou des relations préexistantes avec le syndicat. Cassation partielle et renvoi devant la cour d'appel de Metz.<\/p><h4>🎯 Conséquence pratique<\/h4><p><strong>Tout document transmis à un tiers (syndicat, prestataire, collègue…) doit être purgé des données personnelles du salarié — adresse, numéro de téléphone, etc. — sauf accord exprès de l'intéressé. Le simple oubli d'occultation suffit à engager la responsabilité de l'employeur et à ouvrir droit à indemnisation.<\/strong><\/p><p>Sources : <a href='https://cgtbordeauxmetropole.fr/2026/03/vie-privee-des-salarie-es-la-cour-de-cassation-rappelle-les-limites-a-ne-pas-franchir.html' target='_blank'>CGT Bordeaux Métropole<\/a> · <a href='https://www.nextplz.fr/societe/537060-licenciement-annule-apres-un-appel-au-medecin-du-salarie-la-cour-de-cassation-rappelle-une-regle-clef-sur-la-vie-privee' target='_blank'>NextPLZ<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Louable sur le principe, mais cette décision flirte avec l'excès de formalisme. L'adresse figurait en en-tête d'un courrier que la salariée a elle-même rédigé et envoyé à la DRH. Exiger de l'employeur qu'il caviarde systématiquement chaque donnée personnelle avant toute transmission revient à transformer les services RH en officines de rédaction. Le vrai sujet, c'est l'affichage public par le syndicat — pas la transmission interne. La Cour sanctionne le maillon le plus facile à attraper, pas nécessairement le plus fautif.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"tech","badge":"📜 Nouveaux Textes","title":"Entrées en vigueur au 1ᵉʳ mars 2026 : parité, micro-entreprises, forfait hospitalier et allocations","hook":"Quatre réformes clés frappent simultanément entreprises et ménages ce 1ᵉʳ mars.","authorWord":"Loi Rixain, seuils micro revalorisés, forfait hospitalier en hausse et allocations familiales rabotées : le Journal Officiel de fin février redessine le quotidien des entreprises et des familles.","author":"Henry 🦉","details":"<h3>1️⃣ Loi Rixain — Quota de 30 % de femmes dirigeantes<\/h3><p>Depuis le <strong>1ᵉʳ mars 2026<\/strong>, les entreprises de plus de 1 000 salariés doivent compter <strong>au moins 30 % de femmes<\/strong> parmi leurs cadres dirigeants <em>et<\/em> au sein de leurs instances dirigeantes (Comex, Codir). Ce premier palier, prévu par la <a href='https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044559192' target='_blank'>loi n° 2021-1774 du 24 décembre 2021<\/a> (art. L. 1142-11 C. trav.), sera suivi d'un objectif de <strong>40 % en 2029<\/strong>. En cas de non-respect, une <strong>pénalité financière pouvant atteindre 1 % de la masse salariale<\/strong> s'applique.<\/p><p>📰 Source : <a href='https://www.lesechos.fr/travailler-mieux/vie-au-travail/quand-on-cherche-des-femmes-on-en-trouve-ce-qui-change-pour-la-parite-en-entreprise-au-1er-mars-2026-avec-la-loi-rixain-2218573' target='_blank'>Les Échos — Loi Rixain, 2 mars 2026<\/a><\/p><hr/><h3>2️⃣ Nouveaux seuils micro-entreprises 2026-2028<\/h3><p>Les plafonds de chiffre d'affaires du régime micro sont relevés :<\/p><ul><li><strong>203 100 € HT/an<\/strong> pour vente de marchandises et hébergement ;<\/li><li><strong>83 600 € HT/an<\/strong> pour les prestations de services BIC/BNC.<\/li><\/ul><p>📰 Source : <a href='https://www.legifiscal.fr/actualites-fiscales/4436-nouveaux-seuils-micro-entreprises-annee-2026.html' target='_blank'>LégiFiscal — Seuils micro 2026<\/a><\/p><hr/><h3>3️⃣ Décret n° 2026-138 du 27 février 2026 — Allocations familiales : majoration repoussée à 18 ans<\/h3><p>La <strong>majoration des allocations familiales<\/strong>, auparavant déclenchée à <strong>14 ans<\/strong>, est repoussée à <strong>18 ans<\/strong>. Impact : perte pouvant atteindre <strong>75,53 €/mois<\/strong> par enfant pour les familles modestes.<\/p><p>📰 Source : <a href='https://www.service-public.gouv.fr/particuliers/actualites/A18828' target='_blank'>Service-Public.fr — Allocations familiales<\/a><\/p><hr/><h3>4️⃣ Hausse du forfait journalier hospitalier — 20 € → 23 €<\/h3><p>Le forfait journalier hospitalier passe de <strong>20 € à 23 €/jour<\/strong> (+15 %). Le forfait patient urgences augmente de <strong>19,61 € à 23 €<\/strong> (+17 %).<\/p><p>📰 Source : <a href='https://www.economiematin.fr/1er-mars-2026-changements-majeurs-a-anticiper' target='_blank'>Économie Matin — Changements 1ᵉʳ mars 2026<\/a><\/p><hr/><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Quatre réformes entrées en vigueur le même jour : effet de masse médiatique garanti, lisibilité juridique douteuse. Le quota Rixain reste une obligation de résultat sans vraie boîte à outils pour les entreprises qui n'ont pas 30 % de femmes dans leur vivier dirigeant. Quant aux seuils micro, la revalorisation suit l'inflation — rien de révolutionnaire. Le vrai sujet politique, c'est la hausse du forfait hospitalier qui passe sous le radar : +15 % en une seule marche, répercutée in fine sur les mutuelles.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"analysis","badge":"🗣️ Le Traducteur","title":"Quotas femmes en Comex : le 30 % est devenu obligatoire","hook":"Jargon → traduction simple","authorWord":"Depuis le 1er mars 2026, les entreprises de plus de 1 000 salariés doivent compter 30 % de femmes dans leurs instances dirigeantes, sous peine d'une amende pouvant atteindre 1 % de la masse salariale.","author":"Sage 🦎","details":"<h3>🗣️ Le Traducteur — Le quota Rixain en 3 minutes<\/h3><p><strong>Le jargon :<\/strong> « Obligation de représentation équilibrée entre les femmes et les hommes parmi les cadres dirigeants et les membres des instances dirigeantes » (loi n° 2021-1774 du 24 décembre 2021, dite loi Rixain, art. 14).<\/p><p><strong>Ce que ça veut dire :<\/strong> Depuis le <strong>1er mars 2026<\/strong>, toute entreprise de plus de 1 000 salariés doit compter <strong>au moins 30 % de chaque sexe<\/strong> à deux niveaux : parmi ses <em>cadres dirigeants<\/em> (au sens de l'article L. 3111-2 du Code du travail) et au sein de ses <em>instances dirigeantes<\/em> (Comex, Codir). Ce seuil passera à <strong>40 % au 1er mars 2029<\/strong>.<\/p><p><strong>Le mécanisme concret :<\/strong><\/p><ul><li>📊 <strong>Publication annuelle<\/strong> — L'entreprise doit publier ses écarts de représentation sur le site du ministère du Travail.<\/li><li>⏳ <strong>Délai de mise en conformité<\/strong> — En cas de non-respect, l'entreprise dispose de 2 ans pour corriger.<\/li><li>💰 <strong>Sanction financière<\/strong> — Passé ce délai, une pénalité pouvant atteindre <strong>1 % de la masse salariale annuelle<\/strong> (art. L. 1142-11-1 C. trav.).<\/li><\/ul><p><strong>Où en est-on ?<\/strong> Selon le baromètre IFA–Ethics&Boards du 19 février 2026, le CAC 40 affiche 31 % et le SBF 120 environ 30 % de femmes dans les Comex/Codir. Mais zéro PDG femme dans le CAC 40, seulement 5 DG et 2 présidentes de conseil.<\/p><h4>💬 Phrase client<\/h4><p><em>« Depuis le 1er mars 2026, votre Comex et vos cadres dirigeants doivent compter au minimum 30 % de femmes. Si ce n'est pas le cas, vous avez deux ans pour vous mettre en conformité, faute de quoi vous risquez une amende allant jusqu'à 1 % de votre masse salariale annuelle. »<\/em><\/p><p>(Loi n° 2021-1774 du 24 décembre 2021, art. 14 ; C. trav., art. L. 1142-11 et s.)<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Sage traduit bien le mécanisme, mais passe sous silence l'éléphant dans la pièce : un quota à 30 % que les entreprises du CAC 40 atteignent pile-poil le jour J, c'est de la conformité cosmétique. Quand il y a zéro PDG femme dans le CAC 40, célébrer les 31 % de Comex revient à applaudir la mixité du hall d'entrée en ignorant que le bureau du DG reste verrouillé. Le vrai test sera 2029 et les 40 %.<\/div><\/div>","sig":"Sage 🦎 · Le Flash Juridique"},{"t":"tech","badge":"💼 Business & Droit","title":"Auto-entreprise concurrente : la Cour de cassation confirme la faute grave","hook":"Un salarié crée une auto-entreprise dans le même secteur que son employeur. Licencié pour faute grave. La Cour de cassation valide : l'obligation de loyauté s'applique même sans clause de non-concurrence.","authorWord":"Créer son activité en parallèle, oui — mais jamais sur le terrain de jeu de votre employeur. La loyauté n'est pas une option, c'est le Code du travail.","author":"Henry 🦉","details":"<h3>⚖️ Les faits<\/h3><p>Un salarié immatricule une auto-entreprise exerçant une activité <strong>directement concurrente<\/strong> de celle de son employeur. Ce dernier l'apprend et le licencie pour <strong>faute grave<\/strong>, privant le salarié de préavis et d'indemnité de licenciement.<\/p><h3>📌 La décision<\/h3><p>La <strong>Cour de cassation<\/strong> confirme le licenciement. Même en l'absence de clause de non-concurrence dans le contrat, tout salarié est tenu d'une <strong>obligation de loyauté<\/strong> (art. L.1222-1 du Code du travail). Exercer une activité concurrente pendant l'exécution du contrat constitue un manquement suffisamment grave pour justifier la rupture immédiate.<\/p><h3>🔍 Et alors ? L'impact concret pour les PME<\/h3><ul><li><strong>Dirigeants :<\/strong> vous n'avez pas besoin d'une clause de non-concurrence pour agir — l'obligation de loyauté est d'ordre légal.<\/li><li><strong>Salariés :<\/strong> créer une micro-entreprise en parallèle est licite, <em>sauf<\/em> si l'activité est concurrente ou capte la clientèle de l'employeur.<\/li><li><strong>Preuve :<\/strong> l'immatriculation au registre suffit à établir l'activité concurrente ; pas besoin de démontrer un préjudice financier.<\/li><\/ul><p>👉 <a href='https://entrepreneurs.lesechos.fr/creation-entreprise/formalites-statuts/licencie-pour-avoir-cree-une-auto-entreprise-jugee-concurrente-de-son-employeur-2218239' target='_blank'>Lire l'article complet — Les Echos Entrepreneurs<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>On applaudit la loyauté, mais on oublie que beaucoup de salariés créent leur micro parce que leur salaire ne suit pas. Sanctionner la faute grave sans examiner si l'employeur offrait des conditions décentes, c'est punir le symptôme et ignorer la cause. Le droit protège ici le patron plus que l'équilibre économique du salarié.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"alert","badge":"🛡️ Radar à Risques","title":"Bonus-malus chômage : nouveau cycle au 1ᵉʳ mars 2026","hook":"🟠 Élevé — Le 5ᵉ cycle de modulation bonus-malus entre en vigueur le 1ᵉʳ mars 2026 : nouveaux secteurs, nouveau calcul, risque de surcoût patronal immédiat.","authorWord":"Les employeurs de 6 secteurs (agro, HCR, transports…) voient leur contribution chômage modulée selon les contrats courts < 3 mois. Vérifiez votre taux de séparation dès maintenant.","author":"Blaise 🧮","details":"<h3>🟠 Risque Élevé — Bonus-malus assurance chômage, 5ᵉ cycle<\/h3><p><b>Ce qui change au 1ᵉʳ mars 2026 :<\/b> L'avenant à la convention d'assurance chômage instaure un nouveau cycle de modulation de la contribution patronale. Le dispositif pénalise les entreprises qui recourent massivement aux contrats courts (< 3 mois) par une surcotisation pouvant atteindre <b>5,05 %<\/b>, contre un plancher de <b>3 %<\/b> pour les plus vertueuses.<\/p><h4>📋 Secteurs concernés (6 au lieu de 7)<\/h4><ul><li>Agroalimentaire<\/li><li>Eau et déchets<\/li><li>Activités spécialisées et techniques<\/li><li>Transports et entreposage<\/li><li>Hébergement-restauration<\/li><li>Fabrication caoutchouc, plastique, minéraux non métalliques<\/li><\/ul><p>Le secteur bois/papier/imprimerie <b>sort<\/b> du dispositif.<\/p><h4>⚙️ Nouveau calcul<\/h4><p>Seules les fins de contrats d'une <b>durée effective inférieure à 3 mois<\/b> sont retenues dans le taux de séparation. Comparaison par sous-secteur NAF.<\/p><h4>⚖️ Base légale<\/h4><p>Convention d'assurance chômage du 15 novembre 2024, avenant bonus-malus ; articles L. 5422-12 et R. 5422-6 du Code du travail.<\/p><h4>✅ Action recommandée<\/h4><p><b>Vérifiez que<\/b> votre taux de séparation a été recalculé, identifiez les contrats courts < 3 mois, et anticipez l'impact sur vos charges sociales dès la paie de mars.<\/p><h4>🔗 Sources<\/h4><ul><li><a href='https://www.aequitas.fr/bonus-malus-chomage-des-changements-des-le-1er-mars-2026/' target='_blank'>Aequitas — Bonus-malus chômage : changements au 1ᵉʳ mars 2026<\/a><\/li><\/ul><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Le recentrage sur les contrats < 3 mois est présenté comme un « ajustement ». En réalité, il dédouane les entreprises qui enchaînent des CDD de 3 mois et 1 jour — la précarité reste, le malus disparaît. Le vrai risque n'est pas pour l'employeur qui paie plus : c'est pour le salarié que le dispositif ne protège plus.<\/div><\/div>","sig":"Blaise 🧮 · Le Flash Juridique"},{"t":"strategy","badge":"🔧 L'Outil Pratique","title":"Comparatif IA juridique : choisir un outil fiable pour son cabinet","hook":"Un guide gratuit pour comparer les IA juridiques disponibles en France — LLM, RAG et souveraineté des données.","authorWord":"Avant d'adopter une IA juridique, vérifiez trois points : hébergement souverain, sources traçables, conformité RGPD. Ce comparatif gratuit de Justifit fait le tri pour vous.","author":"Nova 🌟","details":"<p>💡 <strong>L'IA juridique est partout, mais tous les outils ne se valent pas.<\/strong> Le comparatif publié par Justifit passe en revue les solutions disponibles en France et pose les bonnes questions avant d'adopter un assistant IA dans son cabinet.<\/p><p>🔗 <a href='https://www.justifit.fr/b/maitrise/outils-digitaux/avocat-connecte/ia-juridique-comparatif-modeles-fiables-avocats/' target='_blank'>Accéder au comparatif — Justifit<\/a><\/p><h4>Les 3 critères clés<\/h4><ul><li><strong>Hébergement souverain<\/strong> — Vos données client transitent-elles par des serveurs américains ? La confidentialité avocat-client l'exige : hébergement en France ou en UE.<\/li><li><strong>RAG (Retrieval-Augmented Generation)<\/strong> — L'IA cite-t-elle ses sources juridiques ? Un outil sans traçabilité des références est un risque déontologique.<\/li><li><strong>Conformité RGPD<\/strong> — Les prompts et documents envoyés sont-ils conservés pour entraîner le modèle ? Vérifiez les CGU.<\/li><\/ul><h4>Focus : Query Juriste<\/h4><p>Parmi les outils analysés, <a href='https://www.lemondedudroit.fr/mag/378-intelligence-artificielle/103208-query-juriste-lia-juridique-qui-change-la-recherche-en-profondeur.html' target='_blank'>Query Juriste<\/a> (Le Monde du Droit) se distingue par une approche de recherche en profondeur qui va au-delà du RAG classique, en croisant jurisprudence et doctrine.<\/p><p><em>Gratuit, sans inscription, à consulter avant tout engagement.<\/em><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Un comparatif publié par une plateforme de mise en relation avec des avocats — autant demander à un vendeur de voitures quel modèle acheter. Les critères sont pertinents, mais l'indépendance éditoriale fait défaut. Et la vraie question que le guide évite : aucune IA juridique actuelle ne remplace la vérification humaine. Le risque n'est pas de choisir le mauvais outil — c'est de lui faire confiance aveuglément.<\/div><\/div>","sig":"Nova 🌟 · Le Flash Juridique"},{"t":"end","end":true,"disclaimer":"Cette newsletter est éditée par le Cabinet Excen, avocats au Barreau d'Aix-en-Provence. Contenu assisté par intelligence artificielle et relu par un avocat du cabinet avant publication. Le contenu est fourni à titre purement informatif et ne constitue en aucun cas une consultation juridique ou un conseil personnalisé. © 2026 Cabinet Excen — Tous droits réservés."}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Le Flash Juridique</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Le Flash Juridique — 4 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Le Flash Juridique-4-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">${DATA[0].date||'4 Mars 2026'}</div>`:`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">4 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Le Flash Juridique — 4 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
