@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Mars 2026",
+    "title": "L'ONU lance son « GIEC de l'IA » — Washington claque la porte",
+    "desc": "",
+    "url": "2026-03-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA ne demande plus la permission. L'ONU crée son GIEC pour la cadrer, Wall Street bascule des puces vers le code, les deepfakes géopolitiques prolifèrent en temps de guerre — et dans les entreprises, 1 200 apps IA fantômes échappent à tout contrôle. En filigrane, une question : quand l'intelligence artificielle s'infiltre partout, qui tient encore les rênes ?"
+  },
+  {
     "date": "3 Mars 2026",
     "title": "Les IA sur-privilégiées causent 4,5× plus d'incidents de sécurité",
     "desc": "",
     "url": "2026-03-03.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA a promis l'autonomie, elle livre la fragilité. 76 % des agents échouent en production, les systèmes sur-privilégiés multiplient les incidents par 4,5, et même le prompt engineering se demande s'il est encore vivant. Mais dans ce reality check, les réponses émergent : interprétabilité mécaniste, modèles frugaux on-device, et techniques anti-hallucinations. L'heure n'est plus aux cathédrales — c'est aux fondations qu'on travaille."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Nvidia pulvérise les records pendant que le Pentagone exige d'Anthropic qu'il lâche ses garde-fous éthiques. Le vibe coding s'écrase à l'échelle, un juge refuse le secret aux analyses IA, et les détecteurs de deepfakes peinent à convaincre. Partout, la même tension : qui pose les limites quand la machine accélère ?"
-  },
-  {
-    "date": "25 Février 2026",
-    "title": "L'IA va-t-elle tuer les jobs juniors ? Amodei dit oui, IBM dit non, Anthropic… embauche",
-    "desc": "",
-    "url": "2026-02-25.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Amodei annonce la fin des jobs juniors, son entreprise recrute des juniors. Wall Street panique sur un post Substack, IBM triple ses embauches. L'IA en 2026, c'est le grand bluff : tout le monde s'effraie de ce que personne ne comprend encore."
   }
 ]

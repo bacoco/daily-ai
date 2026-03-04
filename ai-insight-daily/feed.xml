@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 03 Mar 2026 04:47:40 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2026 04:46:22 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[L'ONU lance son « GIEC de l'IA » — Washington claque la porte]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-04.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-04.html</guid>
+      <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA ne demande plus la permission. L'ONU crée son GIEC pour la cadrer, Wall Street bascule des puces vers le code, les deepfakes géopolitiques prolifèrent en temps de guerre — et dans les entreprises, 1 200 apps IA fantômes échappent à tout contrôle. En filigrane, une question : quand l'intelligence artificielle s'infiltre partout, qui tient encore les rênes ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Les IA sur-privilégiées causent 4,5× plus d'incidents de sécurité]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-03.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-26.html</guid>
       <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Nvidia pulvérise les records pendant que le Pentagone exige d'Anthropic qu'il lâche ses garde-fous éthiques. Le vibe coding s'écrase à l'échelle, un juge refuse le secret aux analyses IA, et les détecteurs de deepfakes peinent à convaincre. Partout, la même tension : qui pose les limites quand la machine accélère ?]]></description>
-    </item>
-    <item>
-      <title><![CDATA[L'IA va-t-elle tuer les jobs juniors ? Amodei dit oui, IBM dit non, Anthropic… embauche]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-25.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-25.html</guid>
-      <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Amodei annonce la fin des jobs juniors, son entreprise recrute des juniors. Wall Street panique sur un post Substack, IBM triple ses embauches. L'IA en 2026, c'est le grand bluff : tout le monde s'effraie de ce que personne ne comprend encore.]]></description>
     </item>
   </channel>
 </rss>
