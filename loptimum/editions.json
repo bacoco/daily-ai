@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Mars 2026",
+    "title": "Choc géopolitique : le CAC 40 plonge, le pétrole s'embrase",
+    "desc": "",
+    "url": "2026-03-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Choc géopolitique sur les marchés, protectionnisme anti-fast fashion et retournement du marché du travail : trois fronts qui cristallisent le trilemme de la France en mars 2026. De Kindleberger à Blanchard en passant par List, cette édition te donne les théories, les chiffres et les amorces pour transformer l'actualité brûlante en copies solides."
+  },
+  {
     "date": "1 Mars 2026",
     "title": "Inflation : rebond à 1 % en février 2026",
     "desc": "",
     "url": "2026-03-01.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Inflation qui rebondit, mur budgétaire de 40 milliards en 2027, climat des affaires sous sa moyenne : trois signaux qui dessinent le trilemme de la France début 2026 — stabiliser les prix, assainir les finances publiques et soutenir la confiance, sans casser la croissance. De Friedman à Blanchard en passant par Keynes, cette édition te donne les théories, les chiffres et les amorces pour transformer l'actualité en copies solides."
   },
   {
