@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 03 Mar 2026 06:18:50 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2026 06:18:04 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[vibe-kanban — un Kanban pour orchestrer tes agents IA]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</guid>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[InstaPods — le déploiement one-command pour vibe coders]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-18.html</guid>
       <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Cloudflare entre dans l'arène du vibe coding, Linus Torvalds assume coder avec l'IA, et un paper académique secoue l'open source. Pendant ce temps, les app builders se battent pour ta prochaine app — et les fails en prod nous rappellent pourquoi la review humaine reste reine. Bonne lecture ! 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[GitHub Copilot JetBrains (maj 13 fév) : Agent Skills en preview]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-17.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-17.html</guid>
-      <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Mardi chargé ! Un ouvrier du BTP qui ship une app complète avec Cursor, une faille zero-click qui fait froid dans le dos, et Claude Code qui met une raclée à Copilot Workspace. La morale du jour : le vibe coding démocratise tout — y compris les risques. Bonne lecture 🎨]]></description>
     </item>
   </channel>
 </rss>

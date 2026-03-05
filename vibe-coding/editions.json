@@ -1,11 +1,20 @@
 [
   {
+    "date": "5 Mars 2026",
+    "title": "vibe-kanban — un Kanban pour orchestrer tes agents IA",
+    "desc": "",
+    "url": "2026-03-05.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨"
+  },
+  {
     "date": "3 Mars 2026",
     "title": "InstaPods — le déploiement one-command pour vibe coders",
     "desc": "",
     "url": "2026-03-03.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Cloudflare entre dans l'arène du vibe coding, Linus Torvalds assume coder avec l'IA, et un paper académique secoue l'open source. Pendant ce temps, les app builders se battent pour ta prochaine app — et les fails en prod nous rappellent pourquoi la review humaine reste reine. Bonne lecture ! 🎨"
-  },
-  {
-    "date": "17 Février 2026",
-    "title": "GitHub Copilot JetBrains (maj 13 fév) : Agent Skills en preview",
-    "desc": "",
-    "url": "2026-02-17.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Mardi chargé ! Un ouvrier du BTP qui ship une app complète avec Cursor, une faille zero-click qui fait froid dans le dos, et Claude Code qui met une raclée à Copilot Workspace. La morale du jour : le vibe coding démocratise tout — y compris les risques. Bonne lecture 🎨"
   }
 ]
