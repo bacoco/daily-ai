@@ -1,11 +1,20 @@
 [
   {
+    "date": "5 Mars 2026",
+    "title": "TTF Retreats to €53 — Panic Premium Deflates 19% Off Spike",
+    "desc": "",
+    "url": "2026-03-05.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz Day 4 without de-escalation, Putin weaponising TurkStream, and storage at 29.76% — the triple squeeze is live. The council validated 13 trade ideas from 21, culling 8 duplicates and contradictions. The Apr €60/€70 call spread and JKM-TTF widener emerge as highest-conviction asymmetric plays; the refill math at 688 bcm to inject is borderline unachievable without price shock."
+  },
+  {
     "date": "4 Mars 2026",
     "title": "Day 2: Profit-Taking Pulls TTF Off €65 High — But €50 Holds",
     "desc": "",
     "url": "2026-03-04.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Day 3 of Hormuz with no diplomatic off-ramp: TTF pulled back to €53 from Monday's €65 panic spike, but the 30% storage floor just broke. The council validated 16 trade ideas out of 21 — the JKM-TTF parity spread and cheap Apr €65 calls stand out as the highest-conviction asymmetric plays. The refill math at €53+ TTF is brutal; this summer will test every assumption."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "EU storage at historic lows meets record LNG arrivals and fracturing sanctions unity — the market is pricing a comfortable spring while sitting on the thinnest cushion since 2022. The council validated 15 of 21 trade ideas, flagging dangerous concentration in long-Europe positions. Watch Thursday's EIA print and GIE weekly for the next directional catalyst."
-  },
-  {
-    "date": "24 Février 2026",
-    "title": "TTF Eases to €32 After Iran Whipsaw — HH Eyes Gap Higher on Bomb Cyclone",
-    "desc": "",
-    "url": "2026-02-24.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Hormuz tensions collide with EU storage at historic lows — the gas market is caught between record LNG arrivals and a geopolitical tinderbox. The 30.8% storage level and Alpine hydro deficit make this week's data releases critical inflection points for Q2 positioning."
   }
 ]
