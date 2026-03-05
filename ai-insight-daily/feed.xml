@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Wed, 04 Mar 2026 04:46:22 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2026 04:44:44 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Qui répond de la machine ?]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-05.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-05.html</guid>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement.]]></description>
+    </item>
     <item>
       <title><![CDATA[L'ONU lance son « GIEC de l'IA » — Washington claque la porte]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-04.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-27.html</guid>
       <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Nvidia pulvérise tout : $68B de revenus, Vera Rubin en route — pendant que la Fed sonne l'alarme emploi]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-26.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-26.html</guid>
-      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Nvidia pulvérise les records pendant que le Pentagone exige d'Anthropic qu'il lâche ses garde-fous éthiques. Le vibe coding s'écrase à l'échelle, un juge refuse le secret aux analyses IA, et les détecteurs de deepfakes peinent à convaincre. Partout, la même tension : qui pose les limites quand la machine accélère ?]]></description>
     </item>
   </channel>
 </rss>

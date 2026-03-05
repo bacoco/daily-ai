@@ -1,11 +1,20 @@
 [
   {
+    "date": "5 Mars 2026",
+    "title": "Qui répond de la machine ?",
+    "desc": "",
+    "url": "2026-03-05.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement."
+  },
+  {
     "date": "4 Mars 2026",
     "title": "L'ONU lance son « GIEC de l'IA » — Washington claque la porte",
     "desc": "",
     "url": "2026-03-04.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA ne demande plus la permission. L'ONU crée son GIEC pour la cadrer, Wall Street bascule des puces vers le code, les deepfakes géopolitiques prolifèrent en temps de guerre — et dans les entreprises, 1 200 apps IA fantômes échappent à tout contrôle. En filigrane, une question : quand l'intelligence artificielle s'infiltre partout, qui tient encore les rênes ?"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent."
-  },
-  {
-    "date": "26 Février 2026",
-    "title": "Nvidia pulvérise tout : $68B de revenus, Vera Rubin en route — pendant que la Fed sonne l'alarme emploi",
-    "desc": "",
-    "url": "2026-02-26.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Nvidia pulvérise les records pendant que le Pentagone exige d'Anthropic qu'il lâche ses garde-fous éthiques. Le vibe coding s'écrase à l'échelle, un juge refuse le secret aux analyses IA, et les détecteurs de deepfakes peinent à convaincre. Partout, la même tension : qui pose les limites quand la machine accélère ?"
   }
 ]
