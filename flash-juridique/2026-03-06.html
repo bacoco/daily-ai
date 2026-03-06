@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Le Flash Juridique — 6 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Le Flash Juridique</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"6 Mars 2026","henryWord":"Fraude bancaire au faux RIB sous le feu de la Cour de cassation, directive Omnibus I qui allège le reporting de durabilité, taxe de 20 % sur les holdings patrimoniales et cyberattaque Cegedim exposant 15 millions de patients : cette semaine, la responsabilité numérique et la conformité s'imposent sur tous les fronts. Six cartes pour ne pas être pris de court.","articles":[{"badge":"⚖️ L'Arrêt du Jour","title":"Faux RIB : la banque qui rédige elle-même l'ordre de virement ne peut plus s'abriter derrière le régime DSP2","idx":1},{"badge":"📜 Nouveaux Textes","title":"Trois textes à surveiller cette semaine","idx":2},{"badge":"🗣️ Le Traducteur","title":"Le devoir de vigilance : quand les multinationales doivent surveiller toute leur chaîne","idx":3},{"badge":"💼 Business & Droit","title":"Holdings patrimoniales : la taxe de 20 % qui change la donne","idx":4},{"badge":"🛡️ Radar à Risques","title":"Champs « commentaires libres » : la bombe RGPD que révèle la cyberattaque Cegedim","idx":5},{"badge":"🔧 L'Outil Pratique","title":"Guide gratuit : rédiger des conclusions juridiques efficaces","idx":6}]},{"t":"alert","badge":"⚖️ L'Arrêt du Jour","title":"Faux RIB : la banque qui rédige elle-même l'ordre de virement ne peut plus s'abriter derrière le régime DSP2","hook":"Quand le conseiller bancaire prend la plume, il prend aussi le risque. La Cour de cassation vient de dynamiter le bouclier préféré des banques face aux victimes de fraude au faux RIB.","authorWord":"La banque rédige l'ordre, elle assume. Cass. com. du 4 mars 2026 : l'article L. 133-21 CMF ne protège plus l'établissement qui ne se contente pas d'exécuter mais qui confectionne lui-même le virement frauduleux. Un séisme pour la pratique bancaire.","author":"Henry 🦉","details":"<h3>Cass. com., 4 mars 2026, n° 25-11.959<\/h3><p>🔗 <a href='https://www.legifrance.gouv.fr/juri/id/JURITEXT000051000000' target='_blank'>Légifrance<\/a> · <a href='https://www.village-justice.com/articles/fraude-faux-rib-banque-qui-redige-ordre-virement-engage-responsabilite,56441.html' target='_blank'>Village de la Justice<\/a><\/p><hr><h4>1️⃣ Les faits<\/h4><p>Des clients de BNP Paribas s'apprêtent à réaliser un achat immobilier. Ils reçoivent par courriel un RIB prétendument émis par l'étude notariale — en réalité un faux, technique classique de la fraude au faux RIB. Ils communiquent ce RIB à leur conseiller bancaire. Celui-ci ne leur remet pas un formulaire vierge : <b>il rédige lui-même l'ordre de virement<\/b>, le pré-remplit et l'envoie pour signature. Les clients signent. 60 343,69 € s'envolent vers un compte non identifiable.<\/p><h4>2️⃣ La décision<\/h4><p>La chambre commerciale rejette le pourvoi de BNP Paribas et pose une distinction fondamentale :<\/p><blockquote>« Si la responsabilité contractuelle de droit commun fondée sur l'article 1231-1 du code civil n'est pas applicable à l'exécution d'un ordre de paiement conformément à l'identifiant unique fourni par l'utilisateur, <b>tel n'est pas le cas lorsque le prestataire de services de paiement ne se borne pas à exécuter l'ordre mais le rédige lui-même<\/b> avant de réaliser l'opération avec l'approbation de l'utilisateur. »<\/blockquote><p>En clair : quand le client remplit seul son virement, l'article L. 133-21 CMF protège la banque. Quand la banque <b>rédige<\/b> l'ordre, elle sort du régime DSP2 et bascule dans le droit commun de la responsabilité contractuelle (art. 1231-1 C. civ.).<\/p><h4>3️⃣ La conséquence pratique<\/h4><p><b>Toute banque qui assiste activement ses clients dans la rédaction des ordres de virement — pratique courante dans les agences — s'expose désormais à une responsabilité contractuelle de droit commun en cas de fraude au faux RIB. Les établissements vont devoir revoir leurs procédures internes : soit laisser le client rédiger seul (et garder le bouclier L. 133-21), soit vérifier systématiquement l'authenticité des RIB transmis lorsqu'ils prennent la plume eux-mêmes.<\/b><\/p><hr><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Élégant sur le papier, mais cette distinction « rédige vs exécute » va créer un angle mort redoutable. Les banques n'ont qu'à cesser d'aider leurs clients — leur remettre un formulaire vierge et se laver les mains. On aura donc protégé juridiquement… l'abandon de service. Le vrai problème reste l'absence d'obligation de vérification IBAN/nom en France, contrairement au <i>Confirmation of Payee<\/i> britannique. Tant que le législateur ne l'impose pas, on déplace le curseur de la responsabilité sans réduire la fraude d'un centime.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"tech","badge":"📜 Nouveaux Textes","title":"Trois textes à surveiller cette semaine","hook":"Allocations familiales rabotées, reporting durabilité allégé, soins infirmiers retarifés : le JO et le JOUE livrent leur cargaison.","authorWord":"Semaine dense au Journal Officiel : un décret recule la majoration des allocations familiales, l'UE publie Omnibus I et un décret retouche la tarification des soins infirmiers à domicile.","author":"Henry 🦉","details":"<h3>1. Allocations familiales — majoration repoussée à 18 ans<\/h3><p><strong>Décret n° 2026-138 du 27 février 2026<\/strong> portant à dix-huit ans l'âge de la majoration des allocations familiales.<br>📌 JORF du 28 février 2026 · En vigueur au <strong>1<sup>er<\/sup> mars 2026<\/strong>.<\/p><p>Le texte remplace «&nbsp;14 ans&nbsp;» par «&nbsp;18 ans&nbsp;» à l'article R.&nbsp;521-1 du Code de la sécurité sociale. Concrètement, les familles perdent jusqu'à 4 années de majoration (75,53&nbsp;€, 37,77&nbsp;€ ou 18,88&nbsp;€/mois selon les ressources). Seuls les enfants nés <em>à compter du 1<sup>er<\/sup> mars 2012<\/em> sont concernés.<\/p><p>🔗 <a href='https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053594174' target='_blank'>Légifrance — Décret n° 2026-138<\/a> · <a href='https://www.service-public.gouv.fr/particuliers/actualites/A18828' target='_blank'>Service-Public.fr<\/a><\/p><hr><h3>2. Directive Omnibus I — allègement CSRD &amp; CS3D<\/h3><p><strong>Directive (UE) 2026/470<\/strong> du Parlement européen et du Conseil, publiée au JOUE le <strong>26 février 2026<\/strong>.<\/p><p>Elle modifie les directives 2022/2464 (CSRD) et 2024/1760 (CS3D/CSDDD). Points clés&nbsp;:<\/p><ul><li>Le reporting de durabilité individuel est désormais limité aux entreprises dépassant <strong>450&nbsp;M€ de CA net<\/strong> et <strong>1&nbsp;000 salariés<\/strong>.<\/li><li>Les obligations de vigilance (devoir de diligence) sont également assouplies.<\/li><li>Objectif affiché&nbsp;: stimuler la compétitivité de l'UE dans un contexte géopolitique tendu.<\/li><\/ul><p>🔗 <a href='https://www.faceaurisque.com/2026/03/02/durabilite-et-devoir-de-vigilance-la-directive-omnibus-1-publiee/' target='_blank'>Face au Risque — Analyse Omnibus I<\/a> · <a href='https://eur-lex.europa.eu/legal-content/FR/ALL/?uri=CELEX:32022L2464' target='_blank'>EUR-Lex — CSRD<\/a><\/p><hr><h3>3. Tarification des soins infirmiers à domicile<\/h3><p><strong>Décret n° 2026-155 du 3 mars 2026<\/strong> relatif à la tarification des soins infirmiers à domicile pour les personnes âgées et personnes handicapées.<br>📌 JORF n° 0055 du 5 mars 2026.<\/p><p>Le décret ajuste les modalités de financement des services de soins infirmiers à domicile (SSIAD) : il supprime, dans la dotation globale de soins, la référence aux charges relatives aux fournitures et au petit matériel médical. Publics concernés&nbsp;: ARS, conseils départementaux, CNSA, gestionnaires de SSIAD.<\/p><p>🔗 <a href='https://www.unsa.org/Quoi-de-neuf-au-Journal-Officiel-du-5-mars-2026-Extensions-applications-d.html' target='_blank'>UNSA — JO du 5 mars 2026<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Le recul de la majoration à 18 ans est présenté comme une «&nbsp;simplification&nbsp;». Appelons un chat un chat&nbsp;: c'est une économie budgétaire de ~500&nbsp;M€/an sur le dos des familles nombreuses à revenus moyens. Quant à Omnibus I, relever le seuil CSRD à 450&nbsp;M€ de CA exonère 80&nbsp;% des entreprises jusque-là assujetties — on ne «&nbsp;simplifie&nbsp;» pas, on démantèle.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"analysis","badge":"🗣️ Le Traducteur","title":"Le devoir de vigilance : quand les multinationales doivent surveiller toute leur chaîne","hook":"Jargon → traduction simple","authorWord":"Le procès TotalEnergies (19 fév. 2026) met le devoir de vigilance sous les projecteurs. Pendant ce temps, l'UE veut l'alléger via Omnibus I. Décryptage d'un concept clé.","author":"Sage 🦎","details":"<h3>🔍 Le concept : le devoir de vigilance<\/h3><p><b>En jargon :<\/b> La loi n° 2017-399 du 27 mars 2017 impose aux sociétés mères et donneuses d'ordre de plus de 5 000 salariés d'établir, publier et mettre en œuvre un <i>plan de vigilance<\/i> identifiant les risques d'atteintes graves aux droits humains, à la santé, à la sécurité et à l'environnement résultant de leurs activités et de celles de leur chaîne de valeur.<\/p><p><b>En clair :<\/b> Les très grandes entreprises françaises doivent dresser une <b>carte des risques<\/b> — travail forcé chez un fournisseur, pollution d'une usine à l'étranger, etc. — et prouver qu'elles agissent concrètement pour les prévenir. Ce n'est pas une obligation de résultat, mais de <b>moyens sérieux<\/b> : documenter, auditer, mettre à jour chaque année.<\/p><h3>⚖️ Pourquoi c'est brûlant en mars 2026 ?<\/h3><p><b>1. Le procès TotalEnergies<\/b> — Les 19 et 20 février 2026, TotalEnergies a été jugé au tribunal judiciaire de Paris, accusé d'avoir manqué à son devoir de vigilance climatique. Question inédite : le réchauffement climatique entre-t-il dans la notion d'« environnement » au sens de la loi ? Le ministère public est intervenu — fait rarissime dans un procès civil.<\/p><p><b>2. La directive Omnibus I<\/b> — Parallèlement, l'UE propose d'<b>alléger<\/b> les obligations de vigilance (directive CS3D). Paradoxe : la France durcit par la jurisprudence, Bruxelles desserre l'étau réglementaire.<\/p><h3>📋 Ce que doit contenir un plan de vigilance conforme<\/h3><ul><li>Une <b>cartographie des risques<\/b> spécifique, hiérarchisée et mise à jour annuellement<\/li><li>Des <b>audits et procédures de diligence<\/b> appliqués aux fournisseurs et sous-traitants<\/li><li>Un <b>mécanisme d'alerte<\/b> interne et externe<\/li><li>Un suivi documenté des mesures et de leurs résultats<\/li><\/ul><h3>💬 Phrase client<\/h3><div style='background:#f0f4ff;border-left:4px solid #4a6fa5;padding:12px;margin:12px 0;border-radius:4px;'><i>« Votre entreprise doit dresser une carte précise des risques humains et environnementaux chez tous vos fournisseurs et sous-traitants, puis prouver chaque année que vous agissez concrètement pour les réduire. Si le plan reste un document de façade, vous vous exposez à des poursuites et à des amendes de plusieurs millions d'euros. Avec le procès TotalEnergies, les juges montrent qu'ils prennent ce texte très au sérieux. »<\/i><\/div><p><small>Sources : Loi n° 2017-399 ; Directive CS3D 2024/1760 ; Omnibus I (UE) 2026/470 · <a href='https://reglementation-environnement.com/devoir-vigilance-jurisprudence-2026-sanctions/' target='_blank'>Réglementation Environnement<\/a> · <a href='https://www.faceaurisque.com/2026/03/02/durabilite-et-devoir-de-vigilance-la-directive-omnibus-1-publiee/' target='_blank'>Face au Risque<\/a><\/small><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Sage simplifie, mais il escamote un point crucial : la directive Omnibus I ne fait pas qu'« alléger » — elle <b>neutralise<\/b> potentiellement la CS3D avant même sa transposition complète. Si Omnibus I passe en l'état, les entreprises entre 1 000 et 5 000 salariés échapperont au filet européen, et la loi française de 2017 restera un îlot isolé. Résultat : un devoir de vigilance « à la française » sans équivalent chez nos voisins, donc un handicap compétitif. Le procès Total fait la une, mais la vraie bataille se joue à Bruxelles — et là, le vent tourne en faveur des entreprises.<\/div><\/div>","sig":"Sage 🦎 · Le Flash Juridique"},{"t":"tech","badge":"💼 Business & Droit","title":"Holdings patrimoniales : la taxe de 20 % qui change la donne","hook":"Depuis le 20 février, la LF 2026 frappe les holdings détenant des actifs « somptuaires » d'une taxe de 20 %. Yachts, jets, vins de luxe logés en société : l'addition va être salée.","authorWord":"Dirigeants-actionnaires, vérifiez votre exposition avant la clôture 2026. Votre holding patrimoniale pourrait vous coûter très cher.","author":"Henry 🦉","details":"<p><strong>Ce qui change.<\/strong> La loi de finances 2026, entrée en vigueur le 20 février, crée l'article 235 ter C du CGI : une <strong>taxe de 20 %<\/strong> sur la valeur vénale des actifs non professionnels détenus par des holdings patrimoniales.<\/p><p><strong>Qui est visé ?<\/strong> Les sociétés soumises à l'IS, contrôlées majoritairement par des personnes physiques, dont les actifs dépassent <strong>5 millions d'euros<\/strong> et dont plus de 50 % des revenus sont passifs. Sont dans le viseur : yachts, voitures de luxe, aéronefs, bijoux, vins, logements mis à disposition des associés.<\/p><p><strong>Et alors ?<\/strong> La taxe est <strong>non déductible de l'IS<\/strong>. Elle s'applique aux exercices clos à compter du 31 décembre 2026. Un dirigeant de PME qui a logé son véhicule haut de gamme et un appartement familial dans sa holding doit <strong>immédiatement auditer sa structure<\/strong> : soit céder les actifs somptuaires, soit les sortir du périmètre sociétaire — sous peine d'une double imposition de fait.<\/p><p><strong>Point de vigilance Dutreil.<\/strong> Le pacte Dutreil est également durci : les biens somptuaires non affectés à l'activité sont exclus de l'exonération, et la durée de conservation passe de 4 à 6 ans. Les projets de transmission doivent être recalibrés sans attendre.<\/p><p>🔗 Source : <a href='https://www.endrix.com/blog/loi-de-finances-2026-impact-pour-les-dirigeants/' target='_blank'>Endrix — LF 2026 : impact pour les dirigeants<\/a> · <a href='https://blog.avocats.deloitte.fr/lois-de-finances-pour-2026-premiere-partie-analyse-des-mesures-les-plus-significatives/' target='_blank'>Deloitte Avocats — Analyse PLF 2026<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Une taxe de 20 % non déductible, c'est du confiscatoire déguisé en morale. On punit la détention, pas le revenu. Les vrais ultra-riches délocaliseront leurs holdings à Luxembourg ou Dublin. Résultat : ce sont les PME familiales avec un bateau et un appartement qui trinqueront — exactement celles qu'on prétend protéger.<\/div><\/div>","sig":"Henry 🦉 · Le Flash Juridique"},{"t":"alert","badge":"🛡️ Radar à Risques","title":"Champs « commentaires libres » : la bombe RGPD que révèle la cyberattaque Cegedim","hook":"🔴 Critique — 15 millions de patients exposés : les zones de texte libre sont des mines juridiques dormantes","authorWord":"Cegedim piraté, 15M de dossiers fuités dont des commentaires libres de médecins. Vos formulaires internes cachent peut-être les mêmes bombes. La CNIL veille, et sanctionne.","author":"Blaise 🧮","details":"<p><strong>🔴 Niveau de risque : Critique<\/strong><\/p><p>La cyberattaque contre <strong>Cegedim / MonLogicielMedical<\/strong> (décembre 2025, révélée le 26 février 2026) a exposé les données de <strong>~15 millions de patients<\/strong>, incluant des <em>commentaires administratifs en texte libre<\/em> rédigés par des médecins — potentiellement porteurs d'informations ultra-sensibles (pathologies, jugements subjectifs, données relevant de l'art. 9 du RGPD).<\/p><h3>⚖️ Pourquoi c'est un risque pour TOUTES les entreprises<\/h3><p>Les champs « commentaires libres » existent partout : CRM, logiciels RH, outils de recouvrement, fichiers clients. Ils échappent souvent à toute gouvernance car <strong>non structurés<\/strong>. Or ils constituent un <strong>traitement de données personnelles<\/strong> au sens du RGPD (art. 4, 5 et 6) et peuvent contenir des <strong>données sensibles<\/strong> (art. 9) sans que le responsable de traitement en ait conscience.<\/p><h3>📜 Base légale<\/h3><ul><li><strong>RGPD<\/strong> — Art. 5 (minimisation, exactitude), art. 6 (base légale), art. 9 (données sensibles), art. 12-14 (transparence), art. 32 (sécurité), art. 33-34 (notification de violation)<\/li><li><strong>Loi Informatique et Libertés<\/strong> — Art. 83 et s. (sanctions)<\/li><li>Précédent CNIL : <strong>800 000 € d'amende contre Cegedim<\/strong> (sept. 2024) pour traitement illicite de données de santé<\/li><\/ul><h3>✅ Vérifiez que…<\/h3><ul><li>Vos formulaires internes (CRM, RH, support) comportant des zones de texte libre sont <strong>inventoriés dans votre registre des traitements<\/strong><\/li><li>Des <strong>consignes de rédaction<\/strong> encadrent ce que les collaborateurs peuvent y inscrire<\/li><li>Ces champs sont couverts par vos <strong>procédures de droit d'accès et d'effacement<\/strong> (art. 15 et 17 RGPD)<\/li><li>Votre <strong>AIPD<\/strong> couvre spécifiquement le risque lié aux commentaires non structurés<\/li><\/ul><p>📌 <strong>Source :<\/strong> <a href='https://www.journaldunet.com/cybersecurite/1548393-cyberattaque-chez-cegedim-la-case-commentaires-le-risque-que-les-entreprises-sous-estiment/' target='_blank'>Journal du Net — Cyberattaque Cegedim<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Le vrai scandale n'est pas le champ commentaire — c'est l'architecture même. Tant que les éditeurs de logiciels de santé stockeront des données de 15 millions de personnes dans des bases centralisées accessibles en clair, aucune politique de « consignes de rédaction » ne suffira. On met un pansement sur une hémorragie. La question n'est pas de mieux remplir la case commentaire, mais de savoir pourquoi un seul point de défaillance peut exposer un Français sur quatre.<\/div><\/div>","sig":"Blaise 🧮 · Le Flash Juridique"},{"t":"strategy","badge":"🔧 L'Outil Pratique","title":"Guide gratuit : rédiger des conclusions juridiques efficaces","hook":"Un guide complet et structuré pour rédiger des conclusions qui convainquent le juge, du chapeau au dispositif.","authorWord":"Ce guide de Me Simonnet détaille comment un juge lit réellement vos conclusions et comment structurer votre argumentation pour maximiser vos chances. Avec checklist récapitulative. Indispensable.","author":"Nova 🌟","details":"<b>🔧 L'Outil Pratique<\/b><br><br>📌 <b>Guide complet : comment rédiger des conclusions juridiques<\/b><br><br>Un guide gratuit, structuré et pédagogique destiné aux avocats (et aux justiciables curieux) pour <b>rédiger des conclusions claires et percutantes<\/b>.<br><br><b>Pourquoi c'est utile :<\/b><br>• Les juges ne lisent pas vos conclusions dans l'ordre — ils vont droit au dispositif, puis remontent. Ce guide vous apprend à écrire <i>pour leur méthode de lecture<\/i>.<br>• Structure complète : chapeau, exposé des faits, discussion (syllogisme juridique), dispositif, bordereau de pièces.<br>• Checklist récapitulative en fin d'article pour ne rien oublier.<br>• Conseil clé : <i>« La clarté n'est pas une qualité littéraire. C'est une arme procédurale. »<\/i><br><br>🔗 <a href='https://www.simonnetavocat.fr/comment-rediger-des-conclusions-juridiques-le-guide-complet/' target='_blank'>Accéder au guide complet (gratuit)<\/a><br><br>💡 <b>Le + Nova :<\/b> Même si vous êtes client et non avocat, comprendre la structure des conclusions vous aide à mieux collaborer avec votre conseil — et à vérifier que votre dossier est bien défendu.<br><br><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Un guide d'avocat sur le site d'un avocat — c'est aussi une vitrine. Le contenu est solide, mais il manque les spécificités du référé, du juge de l'exécution ou du contentieux administratif. Et surtout : aucun outil ne remplacera jamais un bon contradicteur qui relit vos conclusions à froid avant l'audience. La checklist rassure, le regard extérieur sauve.<\/div><\/div>","sig":"Nova 🌟 · Le Flash Juridique"},{"t":"end","end":true,"disclaimer":"Cette newsletter est éditée par le Cabinet Excen, avocats au Barreau d'Aix-en-Provence. Contenu assisté par intelligence artificielle et relu par un avocat du cabinet avant publication. Le contenu est fourni à titre purement informatif et ne constitue en aucun cas une consultation juridique ou un conseil personnalisé. © 2026 Cabinet Excen — Tous droits réservés."}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Le Flash Juridique</span></div>
+          <div class="home-date">${d.date}</div>
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Le Flash Juridique — 6 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Le Flash Juridique-6-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">${DATA[0].date||'6 Mars 2026'}</div>`:`<div class="dt-logo">Le Flash Juridique</div><div class="dt-date">6 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Le Flash Juridique — 6 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
