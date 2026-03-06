@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 05 Mar 2026 04:44:44 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2026 04:46:37 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Un juge US crée un précédent : vos conversations avec Claude ne sont pas confidentielles]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-06.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-06.html</guid>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA a quitté le laboratoire pour entrer au tribunal, sur le champ de bataille et dans la salle de rédaction. Un juge américain décide que parler à Claude ne vaut pas un secret professionnel, l'administration Trump bannit Anthropic pour avoir dit non aux armes autonomes, et Google AI Overviews propage de la désinformation en plein conflit armé. Aujourd'hui, une question : quand l'IA s'infiltre dans les institutions, qui reste debout pour dire stop ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Qui répond de la machine ?]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-05.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-28.html</guid>
       <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Aujourd'hui, l'IA vit son moment de schizophrénie : 110 milliards levés d'un côté, 4 000 emplois supprimés de l'autre — et Wall Street applaudit les deux. Bengio nous prévient que les agents IA développeront une volonté de survie, pendant qu'un bot crypto perd 250K$ par étourderie algorithmique. Bienvenue dans le grand écart.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Le plus gros fonds souverain du monde lâche Claude sur l'éthique — et l'IA redessine la carte du pouvoir]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-27.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-02-27.html</guid>
-      <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent.]]></description>
     </item>
   </channel>
 </rss>

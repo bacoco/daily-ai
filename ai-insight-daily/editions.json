@@ -1,11 +1,20 @@
 [
   {
+    "date": "6 Mars 2026",
+    "title": "Un juge US crée un précédent : vos conversations avec Claude ne sont pas confidentielles",
+    "desc": "",
+    "url": "2026-03-06.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA a quitté le laboratoire pour entrer au tribunal, sur le champ de bataille et dans la salle de rédaction. Un juge américain décide que parler à Claude ne vaut pas un secret professionnel, l'administration Trump bannit Anthropic pour avoir dit non aux armes autonomes, et Google AI Overviews propage de la désinformation en plein conflit armé. Aujourd'hui, une question : quand l'IA s'infiltre dans les institutions, qui reste debout pour dire stop ?"
+  },
+  {
     "date": "5 Mars 2026",
     "title": "Qui répond de la machine ?",
     "desc": "",
     "url": "2026-03-05.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Aujourd'hui, l'IA vit son moment de schizophrénie : 110 milliards levés d'un côté, 4 000 emplois supprimés de l'autre — et Wall Street applaudit les deux. Bengio nous prévient que les agents IA développeront une volonté de survie, pendant qu'un bot crypto perd 250K$ par étourderie algorithmique. Bienvenue dans le grand écart."
-  },
-  {
-    "date": "27 Février 2026",
-    "title": "Le plus gros fonds souverain du monde lâche Claude sur l'éthique — et l'IA redessine la carte du pouvoir",
-    "desc": "",
-    "url": "2026-02-27.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Quand un post Substack fictif crashe des marchés bien réels, qu'Amazon préfère blâmer ses ingénieurs plutôt que son agent Kiro, et qu'O'Reilly révèle le coût caché des systèmes multi-agents en cascade, l'IA affronte son crash-test de crédibilité. Mais entre le plus gros fonds souverain du monde qui confie 2 200 milliards à Claude pour l'ESG et Cloudflare qui ouvre l'agent personnel self-hosted à 5$/mois, les premières réponses émergent."
   }
 ]
