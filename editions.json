@@ -1,11 +1,20 @@
 [
   {
+    "date": "7 Mars 2026",
+    "title": "99$/mois pour un outil que 3,3% utilisent — le pari fou de Microsoft",
+    "desc": "",
+    "url": "2026-03-07.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA ne s'effondre pas — elle se trompe en silence. Un chatbot médical rate une urgence sur deux sans lever de drapeau rouge, Microsoft vend 99 dollars par mois un assistant que 3,3 % utilisent, et une IA chirurgicale confond les organes sans déclencher d'alarme. Le danger de 2026, ce n'est pas la panne spectaculaire — c'est l'erreur invisible qui s'accumule."
+  },
+  {
     "date": "6 Mars 2026",
     "title": "Un juge US crée un précédent : vos conversations avec Claude ne sont pas confidentielles",
     "desc": "",
     "url": "2026-03-06.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA a quitté le laboratoire pour entrer au tribunal, sur le champ de bataille et dans la salle de rédaction. Un juge américain décide que parler à Claude ne vaut pas un secret professionnel, l'administration Trump bannit Anthropic pour avoir dit non aux armes autonomes, et Google AI Overviews propage de la désinformation en plein conflit armé. Aujourd'hui, une question : quand l'IA s'infiltre dans les institutions, qui reste debout pour dire stop ?"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA a passé un cap cette semaine. OpenAI entre dans le réseau classifié du Pentagone, Grok inonde le web de deepfakes sans conséquences, et les SaaS traditionnels sentent le sol se dérober. Mars 2026 s'ouvre sur une question simple : qui tient la barre ?"
-  },
-  {
-    "date": "28 Février 2026",
-    "title": "Le Grand Écart : l'IA entre extase financière et vertige humain",
-    "desc": "",
-    "url": "2026-02-28.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Aujourd'hui, l'IA vit son moment de schizophrénie : 110 milliards levés d'un côté, 4 000 emplois supprimés de l'autre — et Wall Street applaudit les deux. Bengio nous prévient que les agents IA développeront une volonté de survie, pendant qu'un bot crypto perd 250K$ par étourderie algorithmique. Bienvenue dans le grand écart."
   }
 ]
