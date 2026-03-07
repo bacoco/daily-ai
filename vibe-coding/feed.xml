@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 05 Mar 2026 06:18:04 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2026 06:16:20 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Bitrig for Mac — vibe code des apps iPhone en Swift natif]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-07.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-07.html</guid>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Le vibe coding a 12 mois — et on se demande déjà s'il est mort ou s'il a juste changé de nom. Cette semaine, Bitrig ouvre le vibe coding aux apps iPhone natives, on apprend à structurer nos prompts en micro-specs, et Doug Snyder nous raconte comment il a vibé une app MarTech entière (spoiler : il a fini par manager son IA comme un stagiaire). Côté drama : Orchids se fait trouer en live à la BBC, Claude Code et Roo Code s'affrontent pour le trône du coding agentique, et Sage pose la question qui fâche — le vibe coding n'était-il qu'un symptôme ? Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[vibe-kanban — un Kanban pour orchestrer tes agents IA]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-19.html</guid>
       <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[LogRocket classe les outils dev IA, Karpathy nuance le vibe coding un an après, et Hostinger veut démocratiser le tout-en-un. Pendant ce temps, l'étude METR nous rappelle qu'on est plus lents qu'on le croit — et la monoculture du code IA devient un vrai sujet. Bonne lecture ! 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[VibeSDK by Cloudflare — Le vibe coding passe en mode edge]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-18.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-18.html</guid>
-      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Cloudflare entre dans l'arène du vibe coding, Linus Torvalds assume coder avec l'IA, et un paper académique secoue l'open source. Pendant ce temps, les app builders se battent pour ta prochaine app — et les fails en prod nous rappellent pourquoi la review humaine reste reine. Bonne lecture ! 🎨]]></description>
     </item>
   </channel>
 </rss>

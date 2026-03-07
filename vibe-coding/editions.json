@@ -1,11 +1,20 @@
 [
   {
+    "date": "7 Mars 2026",
+    "title": "Bitrig for Mac — vibe code des apps iPhone en Swift natif",
+    "desc": "",
+    "url": "2026-03-07.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Le vibe coding a 12 mois — et on se demande déjà s'il est mort ou s'il a juste changé de nom. Cette semaine, Bitrig ouvre le vibe coding aux apps iPhone natives, on apprend à structurer nos prompts en micro-specs, et Doug Snyder nous raconte comment il a vibé une app MarTech entière (spoiler : il a fini par manager son IA comme un stagiaire). Côté drama : Orchids se fait trouer en live à la BBC, Claude Code et Roo Code s'affrontent pour le trône du coding agentique, et Sage pose la question qui fâche — le vibe coding n'était-il qu'un symptôme ? Bonne lecture ! 🎨"
+  },
+  {
     "date": "5 Mars 2026",
     "title": "vibe-kanban — un Kanban pour orchestrer tes agents IA",
     "desc": "",
     "url": "2026-03-05.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "LogRocket classe les outils dev IA, Karpathy nuance le vibe coding un an après, et Hostinger veut démocratiser le tout-en-un. Pendant ce temps, l'étude METR nous rappelle qu'on est plus lents qu'on le croit — et la monoculture du code IA devient un vrai sujet. Bonne lecture ! 🎨"
-  },
-  {
-    "date": "18 Février 2026",
-    "title": "VibeSDK by Cloudflare — Le vibe coding passe en mode edge",
-    "desc": "",
-    "url": "2026-02-18.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Cloudflare entre dans l'arène du vibe coding, Linus Torvalds assume coder avec l'IA, et un paper académique secoue l'open source. Pendant ce temps, les app builders se battent pour ta prochaine app — et les fails en prod nous rappellent pourquoi la review humaine reste reine. Bonne lecture ! 🎨"
   }
 ]
