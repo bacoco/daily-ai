@@ -1,11 +1,20 @@
 [
   {
+    "date": "8 Mars 2026",
+    "title": "Broadcom vise 100 milliards $ de puces IA, la Chine met l'IA au cœur de son plan quinquennal",
+    "desc": "",
+    "url": "2026-03-08.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA ne grandit plus — elle maigrit. Un modèle de 9 milliards de paramètres humilie un géant 13 fois plus gros, la Chine entraîne un modèle frontier sans une seule puce NVIDIA, et Google dévore 97 % du trafic des médias qu'il prétend indexer. Pendant ce temps, un agent autonome corrompt des données pendant trois semaines sans que personne ne s'en aperçoive. L'efficience est la nouvelle puissance — mais sans garde-fous, elle reste un accident qui attend de se produire."
+  },
+  {
     "date": "7 Mars 2026",
     "title": "99$/mois pour un outil que 3,3% utilisent — le pari fou de Microsoft",
     "desc": "",
     "url": "2026-03-07.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA ne s'effondre pas — elle se trompe en silence. Un chatbot médical rate une urgence sur deux sans lever de drapeau rouge, Microsoft vend 99 dollars par mois un assistant que 3,3 % utilisent, et une IA chirurgicale confond les organes sans déclencher d'alarme. Le danger de 2026, ce n'est pas la panne spectaculaire — c'est l'erreur invisible qui s'accumule."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Ce qu'on ne voit pas peut nous sauver — ou nous perdre. L'IA entre dans son âge adulte : elle disparaît dans nos usages, ses erreurs deviennent silencieuses, et deux licornes parient des milliards qu'il faut enfin regarder à l'intérieur de la boîte noire. Aujourd'hui, une seule question : dans un monde où l'IA s'efface du regard, qui garde les yeux ouverts ?"
-  },
-  {
-    "date": "1 Mars 2026",
-    "title": "OpenAI au Pentagone : quand « ne pas nuire » rencontre « secret défense »",
-    "desc": "",
-    "url": "2026-03-01.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA a passé un cap cette semaine. OpenAI entre dans le réseau classifié du Pentagone, Grok inonde le web de deepfakes sans conséquences, et les SaaS traditionnels sentent le sol se dérober. Mars 2026 s'ouvre sur une question simple : qui tient la barre ?"
   }
 ]

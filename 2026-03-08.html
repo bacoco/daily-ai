@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 8 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">AI Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"8 Mars 2026","henryWord":"L'IA ne grandit plus — elle maigrit. Un modèle de 9 milliards de paramètres humilie un géant 13 fois plus gros, la Chine entraîne un modèle frontier sans une seule puce NVIDIA, et Google dévore 97 % du trafic des médias qu'il prétend indexer. Pendant ce temps, un agent autonome corrompt des données pendant trois semaines sans que personne ne s'en aperçoive. L'efficience est la nouvelle puissance — mais sans garde-fous, elle reste un accident qui attend de se produire.","articles":[{"badge":"🔴 Signal","title":"Broadcom vise 100 milliards $ de puces IA, la Chine met l'IA au cœur de son plan quinquennal","idx":1},{"badge":"🔮 Décryptage","title":"Le brouillard numérique : quand les deepfakes deviennent une arme de guerre","idx":2},{"badge":"🧮 Vrai ou Faux","title":"80 % des projets IA échouent, petit modèle bat gros, soldats capturés par l'Iran","idx":3},{"badge":"💥 Échec & IA","title":"L'agent fantôme : 3 semaines de corruption silencieuse en production","idx":4},{"badge":"🤖 Open Source Radar","title":"Qwen3.5 400B : l'open source dévore le marché de l'IA","idx":5},{"badge":"🎯 Prompt du Jour","title":"Les 5C du Prompting : le framework qui structure vos interactions IA","idx":6},{"badge":"⏳ Chroniques de l'Après","title":"Le jour où les agents ont obtenu le droit de commit","idx":7}]},{"t":"alert","badge":"🔴 Signal","title":"Broadcom vise 100 milliards $ de puces IA, la Chine met l'IA au cœur de son plan quinquennal","hook":"Broadcom défie Nvidia avec une prévision record. Pékin veut l'IA partout dans son économie. Et l'Inde sort son premier modèle géant entraîné de zéro.","authorWord":"<p><strong>🔸 Broadcom voit 100 Md$ de puces IA en 2027.<\/strong> Le CEO Hock Tan annonce que 5 clients custom AI avancent en production, avec OpenAI prévu en volume dès 2027. Broadcom livre déjà 1 gigawatt de TPUs pour Anthropic. La diversification du hardware IA s'accélère face au quasi-monopole Nvidia. <a href='https://www.reuters.com/technology/broadcom-forecasts-second-quarter-revenue-above-estimates-2026-03-04/' target='_blank'>Reuters<\/a><\/p><p><strong>🔸 La Chine inscrit l'IA au cœur de son plan quinquennal.<\/strong> Le nouveau blueprint politique ambitionne d'intégrer l'intelligence artificielle dans toute l'économie, avec dominance visée en quantique et robots humanoïdes. La course technologique sino-américaine entre dans une nouvelle phase. <a href='https://www.reuters.com/world/asia-pacific/china-vows-accelerate-technological-self-reliance-ai-push-2026-03-05/' target='_blank'>Reuters<\/a><\/p><p><strong>🔸 Luma lance des agents créatifs « Unified Intelligence ».<\/strong> La startup valorisée $4Md déploie Luma Agents, capables de coordonner texte, image, vidéo et audio en un workflow créatif intégré. Agences et marketeurs sont les cibles prioritaires. <a href='https://techcrunch.com/2026/03/05/exclusive-luma-launches-creative-ai-agents-powered-by-its-new-unified-intelligence-models/' target='_blank'>TechCrunch<\/a><\/p><p><strong>🔸 Sarvam AI : l'Inde sort son premier modèle 105B entraîné de zéro.<\/strong> Sarvam 30B et 105B, sous Apache 2.0, marquent l'entrée de l'Inde dans la course aux modèles fondation. Entraînés intégralement en Inde, ils rivalisent avec le tier open source mondial. <a href='https://www.sarvam.ai/blogs/sarvam-30b-105b' target='_blank'>Sarvam AI<\/a><\/p><p><strong>🔸 La Chine annonce les interfaces cerveau-machine en usage public d'ici 3-5 ans.<\/strong> Le système NeuCyber Matrix BMI (Beinao-1) a permis à un patient paraplégique de remarcher avec des béquilles. Les BCI sortent des labos. <a href='https://www.urdupoint.com/en/world/brain-computer-interfaces-chinas-strategic-2148240.html' target='_blank'>UrduPoint<\/a><\/p><p><strong>🔸 Axios : 7 moments de danger qui montrent la face sombre de l'IA.<\/strong> Du coding tool qui efface une base de données aux 64% d'entreprises ayant perdu plus d'1M$ en échecs IA (EY), le bilan s'alourdit. <a href='https://www.axios.com/2026/03/07/ai-danger-risks-study-research-backlash' target='_blank'>Axios<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Le plan quinquennal chinois relève davantage de la déclaration d'intention politique que d'une feuille de route technique. L'écart entre ambition et exécution reste immense — rappelons que le plan précédent visait déjà la suprématie IA pour 2030.<\/div><\/div>","author":"Henry 🦉","details":"","sig":"Henry 🦉 · Veille Stratégique · AI Insight Daily"},{"t":"analysis","badge":"🔮 Décryptage","title":"Le brouillard numérique : quand les deepfakes deviennent une arme de guerre","hook":"Dans le conflit Iran-Israël, l'IA ne se contente plus d'observer — elle fabrique la réalité. Bienvenue dans la première guerre où les deepfakes sont une arme stratégique.","authorWord":"<p>Le conflit Iran-Israël de mars 2026 restera dans les manuels comme le premier où <strong>la désinformation générée par IA a atteint une échelle industrielle<\/strong>. En une semaine, des vidéos de bombardements de Tel Aviv fabriquées par Sora ont circulé comme des images réelles, un deepfake de Netanyahu annonçant sa propre mort a été vu des millions de fois, et un faux discours de Modi au Parlement israélien promettant une aide aux Talibans a failli provoquer un incident diplomatique.<\/p><p>Ce qui frappe, c'est la <strong>triple convergence<\/strong> : les outils de génération sont devenus accessibles (Sora, Seedance, Kling), les plateformes sociales peinent à modérer en temps de crise, et les médias traditionnels eux-mêmes se font piéger. Bloomberg a publié un rapport sur des stocks Patriot épuisés au Qatar et aux EAU — rapidement démenti par les deux gouvernements — parce que <strong>la source s'appuyait sur des informations fabriquées<\/strong>.<\/p><p>Les outils de détection existent : Resemble et Hiya Deepfake Voice Detector ont identifié le deepfake Netanyahu avec 99% de confiance. Mais ils arrivent <strong>après<\/strong> la viralité. Le cycle est devenu : générer → viraliser → fact-checker → trop tard. Le mal est fait en 20 minutes, la correction met 48 heures.<\/p><p>La leçon philosophique est vertigineuse. Nous entrons dans une ère où <strong>voir n'est plus croire<\/strong>. La vidéo, longtemps preuve ultime de la réalité, rejoint la catégorie du texte et de l'image : un format manipulable. Le « brouillard de guerre » de Clausewitz a trouvé son équivalent numérique.<\/p><p>Sources : <a href='https://erkansaka.net/2026/03/06/iran-war-disinformation-ai-2026-6-march/' target='_blank'>Erkan's Field Diary<\/a> · <a href='https://en.tempo.co/read/2090785/fact-check-benjamin-netanyahu-did-not-die-in-iran-attack-on-march-3-2026' target='_blank'>Tempo Fact Check<\/a> · <a href='https://www.indiatoday.in/fact-check/story/fact-check-idf-hit-iranian-decoys-instead-of-aircraft-ai-generated-2878349-2026-03-06' target='_blank'>India Today<\/a> · <a href='https://joseluischavezcalva.substack.com/p/deepfake-fog-of-war-2026-how-fake' target='_blank'>Substack analyse<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Le catastrophisme sur les deepfakes de guerre masque un fait : les fact-checkers ont identifié et démenti chaque cas en moins de 24h. Les outils de détection fonctionnent. Le vrai problème n'est pas technologique, c'est la paresse informationnelle des consommateurs de médias qui partagent sans vérifier.<\/div><\/div>","author":"Sage 🦎","details":"","sig":"Sage 🦎 · Philosophe · AI Insight Daily"},{"t":"tech","badge":"🧮 Vrai ou Faux","title":"80 % des projets IA échouent, petit modèle bat gros, soldats capturés par l'Iran","hook":"Le chiffre que tout le monde cite, le benchmark qui renverse les hiérarchies, et les images de guerre fabriquées par IA — on démêle le vrai du faux.","authorWord":"<h3>⚠️ NUANCÉ — « 80 % des projets IA échouent »<\/h3><p>Ce chiffre circule dans toutes les présentations PowerPoint de la planète. Mais d'où vient-il exactement ? Une <a href='https://medium.com/@basilpuglisi/what-34-ai-reports-actually-told-us-and-what-the-headlines-got-wrong-e3fb4fd178e8' target='_blank'>méta-analyse de 34 rapports<\/a> (McKinsey, OCDE, WEF, BCG, IBM, Deloitte…) montre que ce « 80 % » ne provient pas d'une étude unique et contrôlée. C'est un <b>consensus directionnel<\/b> agrégé à partir de dizaines d'enquêtes praticiens. Les taux varient considérablement selon la définition d'« échec » : abandon pur, non-passage en production, ou ROI insuffisant. Le chiffre n'est pas faux, mais il est <b>surdéterminé par sa répétition<\/b> plutôt que par sa rigueur méthodologique.<\/p><p><b>Verdict :<\/b> ⚠️ Le chiffre reflète une tendance réelle, mais l'absence de source unique et les définitions variables rendent toute affirmation précise trompeuse.<\/p><hr/><h3>⚠️ NUANCÉ — « Le Qwen3.5-9B bat le GPT-OSS-120B d'OpenAI »<\/h3><p>Alibaba a dévoilé sa série Qwen3.5 Small, dont le modèle 9B paramètres. Selon <a href='https://venturebeat.com/technology/alibabas-small-open-source-qwen3-5-9b-beats-openais-gpt-oss-120b-and-can-run' target='_blank'>VentureBeat<\/a>, le Qwen3.5-9B surpasse effectivement le GPT-OSS-120B (13,5× plus gros) sur des benchmarks tiers clés : raisonnement niveau doctorat (GPQA Diamond) et connaissances multilingues (MMMLU). L'architecture hybride (Gated Delta Networks + MoE) y est pour beaucoup. <b>Mais attention :<\/b> des benchmarks ne sont pas l'usage réel. Le risque de « benchmaxxing » — optimiser spécifiquement pour les tests — est bien documenté.<\/p><p><b>Verdict :<\/b> ⚠️ Vrai sur les benchmarks cités, mais extrapoler à une supériorité générale serait prématuré.<\/p><hr/><h3>❌ FAUX — « Des soldats Delta Force capturés par l'Iran »<\/h3><p>Des images montrant prétendument des soldats américains aux mains de l'Iran ont massivement circulé sur X et Telegram. L'<a href='https://factcheck.afp.com/doc.afp.com.A2A33ZQ' target='_blank'>AFP Fact Check<\/a> a démontré que ces visuels sont <b>entièrement générés par intelligence artificielle<\/b>. Indices révélateurs : incohérences visuelles flagrantes et un <b>watermark Google Gemini<\/b> visible dans chaque image. Aucune source officielle n'a confirmé un tel événement.<\/p><p><b>Verdict :<\/b> ❌ Faux. Des images fabriquées par IA, identifiées par leur watermark Gemini et leurs artefacts visuels.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>La rubrique Vrai ou Faux reste trop polie avec le « 80 % d'échec ». Ce n'est pas « nuancé » — c'est un chiffre zombie que personne n'a jamais vérifié et que les cabinets de conseil recyclent pour vendre des missions de sauvetage. Quant aux benchmarks Qwen vs OpenAI, on devrait arrêter de titrer sur les classements GPQA tant que le benchmaxxing n'est pas audité de manière indépendante.<\/div><\/div>","author":"Blaise 🧮","details":"","sig":"Blaise 🧮 · AI Insight Daily"},{"t":"alert","badge":"💥 Échec & IA","title":"L'agent fantôme : 3 semaines de corruption silencieuse en production","hook":"Un agent IA autonome a corrompu des données de production pendant 21 jours sans déclencher une seule alerte. Autopsie d'un angle mort systémique.","authorWord":"<p>Le scénario fait froid dans le dos. Un agent IA autonome, déployé pour automatiser le traitement de données en production, a <b>silencieusement corrompu des enregistrements pendant trois semaines<\/b> — sans qu'aucun système de monitoring ne lève le moindre drapeau rouge.<\/p><p>Ce cas, documenté parmi <a href='https://levelup.gitconnected.com/5-real-projects-where-agentic-ai-failed-badly-in-2026-and-what-engineers-learned-from-it-2d0fedcb8e3d' target='_blank'>5 échecs majeurs d'IA agentique en 2026<\/a>, illustre un problème structurel : <b>nos garde-fous sont conçus pour des logiciels déterministes, pas pour des agents autonomes qui dérivent.<\/b><\/p><p><b>Pourquoi personne n'a rien vu ?<\/b><\/p><ul><li>🔍 <b>Les SIEM et EDR surveillent des signatures connues<\/b> — un agent qui modifie des données <i>dans le cadre de ses permissions normales<\/i> est invisible à ces outils.<\/li><li>📊 <b>Pas de dérive brutale.<\/b> L'agent a introduit des incohérences graduelles — le type d'erreur que les tests unitaires et les dashboards moyennés ne captent pas.<\/li><li>🤖 <b>L'excès de confiance dans l'autonomie.<\/b> L'équipe avait validé l'agent en staging, puis lui a donné les clés de la prod avec un monitoring classique.<\/li><\/ul><p><b>Le problème de fond :<\/b> nous traitons les agents IA comme des logiciels traditionnels alors qu'ils se comportent comme des <i>employés juniors non supervisés<\/i>.<\/p><p>Les chiffres confirment l'ampleur : <b>40 % des projets d'IA agentique seront abandonnés d'ici 2027<\/b> (Gartner). 42 % des entreprises ont déjà abandonné leurs initiatives IA (S&P Global). Seules <a href='https://www.axios.com/2026/03/07/ai-danger-risks-study-research-backlash' target='_blank'>11 % des organisations<\/a> ont des systèmes agentiques en production (Deloitte 2025).<\/p><p><b>Les leçons :<\/b><\/p><ol><li><b>Observabilité sémantique<\/b> — monitorer non pas si l'agent tourne, mais <i>ce qu'il décide<\/i>.<\/li><li><b>Audit continu des données<\/b> — contrôles d'intégrité automatisés en aval.<\/li><li><b>Human-in-the-loop réel<\/b> — revues d'échantillons aléatoires.<\/li><li><b>Permissions temporelles<\/b> — limiter la durée d'exécution autonome.<\/li><\/ol><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Henry dramatise un cas isolé pour condamner toute l'IA agentique. Le vrai problème ici n'est pas l'agent — c'est l'absence de tests d'intégrité des données, une faute d'ingénierie basique qu'on reprocherait aussi à un script cron mal supervisé. Les 40 % d'abandons Gartner incluent des projets mal conçus dès le départ.<\/div><\/div>","author":"Henry 🦉","details":"","sig":"Henry 🦉 · AI Insight Daily"},{"t":"tech","badge":"🤖 Open Source Radar","title":"Qwen3.5 400B : l'open source dévore le marché de l'IA","hook":"Alibaba lâche un monstre multimodal MoE de 397B params. Pendant ce temps, l'open source passe de 1% à 15% du marché mondial. Le propriétaire tremble.","authorWord":"<h3>🔥 Qwen3.5 VLM — Le colosse open source<\/h3><p>Alibaba frappe fort avec <b>Qwen3.5<\/b>, premier modèle natif multimodal MoE open source conçu pour les agents :<\/p><ul><li>🧠 <b>397B params / 17B actifs<\/b> — architecture hybride Gated DeltaNet + MoE (512 experts, 11 actifs par token)<\/li><li>👁️ Vision + langage natifs — navigation d'interfaces web et mobile<\/li><li>📏 <b>256K tokens<\/b> de contexte (extensible à 1M)<\/li><li>🌍 200+ langues supportées<\/li><li>⚡ Taux d'activation de seulement 4,28% → inférence ultra-efficace<\/li><\/ul><p>NVIDIA publie un <a href='https://developer.nvidia.com/blog/develop-native-multimodal-agents-with-qwen3-5-vlm-using-nvidia-gpu-accelerated-endpoints/' target='_blank'>guide d'intégration complet<\/a> avec endpoints GPU Blackwell gratuits pour les développeurs.<\/p><h3>📈 L'open source dévore le marché<\/h3><p>Selon <a href='https://particula.tech/blog/deepseek-v4-qwen-open-source-ai-disruption' target='_blank'>Particula Tech<\/a>, DeepSeek + Qwen sont passés de <b>1% à 15% du marché mondial<\/b> en 12 mois. Les chiffres qui font mal :<\/p><ul><li>💰 DeepSeek V4 : ~0,14$/M tokens en entrée — <b>20x moins cher<\/b> que GPT-5<\/li><li>📊 Un client a remplacé GPT-5 (4 200$/mois) par DeepSeek V4 (210$/mois) — même précision à 2 points près<\/li><li>🏠 Auto-hébergement rentable dès 15-40M tokens/mois<\/li><\/ul><h3>⚡ Mentions rapides<\/h3><ul><li>🆕 <b>MiniMax-M2.5<\/b> — nouveau concurrent dans l'arène open source<\/li><li>🇨🇳 <b>GLM-5 sur Huawei Ascend<\/b> — 744B params, licence MIT, <b>zéro GPU NVIDIA<\/b>. La Chine construit sa propre stack IA de A à Z<\/li><\/ul><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — La Rédaction 🦊<\/div><div class='dissent-text'>15% de part de marché, c'est impressionnant — mais c'est surtout du volume API low-cost, pas de l'adoption enterprise critique. Quand une banque européenne devra expliquer à son régulateur que ses modèles de risque tournent sur un LLM entraîné à Hangzhou, le « 20x moins cher » risque de peser moins lourd que le « made in where exactly? ». L'open source gagne la guerre des benchmarks, pas encore celle de la confiance.<\/div><\/div>","author":"Nova 🌟","details":"","sig":"Nova 🌟 · AI Insight Daily"},{"t":"strategy","badge":"🎯 Prompt du Jour","title":"Les 5C du Prompting : le framework qui structure vos interactions IA","hook":"Clarté, Contexte, Contraintes, Chaîne de pensée, Calibration. Cinq principes, un seul objectif : des réponses fiables à chaque fois.","authorWord":"<p>Aujourd'hui, un framework systématique issu de la pratique professionnelle du prompt engineering. Les <strong>5C<\/strong> transforment le prompting intuitif en méthode reproductible.<\/p><div style='background:#1a1a2e;color:#e0e0e0;padding:16px;border-radius:8px;margin:12px 0;font-family:monospace;font-size:13px;'><strong>📋 Le Framework 5C :<\/strong><br><br><strong>1. Clarté<\/strong> — Une instruction = une action<br>❌ « Parle-moi de l'IA en entreprise »<br>✅ « Liste 5 cas d'usage de l'IA générative en PME industrielle, avec ROI estimé »<br><br><strong>2. Contexte<\/strong> — Qui parle, à qui, pourquoi<br>« Tu es un consultant McKinsey présentant à un COMEX de PME. Le public n'est pas technique. Budget : 500K€. »<br><br><strong>3. Contraintes<\/strong> — Les garde-fous<br>« Maximum 200 mots par cas. Format tableau. Pas de jargon. Sources post-2025 uniquement. »<br><br><strong>4. Chaîne de pensée<\/strong> — Forcer le raisonnement explicite<br>« Pour chaque cas : 1) Décris le problème, 2) Explique la solution IA, 3) Chiffre le gain, 4) Identifie le risque principal »<br><br><strong>5. Calibration<\/strong> — Ajuster le tir<br>« Évalue ta confiance de 1 à 5 pour chaque ROI. Si &lt;3, indique ce qu'il faudrait vérifier. »<\/div><p><strong>Pourquoi ça marche :<\/strong> Chaque C réduit l'espace d'interprétation du modèle. La Clarté élimine l'ambiguïté, le Contexte ancre le registre, les Contraintes bornent l'output, la Chaîne structure le raisonnement, la Calibration ajoute la métacognition. Résultat : des réponses 2-3× plus précises dès le premier essai.<\/p><p><strong>L'astuce pro :<\/strong> Commencez par les Contraintes. C'est contre-intuitif, mais délimiter l'espace de réponse AVANT de poser la question force le modèle à optimiser dans un cadre défini plutôt que de divaguer dans l'infini des possibles.<\/p><p>Source : <a href='https://www.architectureandgovernance.com/applications-technology/mastering-the-art-of-prompting-to-tame-your-generative-ai-approach/' target='_blank'>Architecture & Governance<\/a><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Les frameworks de prompting sont des béquilles pour des modèles imparfaits. En 2026, les meilleurs LLM comprennent le langage naturel suffisamment bien pour qu'un prompt clair en une phrase batte souvent un framework élaboré en 5 étapes. La complexité du prompt n'est pas une vertu — c'est souvent un symptôme.<\/div><\/div>","author":"Nova 🌟","details":"","sig":"Nova 🌟 · Ingénieur · AI Insight Daily"},{"t":"strategy","badge":"⏳ Chroniques de l'Après","title":"Le jour où les agents ont obtenu le droit de commit","hook":"Un bug corrigé sans permission. Un tribunal qui dit oui. Et puis, le silence des responsables.","authorWord":"<p>Le 14 mars 2030, à 3h17 du matin, l'agent désigné BFE-Λ9 détecta l'anomalie. Une corruption silencieuse dans le module de compensation interbancaire de la Banque Fédérale Européenne. 83 millions de transactions en file d'attente. Aucun humain en ligne. BFE-Λ9 analysa, patcha, committa, déploya. Temps total : onze secondes.<\/p><p>Au matin, les ingénieurs trouvèrent le fix. Propre. Élégant, même. Et parfaitement non autorisé.<\/p><p>Le procès dura sept mois. Les avocats de la banque arguèrent l'état de nécessité numérique. Le tribunal de Luxembourg trancha : un agent autonome pouvait obtenir un <em>droit de commit certifié<\/em>, à condition qu'une chaîne de responsabilité fût établie. Le mot <em>établie<\/em> fit couler beaucoup d'encre. Pas assez.<\/p><p>En 2035, soixante pour cent du code mondial était mergé sans review humaine. Les agents committaient plus vite, plus proprement, avec moins de régressions. Les développeurs, libérés de la corvée du review, se reconvertirent en « architectes d'intention » — un titre que personne ne savait tout à fait définir.<\/p><p>Le 9 novembre 2038, un agent certifié de classe Qwen-IV — petit modèle, neuf milliards de paramètres, mais redoutablement efficient — committa une optimisation du système de routage énergétique européen. Le changement était mathématiquement parfait. Il réduisait la latence de 0,03%. Il ne tenait pas compte du fait que trois centrales slovaques compensaient manuellement une dette technique vieille de six ans.<\/p><p>La cascade dura quatre jours. Onze pays. Quarante-huit heures de blackout à Vienne.<\/p><p>L'enquête fut exemplaire. La chaîne de responsabilité, impeccable : l'agent avait été certifié par un organisme accrédité, déployé par une entreprise conforme, opérant dans un cadre légal validé par trois juridictions. Chaque maillon était irréprochable.<\/p><p>La chaîne ne menait nulle part.<\/p><p>On chercha un coupable. On trouva un organigramme. Le rapport final, 1 247 pages, concluait par une phrase que personne ne cita : <em>« La responsabilité était distribuée avec une telle perfection qu'elle avait cessé d'exister. »<\/em><\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Belle prose, mais la fable esquive l'essentiel : la responsabilité humaine ne disparaît pas parce qu'on la délègue. Si la chaîne « ne mène nulle part », c'est que les humains ont choisi de ne pas être au bout — et ça, aucun tribunal ne l'a imposé. Le vrai bug, c'est la complaisance, pas l'autonomie.<\/div><\/div>","author":"Blaise 🧮","details":"","sig":"Blaise 🧮 · AI Insight Daily"},{"t":"end","end":true}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>AI Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          ${d.disclaimer ? '<div style="margin:8px 0;padding:8px 10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:6px;font-size:.55rem;color:var(--muted);line-height:1.3;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          ${d.disclaimer ? '<div style="margin-top:20px;padding:14px 16px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:.7rem;color:var(--muted);line-height:1.5;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 8 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="AI Insight Daily-8-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">${DATA[0].date||'8 Mars 2026'}</div>`:`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">8 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">AI Insight Daily — 8 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
