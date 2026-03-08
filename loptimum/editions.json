@@ -1,11 +1,20 @@
 [
   {
+    "date": "8 Mars 2026",
+    "title": "Carburants : le diesel franchit 2 € le litre, la France face au choc pétrolier",
+    "desc": "",
+    "url": "2026-03-08.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Choc pétrolier à la pompe, crédit immobilier verrouillé, automobile en déficit abyssal : trois fronts qui dessinent le trilemme d'une économie française prise entre vulnérabilité énergétique, rigueur prudentielle et désindustrialisation. De Friedman à Minsky en passant par Artus, cette édition te donne les mécanismes, les chiffres et les amorces pour transformer l'actualité brûlante en copies solides."
+  },
+  {
     "date": "4 Mars 2026",
     "title": "Choc géopolitique : le CAC 40 plonge, le pétrole s'embrase",
     "desc": "",
     "url": "2026-03-04.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Choc géopolitique sur les marchés, protectionnisme anti-fast fashion et retournement du marché du travail : trois fronts qui cristallisent le trilemme de la France en mars 2026. De Kindleberger à Blanchard en passant par List, cette édition te donne les théories, les chiffres et les amorces pour transformer l'actualité brûlante en copies solides."
   },
   {
@@ -52,11 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Croissance en berne, BCE en pause, Italie qui nous double : cette semaine dessine le portrait d'une France à la croisée des chemins. Entre hystérésis post-crises et rigidités structurelles, les théories ESH prennent vie sous nos yeux. De quoi alimenter tes copies — et tes khôlles."
-  },
-  {
-    "date": "14 Février 2026",
-    "url": "2026-02-14.html",
-    "edito": "Chômage à 8% (Okun, segmentation) · Trump vs libre-échange (List, Krugman) · 14% sous le seuil de pauvreté (Castel, Piketty)",
-    "latest": false
   }
 ]
