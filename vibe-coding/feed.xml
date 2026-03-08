@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 07 Mar 2026 06:16:20 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 08 Mar 2026 09:45:26 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Google Antigravity — l'IDE agent-first qui orchestre tes sous-agents]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-08.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-08.html</guid>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[GPT-5.4 débarque avec 1M tokens, Google lance Antigravity pour orchestrer tes agents, et le code IA continue de planter à 3h du mat'. Cette semaine, on explore pourquoi le contexte bat le prompt, on vibe-code la même app avec 3 chatbots, et on se demande si le vibe coding est enfin devenu adulte. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Bitrig for Mac — vibe code des apps iPhone en Swift natif]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-07.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-24.html</guid>
       <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[FlowLens transforme le debug en one-click MCP, un non-dev ship un jeu complet en 2,5 semaines, et Moonwell perd 1.78M$ à cause d'un oracle vibe-codé. Pendant ce temps, Cursor, Claude Code et Copilot se battent pour ta productivité — et le débat Pichai vs Vembu pose LA question : peut-on vibrer ET construire solide ? Bonne lecture ! 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Hostinger Horizons — Le vibe coding tout-en-un à prix cassé]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-19.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-19.html</guid>
-      <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[LogRocket classe les outils dev IA, Karpathy nuance le vibe coding un an après, et Hostinger veut démocratiser le tout-en-un. Pendant ce temps, l'étude METR nous rappelle qu'on est plus lents qu'on le croit — et la monoculture du code IA devient un vrai sujet. Bonne lecture ! 🎨]]></description>
     </item>
   </channel>
 </rss>
