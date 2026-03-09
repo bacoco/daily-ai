@@ -1,11 +1,20 @@
 [
   {
+    "date": "9 Mars 2026",
+    "title": "TTF Steady at €52 Into Week 2 — Goldman Lifts Q2 Again as Hormuz Selective Blockade Hardens",
+    "desc": "",
+    "url": "2026-03-09.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz Week 2 with the IRGC hardening its selective blockade, Qatar's Ras Laffan still dark, and Putin openly threatening to cut TurkStream before the April 25 ban — the triple squeeze enters a new phase of structural supply destruction. The council validated 14 trade ideas from 21, culling 7 duplicates and low-liquidity proposals; the Apr €55/€65 call spread and Win-26/Sum-26 steepener remain highest-conviction asymmetric plays, while the €45 put is essential insurance against the diplomatic resolution tail."
+  },
+  {
     "date": "8 Mars 2026",
     "title": "TTF Holds €52 as Week 1 Panic Consolidates — HH Flat at $2.92 Despite Global Chaos",
     "desc": "",
     "url": "2026-03-08.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Iran war Week 2 with no ceasefire in sight, Qatar LNG infrastructure physically damaged, and Putin weaponising TurkStream ahead of the April 25 ban — the triple squeeze deepens into structural supply destruction. The council validated 12 trade ideas from 18, culling 6 duplicates and naked outright longs; the Apr €55/€65 call spread and JKM-TTF widener remain highest-conviction asymmetric plays, while the €45 put hedge is essential insurance against the snap-back."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Hormuz rewrites everything: Iran's de facto closure of the world's most critical LNG chokepoint collides with EU storage at a historic 29.98% — the most acute gas risk environment since 2022. The council validated 13 of 21 trade ideas, culling 8 for duplicates, mispriced strikes, and internal contradictions. Duration of the Hormuz disruption is the single variable that separates a spike-and-fade from a regime change."
-  },
-  {
-    "date": "27 Février 2026",
-    "title": "HH Crashes Through $3.00 to $2.92 — Storm Fern Rally Fully Erased; TTF Settles €30.90",
-    "desc": "",
-    "url": "2026-02-27.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Winter's last gasp meets structural fragility: HH crashes through $3 as US supply overwhelms, but EU storage at decade-lows and a fractured sanctions regime set up a volatile refill season. The transatlantic divergence — US surplus vs EU deficit — is this week's defining tension, and the council validated 14 of 21 trade ideas after culling 7 for redundancy and contradiction."
   }
 ]
