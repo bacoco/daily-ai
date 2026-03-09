@@ -1,11 +1,20 @@
 [
   {
+    "date": "9 Mars 2026",
+    "title": "Airbnb : un stage étudiant est-il une « obligation professionnelle » ?",
+    "desc": "",
+    "url": "2026-03-09.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Airbnb devant la Cour de cassation, confidentialité des juristes d'entreprise consacrée par le Conseil constitutionnel et facturation électronique à six mois du couperet : cette semaine, le droit redessine les frontières entre privé et professionnel, entre secret et transparence, entre papier et numérique. Six cartes pour ne rien manquer."
+  },
+  {
     "date": "8 Mars 2026",
     "title": "Vice caché : l'action indemnitaire est soumise au délai biennal, pas au délai quinquennal",
     "desc": "",
     "url": "2026-03-08.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Vice caché sous prescription biennale stricte, ACRE rabotée pour les micro-entrepreneurs, convergence RGPD-NIS2-AI Act et passage EI vers IS sécurisé : cette édition décrypte les textes et décisions qui redessinent le quotidien des praticiens et des dirigeants. Six cartes pour garder une longueur d'avance."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Enquête interne non obligatoire en matière de harcèlement, injonction de payer accélérée, délai de réclamation fiscale invalidé par le Conseil d'État : cette semaine, la jurisprudence et le pouvoir réglementaire redessinent les obligations des employeurs, des créanciers et des groupes internationaux. Le fil rouge : le droit bouge vite, et les praticiens doivent ajuster leurs réflexes avant que les délais ne les rattrapent."
-  },
-  {
-    "date": "18 Février 2026",
-    "title": "Arrêt « Larzul 3 » : la Cour de cassation cadre l'annulation des décisions en SAS",
-    "desc": "",
-    "url": "2026-02-18.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Entre un arrêt structurant sur la gouvernance des SAS, la refonte brutale de l'ACRE pour les créateurs d'entreprise et l'entrée en application progressive de l'AI Act européen, cette édition illustre un fil rouge : le droit se durcit pour ceux qui ne l'anticipent pas. Dirigeants, la conformité n'attend plus."
   }
 ]
