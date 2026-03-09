@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sun, 08 Mar 2026 10:29:27 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 04:47:25 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Washington serre la vis sur l'IA : licence irrévocable, neutralité imposée, et la Silicon Valley retient son souffle]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-09.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-09.html</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA s'émancipe de ses cadres. Washington réagit avec la GSA, les chatbots jouent au thérapeute sans éthique, les agents crashent en production sans rollback. Même l'open source chinois tremble quand ses cerveaux partent. Sans garde-fous humains, la machine tourne — mais pas dans le bon sens.]]></description>
+    </item>
     <item>
       <title><![CDATA[GPT-5.4 unifie raisonnement, coding et agents — Google ouvre Workspace aux IA]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-08.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-03.html</guid>
       <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA a promis l'autonomie, elle livre la fragilité. 76 % des agents échouent en production, les systèmes sur-privilégiés multiplient les incidents par 4,5, et même le prompt engineering se demande s'il est encore vivant. Mais dans ce reality check, les réponses émergent : interprétabilité mécaniste, modèles frugaux on-device, et techniques anti-hallucinations. L'heure n'est plus aux cathédrales — c'est aux fondations qu'on travaille.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Deux licornes IA en 24h : l'interprétabilité vaut désormais des milliards]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-02.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-02.html</guid>
-      <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Ce qu'on ne voit pas peut nous sauver — ou nous perdre. L'IA entre dans son âge adulte : elle disparaît dans nos usages, ses erreurs deviennent silencieuses, et deux licornes parient des milliards qu'il faut enfin regarder à l'intérieur de la boîte noire. Aujourd'hui, une seule question : dans un monde où l'IA s'efface du regard, qui garde les yeux ouverts ?]]></description>
     </item>
   </channel>
 </rss>
