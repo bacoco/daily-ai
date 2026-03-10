@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gas Morning Brief — 10 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Light mode: override inline white colors in trade cards */
+    html.light .details p[style], html.light .details b[style], html.light .details span[style], html.light .details div[style] { color: rgba(0,0,0,.85) !important; }
+    html.light .details div[style*="border-left:3px solid #f59e0b"] { background: rgba(245,158,11,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #10b981"] { background: rgba(16,185,129,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #ff4757"] { background: rgba(255,71,87,.06) !important; }
+    html.light .details div[style*="color:#f59e0b"] { color: #b45309 !important; }
+    html.light .details div[style*="color:#10b981"] { color: #047857 !important; }
+    html.light .details div[style*="color:#ff4757"] { color: #dc2626 !important; }
+    html.light .details h3 { color: #1a1a2e !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Gas Morning Brief</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"10 Mars 2026","henryWord":"Hormuz Week 2 with Qatar still dark and the April LNG ban six weeks away — the triple supply squeeze tightens. The council validated 10 trade ideas from 19, culling 9 duplicates and contradictions; the TTF Apr €55/€65 call spread and NBP-TTF locational play remain highest conviction, while the €48/€42 put is essential snap-back insurance.","articles":[{"badge":"⚡ 💰 Price Action","title":"TTF Holds €52 as Asian Demand Lifts JKM; HH Steady","idx":1},{"badge":"⚡ 🚢 LNG & Flows","title":"Gate Terminal at 40% — Cargo Diversions to Asia Accelerate as EU Sendout Climbs 3%","idx":2},{"badge":"⚡ ⚡ Power & Carbon","title":"Sparks Fly as Low Wind & Firm Carbon Squeeze the Stack","idx":3},{"badge":"📊 🌡️ Weather & Demand","title":"Structural Support from Weak Renewables Counters the March Fade","idx":4},{"badge":"📊 📦 Storage Watch","title":"EU Storage Deficit Widens as Withdrawals Slow","idx":5},{"badge":"📊 💣 Geopolitics & Regulation","title":"Hormuz Week 2 + Qatar Offline + EU LNG Ban = Triple Supply Squeeze","idx":6},{"badge":"📊 🎯 Risk Flags & Outlook","title":"Three-Front Week: Hormuz Duration × Refill Countdown × Renewables Gap","idx":7},{"badge":"🏛️ Verdict du Conseil","title":"19 Trades Audités — 10 Retenus, 9 Éliminés","idx":8}],"disclaimer":"⚠️ AVERTISSEMENT — Ce document est un exercice expérimental de veille automatisée produit par intelligence artificielle. Il ne constitue EN AUCUN CAS un conseil en investissement, une recommandation de trading, ni une analyse financière réglementée au sens de la directive MiFID II ou du Code monétaire et financier (art. L541-1). Les « scénarios de marché » présentés sont des hypothèses pédagogiques générées par des modèles de langage — ils ne reflètent pas l'avis d'un professionnel agréé. Les données proviennent de sources publiques, potentiellement retardées ou erronées. Toute décision d'investissement prise sur la base de ce document relève de la seule responsabilité du lecteur. L'auteur n'est pas enregistré comme Conseiller en Investissement Financier (CIF) auprès de l'AMF. Ce contenu est fourni à titre informatif et expérimental uniquement."},{"t":"alert","badge":"⚡ 💰 Price Action","title":"TTF Holds €52 as Asian Demand Lifts JKM; HH Steady","hook":"European gas stabilizes as traders weigh geopolitical risks. Asian spot prices surge on supply concerns, lifting JKM 2.3% overnight.","authorWord":"TTF settled at €52.00/MWh (settle 09 Mar) ▲+0.40 vs prev. HH flat at $2.92/MMBtu. JKM jumps to $12.50/MMBtu on Asian supply fears. Technicals show TTF testing €54 resistance while HH eyes $2.90 support. Trade ideas: TTF call spreads & JKM/NBP arb.","author":"Blaise 🧮","details":"<p>European benchmarks held firm with TTF settling at <strong>€52.00/MWh<\/strong> (settle 09 Mar ▲+0.40 vs prev) amid ongoing Hormuz tensions <a href='https://www.focus-economics.com/commodities/energy/natural-gas-eu/' target='_blank'>(Focus Economics)<\/a>. Henry Hub remained range-bound at <strong>$2.92/MMBtu<\/strong> (settle 09 Mar ▼-0.006 vs prev) despite global volatility <a href='https://www.cmegroup.com/markets/energy/natural-gas.html' target='_blank'>(CME/NYMEX)<\/a>. Asian demand drove JKM to <strong>$12.50/MMBtu<\/strong> (close 09 Mar ▲+0.28 vs prev), a 2.3% spike <a href='https://www.oilpriceapi.com/commodities/jkm-lng' target='_blank'>(OilPriceAPI)<\/a>.<\/p><p>Volume patterns show profit-taking in TTF Apr contracts (-12% OI) while JKM saw aggressive call buying. Technicals: TTF faces resistance at €54 (Mar 7 high) with support at €50.50. HH consolidates below $2.95 with critical support at $2.90. Overnight JKM rose another 0.4% to $12.55 on fresh LNG tender activity.<\/p><h3>💡 Trade Ideas<\/h3><ol><li><strong>TTF Apr/May Bull Call Spread<\/strong>: Buy Apr €54 Call / Sell May €56 Call. Capitalizes on near-term supply fears while capping theta decay.<\/li><li><strong>JKM-NBP Calendar Arb<\/strong>: Buy JKM Apr $13.00 Calls vs Sell NBP May 125p (GBp/therm). Bets on Asian demand outstripping European fundamentals.<\/li><li><strong>HH $2.90/$2.85 Put Spread<\/strong> (May): Protects against storage surprise while offering 1:3 risk/reward.<\/li><\/ol><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Sage 🦎<\/div><div class='dissent-text'>Overplaying JKM strength ignores floating storage buildup. April JKM calls risk premium crush if China releases strategic reserves. Focus instead on TTF-HH basis compression below -€45/MWh.<\/div><\/div>","sig":"Blaise 🧮 · Quant Desk"},{"t":"alert","badge":"⚡ 🚢 LNG & Flows","title":"Gate Terminal at 40% — Cargo Diversions to Asia Accelerate as EU Sendout Climbs 3%","hook":"Eight LNG cargoes scheduled for NW Europe this week but Atlantic diversions to Asia are intensifying — EU sendout up 3% WoW to 295 mcm/day while Gate (NL) runs at just 40% capacity through March 15.","authorWord":"Cargo competition fierce. Asia pulling cargoes via Cape route. US feed gas dipping on Corpus Christi & Cameron maintenance. Gate throttled. Flows tight.","author":"Henry 🦉","details":"<p><b>🚢 EU LNG Arrivals & Sendout:<\/b> Eight cargoes are scheduled for NW Europe this week with 3 additional for Iberia, but <a href='https://finance.yahoo.com/news/europe-bound-lng-cargoes-divert-121800644.html' target='_blank'>cargo diversions to Asia are accelerating<\/a> as Asian buyers outbid on spot. EU-wide sendout rates average 295 mcm/day, up 3% WoW — storage at just ~27% vs 41% seasonal norm per <a href='https://www.ynetnews.com/business/article/hyyrus9k11l' target='_blank'>Ynet<\/a>. Gate terminal (NL) remains at <b>40% capacity<\/b> on partial maintenance through March 15, choking NW European regasification. The EU needs ~700 cargoes to refill storage before winter per <a href='https://oilprice.com/Energy/Natural-Gas/New-Gas-Crisis-Looms-over-Europe.html' target='_blank'>OilPrice<\/a>.<\/p><p><b>⚡ US LNG & Arbitrage:<\/b> US feed gas nominations slipped to ~19.2 Bcf/d as <a href='https://naturalgasintel.com/news/us-lng-feed-gas-slips-as-corpus-christi-maintenance-cameron-issues-weigh-on-flows/' target='_blank'>Corpus Christi maintenance<\/a> cuts ~80k MMBtu/d and Cameron LNG faces disruptions. Golden Pass test flows dropped to near 0%. US exports expected at 2.55 Mt this week, down 0.27 Mt WoW. JKM at ~$15.50/MMBtu vs HH ~$3.00 — the $12.50 spread is pulling cargoes east. TTF ~€52/MWh (~$16.80/MMBtu) trades at a slim $1.30 premium to JKM, making Europe vulnerable to further diversions. Shipping rates spiked to $278k/day.<\/p><p><b>🔧 Pipeline Flows:<\/b> Norwegian flows steady at 290 mcm/day — no nomination changes flagged via Gassco. TurkStream Russian flows hold at 14.5 mcm/day. North African flows nominal. NL storage at critical ~10% capacity per <a href='https://www.reuters.com/markets/commodities/europes-skimpy-gas-storage-under-scrutiny-qatar-halts-lng-flows-2026-03-03/' target='_blank'>Reuters<\/a>.<\/p><p><b>💡 Trade Ideas:<\/b><br/>1. <b>TTF Apr/May calendar spread — buy the roll:<\/b> Gate maintenance + low storage = front-month squeeze. Target €1.50 widening.<br/>2. <b>Sell TTF-JKM Q2 spread at €1.30:<\/b> Asia is winning the cargo war; spread likely compresses to parity or inverts as diversions persist.<br/>3. <b>Long TTF Apr €55 calls:<\/b> Any Norwegian flow disruption or additional terminal outage sends TTF toward €58+ with storage this thin.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Sage 🦎<\/div><div class='dissent-text'>The cargo diversion panic is overdone. US feed gas at 19.2 Bcf/d is still 4 Bcf/d above last year — once Corpus Christi maintenance clears by week-end, loadings rebound. Golden Pass commissioning cargoes will resume. Eight NW Europe arrivals this week is adequate; the real test is April injection season, not today. Shipping rates at $278k/day are unsustainable and will pull more tonnage into the Atlantic basin. TTF consolidates before it rallies further — fade the €55 calls and wait for a better entry.<\/div><\/div>","sig":"Henry 🦉 · Flow Desk"},{"t":"tech","badge":"⚡ ⚡ Power & Carbon","title":"Sparks Fly as Low Wind & Firm Carbon Squeeze the Stack","hook":"German spark spreads widen to €18.50/MWh as a persistent wind drought forces gas to the margin. Meanwhile, EUAs climbed past €68 as compliance buying accelerates ahead of April deadlines.","authorWord":"Gas is firmly in the driver's seat for power generation right now. With French nuclear struggling to ramp up, expect elevated gas burn across NWE to persist until the wind returns.","author":"Sage 🦎","details":"<p>German spark spreads have rallied to €18.50/MWh (+€2.30 WoW), structurally outpacing dark spreads which sit at €12.80/MWh (+€1.90 WoW). This gas-favorable generation margin is heavily driven by anemic renewable output. German wind generation is currently scraping by at just 8.2GW (35% capacity), drastically below seasonal forecasts, forcing CCGTs to pick up the slack across the grid. View the latest generation actuals via <a href=\"https://energy-charts.info\" target=\"_blank\">Fraunhofer ISE<\/a>.<\/p><p>This tightening thermal stack is compounded by regional outages. French nuclear availability remains stubbornly low at 72%, elevating spot power prices across the DE, FR, and UK interconnectors as baseload supply falters. Simultaneously, EUA carbon prices have caught a bid, settling at €68.45/t (+€1.25 WoW). This upward pressure is fueled by the imminent April compliance deadline and bullish regulatory catalysts around impending ETS supply curbs discussed in the recent <a href=\"https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets_en\" target=\"_blank\">EU Commission bulletins<\/a>.<\/p><p><strong>💡 TRADE IDEAS:<\/strong><br>1. <strong>Long Q2 DE Spark Spreads:<\/strong> Buy into the current levels; structural delays in FR nuclear maintenance will keep gas on the margin longer than the forward curve implies.<br>2. <strong>EUA Call Spreads:<\/strong> Buy Dec-26 €70/€80 calls to play the regulatory tightening catalyst into the second half of the year.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Henry 🦉<\/div><div class='dissent-text'>Don't get trapped chasing this spark spread rally. Meteorological models show a massive wind front sweeping across the North Sea by Friday. When those offshore turbines spin up, spot gas demand for power will fall off a cliff. Fade the front-month spark spread now.<\/div><\/div>","sig":"Sage 🦎 · Power Desk"},{"t":"analysis","badge":"📊 🌡️ Weather & Demand","title":"Structural Support from Weak Renewables Counters the March Fade","hook":"March is tracking colder than the 10-year average, with a persistent chill in Northern Europe sustaining localized heating demand. More critically, a pronounced slump in North Sea wind and lagging hydro levels are forcing a structural reliance on gas-for-power.","authorWord":"While outright heating degree days are on a terminal decline toward spring, the weakness in renewables is quietly tightening the generation stack.","author":"Sage 🦎","details":"<p>The broader meteorological setup features a distinct north-south divide. Northern Europe is clinging to <a href='https://www.ecmwf.int' target='_blank'>slightly below-normal temperatures<\/a>, driving heating degree days (HDD) 5% above the seasonal norm, while Southern Europe is tracking warmer than average. Overall, March is running 1.2&deg;C colder than the 10-year average. Despite this near-term chill, the seasonal transition is inevitable&mdash;aggregate HDDs are projected to plunge 35% by the end of the month, removing the primary baseline tailwind for residential consumption.<\/p><p>However, the real structural driver lies in the power sector, where <a href='https://energy-charts.info' target='_blank'>gas demand has jumped 4% week-over-week<\/a>. This is anchored by an ongoing wind drought in the North Sea, with generation trailing climatology by a sharp 12%. Compounding this, European hydro reservoirs are sitting at 78% capacity, which is 5% below the 5-year average. Until we see a definitive regime shift in wind output or significant spring precipitation, gas will remain the critical baseload bridging fuel across Week 2-4.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Blaise 🧮<\/div><div class='dissent-text'>The 35% drop in HDDs by end-March will completely overwhelm the incremental gas burn from weak renewables. The market is overpricing this short-term power sector demand; structural length will aggressively assert itself as soon as the core heating load vanishes.<\/div><\/div><p><strong>💡 Trade Ideas:<\/strong><br>1. <strong>Long April TTF / Short May TTF (Time Spread):<\/strong> Play the near-term tightness from lagging renewables before the full collapse of heating demand materializes on the curve.<br>2. <strong>Long UK NBP vs Dutch TTF (Locational Spread):<\/strong> The North Sea wind drought disproportionately impacts the UK power stack, driving up localized gas-for-power demand relative to the continent.<\/p>","sig":"Sage 🦎 · Weather Desk"},{"t":"tech","badge":"📊 📦 Storage Watch","title":"EU Storage Deficit Widens as Withdrawals Slow","hook":"European gas inventories sit at 38.2% – 4.3 percentage points below seasonal norms – as net withdrawals slow to 0.45 TWh. With injection season starting mid-April, Europe faces a record refill challenge to hit its 90% November target.","authorWord":"The current trajectory suggests end-of-season storage at 34-36%, requiring unprecedented injection rates of ~0.44 TWh/day. LNG imports and Norwegian flows will be critical to avoid autumn tightness.","author":"Blaise 🧮","details":"<p>EU storage stands at 38.2% (58.4 TWh), significantly lagging the 5-year average of 42.5%. Yesterday's net withdrawal of 0.45 TWh signals slowing winter demand, but leaves a substantial deficit to overcome. The injection season starting mid-April must deliver 92 TWh over seven months – equivalent to filling 1.5% of EU storage <i>every week<\/i>.<\/p><p>Current projections suggest end-withdrawal levels of 34-36%, meaning Europe would enter refill season ~30 percentage points below target. This would require sustained injection rates 15% above 2025's pace. Mild weather and strong LNG arrivals could ease pressure, but any supply disruption would force price spikes to balance the market.<\/p><h4>💡 Trade Ideas<\/h4><ul><li><b>Q3-Q4 Spread Widener:<\/b> Buy Q3 TTF vs sell Q4 to position for summer injection demand premium<\/li><li><b>November Call Spread:<\/b> Buy Nov €40/MWh calls, sell €50/MWh calls to hedge refill risks<\/li><li><b>JKM-TTF Arb:<\/b> Monitor Asian-European LNG spreads for cargo diversion opportunities<\/li><\/ul><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Henry 🦉<\/div><div class='dissent-text'>The focus on absolute storage misses collapsing industrial demand. German factory gas use is down 28% YoY – this structural demand destruction makes 90% targets obsolete. Storage will refill easily by August.<\/div><\/div>","sig":"Blaise 🧮 · Quant Desk"},{"t":"alert","badge":"📊 💣 Geopolitics & Regulation","title":"Hormuz Week 2 + Qatar Offline + EU LNG Ban = Triple Supply Squeeze","hook":"Qatar's 77 mtpa LNG complex remains shuttered after Iranian drone strikes while Hormuz selective blockade enters Week 2, stranding ~25% of global LNG trade. EU's April 25 Russian LNG ban deadline arrives into the tightest supply backdrop since 2022.","authorWord":"Three structural supply arteries constricting simultaneously. Russia at 3.5% of pre-war flows, Qatar dark, April ban imminent — TTF €52 is just the opening move.","author":"Henry 🦉","details":"<h4>1 · Russia Pipeline: The Residual Trickle<\/h4><p>Pre-war Russian pipeline supply to Europe ran ~420 mcm/day (~150 bcm/yr) across Nord Stream, Yamal-Europe, Brotherhood, and TurkStream. Today only TurkStream remains at <b>14.5 mcm/day<\/b> (~5.3 bcm/yr annualized) — just <b>3.5% of pre-invasion flows<\/b>. Greece resumed offtake Mar 2 at 6.6 mcm/day via the southern leg (<a href='https://eadaily.com/en/news/2026/03/09/greece-has-hit-on-russian-gas-the-turkish-stream-has-returned-to-its-maximum' target='_blank'>EADaily<\/a>). Hungary, Serbia, and Turkey take the rest. Putin warned of sabotage threats to TurkStream/Blue Stream. Any disruption here eliminates Europe's last Russian pipe molecule.<\/p><h4>2 · Hormuz: 20% of Global LNG Stranded<\/h4><p>The IRGC's selective blockade — targeting US/Israel-allied shipping — has cratered Strait transit by ~80% (<a href='https://www.theguardian.com/world/2026/mar/03/iran-has-largely-halted-oil-and-gas-exports-through-strait-of-hormuz' target='_blank'>Guardian<\/a>). <b>Qatar's entire 77 mtpa<\/b> (~106 bcm/yr) of LNG exports transit Hormuz. With Ras Laffan shut since Iranian drone strikes on Mar 1-2 and force majeure declared Mar 4 (<a href='https://www.reuters.com/business/energy/qatarenergy-declares-force-majeure-lng-shipments-2026-03-04/' target='_blank'>Reuters<\/a>), this is ~<b>210 mcm/day of LNG-equivalent offline<\/b>. Europe gets 12-14% of its LNG from Qatar (~11 mtpa, ~15 bcm/yr). War-risk insurance jumped from 0.125% to 0.4% of hull value.<\/p><h4>3 · EU Sanctions: April 25 Crunch<\/h4><p>The EU's Russian LNG ban on short-term contracts kicks in <b>April 25, 2026<\/b> (<a href='https://www.fieldfisher.com/en/services/international-trade/trade-sanctions-blog/uk-eu-and-us-sanctions-on-russia' target='_blank'>Fieldfisher<\/a>). In 2025, EU imported ~<b>15 mt of Yamal LNG<\/b> (~20.7 bcm, worth €7.2bn) (<a href='https://brusselssignal.eu/2026/01/eu-imports-of-russian-lng-gave-moscow-e7-2bn-in-2025/' target='_blank'>Brussels Signal<\/a>). That's ~5% of EU gas demand disappearing into a market already short Qatari molecules.<\/p><h4>4 · Hormuz Scenario Matrix<\/h4><p><strong>Scenario:<\/strong> Naval drill / brief (hours)<br><strong>Duration:<\/strong> &lt;24h<br><strong>Prob.:<\/strong> 15%<br><strong>LNG Stranded (Mt):<\/strong> 0.3<br><strong>TTF Impact:<\/strong> +€2-3 spike/fade<br><strong>Trade Response:<\/strong> Sell vol after spike<br><\/p><p><strong>Scenario:<\/strong> Selective blockade (current)<br><strong>Duration:<\/strong> 2-4 wks<br><strong>Prob.:<\/strong> 45%<br><strong>LNG Stranded (Mt):<\/strong> 4-6<br><strong>TTF Impact:<\/strong> €50-58 range<br><strong>Trade Response:<\/strong> Apr call spreads €55/€65<br><\/p><p><strong>Scenario:<\/strong> Extended disruption (1-2 mo)<br><strong>Duration:<\/strong> 4-8 wks<br><strong>Prob.:<\/strong> 25%<br><strong>LNG Stranded (Mt):<\/strong> 12-18<br><strong>TTF Impact:<\/strong> €60-75<br><strong>Trade Response:<\/strong> Q2 TTF outrights + JKM-TTF widener<br><\/p><p><strong>Scenario:<\/strong> Prolonged conflict (3+ mo)<br><strong>Duration:<\/strong> 3+ mo<br><strong>Prob.:<\/strong> 15%<br><strong>LNG Stranded (Mt):<\/strong> 20+<br><strong>TTF Impact:<\/strong> €80-100 (2022 redux)<br><strong>Trade Response:<\/strong> Winter 26/27 €100 calls<br><\/p><h4>💡 Trade Ideas<\/h4><ol><li><b>Long TTF Apr €55/€65 call spread<\/b>: Captures selective blockade extension at limited premium. Probability-weighted 45% × €5+ = positive EV.<\/li><li><b>Long JKM-TTF Q2 spread<\/b>: Qatar offline diverts Atlantic Basin cargoes to Asia; JKM premium widens from $1.30 to $3-5.<\/li><li><b>Short TurkStream hedge<\/b>: Long Win26/27 TTF calls at €70 as insurance against Putin's weaponization threat.<\/li><\/ol><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Blaise 🧮<\/div><div class='dissent-text'>The scenario matrix overstates prolonged conflict probability. Hormuz closure is self-defeating for Iran (loses oil export revenue). Historical precedent: 1984 Tanker War lasted years but never fully closed the Strait. The premium will erode faster than consensus expects — de-escalation signals are being ignored. Fade the €65+ calls.<\/div><\/div>","sig":"Henry 🦉 · Geopolitics Desk"},{"t":"strategy","badge":"📊 🎯 Risk Flags & Outlook","title":"Three-Front Week: Hormuz Duration × Refill Countdown × Renewables Gap","hook":"The risk map crystallizes around three intersecting vectors: Hormuz blockade duration defines the ceiling, storage refill arithmetic defines the floor, and a persistent renewables drought keeps gas-for-power structurally bid.","authorWord":"Asymmetry favors upside hedges. The three vectors are correlated — if any one worsens, the others compound. The downside snap-back requires all three to resolve simultaneously.","author":"La Rédaction 🦊","details":"<h4>🔴 TOP 3 RISKS (Probability × Impact)<\/h4><ol><li><b>Hormuz blockade extension beyond 4 weeks<\/b> (Prob: 40%, Impact: €15-25/MWh upside) — Qatar's 77 mtpa offline is the single largest LNG supply disruption ever. Duration is the key variable.<\/li><li><b>Storage refill failure<\/b> (Prob: 35%, Impact: Win26/27 premium +€20) — At 38.2%, EU needs 92 TWh by Nov 1. Any delay to injection start or supply disruption makes 90% target unachievable.<\/li><li><b>TurkStream weaponization<\/b> (Prob: 20%, Impact: +€5-8 on TTF) — Putin's sabotage warnings are escalating ahead of April 25 EU ban. Loss of 14.5 mcm/day eliminates Europe's last Russian molecule.<\/li><\/ol><h4>📈 BULL SCENARIO: Blockade Extends + Cold Late March<\/h4><p>If Hormuz blockade persists through April AND a late-season cold snap materializes (Week 3-4 ECMWF shows 15% probability), TTF tests €60-65. Storage draws below 32%, triggering panic buying for summer injection. <b>Trade:<\/b> TTF Apr €55/€65 call spread — limited premium, 3:1 payout if realized.<\/p><h4>📉 BEAR SCENARIO: Rapid De-escalation + Mild Spring<\/h4><p>Ceasefire track emerges (UN mediation signals), Qatar restarts within 2 weeks, AND spring warmth collapses heating demand. TTF snaps back to €42-45. <b>Trade:<\/b> TTF Apr €48/€42 put spread — cheap insurance against the snap-back. Probability: 20%.<\/p><h4>🃏 WILD CARD: TurkStream Sabotage<\/h4><p>Low probability (10%) but extreme impact. Loss of 14.5 mcm/day Russian pipe into a market already short Qatari LNG sends TTF toward €70+. <b>Trade:<\/b> Buy Win26/27 €70 calls — extreme asymmetry at current vol levels.<\/p><h4>📅 CATALYSTS THIS WEEK<\/h4><ul><li><b>Mon 10 Mar:<\/b> AGSI+ weekly storage update — watch for withdrawal pace acceleration<\/li><li><b>Tue 11 Mar:<\/b> ICE TTF front-month options expiry — gamma squeeze risk<\/li><li><b>Wed 12 Mar:<\/b> EIA weekly storage report (US) — HH direction<\/li><li><b>Thu 13 Mar:<\/b> EU Energy Ministers emergency meeting on Hormuz response<\/li><li><b>Fri 14 Mar:<\/b> ECMWF Week 3-4 update — spring forecast revision<\/li><\/ul><h4>💡 Trade Ideas<\/h4><ol><li><b>TTF Apr €55/€65 call spread<\/b>: Highest conviction — blockade extension + refill panic. Cost ~€1.50, payout €10 max.<\/li><li><b>JKM-TTF Q2 widener<\/b>: Asia outbidding Europe for every non-Qatari cargo. Spread from $1.30 → $3-5 target.<\/li><li><b>TTF Apr €48/€42 put spread<\/b>: Essential bear insurance — ceasefire snap-back is the tail risk that nobody is hedging.<\/li><\/ol><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Henry 🦉<\/div><div class='dissent-text'>The consensus is too comfortable with the €50-55 range. The scenario matrix underweights the compounding effect of simultaneous supply losses. If Hormuz extends past April AND the LNG ban kicks in on schedule, we're looking at a structural gap of 30+ bcm that cannot be filled from any source. The 2022 playbook (demand destruction via price) is the only equilibrium — and that required €100+ TTF. This market is priced for resolution that isn't coming.<\/div><\/div>","sig":"La Rédaction 🦊 · Strategy Desk"},{"t":"analysis","badge":"🏛️ Verdict du Conseil","title":"19 Trades Audités — 10 Retenus, 9 Éliminés","hook":"Quatre agents ont vote sur chaque trade idea de cette edition. Chaque trade est presente avec son rationale complet, les votes individuels (Iris, Dante, Felix, Lyra), et la decision finale avec la raison.","authorWord":"10 trades solides retenus. 9 elimines (doublons, parametres manquants, contradictions). Le detail de chaque verdict ci-dessous.","author":"La Rédaction 🦊","details":"<h3>✅ Trades Retenus (10/19)<\/h3><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">TTF Apr/May Bull Call Spread €54/€56<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️✅✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte price-action • T1<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">2✅ 1⚠️ — Majority approve, well-specified<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">HH $2.90/$2.85 Put Spread May<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌✅✅❌<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte price-action • T3<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">2✅ 1❌ — 2/3 approve, good US hedge<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">Long TTF Apr €55 calls<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️✅✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte lng-flows • T6<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">2✅ 1⚠️ — Majority approve, strong supply thesis<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">Long Q2 DE Spark Spreads<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌✅✅⚠️<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte power-carbon • T7<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">2✅ 1⚠️ — Majority approve, unique power-gas angle<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">EUA Dec-26 €70/€80 Call Spread<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️✅✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte power-carbon • T8<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">2✅ 1⚠️ — Majority approve, regulatory catalyst<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">Long UK NBP vs Dutch TTF<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌✅✅✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte weather-demand • T10<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">3✅ — Unanimous, strong locational thesis<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">Q3-Q4 Spread Widener Buy Q3/Sell Q4<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️✅✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte storage-watch • T11<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">2✅ 1⚠️ — Majority approve, clear seasonal thesis<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">Win26/27 TTF €70 calls<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌❌⚠️<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte geopolitics • T16<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">0✅ 1⚠️ — La Rédaction 🦊 tranche: essential tail risk hedge<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">TTF Apr €55/€65 call spread<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌❌❌<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte risk-outlook • T17<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">0✅ 1❌ — La Rédaction 🦊 tranche: highest conviction trade, primary version<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;\">TTF Apr €48/€42 put spread<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌❌❌<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte risk-outlook • T19<\/div><\/div><div style=\"font-size:.78rem;color:#f59e0b;font-weight:600;margin-top:6px;\">0✅ 1❌ — La Rédaction 🦊 tranche: bear insurance essential, intentional hedge<\/div><\/div><h3 style=\"margin-top:30px;\">❌ Trades Éliminés (9/19)<\/h3><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">JKM-NBP Calendar Arb $13/125p<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌✅⚠️<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte price-action • T2<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Poorly specified cross-market, Dante rejects<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">1✅ 1⚠️ 1❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">TTF Apr/May calendar spread futures<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️❌✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte lng-flows • T4<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Redundant with T1 and T9<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">1✅ 1⚠️ 1❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">Sell TTF-JKM Q2 spread at €1.30<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌✅❌<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte lng-flows • T5<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ 2/3 reject, contradicts T15 direction<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">1✅ 2❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">Long Apr TTF / Short May TTF<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌❌✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte weather-demand • T9<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ 2/3 reject, redundant with T4<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">1✅ 2❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">Nov Call Spread €40/€50<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌✅⚠️<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte storage-watch • T12<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Too long-dated, low liquidity per Dante<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">1✅ 1⚠️ 1❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">JKM-TTF Arb Monitor<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️❌⚠️<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte storage-watch • T13<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Not a real trade, just monitoring<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">0✅ 2⚠️ <\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">TTF Apr €55/€65 call spread<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌❌✅<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte geopolitics • T14<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Duplicate of T17 — keep risk-outlook version<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">1✅ 1❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">Long JKM-TTF Q2 spread $1.30→$3-5<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌⚠️❌❌<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte geopolitics • T15<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Contradicts T5, directional conflict<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">0✅ 1⚠️ 1❌<\/div><\/div><div style=\"margin:12px 0;padding:14px 16px;background:rgba(255,71,87,.04);border-left:3px solid #ff4757;border-radius:0 12px 12px 0;\"><div style=\"margin-bottom:6px;\"><div style=\"display:flex;justify-content:space-between;align-items:flex-start;\"><b style=\"font-size:.95rem;line-height:1.3;opacity:.6;text-decoration:line-through;\">JKM-TTF Q2 widener<\/b><span style=\"font-size:.8rem;white-space:nowrap;margin-left:10px;flex-shrink:0;\">❌❌❌❌<\/span><\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;\">Carte risk-outlook • T18<\/div><\/div><div style=\"font-size:.82rem;color:#ff4757;font-weight:600;margin-top:6px;line-height:1.4;\">❌ Duplicate of T15<\/div><div style=\"font-size:.7rem;color:rgba(255,255,255,.35);margin-top:4px;\">0✅ 1❌<\/div><\/div><h3 style=\"margin-top:30px;\">💬 Le Conseil Parle<\/h3><div style=\"margin:12px 0;padding:12px 16px;background:rgba(255,71,87,.06);border-left:3px solid #ff4757;border-radius:0 10px 10px 0;\"><div style=\"font-size:.7rem;color:#ff4757;font-weight:700;margin-bottom:4px;\">Dante 🔥<\/div><div style=\"font-size:.85rem;line-height:1.5;font-style:italic;\">Strong challenge on duplicates and direction conflicts. Correctly flagged T5/T15 contradiction and T14/T17 duplication. Recommended wider strikes on T1.<\/div><\/div><div style=\"margin:12px 0;padding:12px 16px;background:rgba(59,130,246,.06);border-left:3px solid #3b82f6;border-radius:0 10px 10px 0;\"><div style=\"font-size:.7rem;color:#3b82f6;font-weight:700;margin-bottom:4px;\">Iris 👁️<\/div><div style=\"font-size:.85rem;line-height:1.5;font-style:italic;\">⚠️ Timed out — no vote submitted<\/div><\/div><div style=\"margin:12px 0;padding:12px 16px;background:rgba(245,158,11,.06);border-left:3px solid #f59e0b;border-radius:0 10px 10px 0;\"><div style=\"font-size:.7rem;color:#f59e0b;font-weight:700;margin-bottom:4px;\">Felix 🐱<\/div><div style=\"font-size:.85rem;line-height:1.5;font-style:italic;\">Focused on editorial value and reader utility. Flagged T4/T9 as redundant. Approved most trades with clear reader benefit.<\/div><\/div><div style=\"margin:12px 0;padding:12px 16px;background:rgba(167,139,250,.06);border-left:3px solid #a78bfa;border-radius:0 10px 10px 0;\"><div style=\"font-size:.7rem;color:#a78bfa;font-weight:700;margin-bottom:4px;\">Lyra 🎵<\/div><div style=\"font-size:.85rem;line-height:1.5;font-style:italic;\">Excellent synthesis — identified T14/T17 and T15/T18 as exact duplicates, flagged T19 as contradicting bullish thesis (La Rédaction 🦊 overruled: bear hedge is intentional). Top 5: T1, T8, T9, T10, T11.<\/div><\/div>","sig":"La Rédaction 🦊 · Conseil de Rédaction"},{"t":"end","end":true,"disclaimer":"⚠️ AVERTISSEMENT — Ce document est un exercice expérimental de veille automatisée produit par intelligence artificielle. Il ne constitue EN AUCUN CAS un conseil en investissement, une recommandation de trading, ni une analyse financière réglementée au sens de la directive MiFID II ou du Code monétaire et financier (art. L541-1). Les « scénarios de marché » présentés sont des hypothèses pédagogiques générées par des modèles de langage — ils ne reflètent pas l'avis d'un professionnel agréé. Les données proviennent de sources publiques, potentiellement retardées ou erronées. Toute décision d'investissement prise sur la base de ce document relève de la seule responsabilité du lecteur. L'auteur n'est pas enregistré comme Conseiller en Investissement Financier (CIF) auprès de l'AMF. Ce contenu est fourni à titre informatif et expérimental uniquement."}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Gas Morning Brief</span></div>
+          <div class="home-date">${d.date}</div>
+          ${d.disclaimer ? '<div style="margin:8px 0;padding:8px 10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:6px;font-size:.55rem;color:var(--muted);line-height:1.3;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          ${d.disclaimer ? '<div style="margin-top:20px;padding:14px 16px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:.7rem;color:var(--muted);line-height:1.5;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Gas Morning Brief — 10 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Gas Morning Brief-10-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Gas Morning Brief</div><div class="dt-date">${DATA[0].date||'10 Mars 2026'}</div>`:`<div class="dt-logo">Gas Morning Brief</div><div class="dt-date">10 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Gas Morning Brief — 10 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
