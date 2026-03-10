@@ -1,11 +1,20 @@
 [
   {
+    "date": "10 Mars 2026",
+    "title": "Anthropic en mode blitzkrieg : marketplace, 19 Md$ et procès contre Washington",
+    "desc": "",
+    "url": "2026-03-10.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA adulte a mal aux genoux. Anthropic double ses revenus mais poursuit Washington en justice, un Nobel annonce la bulle, et les régulateurs du monde entier se contredisent. Entre victoires commerciales et crises de croissance, l'industrie découvre ce que signifie devenir essentielle — et les responsabilités qui viennent avec."
+  },
+  {
     "date": "9 Mars 2026",
     "title": "Washington serre la vis sur l'IA : licence irrévocable, neutralité imposée, et la Silicon Valley retient son souffle",
     "desc": "",
     "url": "2026-03-09.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA s'émancipe de ses cadres. Washington réagit avec la GSA, les chatbots jouent au thérapeute sans éthique, les agents crashent en production sans rollback. Même l'open source chinois tremble quand ses cerveaux partent. Sans garde-fous humains, la machine tourne — mais pas dans le bon sens."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA ne demande plus la permission. L'ONU crée son GIEC pour la cadrer, Wall Street bascule des puces vers le code, les deepfakes géopolitiques prolifèrent en temps de guerre — et dans les entreprises, 1 200 apps IA fantômes échappent à tout contrôle. En filigrane, une question : quand l'intelligence artificielle s'infiltre partout, qui tient encore les rênes ?"
-  },
-  {
-    "date": "3 Mars 2026",
-    "title": "Les IA sur-privilégiées causent 4,5× plus d'incidents de sécurité",
-    "desc": "",
-    "url": "2026-03-03.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA a promis l'autonomie, elle livre la fragilité. 76 % des agents échouent en production, les systèmes sur-privilégiés multiplient les incidents par 4,5, et même le prompt engineering se demande s'il est encore vivant. Mais dans ce reality check, les réponses émergent : interprétabilité mécaniste, modèles frugaux on-device, et techniques anti-hallucinations. L'heure n'est plus aux cathédrales — c'est aux fondations qu'on travaille."
   }
 ]
