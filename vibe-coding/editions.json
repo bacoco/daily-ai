@@ -1,11 +1,20 @@
 [
   {
+    "date": "10 Mars 2026",
+    "title": "Clix — le live ISO NixOS pour vibe coder sans casser ta machine",
+    "desc": "",
+    "url": "2026-03-10.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, on explore un OS qui n'existe que dans l'imagination d'une IA, un photographe qui ship une app macOS native sans savoir coder, et la grande question : le logiciel jetable est-il l'avenir ? On compare aussi les agents open-source face à Claude Code, et on découvre pourquoi ton AGENTS.md fait peut-être plus de mal que de bien. Bonne lecture ! 🎨"
+  },
+  {
     "date": "8 Mars 2026",
     "title": "Google Antigravity — l'IDE agent-first qui orchestre tes sous-agents",
     "desc": "",
     "url": "2026-03-08.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "GPT-5.4 débarque avec 1M tokens, Google lance Antigravity pour orchestrer tes agents, et le code IA continue de planter à 3h du mat'. Cette semaine, on explore pourquoi le contexte bat le prompt, on vibe-code la même app avec 3 chatbots, et on se demande si le vibe coding est enfin devenu adulte. Bonne lecture ! 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Cursor envoie des agents bosser dans le cloud, un vétéran tech vibe-code 150k lignes de SaaS, et un junior se fait virer pour avoir fait exactement ce qu'on lui demandait. Pendant ce temps, Bolt, Lovable et Replit se battent pour ton prochain MVP — et le code orphelin pose la question qui fâche : qui est responsable quand personne n'a lu le code ? Bonne lecture ! 🎨"
-  },
-  {
-    "date": "24 Février 2026",
-    "title": "FlowLens — le debug navigateur en MCP pour vos agents coding",
-    "desc": "",
-    "url": "2026-02-24.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "FlowLens transforme le debug en one-click MCP, un non-dev ship un jeu complet en 2,5 semaines, et Moonwell perd 1.78M$ à cause d'un oracle vibe-codé. Pendant ce temps, Cursor, Claude Code et Copilot se battent pour ta productivité — et le débat Pichai vs Vembu pose LA question : peut-on vibrer ET construire solide ? Bonne lecture ! 🎨"
   }
 ]
