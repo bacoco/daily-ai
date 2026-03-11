@@ -43,7 +43,7 @@
     html.light .home-article:hover { background: rgba(0,0,0,.03); }
     html.light .home-article .num { background: rgba(0,0,0,.06); }
     html.light body::before { background: none; }
-    html.light .details div[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    html.light .details div[style*="background"], html.light .details p[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
     /* Desktop light overrides */
     html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
     html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
@@ -201,7 +201,7 @@
     .dt-r-body table { display: block; font-size: .85rem; }
     .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
     /* Prevent light-background inline styles from being unreadable on dark theme */
-    .details div[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    .details div[style*="background"], .details p[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
     body::before {
       content: ''; position: fixed; inset: 0; pointer-events: none;
       background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
