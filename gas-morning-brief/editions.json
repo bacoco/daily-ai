@@ -1,11 +1,20 @@
 [
   {
+    "date": "11 Mars 2026",
+    "title": "Ceasefire Hopes Trigger 15% TTF Crash — Biggest Down Day Since Hormuz Opened",
+    "desc": "",
+    "url": "2026-03-11.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Trump's 'very complete' crashed TTF 15% in a single session — the biggest down day since Hormuz opened — but mines are confirmed in the Strait and Iran's IRGC vows total blockade. The council validated 10 trades from 17, culling 7 redundant calendar spreads and vague cross-market plays; the JKM-TTF widener (unanimous) and Apr €50 straddle remain highest conviction, while the Apr/Oct calendar captures the ceasefire-vs-refill asymmetry."
+  },
+  {
     "date": "10 Mars 2026",
     "title": "TTF Holds €52 as Asian Demand Lifts JKM; HH Steady",
     "desc": "",
     "url": "2026-03-10.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz Week 2 with Qatar still dark and the April LNG ban six weeks away — the triple supply squeeze tightens. The council validated 10 trade ideas from 19, culling 9 duplicates and contradictions; the TTF Apr €55/€65 call spread and NBP-TTF locational play remain highest conviction, while the €48/€42 put is essential snap-back insurance."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Day 3 of Hormuz with no diplomatic off-ramp: TTF pulled back to €53 from Monday's €65 panic spike, but the 30% storage floor just broke. The council validated 16 trade ideas out of 21 — the JKM-TTF parity spread and cheap Apr €65 calls stand out as the highest-conviction asymmetric plays. The refill math at €53+ TTF is brutal; this summer will test every assumption."
-  },
-  {
-    "date": "3 Mars 2026",
-    "title": "TTF Prints €14 Intraday Range — Biggest Single-Session Swing Since 2022 Energy Crisis",
-    "desc": "",
-    "url": "2026-03-03.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Qatar's Ras Laffan shutdown transforms Hormuz from tail risk to live crisis — TTF's €14 intraday range signals a market groping for equilibrium between insurance-driven supply panic and coal-gas switching ceilings. With storage at 30% and a vortex split extending heating demand into March, the council validated 16 of 21 trade ideas, culling 5 duplicates and contradictions. Duration of the Qatar shutdown is the single variable separating a spike-and-fade from a 2022 redux."
   }
 ]
