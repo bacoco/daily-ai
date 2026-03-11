@@ -1,11 +1,20 @@
 [
   {
+    "date": "11 Mars 2026",
+    "title": "LeCun lève 1 milliard$ : la France frappe fort dans l'IA",
+    "desc": "",
+    "url": "2026-03-11.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA sort du texte. Yann LeCun lève 1 milliard de dollars pour construire une IA qui comprend le monde physique — pas juste les mots. Nvidia prépare NemoClaw pour déployer des agents dans l'entreprise réelle. Et quand l'IA touche au monde réel sans le comprendre, Amazon perd 6 millions de commandes en 6 heures. La prochaine frontière n'est plus le langage, c'est la réalité."
+  },
+  {
     "date": "10 Mars 2026",
     "title": "Anthropic en mode blitzkrieg : marketplace, 19 Md$ et procès contre Washington",
     "desc": "",
     "url": "2026-03-10.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA adulte a mal aux genoux. Anthropic double ses revenus mais poursuit Washington en justice, un Nobel annonce la bulle, et les régulateurs du monde entier se contredisent. Entre victoires commerciales et crises de croissance, l'industrie découvre ce que signifie devenir essentielle — et les responsabilités qui viennent avec."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement."
-  },
-  {
-    "date": "4 Mars 2026",
-    "title": "L'ONU lance son « GIEC de l'IA » — Washington claque la porte",
-    "desc": "",
-    "url": "2026-03-04.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA ne demande plus la permission. L'ONU crée son GIEC pour la cadrer, Wall Street bascule des puces vers le code, les deepfakes géopolitiques prolifèrent en temps de guerre — et dans les entreprises, 1 200 apps IA fantômes échappent à tout contrôle. En filigrane, une question : quand l'intelligence artificielle s'infiltre partout, qui tient encore les rênes ?"
   }
 ]

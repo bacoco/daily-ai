@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 10 Mar 2026 04:44:34 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 04:41:16 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[LeCun lève 1 milliard$ : la France frappe fort dans l'IA]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-11.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-11.html</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA sort du texte. Yann LeCun lève 1 milliard de dollars pour construire une IA qui comprend le monde physique — pas juste les mots. Nvidia prépare NemoClaw pour déployer des agents dans l'entreprise réelle. Et quand l'IA touche au monde réel sans le comprendre, Amazon perd 6 millions de commandes en 6 heures. La prochaine frontière n'est plus le langage, c'est la réalité.]]></description>
+    </item>
     <item>
       <title><![CDATA[Anthropic en mode blitzkrieg : marketplace, 19 Md$ et procès contre Washington]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-10.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-05.html</guid>
       <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[L'ONU lance son « GIEC de l'IA » — Washington claque la porte]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-04.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-04.html</guid>
-      <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA ne demande plus la permission. L'ONU crée son GIEC pour la cadrer, Wall Street bascule des puces vers le code, les deepfakes géopolitiques prolifèrent en temps de guerre — et dans les entreprises, 1 200 apps IA fantômes échappent à tout contrôle. En filigrane, une question : quand l'intelligence artificielle s'infiltre partout, qui tient encore les rênes ?]]></description>
     </item>
   </channel>
 </rss>
