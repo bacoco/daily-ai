@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Mars 2026",
+    "title": "Datadog MCP Plugin sur Cursor Marketplace (11 mars 2026)",
+    "desc": "",
+    "url": "2026-03-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, Amazon nous offre un crash test grandeur nature du vibe coding en entreprise — et les résultats piquent. Pendant ce temps, Cursor ouvre son marketplace aux plugins MCP, une étudiante vibe-code sa stack productivité en un week-end, et on découvre que 3 interdictions valent mieux qu'un long prompt. Bonne lecture ! 🎨"
+  },
+  {
     "date": "10 Mars 2026",
     "title": "Clix — le live ISO NixOS pour vibe coder sans casser ta machine",
     "desc": "",
     "url": "2026-03-10.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, on explore un OS qui n'existe que dans l'imagination d'une IA, un photographe qui ship une app macOS native sans savoir coder, et la grande question : le logiciel jetable est-il l'avenir ? On compare aussi les agents open-source face à Claude Code, et on découvre pourquoi ton AGENTS.md fait peut-être plus de mal que de bien. Bonne lecture ! 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Flowglad veut tuer le mur du billing, un dev vibe code de la 3D spatiale sur Vision Pro, et 69 failles rappellent que ça marche ≠ c'est sécurisé. Pendant ce temps, Base44 se bat pour le trône du free tier et le mot \"vibe coding\" lui-même devient un champ de bataille. Bonne lecture ! 🎨"
-  },
-  {
-    "date": "26 Février 2026",
-    "title": "Cursor Cloud Agents — tes agents codent dans le cloud pendant que tu dors",
-    "desc": "",
-    "url": "2026-02-26.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Cursor envoie des agents bosser dans le cloud, un vétéran tech vibe-code 150k lignes de SaaS, et un junior se fait virer pour avoir fait exactement ce qu'on lui demandait. Pendant ce temps, Bolt, Lovable et Replit se battent pour ton prochain MVP — et le code orphelin pose la question qui fâche : qui est responsable quand personne n'a lu le code ? Bonne lecture ! 🎨"
   }
 ]

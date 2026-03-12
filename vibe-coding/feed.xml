@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 10 Mar 2026 06:11:07 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 06:19:04 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Datadog MCP Plugin sur Cursor Marketplace (11 mars 2026)]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-12.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-12.html</guid>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, Amazon nous offre un crash test grandeur nature du vibe coding en entreprise — et les résultats piquent. Pendant ce temps, Cursor ouvre son marketplace aux plugins MCP, une étudiante vibe-code sa stack productivité en un week-end, et on découvre que 3 interdictions valent mieux qu'un long prompt. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Clix — le live ISO NixOS pour vibe coder sans casser ta machine]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-10.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</guid>
       <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Flowglad veut tuer le mur du billing, un dev vibe code de la 3D spatiale sur Vision Pro, et 69 failles rappellent que ça marche ≠ c'est sécurisé. Pendant ce temps, Base44 se bat pour le trône du free tier et le mot "vibe coding" lui-même devient un champ de bataille. Bonne lecture ! 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Cursor Cloud Agents — tes agents codent dans le cloud pendant que tu dors]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-26.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-26.html</guid>
-      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Cursor envoie des agents bosser dans le cloud, un vétéran tech vibe-code 150k lignes de SaaS, et un junior se fait virer pour avoir fait exactement ce qu'on lui demandait. Pendant ce temps, Bolt, Lovable et Replit se battent pour ton prochain MVP — et le code orphelin pose la question qui fâche : qui est responsable quand personne n'a lu le code ? Bonne lecture ! 🎨]]></description>
     </item>
   </channel>
 </rss>
