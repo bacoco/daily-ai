@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Wed, 11 Mar 2026 04:41:16 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 04:48:05 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Guerre par IA, milliards fantômes et frictions Pentagon-Anthropic]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-12.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-12.html</guid>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA entre en guerre. Contre l'Iran, avec 37 000 cibles identifiées par la machine. Contre la vérité, quand Grok confirme un bombardement qui n'a jamais eu lieu. Contre votre vie privée, quand une faille transforme l'assistant de votre navigateur en mouchard. Et contre le réel, quand les milliards promis par les gouvernements s'évaporent en datacentres fantômes. La question de 2026 n'est plus ce que l'IA peut faire — c'est qui la contrôle.]]></description>
+    </item>
     <item>
       <title><![CDATA[LeCun lève 1 milliard$ : la France frappe fort dans l'IA]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-11.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-06.html</guid>
       <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA a quitté le laboratoire pour entrer au tribunal, sur le champ de bataille et dans la salle de rédaction. Un juge américain décide que parler à Claude ne vaut pas un secret professionnel, l'administration Trump bannit Anthropic pour avoir dit non aux armes autonomes, et Google AI Overviews propage de la désinformation en plein conflit armé. Aujourd'hui, une question : quand l'IA s'infiltre dans les institutions, qui reste debout pour dire stop ?]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Qui répond de la machine ?]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-05.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-05.html</guid>
-      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement.]]></description>
     </item>
   </channel>
 </rss>

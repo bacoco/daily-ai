@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Mars 2026",
+    "title": "Guerre par IA, milliards fantômes et frictions Pentagon-Anthropic",
+    "desc": "",
+    "url": "2026-03-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA entre en guerre. Contre l'Iran, avec 37 000 cibles identifiées par la machine. Contre la vérité, quand Grok confirme un bombardement qui n'a jamais eu lieu. Contre votre vie privée, quand une faille transforme l'assistant de votre navigateur en mouchard. Et contre le réel, quand les milliards promis par les gouvernements s'évaporent en datacentres fantômes. La question de 2026 n'est plus ce que l'IA peut faire — c'est qui la contrôle."
+  },
+  {
     "date": "11 Mars 2026",
     "title": "LeCun lève 1 milliard$ : la France frappe fort dans l'IA",
     "desc": "",
     "url": "2026-03-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA sort du texte. Yann LeCun lève 1 milliard de dollars pour construire une IA qui comprend le monde physique — pas juste les mots. Nvidia prépare NemoClaw pour déployer des agents dans l'entreprise réelle. Et quand l'IA touche au monde réel sans le comprendre, Amazon perd 6 millions de commandes en 6 heures. La prochaine frontière n'est plus le langage, c'est la réalité."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA a quitté le laboratoire pour entrer au tribunal, sur le champ de bataille et dans la salle de rédaction. Un juge américain décide que parler à Claude ne vaut pas un secret professionnel, l'administration Trump bannit Anthropic pour avoir dit non aux armes autonomes, et Google AI Overviews propage de la désinformation en plein conflit armé. Aujourd'hui, une question : quand l'IA s'infiltre dans les institutions, qui reste debout pour dire stop ?"
-  },
-  {
-    "date": "5 Mars 2026",
-    "title": "Qui répond de la machine ?",
-    "desc": "",
-    "url": "2026-03-05.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Qui répond de la machine ? Un tribunal de Floride examine si Google est responsable d'un suicide lié à Gemini, OpenAI jure que GPT-5.3 hallucine 27% de moins — les tests nuancent —, et une faille critique dans un framework d'agents rappelle que l'autonomie sans sécurité est une bombe à retardement."
   }
 ]
