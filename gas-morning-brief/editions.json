@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Mars 2026",
+    "title": "Post-Crash Whiplash: TTF Reclaims €50 as IRGC Kills Ceasefire Euphoria",
+    "desc": "",
+    "url": "2026-03-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Post-crash whiplash defines the session: TTF touched €46.70 on ceasefire hopes before IRGC's blockade vow triggered a 5% reversal to €49.85. The council validated 11 trades from 21, culling 10 doublons and contradictions — the TTF Apr €48/€55 call spread (unanimous) and Win-26 outright long remain highest conviction, while the €50 straddle captures the binary Hormuz outcome."
+  },
+  {
     "date": "11 Mars 2026",
     "title": "Ceasefire Hopes Trigger 15% TTF Crash — Biggest Down Day Since Hormuz Opened",
     "desc": "",
     "url": "2026-03-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Trump's 'very complete' crashed TTF 15% in a single session — the biggest down day since Hormuz opened — but mines are confirmed in the Strait and Iran's IRGC vows total blockade. The council validated 10 trades from 17, culling 7 redundant calendar spreads and vague cross-market plays; the JKM-TTF widener (unanimous) and Apr €50 straddle remain highest conviction, while the Apr/Oct calendar captures the ceasefire-vs-refill asymmetry."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Hormuz Day 4 without de-escalation, Putin weaponising TurkStream, and storage at 29.76% — the triple squeeze is live. The council validated 13 trade ideas from 21, culling 8 duplicates and contradictions. The Apr €60/€70 call spread and JKM-TTF widener emerge as highest-conviction asymmetric plays; the refill math at 688 bcm to inject is borderline unachievable without price shock."
-  },
-  {
-    "date": "4 Mars 2026",
-    "title": "Day 2: Profit-Taking Pulls TTF Off €65 High — But €50 Holds",
-    "desc": "",
-    "url": "2026-03-04.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Day 3 of Hormuz with no diplomatic off-ramp: TTF pulled back to €53 from Monday's €65 panic spike, but the 30% storage floor just broke. The council validated 16 trade ideas out of 21 — the JKM-TTF parity spread and cheap Apr €65 calls stand out as the highest-conviction asymmetric plays. The refill math at €53+ TTF is brutal; this summer will test every assumption."
   }
 ]
