@@ -1,11 +1,20 @@
 [
   {
+    "date": "13 Mars 2026",
+    "title": "Mojtaba Effect: TTF Holds €50 as New Iran Leader Kills Reopening Hopes — HH Gains on Late-Season Cold",
+    "desc": "",
+    "url": "2026-03-13.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Mojtaba Khamenei's first act as Supreme Leader — vowing Hormuz stays shut indefinitely — removes the last near-term ceasefire catalyst. TTF holds €50 as the market prices duration, not resolution. The council validated 16 of 21 trade ideas, culling 5 duplicates and contradictions; the JKM-TTF widener and TTF Win-26 long remain highest conviction, while the €50 straddle captures the binary Hormuz outcome."
+  },
+  {
     "date": "11 Mars 2026",
     "title": "TTF au-dessus de €49 — La guerre iranienne maintient la prime de risque",
     "desc": "",
     "url": "2026-03-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz Day 12. TTF holds above 49 EUR, EU storage at 29 pct. The market is pricing duration, not resolution. Trade the refill squeeze."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Hormuz Day 5 with no ceasefire in sight, Goldman's upward revision to €55, and Putin's pre-emptive gas withdrawal threat — the triple squeeze intensifies. The council validated 13 trade ideas from 21, culling 8 duplicates; the Apr €58/€72 call spread and JKM-TTF widener remain highest-conviction plays, while the 60 bcm injection mountain looms as Europe's defining challenge for 2026."
-  },
-  {
-    "date": "5 Mars 2026",
-    "title": "TTF Retreats to €53 — Panic Premium Deflates 19% Off Spike",
-    "desc": "",
-    "url": "2026-03-05.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Hormuz Day 4 without de-escalation, Putin weaponising TurkStream, and storage at 29.76% — the triple squeeze is live. The council validated 13 trade ideas from 21, culling 8 duplicates and contradictions. The Apr €60/€70 call spread and JKM-TTF widener emerge as highest-conviction asymmetric plays; the refill math at 688 bcm to inject is borderline unachievable without price shock."
   }
 ]
