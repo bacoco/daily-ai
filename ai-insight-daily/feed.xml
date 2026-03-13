@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 12 Mar 2026 04:48:05 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 04:46:26 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[L'UE criminalise les deepfakes intimes, Washington légifère, Meta repousse Avocado]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-13.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-13.html</guid>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA se cogne au mur du réel. Meta investit 65 milliards et doit repousser son modèle phare. L'Europe amende l'AI Act en urgence pour criminaliser les deepfakes intimes. Oxford prouve que les chatbots ne valent pas un médecin. La question de mars 2026 n'est plus « que peut faire l'IA » — c'est « que ne peut-elle pas encore faire ».]]></description>
+    </item>
     <item>
       <title><![CDATA[Guerre par IA, milliards fantômes et frictions Pentagon-Anthropic]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-12.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-07.html</guid>
       <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA ne s'effondre pas — elle se trompe en silence. Un chatbot médical rate une urgence sur deux sans lever de drapeau rouge, Microsoft vend 99 dollars par mois un assistant que 3,3 % utilisent, et une IA chirurgicale confond les organes sans déclencher d'alarme. Le danger de 2026, ce n'est pas la panne spectaculaire — c'est l'erreur invisible qui s'accumule.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Un juge US crée un précédent : vos conversations avec Claude ne sont pas confidentielles]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-06.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-06.html</guid>
-      <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA a quitté le laboratoire pour entrer au tribunal, sur le champ de bataille et dans la salle de rédaction. Un juge américain décide que parler à Claude ne vaut pas un secret professionnel, l'administration Trump bannit Anthropic pour avoir dit non aux armes autonomes, et Google AI Overviews propage de la désinformation en plein conflit armé. Aujourd'hui, une question : quand l'IA s'infiltre dans les institutions, qui reste debout pour dire stop ?]]></description>
     </item>
   </channel>
 </rss>
