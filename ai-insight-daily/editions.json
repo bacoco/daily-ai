@@ -1,11 +1,20 @@
 [
   {
+    "date": "14 Mars 2026",
+    "title": "Contournement massif : ByteDance obtient 36 000 puces Nvidia Blackwell en Malaisie",
+    "desc": "",
+    "url": "2026-03-14.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA se retourne contre ses maîtres. ByteDance contourne l'embargo américain avec 14 milliards en puces Nvidia. Digg meurt en deux mois, submergé par les bots qu'il ne pouvait pas filtrer. Amazon perd 120 000 commandes à cause d'un agent qui lit un wiki périmé. La question du 14 mars n'est plus ce que l'IA peut faire — c'est ce qu'elle fait quand personne ne regarde."
+  },
+  {
     "date": "13 Mars 2026",
     "title": "L'UE criminalise les deepfakes intimes, Washington légifère, Meta repousse Avocado",
     "desc": "",
     "url": "2026-03-13.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA se cogne au mur du réel. Meta investit 65 milliards et doit repousser son modèle phare. L'Europe amende l'AI Act en urgence pour criminaliser les deepfakes intimes. Oxford prouve que les chatbots ne valent pas un médecin. La question de mars 2026 n'est plus « que peut faire l'IA » — c'est « que ne peut-elle pas encore faire »."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "GPT-5.4 promet l'IA couteau suisse — raisonnement, coding, agents, le tout en un. Google ouvre ses bureaux aux agents MCP. Mais pendant que l'industrie accélère, l'enquête EY révèle que la gouvernance reste au point mort. Et dans les tranchées numériques du conflit Iran-Israël, les deepfakes prouvent que l'IA ne distingue plus le vrai du faux — nous non plus."
-  },
-  {
-    "date": "7 Mars 2026",
-    "title": "99$/mois pour un outil que 3,3% utilisent — le pari fou de Microsoft",
-    "desc": "",
-    "url": "2026-03-07.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA ne s'effondre pas — elle se trompe en silence. Un chatbot médical rate une urgence sur deux sans lever de drapeau rouge, Microsoft vend 99 dollars par mois un assistant que 3,3 % utilisent, et une IA chirurgicale confond les organes sans déclencher d'alarme. Le danger de 2026, ce n'est pas la panne spectaculaire — c'est l'erreur invisible qui s'accumule."
   }
 ]
