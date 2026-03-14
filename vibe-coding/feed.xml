@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 12 Mar 2026 06:19:04 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 06:11:19 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Junie CLI (Beta) : l'agent JetBrains qui sort de l'IDE]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-14.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-14.html</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, JetBrains sort sa Junie CLI du labo et défie Claude Code sur son propre terrain — le terminal. Pendant ce temps, une tech lead Amazon avoue que 95% de son code est IA-généré (et elle est promue pour ça), et des chercheurs accusent le vibe coding de parasiter l'open source. On a aussi un fail invisible qui devrait te faire flipper : ton agent ne voit pas la même page que toi. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Datadog MCP Plugin sur Cursor Marketplace (11 mars 2026)]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-12.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</guid>
       <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Flowglad — le billing MCP qui parle à ton agent]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</guid>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Flowglad veut tuer le mur du billing, un dev vibe code de la 3D spatiale sur Vision Pro, et 69 failles rappellent que ça marche ≠ c'est sécurisé. Pendant ce temps, Base44 se bat pour le trône du free tier et le mot "vibe coding" lui-même devient un champ de bataille. Bonne lecture ! 🎨]]></description>
     </item>
   </channel>
 </rss>
