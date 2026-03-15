@@ -1,11 +1,20 @@
 [
   {
+    "date": "15 Mars 2026",
+    "title": "GTC 2026 : l'IA prend le volant",
+    "desc": "",
+    "url": "2026-03-15.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA ne demande plus la permission. À la veille du GTC, Nvidia prépare les puces d'un monde où les agents font tourner l'économie. Pendant ce temps, les deepfakes fabriquent des guerres fictives, Amazon convoque des réunions d'urgence, et 12 modèles open source débarquent en une semaine. La question du 15 mars n'est plus si l'IA va tout changer — c'est si quelqu'un tient encore le volant."
+  },
+  {
     "date": "14 Mars 2026",
     "title": "Contournement massif : ByteDance obtient 36 000 puces Nvidia Blackwell en Malaisie",
     "desc": "",
     "url": "2026-03-14.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA se retourne contre ses maîtres. ByteDance contourne l'embargo américain avec 14 milliards en puces Nvidia. Digg meurt en deux mois, submergé par les bots qu'il ne pouvait pas filtrer. Amazon perd 120 000 commandes à cause d'un agent qui lit un wiki périmé. La question du 14 mars n'est plus ce que l'IA peut faire — c'est ce qu'elle fait quand personne ne regarde."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA s'émancipe de ses cadres. Washington réagit avec la GSA, les chatbots jouent au thérapeute sans éthique, les agents crashent en production sans rollback. Même l'open source chinois tremble quand ses cerveaux partent. Sans garde-fous humains, la machine tourne — mais pas dans le bon sens."
-  },
-  {
-    "date": "8 Mars 2026",
-    "title": "GPT-5.4 unifie raisonnement, coding et agents — Google ouvre Workspace aux IA",
-    "desc": "",
-    "url": "2026-03-08.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "GPT-5.4 promet l'IA couteau suisse — raisonnement, coding, agents, le tout en un. Google ouvre ses bureaux aux agents MCP. Mais pendant que l'industrie accélère, l'enquête EY révèle que la gouvernance reste au point mort. Et dans les tranchées numériques du conflit Iran-Israël, les deepfakes prouvent que l'IA ne distingue plus le vrai du faux — nous non plus."
   }
 ]

@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 14 Mar 2026 04:17:13 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 04:12:34 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[GTC 2026 : l'IA prend le volant]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-15.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-15.html</guid>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA ne demande plus la permission. À la veille du GTC, Nvidia prépare les puces d'un monde où les agents font tourner l'économie. Pendant ce temps, les deepfakes fabriquent des guerres fictives, Amazon convoque des réunions d'urgence, et 12 modèles open source débarquent en une semaine. La question du 15 mars n'est plus si l'IA va tout changer — c'est si quelqu'un tient encore le volant.]]></description>
+    </item>
     <item>
       <title><![CDATA[Contournement massif : ByteDance obtient 36 000 puces Nvidia Blackwell en Malaisie]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-14.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-09.html</guid>
       <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA s'émancipe de ses cadres. Washington réagit avec la GSA, les chatbots jouent au thérapeute sans éthique, les agents crashent en production sans rollback. Même l'open source chinois tremble quand ses cerveaux partent. Sans garde-fous humains, la machine tourne — mais pas dans le bon sens.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[GPT-5.4 unifie raisonnement, coding et agents — Google ouvre Workspace aux IA]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-08.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-08.html</guid>
-      <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[GPT-5.4 promet l'IA couteau suisse — raisonnement, coding, agents, le tout en un. Google ouvre ses bureaux aux agents MCP. Mais pendant que l'industrie accélère, l'enquête EY révèle que la gouvernance reste au point mort. Et dans les tranchées numériques du conflit Iran-Israël, les deepfakes prouvent que l'IA ne distingue plus le vrai du faux — nous non plus.]]></description>
     </item>
   </channel>
 </rss>
