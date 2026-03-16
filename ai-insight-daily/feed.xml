@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sun, 15 Mar 2026 04:12:34 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2026 04:20:29 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Week-end IA Explosif : Musk, Meta et la Guerre des Puces]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-16.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-16.html</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA industrialise à marche forcée. Musk fabrique ses propres puces, Meta rachète un réseau social pour bots, et les ordinateurs neuromorphiques sortent du labo. Mais quand McKinsey se fait hacker par son propre chatbot et qu'un avocat reçoit une plainte par jour pour psychose IA, la question du 16 mars n'est plus si l'IA fonctionne — c'est si elle tient debout.]]></description>
+    </item>
     <item>
       <title><![CDATA[GTC 2026 : l'IA prend le volant]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-15.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-10.html</guid>
       <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA adulte a mal aux genoux. Anthropic double ses revenus mais poursuit Washington en justice, un Nobel annonce la bulle, et les régulateurs du monde entier se contredisent. Entre victoires commerciales et crises de croissance, l'industrie découvre ce que signifie devenir essentielle — et les responsabilités qui viennent avec.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Washington serre la vis sur l'IA : licence irrévocable, neutralité imposée, et la Silicon Valley retient son souffle]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-09.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-09.html</guid>
-      <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA s'émancipe de ses cadres. Washington réagit avec la GSA, les chatbots jouent au thérapeute sans éthique, les agents crashent en production sans rollback. Même l'open source chinois tremble quand ses cerveaux partent. Sans garde-fous humains, la machine tourne — mais pas dans le bon sens.]]></description>
     </item>
   </channel>
 </rss>
