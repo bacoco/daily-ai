@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Mars 2026",
+    "title": "Windsurf JetBrains Plugin 2.12.14 (11 mars 2026)",
+    "desc": "",
+    "url": "2026-03-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA code plus vite que toi — mais comprend-elle ce qu'elle écrit ? Entre Copilot, Cursor et Claude Code, le terminal reprend du galon. Et pendant ce temps, un dev senior se demande s'il est devenu spectateur de son propre repo."
+  },
+  {
     "date": "14 Mars 2026",
     "title": "Junie CLI (Beta) : l'agent JetBrains qui sort de l'IDE",
     "desc": "",
     "url": "2026-03-14.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, JetBrains sort sa Junie CLI du labo et défie Claude Code sur son propre terrain — le terminal. Pendant ce temps, une tech lead Amazon avoue que 95% de son code est IA-généré (et elle est promue pour ça), et des chercheurs accusent le vibe coding de parasiter l'open source. On a aussi un fail invisible qui devrait te faire flipper : ton agent ne voit pas la même page que toi. Bonne lecture ! 🎨"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨"
-  },
-  {
-    "date": "3 Mars 2026",
-    "title": "InstaPods — le déploiement one-command pour vibe coders",
-    "desc": "",
-    "url": "2026-03-03.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨"
   }
 ]

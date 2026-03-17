@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 14 Mar 2026 06:11:19 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 06:22:20 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Windsurf JetBrains Plugin 2.12.14 (11 mars 2026)]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-17.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-17.html</guid>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA code plus vite que toi — mais comprend-elle ce qu'elle écrit ? Entre Copilot, Cursor et Claude Code, le terminal reprend du galon. Et pendant ce temps, un dev senior se demande s'il est devenu spectateur de son propre repo.]]></description>
+    </item>
     <item>
       <title><![CDATA[Junie CLI (Beta) : l'agent JetBrains qui sort de l'IDE]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-14.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</guid>
       <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[InstaPods — le déploiement one-command pour vibe coders]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</guid>
-      <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[InstaPods ferme la boucle du deploy, les Prompt Contracts transforment le gambling en shipping, et Lovable se prend un mur d'auth inversée sur sa propre vitrine. Pendant ce temps, Codex et Opus se battent pour ta préférence — et la dette cognitive nous rappelle qu'on génère du code 5x plus vite qu'on ne le comprend. Bonne lecture ! 🎨]]></description>
     </item>
   </channel>
 </rss>
