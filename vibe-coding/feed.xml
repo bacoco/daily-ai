@@ -5,14 +5,14 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 17 Mar 2026 06:22:20 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 06:25:49 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Windsurf JetBrains Plugin 2.12.14 (11 mars 2026)]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-17.html</link>
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-17.html</guid>
       <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA code plus vite que toi — mais comprend-elle ce qu'elle écrit ? Entre Copilot, Cursor et Claude Code, le terminal reprend du galon. Et pendant ce temps, un dev senior se demande s'il est devenu spectateur de son propre repo.]]></description>
+      <description><![CDATA[Salut ! Cette semaine, on explore le monde du vibe coding sous tous les angles : un plugin Windsurf qui stabilise ton IDE, une technique de prompting par rôle, un projet CLI complet codé en 24h par quelqu'un qui ne comprend même pas son propre code 😅, des extensions IA malveillantes qui volent tes prompts, le duel Stitch vs v0 pour les dashboards, et une réflexion épicée sur le gatekeeping anti-vibe. Bonne lecture et bon ship ! 🚀]]></description>
     </item>
     <item>
       <title><![CDATA[Junie CLI (Beta) : l'agent JetBrains qui sort de l'IDE]]></title>
