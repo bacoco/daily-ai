@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Mars 2026",
+    "title": "TTF Steadies at €50.75 as Hormuz Selective Passage Regime Takes Shape — HH Slips to $3.13 on Shoulder Season",
+    "desc": "",
+    "url": "2026-03-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Iran's two-tier Hormuz — open for friends, closed for the West — is the new structural reality, and the EU summit on March 19 will test whether Brussels blinks on ETS and the LNG ban. With storage at 29% and 70 bcm to inject before November, the refill math doesn't forgive diplomatic hesitation. The council validated 13 of 21 trade ideas, culling 8 redundancies and contradictions; the TTF Win-26 long and the €50 straddle remain highest conviction."
+  },
+  {
     "date": "16 Mars 2026",
     "title": "Mild Temps Cool HH to $3.13 While TTF Holds €50 — JKM Retreats on Easing Hormuz Fears",
     "desc": "",
     "url": "2026-03-16.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Iran's 'safe passage' overture is the first diplomatic crack since Hormuz Day 1 — but with EU storage at 29.1% and the April LNG ban 40 days away, the supply math doesn't care about diplomacy. The council validated 13 of 21 trade ideas, culling 8 duplicates and vague structures; the TTF Win-26 long and the straddle remain highest conviction, while the ceasefire put spread is essential insurance against the snap-back no one expects."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Hormuz Week 2 with no ceasefire track, Qatar LNG still offline, and Putin's TurkStream threat adding a second supply front — the triple squeeze deepens into a structural refill crisis. The council validated 14 trade ideas from 23, culling 9 duplicates and out-of-scope plays; the JKM-TTF spread widener and Apr €55/€60 call spread remain highest-conviction, while the €48/€42 put hedge is essential insurance against the ceasefire snap-back."
-  },
-  {
-    "date": "8 Mars 2026",
-    "title": "TTF Holds €52 as Week 1 Panic Consolidates — HH Flat at $2.92 Despite Global Chaos",
-    "desc": "",
-    "url": "2026-03-08.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Iran war Week 2 with no ceasefire in sight, Qatar LNG infrastructure physically damaged, and Putin weaponising TurkStream ahead of the April 25 ban — the triple squeeze deepens into structural supply destruction. The council validated 12 trade ideas from 18, culling 6 duplicates and naked outright longs; the Apr €55/€65 call spread and JKM-TTF widener remain highest-conviction asymmetric plays, while the €45 put hedge is essential insurance against the snap-back."
   }
 ]
