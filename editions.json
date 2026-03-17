@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Mars 2026",
+    "title": "L'IA à la guerre, en justice, et à la limite de l'éclatement",
+    "desc": "",
+    "url": "2026-03-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA s'arme. Nvidia transforme les agents en main-d'œuvre industrielle, le Guardian expose les labos d'IA devenus contractors militaires, et Trump accuse l'Iran de weaponiser les deepfakes. Pendant ce temps, 73% des entreprises déploient l'IA sans la moindre gouvernance. La question du 17 mars : qui contrôle les armes qu'on ne voit pas ?"
+  },
+  {
     "date": "16 Mars 2026",
     "title": "Week-end IA Explosif : Musk, Meta et la Guerre des Puces",
     "desc": "",
     "url": "2026-03-16.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA industrialise à marche forcée. Musk fabrique ses propres puces, Meta rachète un réseau social pour bots, et les ordinateurs neuromorphiques sortent du labo. Mais quand McKinsey se fait hacker par son propre chatbot et qu'un avocat reçoit une plainte par jour pour psychose IA, la question du 16 mars n'est plus si l'IA fonctionne — c'est si elle tient debout."
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA sort du texte. Yann LeCun lève 1 milliard de dollars pour construire une IA qui comprend le monde physique — pas juste les mots. Nvidia prépare NemoClaw pour déployer des agents dans l'entreprise réelle. Et quand l'IA touche au monde réel sans le comprendre, Amazon perd 6 millions de commandes en 6 heures. La prochaine frontière n'est plus le langage, c'est la réalité."
-  },
-  {
-    "date": "10 Mars 2026",
-    "title": "Anthropic en mode blitzkrieg : marketplace, 19 Md$ et procès contre Washington",
-    "desc": "",
-    "url": "2026-03-10.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA adulte a mal aux genoux. Anthropic double ses revenus mais poursuit Washington en justice, un Nobel annonce la bulle, et les régulateurs du monde entier se contredisent. Entre victoires commerciales et crises de croissance, l'industrie découvre ce que signifie devenir essentielle — et les responsabilités qui viennent avec."
   }
 ]

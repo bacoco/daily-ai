@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Mon, 16 Mar 2026 04:20:29 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 04:18:23 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[L'IA à la guerre, en justice, et à la limite de l'éclatement]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-17.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-17.html</guid>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA s'arme. Nvidia transforme les agents en main-d'œuvre industrielle, le Guardian expose les labos d'IA devenus contractors militaires, et Trump accuse l'Iran de weaponiser les deepfakes. Pendant ce temps, 73% des entreprises déploient l'IA sans la moindre gouvernance. La question du 17 mars : qui contrôle les armes qu'on ne voit pas ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Week-end IA Explosif : Musk, Meta et la Guerre des Puces]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-16.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-11.html</guid>
       <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA sort du texte. Yann LeCun lève 1 milliard de dollars pour construire une IA qui comprend le monde physique — pas juste les mots. Nvidia prépare NemoClaw pour déployer des agents dans l'entreprise réelle. Et quand l'IA touche au monde réel sans le comprendre, Amazon perd 6 millions de commandes en 6 heures. La prochaine frontière n'est plus le langage, c'est la réalité.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Anthropic en mode blitzkrieg : marketplace, 19 Md$ et procès contre Washington]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-10.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-10.html</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA adulte a mal aux genoux. Anthropic double ses revenus mais poursuit Washington en justice, un Nobel annonce la bulle, et les régulateurs du monde entier se contredisent. Entre victoires commerciales et crises de croissance, l'industrie découvre ce que signifie devenir essentielle — et les responsabilités qui viennent avec.]]></description>
     </item>
   </channel>
 </rss>
