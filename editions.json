@@ -1,11 +1,20 @@
 [
   {
+    "date": "18 Mars 2026",
+    "title": "Microsoft Libère Suleyman pour la Superintelligence",
+    "desc": "",
+    "url": "2026-03-18.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA oscille entre ambition et recul. Microsoft lance la course à la superintelligence en libérant Suleyman, mais Google bat en retraite sur la médecine IA, un avocat alerte sur les psychoses meurtrières induites par les chatbots, et les deepfakes se propagent à la vitesse du conflit. La question du 18 mars : l'IA grandit-elle — ou perd-elle le contrôle ?"
+  },
+  {
     "date": "17 Mars 2026",
     "title": "L'IA à la guerre, en justice, et à la limite de l'éclatement",
     "desc": "",
     "url": "2026-03-17.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA s'arme. Nvidia transforme les agents en main-d'œuvre industrielle, le Guardian expose les labos d'IA devenus contractors militaires, et Trump accuse l'Iran de weaponiser les deepfakes. Pendant ce temps, 73% des entreprises déploient l'IA sans la moindre gouvernance. La question du 17 mars : qui contrôle les armes qu'on ne voit pas ?"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA entre en guerre. Contre l'Iran, avec 37 000 cibles identifiées par la machine. Contre la vérité, quand Grok confirme un bombardement qui n'a jamais eu lieu. Contre votre vie privée, quand une faille transforme l'assistant de votre navigateur en mouchard. Et contre le réel, quand les milliards promis par les gouvernements s'évaporent en datacentres fantômes. La question de 2026 n'est plus ce que l'IA peut faire — c'est qui la contrôle."
-  },
-  {
-    "date": "11 Mars 2026",
-    "title": "LeCun lève 1 milliard$ : la France frappe fort dans l'IA",
-    "desc": "",
-    "url": "2026-03-11.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA sort du texte. Yann LeCun lève 1 milliard de dollars pour construire une IA qui comprend le monde physique — pas juste les mots. Nvidia prépare NemoClaw pour déployer des agents dans l'entreprise réelle. Et quand l'IA touche au monde réel sans le comprendre, Amazon perd 6 millions de commandes en 6 heures. La prochaine frontière n'est plus le langage, c'est la réalité."
   }
 ]
