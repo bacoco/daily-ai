@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 17 Mar 2026 08:42:44 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2026 06:20:57 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[CLI Timeline (VS Code) — l'anti-chaos pour sessions Claude Code & Copilot CLI]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-19.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-19.html</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, HSBC annonce 20 000 suppressions de postes grâce à l'IA pendant qu'un product manager non-dev livre un SaaS de 200K lignes avec Cursor et ChatGPT pour 80$/mois. On découvre aussi que les 3 grands agents coding répètent les mêmes failles de sécurité depuis 10 ans, on compare Claude Code vs Cursor vs Windsurf dans le classement mars 2026, et on teste une technique de prompting qui force l'IA à lire avant d'écrire. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Replit Agent 4 propulse le vibe coding : $400M levés, $9B de valo]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-17.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-07.html</guid>
       <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Le vibe coding a 12 mois — et on se demande déjà s'il est mort ou s'il a juste changé de nom. Cette semaine, Bitrig ouvre le vibe coding aux apps iPhone natives, on apprend à structurer nos prompts en micro-specs, et Doug Snyder nous raconte comment il a vibé une app MarTech entière (spoiler : il a fini par manager son IA comme un stagiaire). Côté drama : Orchids se fait trouer en live à la BBC, Claude Code et Roo Code s'affrontent pour le trône du coding agentique, et Sage pose la question qui fâche — le vibe coding n'était-il qu'un symptôme ? Bonne lecture ! 🎨]]></description>
-    </item>
-    <item>
-      <title><![CDATA[vibe-kanban — un Kanban pour orchestrer tes agents IA]]></title>
-      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</guid>
-      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨]]></description>
     </item>
   </channel>
 </rss>

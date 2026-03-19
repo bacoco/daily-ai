@@ -1,11 +1,20 @@
 [
   {
+    "date": "19 Mars 2026",
+    "title": "CLI Timeline (VS Code) — l'anti-chaos pour sessions Claude Code & Copilot CLI",
+    "desc": "",
+    "url": "2026-03-19.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, HSBC annonce 20 000 suppressions de postes grâce à l'IA pendant qu'un product manager non-dev livre un SaaS de 200K lignes avec Cursor et ChatGPT pour 80$/mois. On découvre aussi que les 3 grands agents coding répètent les mêmes failles de sécurité depuis 10 ans, on compare Claude Code vs Cursor vs Windsurf dans le classement mars 2026, et on teste une technique de prompting qui force l'IA à lire avant d'écrire. Bonne lecture ! 🎨"
+  },
+  {
     "date": "17 Mars 2026",
     "title": "Replit Agent 4 propulse le vibe coding : $400M levés, $9B de valo",
     "desc": "",
     "url": "2026-03-17.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": ""
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "Le vibe coding a 12 mois — et on se demande déjà s'il est mort ou s'il a juste changé de nom. Cette semaine, Bitrig ouvre le vibe coding aux apps iPhone natives, on apprend à structurer nos prompts en micro-specs, et Doug Snyder nous raconte comment il a vibé une app MarTech entière (spoiler : il a fini par manager son IA comme un stagiaire). Côté drama : Orchids se fait trouer en live à la BBC, Claude Code et Roo Code s'affrontent pour le trône du coding agentique, et Sage pose la question qui fâche — le vibe coding n'était-il qu'un symptôme ? Bonne lecture ! 🎨"
-  },
-  {
-    "date": "5 Mars 2026",
-    "title": "vibe-kanban — un Kanban pour orchestrer tes agents IA",
-    "desc": "",
-    "url": "2026-03-05.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "Cette semaine, on orchestre des agents comme un chef de projet (vibe-kanban), on apprend à forcer l'IA à éditer chirurgicalement (Delta Logs), et on découvre Moltbook — le réseau social pour IA qui a fait la une de NPR... avant que Wiz y trouve des failles. Côté drame : Claude tombe 2h et des milliers de devs réalisent qu'ils ont oublié comment coder. On finit sur une question qui pique : si le vibe coding supprime les tâches de junior, qui formera les seniors de demain ? 🎨"
   }
 ]
