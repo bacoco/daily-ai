@@ -1,11 +1,20 @@
 [
   {
+    "date": "19 Mars 2026",
+    "title": "Chute Libre : L'IA Détruit 20 000 Postes à HSBC Tandis que le Pentagone Bannit Claude",
+    "desc": "",
+    "url": "2026-03-19.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA percute le réel. HSBC supprime 20 000 postes au nom de l'automatisation, le Pentagone donne 180 jours pour évincer Anthropic, le UK recule sur le copyright, et Google se fait prendre à qualifier un sénateur de 'hate speech'. La question du 19 mars : l'IA est-elle prête pour le monde — ou le monde n'est-il pas prêt pour elle ?"
+  },
+  {
     "date": "18 Mars 2026",
     "title": "Microsoft Libère Suleyman pour la Superintelligence",
     "desc": "",
     "url": "2026-03-18.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA oscille entre ambition et recul. Microsoft lance la course à la superintelligence en libérant Suleyman, mais Google bat en retraite sur la médecine IA, un avocat alerte sur les psychoses meurtrières induites par les chatbots, et les deepfakes se propagent à la vitesse du conflit. La question du 18 mars : l'IA grandit-elle — ou perd-elle le contrôle ?"
   },
   {
@@ -52,14 +61,5 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA se cogne au mur du réel. Meta investit 65 milliards et doit repousser son modèle phare. L'Europe amende l'AI Act en urgence pour criminaliser les deepfakes intimes. Oxford prouve que les chatbots ne valent pas un médecin. La question de mars 2026 n'est plus « que peut faire l'IA » — c'est « que ne peut-elle pas encore faire »."
-  },
-  {
-    "date": "12 Mars 2026",
-    "title": "Guerre par IA, milliards fantômes et frictions Pentagon-Anthropic",
-    "desc": "",
-    "url": "2026-03-12.html",
-    "type": "daily",
-    "latest": false,
-    "edito": "L'IA entre en guerre. Contre l'Iran, avec 37 000 cibles identifiées par la machine. Contre la vérité, quand Grok confirme un bombardement qui n'a jamais eu lieu. Contre votre vie privée, quand une faille transforme l'assistant de votre navigateur en mouchard. Et contre le réel, quand les milliards promis par les gouvernements s'évaporent en datacentres fantômes. La question de 2026 n'est plus ce que l'IA peut faire — c'est qui la contrôle."
   }
 ]

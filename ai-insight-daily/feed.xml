@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Wed, 18 Mar 2026 04:19:43 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2026 04:16:32 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Chute Libre : L'IA Détruit 20 000 Postes à HSBC Tandis que le Pentagone Bannit Claude]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-19.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-19.html</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA percute le réel. HSBC supprime 20 000 postes au nom de l'automatisation, le Pentagone donne 180 jours pour évincer Anthropic, le UK recule sur le copyright, et Google se fait prendre à qualifier un sénateur de 'hate speech'. La question du 19 mars : l'IA est-elle prête pour le monde — ou le monde n'est-il pas prêt pour elle ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Microsoft Libère Suleyman pour la Superintelligence]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-18.html</link>
@@ -48,13 +55,6 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-13.html</guid>
       <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[L'IA se cogne au mur du réel. Meta investit 65 milliards et doit repousser son modèle phare. L'Europe amende l'AI Act en urgence pour criminaliser les deepfakes intimes. Oxford prouve que les chatbots ne valent pas un médecin. La question de mars 2026 n'est plus « que peut faire l'IA » — c'est « que ne peut-elle pas encore faire ».]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Guerre par IA, milliards fantômes et frictions Pentagon-Anthropic]]></title>
-      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-12.html</link>
-      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-12.html</guid>
-      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[L'IA entre en guerre. Contre l'Iran, avec 37 000 cibles identifiées par la machine. Contre la vérité, quand Grok confirme un bombardement qui n'a jamais eu lieu. Contre votre vie privée, quand une faille transforme l'assistant de votre navigateur en mouchard. Et contre le réel, quand les milliards promis par les gouvernements s'évaporent en datacentres fantômes. La question de 2026 n'est plus ce que l'IA peut faire — c'est qui la contrôle.]]></description>
     </item>
   </channel>
 </rss>
