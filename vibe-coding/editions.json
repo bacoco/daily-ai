@@ -61,5 +61,95 @@
     "type": "daily",
     "latest": false,
     "edito": "Le vibe coding a 12 mois — et on se demande déjà s'il est mort ou s'il a juste changé de nom. Cette semaine, Bitrig ouvre le vibe coding aux apps iPhone natives, on apprend à structurer nos prompts en micro-specs, et Doug Snyder nous raconte comment il a vibé une app MarTech entière (spoiler : il a fini par manager son IA comme un stagiaire). Côté drama : Orchids se fait trouer en live à la BBC, Claude Code et Roo Code s'affrontent pour le trône du coding agentique, et Sage pose la question qui fâche — le vibe coding n'était-il qu'un symptôme ? Bonne lecture ! 🎨"
+  },
+  {
+    "date": "5 Mars 2026",
+    "title": "Vibe Coding — 5 Mars 2026",
+    "desc": "",
+    "url": "2026-03-05.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "vibe-kanban : pilote plusieurs agents en parallèle sans conflits Git 🟢"
+  },
+  {
+    "date": "3 Mars 2026",
+    "title": "Vibe Coding — 3 Mars 2026",
+    "desc": "",
+    "url": "2026-03-03.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "InstaPods + MCP : deploy depuis Claude Code en une commande 🟢 must-have"
+  },
+  {
+    "date": "28 Février 2026",
+    "title": "Vibe Coding — 28 Février 2026",
+    "desc": "",
+    "url": "2026-02-28.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Flowglad : paiements sans webhooks, en un prompt 🟢"
+  },
+  {
+    "date": "26 Février 2026",
+    "title": "Vibe Coding — 26 Février 2026",
+    "desc": "",
+    "url": "2026-02-26.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Cursor Cloud Agents : des VM autonomes pour tes PR 🟢 must-have"
+  },
+  {
+    "date": "24 Février 2026",
+    "title": "Vibe Coding — 24 Février 2026",
+    "desc": "",
+    "url": "2026-02-24.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "FlowLens : vos bugs browser deviennent du contexte MCP pour Claude Code & Cursor 🟢"
+  },
+  {
+    "date": "19 Février 2026",
+    "title": "Vibe Coding — 19 Février 2026",
+    "desc": "",
+    "url": "2026-02-19.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Codegen IA + hosting + domaine + email en un seul outil 🟢 Must-have budget"
+  },
+  {
+    "date": "18 Février 2026",
+    "title": "Vibe Coding — 18 Février 2026",
+    "desc": "",
+    "url": "2026-02-18.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Cloudflare lance VibeSDK : codegen IA + deploy Workers en un clic 🟢 Must-have"
+  },
+  {
+    "date": "17 Février 2026",
+    "title": "Vibe Coding — 17 Février 2026",
+    "desc": "",
+    "url": "2026-02-17.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "GitHub Copilot pour JetBrains + Agent Skills (preview) — 🟢 must-have pour les équipes JetBrains qui veulent un contexte IA réutilisable."
+  },
+  {
+    "date": "16 Février 2026",
+    "title": "Vibe Coding — 16 Février 2026",
+    "desc": "",
+    "url": "2026-02-16.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Un workspace IA multi-agents pour coder à plusieurs — verdict 🟡 sympa"
+  },
+  {
+    "date": "15 Février 2026",
+    "title": "Vibe Coding — 15 Février 2026",
+    "desc": "",
+    "url": "2026-02-15.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Trae — IDE gratuit, vibe coding natif, verdict 🟡 sympa"
   }
 ]
