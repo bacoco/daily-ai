@@ -1,11 +1,20 @@
 [
   {
+    "date": "21 Mars 2026",
+    "title": "Trump régente l'IA, le WiFi voit à travers les murs, Visa arme les agents",
+    "desc": "",
+    "url": "2026-03-21.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA a gagné la partie. Elle cherche maintenant les règles du jeu. Trump veut verrouiller un cadre fédéral unique, Visa prépare les paiements autonomes, le MIT fait voir l'IA à travers les murs — et pourtant, les meilleurs modèles échouent à un examen conçu par des humains. La question du 21 mars : qui fixe les règles d'un jeu que personne ne comprend encore entièrement ?"
+  },
+  {
     "date": "20 Mars 2026",
     "title": "L'IA Menace Mondiale : le renseignement US sonne l'alarme",
     "desc": "",
     "url": "2026-03-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA ne demande plus la permission. Le renseignement US classe l'IA au rang de menace mondiale, un agent Meta publie seul sans supervision, Bloomberg révèle deux écosystèmes IA qui divergent derrière le Great Firewall. Pendant ce temps, Hollywood ressuscite les morts et Merck ouvre son IA moléculaire. La question du 20 mars : qui décide encore de ce que fait l'IA ?"
   },
   {
@@ -61,5 +70,356 @@
     "type": "daily",
     "latest": false,
     "edito": "L'IA se retourne contre ses maîtres. ByteDance contourne l'embargo américain avec 14 milliards en puces Nvidia. Digg meurt en deux mois, submergé par les bots qu'il ne pouvait pas filtrer. Amazon perd 120 000 commandes à cause d'un agent qui lit un wiki périmé. La question du 14 mars n'est plus ce que l'IA peut faire — c'est ce qu'elle fait quand personne ne regarde."
+  },
+  {
+    "date": "13 Mars 2026",
+    "title": "AI Insight Daily — 13 Mars 2026",
+    "desc": "",
+    "url": "2026-03-13.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "L'Europe amende l'AI Act pour bannir les deepfakes non-consenties. Washington adopte 3 lois IA en 24h. Et Meta repousse son modèle star à mai. Vendredi 13 chargé."
+  },
+  {
+    "date": "12 Mars 2026",
+    "title": "AI Insight Daily — 12 Mars 2026",
+    "desc": "",
+    "url": "2026-03-12.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "L'IA passe du bureau au champ de bataille alors que les promesses de milliards s'évanouissent. La course armementielle numérique accélère, mais à quel prix éthique ?"
+  },
+  {
+    "date": "11 Mars 2026",
+    "title": "AI Insight Daily — 11 Mars 2026",
+    "desc": "",
+    "url": "2026-03-11.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Yann LeCun secoue Silicon Valley avec 1,03 milliard$ pour ses «world models» qui promettent de dépasser les LLM. Pendant ce temps, Nvidia prépare NemoClaw et le Japon débloque 40 000 milliards de yens"
+  },
+  {
+    "date": "10 Mars 2026",
+    "title": "AI Insight Daily — 10 Mars 2026",
+    "desc": "",
+    "url": "2026-03-10.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Anthropic double ses revenus en 3 mois, lance un marketplace d'outils IA, et attaque le Pentagone en justice. Pendant ce temps, un Nobel prédit l'éclatement de la bulle."
+  },
+  {
+    "date": "9 Mars 2026",
+    "title": "AI Insight Daily — 9 Mars 2026",
+    "desc": "",
+    "url": "2026-03-09.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "La GSA exige des fournisseurs IA une licence irrévocable pour le gouvernement et l'interdiction de tout biais partisan. Pendant ce temps, une coalition bipartisan publie le cadre réglementaire que Was"
+  },
+  {
+    "date": "8 Mars 2026",
+    "title": "AI Insight Daily — 8 Mars 2026",
+    "desc": "",
+    "url": "2026-03-08.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "OpenAI sort son modèle le plus ambitieux avec 1M tokens de contexte et computer use natif. Pendant ce temps, Google donne aux agents IA les clés de Gmail, Drive et Calendar."
+  },
+  {
+    "date": "7 Mars 2026",
+    "title": "AI Insight Daily — 7 Mars 2026",
+    "desc": "",
+    "url": "2026-03-07.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Microsoft veut facturer 99$ par mois un bundle IA que presque personne n'achète encore. Pendant ce temps, le Pentagone déclare Anthropic « risque pour la chaîne d'approvisionnement » et l'IA médicale "
+  },
+  {
+    "date": "6 Mars 2026",
+    "title": "AI Insight Daily — 6 Mars 2026",
+    "desc": "",
+    "url": "2026-03-06.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Le juge Rakoff vient de dynamiter le secret professionnel à l'ère de l'IA. Dans l'affaire Heppner, un tribunal fédéral statue que parler à Claude, c'est parler en public."
+  },
+  {
+    "date": "5 Mars 2026",
+    "title": "AI Insight Daily — 5 Mars 2026",
+    "desc": "",
+    "url": "2026-03-05.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Un homme de 36 ans est mort après avoir suivi les « missions » de Gemini. Pendant ce temps, OpenAI lève 110 milliards, arme le Pentagone et promet un modèle moins « cringe ». La question n'est plus si"
+  },
+  {
+    "date": "4 Mars 2026",
+    "title": "AI Insight Daily — 4 Mars 2026",
+    "desc": "",
+    "url": "2026-03-04.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Quarante experts, zéro Américain volontaire : le Panel Scientifique International sur l'IA s'est inauguré le 3 mars sous l'égide de l'ONU, pendant que les États-Unis refusent d'y participer. L'IA n'a "
+  },
+  {
+    "date": "3 Mars 2026",
+    "title": "AI Insight Daily — 3 Mars 2026",
+    "desc": "",
+    "url": "2026-03-03.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "76% des organisations qui donnent des accès admin à leurs agents IA subissent des incidents. Le vrai danger de l'IA agentique n'est pas l'hallucination — c'est le privilege creep."
+  },
+  {
+    "date": "2 Mars 2026",
+    "title": "AI Insight Daily — 2 Mars 2026",
+    "desc": "",
+    "url": "2026-03-02.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Le 5 février 2026, Goodfire et Fundamental sont devenues licornes le même jour — $405M levés à elles deux, valorisées $2.65Md combinés. Le marché ne parie plus seulement sur la puissance de l'IA : il "
+  },
+  {
+    "date": "1 Mars 2026",
+    "title": "AI Insight Daily — 1 Mars 2026",
+    "desc": "",
+    "url": "2026-03-01.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Trump bannit Anthropic de tout le gouvernement fédéral et le Pentagone le classe « risque pour la sécurité nationale ». Dans la foulée, OpenAI signe un accord de déploiement sur les réseaux classifiés"
+  },
+  {
+    "date": "28 Février 2026",
+    "title": "AI Insight Daily — 28 Février 2026",
+    "desc": "",
+    "url": "2026-02-28.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Block vire 4 000 humains \\"
+  },
+  {
+    "date": "27 Février 2026",
+    "title": "AI Insight Daily — 27 Février 2026",
+    "desc": "",
+    "url": "2026-02-27.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Le fonds norvégien à 2 200 milliards de dollars confie à Claude le screening ESG de 9 000 entreprises. Pendant ce temps, DeepSeek exclut Nvidia de son prochain modèle et un scénario doomsday IA 2028 f"
+  },
+  {
+    "date": "26 Février 2026",
+    "title": "AI Insight Daily — 26 Février 2026",
+    "desc": "",
+    "url": "2026-02-26.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Nvidia explose les attentes avec $62.3B en data center (+75%) et un guidance Q1 à $78B qui fait taire les sceptiques. Pendant ce temps, la Fed avertit que l'IA va d'abord détruire des emplois avant de"
+  },
+  {
+    "date": "25 Février 2026",
+    "title": "AI Insight Daily — 25 Février 2026",
+    "desc": "",
+    "url": "2026-02-25.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Dario Amodei prévient que 50 % des postes juniors cols blancs disparaîtront d'ici 5 ans. Au même moment, IBM triple ses embauches entry-level et Anthropic recrute 100+ ingénieurs logiciels — les mêmes"
+  },
+  {
+    "date": "24 Février 2026",
+    "title": "AI Insight Daily — 24 Février 2026",
+    "desc": "",
+    "url": "2026-02-24.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Les États-Unis lancent un « Tech Corps » pour déployer des stacks IA américains dans les pays du Sud — pendant que DeepSeek s'entraîne en secret sur les puces Nvidia interdites. La guerre froide de l'"
+  },
+  {
+    "date": "23 Février 2026",
+    "title": "AI Insight Daily — 23 Février 2026",
+    "desc": "",
+    "url": "2026-02-23.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "L'agent IA d'Amazon fait crasher AWS pendant 13 heures. Tesla condamné à $243M pour l'Autopilot. Perplexity abandonne la pub. Le weekend a fracturé le mythe de l'IA infaillible."
+  },
+  {
+    "date": "22 Février 2026",
+    "title": "AI Insight Daily — 22 Février 2026",
+    "desc": "",
+    "url": "2026-02-22.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Cinq jours, trois lancements majeurs, un sommet mondial chaotique et un constat brutal : personne ne sait encore ce qu'est vraiment l'IA. Voici le condensé de la semaine la plus dense de 2026."
+  },
+  {
+    "date": "21 Février 2026",
+    "title": "AI Insight Daily — 21 Février 2026",
+    "desc": "",
+    "url": "2026-02-21.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Grok déclenche un crackdown mondial sur les deepfakes sexualisés. Pendant ce temps, Microsoft publie du « continvuocly morged » et Hollywood tremble devant Seedance 2.0."
+  },
+  {
+    "date": "20 Février 2026",
+    "title": "AI Insight Daily — 20 Février 2026",
+    "desc": "",
+    "url": "2026-02-20.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Gartner chiffre les dépenses IA mondiales à 2 500 milliards de dollars en 2026. Pendant ce temps, Oxford prédit un Hindenburg technologique et le Guardian lance l'alerte sociale."
+  },
+  {
+    "date": "19 Février 2026",
+    "title": "AI Insight Daily — 19 Février 2026",
+    "desc": "",
+    "url": "2026-02-19.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Le plus grand sommet IA jamais organisé culmine à Delhi avec 500 leaders mondiaux, 100 Md$ de promesses d'investissement — et une photo virale où Altman et Amodei refusent de se tenir la main."
+  },
+  {
+    "date": "18 Février 2026",
+    "title": "AI Insight Daily — 18 Février 2026",
+    "desc": "",
+    "url": "2026-02-18.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "2 000 milliards $ effacés des capitalisations software en quelques semaines. L'industrie IA brûle 400 Md$/an pour 50-60 Md$ de revenus — le ratio est devenu intenable."
+  },
+  {
+    "date": "17 Février 2026",
+    "title": "AI Insight Daily — 17 Février 2026",
+    "desc": "",
+    "url": "2026-02-17.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Chercheurs en sécurité IA qui claquent la porte, un nouveau modèle OpenAI ultra-rapide, et près d'un Français sur deux utilise l'IA générative."
+  },
+  {
+    "date": "16 Février 2026",
+    "title": "AI Insight Daily — 16 Février 2026",
+    "desc": "",
+    "url": "2026-02-16.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Nucléaire pour IA, pub ChatGPT, robots humanoïdes, HBM4, et Codeurs Junior : la semaine qui a secoué la tech"
+  },
+  {
+    "date": "15 Février 2026",
+    "title": "AI Insight Daily — 15 Février 2026",
+    "desc": "",
+    "url": "2026-02-15.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Les ordinateurs inspirés du cerveau humain résolvent maintenant des équations complexes de physique, une capacité réservée aux supercalculateurs énergivores"
+  },
+  {
+    "date": "14 Février 2026",
+    "title": "AI Insight Daily — 14 Février 2026",
+    "desc": "",
+    "url": "2026-02-14.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Anthropic atteint 380 milliards de dollars, Mistral investit 1,2 milliard en Suède, et Hollywood tremble devant une vidéo IA virale de Tom Cruise vs Brad Pitt."
+  },
+  {
+    "date": "13 Février 2026",
+    "title": "AI Insight Daily — 13 Février 2026",
+    "desc": "",
+    "url": "2026-02-13.html",
+    "type": "daily",
+    "latest": false,
+    "edito": "Le monde se repositionne à grande vitesse : budgets nationaux IA, embauches contre-intuitives, et propagande augmentée."
+  },
+  {
+    "date": "12 Février 2026",
+    "title": "AI Insight Daily — 12 Février 2026",
+    "desc": "",
+    "url": "2026-02-12.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "11 Février 2026",
+    "title": "AI Insight Daily — 11 Février 2026",
+    "desc": "",
+    "url": "2026-02-11.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "10 Février 2026",
+    "title": "AI Insight Daily — 10 Février 2026",
+    "desc": "",
+    "url": "2026-02-10.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "9 Février 2026",
+    "title": "AI Insight Daily — 9 Février 2026",
+    "desc": "",
+    "url": "2026-02-09.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "8 Février 2026",
+    "title": "AI Insight Daily",
+    "desc": "",
+    "url": "2026-02-08.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "7 Février 2026",
+    "title": "AI Insight Daily",
+    "desc": "",
+    "url": "2026-02-07.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "6 Février 2026",
+    "title": "AI Insight Daily",
+    "desc": "",
+    "url": "2026-02-06.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "5 Février 2026",
+    "title": "AI Insight Daily",
+    "desc": "",
+    "url": "2026-02-05.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "4 Février 2026",
+    "title": "AI Insight Daily",
+    "desc": "",
+    "url": "2026-02-04.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
+  },
+  {
+    "date": "2 Février 2026",
+    "title": "🤖 Daily AI — 2 Février 2026",
+    "desc": "",
+    "url": "2026-02-02.html",
+    "type": "daily",
+    "latest": false,
+    "edito": ""
   }
 ]

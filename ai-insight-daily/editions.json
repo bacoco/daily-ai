@@ -1,11 +1,20 @@
 [
   {
+    "date": "21 Mars 2026",
+    "title": "Trump régente l'IA, le WiFi voit à travers les murs, Visa arme les agents",
+    "desc": "",
+    "url": "2026-03-21.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA a gagné la partie. Elle cherche maintenant les règles du jeu. Trump veut verrouiller un cadre fédéral unique, Visa prépare les paiements autonomes, le MIT fait voir l'IA à travers les murs — et pourtant, les meilleurs modèles échouent à un examen conçu par des humains. La question du 21 mars : qui fixe les règles d'un jeu que personne ne comprend encore entièrement ?"
+  },
+  {
     "date": "20 Mars 2026",
     "title": "L'IA Menace Mondiale : le renseignement US sonne l'alarme",
     "desc": "",
     "url": "2026-03-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA ne demande plus la permission. Le renseignement US classe l'IA au rang de menace mondiale, un agent Meta publie seul sans supervision, Bloomberg révèle deux écosystèmes IA qui divergent derrière le Great Firewall. Pendant ce temps, Hollywood ressuscite les morts et Merck ouvre son IA moléculaire. La question du 20 mars : qui décide encore de ce que fait l'IA ?"
   },
   {
