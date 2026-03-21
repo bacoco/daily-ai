@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 19 Mar 2026 06:20:57 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2026 06:20:40 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[AI Toolkit for VS Code 0.32.0 (fusion Foundry)]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-21.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-21.html</guid>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, Microsoft fusionne AI Toolkit et Foundry dans VS Code pour centraliser ton workflow agentique, pendant qu'un designer UX vibe-code un plugin qui corrige les interfaces que l'IA génère mal. Côté fail, un agent IA réécrit SQLite en 576K lignes de Rust — tout compile, tout passe les tests, mais c'est 20 000× plus lent. On compare aussi Claude Code et Copilot sur le code review, et on se demande si le vibe coding ne nous transforme pas en aveugles volontaires. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[CLI Timeline (VS Code) — l'anti-chaos pour sessions Claude Code & Copilot CLI]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-19.html</link>
@@ -55,6 +62,76 @@
       <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-07.html</guid>
       <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Le vibe coding a 12 mois — et on se demande déjà s'il est mort ou s'il a juste changé de nom. Cette semaine, Bitrig ouvre le vibe coding aux apps iPhone natives, on apprend à structurer nos prompts en micro-specs, et Doug Snyder nous raconte comment il a vibé une app MarTech entière (spoiler : il a fini par manager son IA comme un stagiaire). Côté drama : Orchids se fait trouer en live à la BBC, Claude Code et Roo Code s'affrontent pour le trône du coding agentique, et Sage pose la question qui fâche — le vibe coding n'était-il qu'un symptôme ? Bonne lecture ! 🎨]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 5 Mars 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-05.html</guid>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[vibe-kanban : pilote plusieurs agents en parallèle sans conflits Git 🟢]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 3 Mars 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-03.html</guid>
+      <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[InstaPods + MCP : deploy depuis Claude Code en une commande 🟢 must-have]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 28 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-28.html</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Flowglad : paiements sans webhooks, en un prompt 🟢]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 26 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-26.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-26.html</guid>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Cursor Cloud Agents : des VM autonomes pour tes PR 🟢 must-have]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 24 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-24.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-24.html</guid>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[FlowLens : vos bugs browser deviennent du contexte MCP pour Claude Code & Cursor 🟢]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 19 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-19.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-19.html</guid>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Codegen IA + hosting + domaine + email en un seul outil 🟢 Must-have budget]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 18 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-18.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-18.html</guid>
+      <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Cloudflare lance VibeSDK : codegen IA + deploy Workers en un clic 🟢 Must-have]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 17 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-17.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-17.html</guid>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[GitHub Copilot pour JetBrains + Agent Skills (preview) — 🟢 must-have pour les équipes JetBrains qui veulent un contexte IA réutilisable.]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 16 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-16.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-16.html</guid>
+      <pubDate>Mon, 16 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Un workspace IA multi-agents pour coder à plusieurs — verdict 🟡 sympa]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Vibe Coding — 15 Février 2026]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-02-15.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-02-15.html</guid>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Trae — IDE gratuit, vibe coding natif, verdict 🟡 sympa]]></description>
     </item>
   </channel>
 </rss>
