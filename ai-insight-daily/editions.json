@@ -1,11 +1,20 @@
 [
   {
+    "date": "22 Mars 2026",
+    "title": "305 Mds$ sur la table, Apple entre dans la course, et l'édition se fissure",
+    "desc": "",
+    "url": "2026-03-22.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA s'industrialise à marche forcée. Alphabet et Meta injectent 305 milliards, Apple intègre l'intelligence dans chaque appareil, OpenAI double ses effectifs. Mais derrière cette accélération, un roman retiré par Hachette et des chiffres contradictoires sur l'emploi rappellent que l'industrie avance plus vite que sa capacité à rendre des comptes. La question du 22 mars : qui vérifie les chiffres quand tout le monde est occupé à investir ?"
+  },
+  {
     "date": "21 Mars 2026",
     "title": "Trump régente l'IA, le WiFi voit à travers les murs, Visa arme les agents",
     "desc": "",
     "url": "2026-03-21.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA a gagné la partie. Elle cherche maintenant les règles du jeu. Trump veut verrouiller un cadre fédéral unique, Visa prépare les paiements autonomes, le MIT fait voir l'IA à travers les murs — et pourtant, les meilleurs modèles échouent à un examen conçu par des humains. La question du 21 mars : qui fixe les règles d'un jeu que personne ne comprend encore entièrement ?"
   },
   {
