@@ -1,11 +1,20 @@
 [
   {
+    "date": "23 Mars 2026",
+    "title": "Trump 48h Ultimatum Looms — TTF €59.3 Braces for Monday Gap",
+    "desc": "",
+    "url": "2026-03-23.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Trump's 48-hour ultimatum to obliterate Iranian power plants is the most dangerous escalation since Hormuz Day 1 — and the deadline expires Monday night. With TTF at 59.3, EU storage at 28.9 pct, and Ras Laffan 17 pct capacity offline for 3-5 years, the refill math is broken three different ways. The council validated 12 of 20 trade ideas, eliminating 8 duplicates and contradictions; the TTF 50/80 strangle and JKM-TTF spread remain highest conviction."
+  },
+  {
     "date": "20 Mars 2026",
     "title": "Gas Markets Spike on Ras Laffan Disruption — TTF Surges 32% Overnight",
     "desc": "",
     "url": "2026-03-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Day 21 of the Iran-Israel war brought the unthinkable — Iranian missiles struck Ras Laffan, crippling 20% of global LNG supply and sending TTF surging 32% overnight to €82.5/MWh. With EU storage at 28.5% and the Russian LNG ban 12 days away, the refill math is now structurally broken without a ceasefire. The Council validated 12 of 20 trade ideas, eliminating 8 duplicates and contradictions; the TTF Sum-26/Win-26 spread and Win-26 outright long remain highest conviction."
   },
   {
