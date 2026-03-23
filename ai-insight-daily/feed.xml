@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sun, 22 Mar 2026 04:16:47 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2026 02:40:55 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[L'alliance anti-Nvidia se forme, IBM chute face à Anthropic, et Xiaomi mise gros]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-23.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-23.html</guid>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA cherche ses contre-pouvoirs. Une alliance anti-Nvidia se forme pour briser le monopole des puces IA, IBM vacille face à l'offensive Anthropic sur le COBOL, et DeepSeek V4 — promis depuis 6 mois — reste fantôme. Pendant ce temps, MiniMax ouvre les poids de M2.1 et Xiaomi investit 8,7 milliards. La question du 23 mars : peut-on dépendre d'un seul fournisseur quand l'IA devient critique ?]]></description>
+    </item>
     <item>
       <title><![CDATA[305 Mds$ sur la table, Apple entre dans la course, et l'édition se fissure]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-22.html</link>
