@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Mon, 23 Mar 2026 02:40:55 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 02:42:45 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Pentagon, Apple, Meta, Nvidia : la semaine où l'IA s'est militarisée et financiarisée]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-24.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-24.html</guid>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA s'enracine dans les institutions. Le Pentagone choisit Palantir comme système IA central, Microsoft et Amazon se déchirent pour 50 milliards de cloud, Apple promet l'intelligence en juin. Mais quand Google refuse les bug reports générés par IA et que les erreurs scientifiques des chatbots persistent, la question du 24 mars : l'IA est-elle prête pour les responsabilités qu'on lui confie ?]]></description>
+    </item>
     <item>
       <title><![CDATA[L'alliance anti-Nvidia se forme, IBM chute face à Anthropic, et Xiaomi mise gros]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-23.html</link>

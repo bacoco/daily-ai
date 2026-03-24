@@ -1,11 +1,20 @@
 [
   {
+    "date": "24 Mars 2026",
+    "title": "Pentagon, Apple, Meta, Nvidia : la semaine où l'IA s'est militarisée et financiarisée",
+    "desc": "",
+    "url": "2026-03-24.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA s'enracine dans les institutions. Le Pentagone choisit Palantir comme système IA central, Microsoft et Amazon se déchirent pour 50 milliards de cloud, Apple promet l'intelligence en juin. Mais quand Google refuse les bug reports générés par IA et que les erreurs scientifiques des chatbots persistent, la question du 24 mars : l'IA est-elle prête pour les responsabilités qu'on lui confie ?"
+  },
+  {
     "date": "23 Mars 2026",
     "title": "L'alliance anti-Nvidia se forme, IBM chute face à Anthropic, et Xiaomi mise gros",
     "desc": "",
     "url": "2026-03-23.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA cherche ses contre-pouvoirs. Une alliance anti-Nvidia se forme pour briser le monopole des puces IA, IBM vacille face à l'offensive Anthropic sur le COBOL, et DeepSeek V4 — promis depuis 6 mois — reste fantôme. Pendant ce temps, MiniMax ouvre les poids de M2.1 et Xiaomi investit 8,7 milliards. La question du 23 mars : peut-on dépendre d'un seul fournisseur quand l'IA devient critique ?"
   },
   {
