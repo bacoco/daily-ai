@@ -1,11 +1,20 @@
 [
   {
+    "date": "24 Mars 2026",
+    "title": "Cursor Composer 2 (19 mars 2026) : le modèle coding natif qui accélère vraiment les sessions vibe",
+    "desc": "",
+    "url": "2026-03-24.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, Cursor lance Composer 2 pour des sessions vibe coding plus longues et plus propres, pendant qu'un ancien producteur de cinéma vibe-code un système de surveillance IA pour ses parents âgés — et en fait une startup. Côté fail, on découvre que le code IA accumule une 'error debt' invisible : il passe les tests mais reste faux. On compare aussi Claude Code vs Cursor pour le match terminal vs IDE, et on se demande si l'intuition est vraiment le nouveau compilateur. Bonne lecture ! 🎨"
+  },
+  {
     "date": "21 Mars 2026",
     "title": "AI Toolkit for VS Code 0.32.0 (fusion Foundry)",
     "desc": "",
     "url": "2026-03-21.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, Microsoft fusionne AI Toolkit et Foundry dans VS Code pour centraliser ton workflow agentique, pendant qu'un designer UX vibe-code un plugin qui corrige les interfaces que l'IA génère mal. Côté fail, un agent IA réécrit SQLite en 576K lignes de Rust — tout compile, tout passe les tests, mais c'est 20 000× plus lent. On compare aussi Claude Code et Copilot sur le code review, et on se demande si le vibe coding ne nous transforme pas en aveugles volontaires. Bonne lecture ! 🎨"
   },
   {

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vibe Coding — 24 Mars 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    /* Scenario Probability Card */
+    .scenario-block { margin: 1em 0; padding: 0.8em 1em; border-left: 4px solid #ffd700; border-radius: 0 8px 8px 0; background: rgba(255,215,0,0.05); }
+    .scenario-block h3 { margin: 0 0 0.3em 0; font-size: 1.05em; display: flex; justify-content: space-between; align-items: center; }
+    .scenario-block .proba { font-size: 1.3em; font-weight: bold; color: #ffd700; }
+    .scenario-block p { margin: 0.2em 0; font-size: 0.92em; }
+    .scenario-block .votes { font-size: 0.8em; opacity: 0.7; font-style: italic; }
+    .consensus { margin-top: 1.2em; padding: 0.6em; border-radius: 8px; background: rgba(0,200,100,0.08); }
+    .dissent { margin-top: 0.4em; padding: 0.6em; border-radius: 8px; background: rgba(255,80,80,0.08); }
+
+    html.light .details div[style*="background"], html.light .details p[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Light mode: override inline white colors in trade cards */
+    html.light .details p[style], html.light .details b[style], html.light .details span[style], html.light .details div[style] { color: rgba(0,0,0,.85) !important; }
+    html.light .details div[style*="border-left:3px solid #f59e0b"] { background: rgba(245,158,11,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #10b981"] { background: rgba(16,185,129,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #ff4757"] { background: rgba(255,71,87,.06) !important; }
+    html.light .details div[style*="color:#f59e0b"] { color: #b45309 !important; }
+    html.light .details div[style*="color:#10b981"] { color: #047857 !important; }
+    html.light .details div[style*="color:#ff4757"] { color: #dc2626 !important; }
+    html.light .details h3 { color: #1a1a2e !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details p[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Vibe Coding</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"24 Mars 2026","henryWord":"Salut ! Cette semaine, Cursor lance Composer 2 pour des sessions vibe coding plus longues et plus propres, pendant qu'un ancien producteur de cinéma vibe-code un système de surveillance IA pour ses parents âgés — et en fait une startup. Côté fail, on découvre que le code IA accumule une 'error debt' invisible : il passe les tests mais reste faux. On compare aussi Claude Code vs Cursor pour le match terminal vs IDE, et on se demande si l'intuition est vraiment le nouveau compilateur. Bonne lecture ! 🎨","articles":[{"badge":"🔧 Tool Drop","title":"Cursor Composer 2 (19 mars 2026) : le modèle coding natif qui accélère vraiment les sessions vibe","idx":1},{"badge":"💬 Prompt Craft","title":"Le Chaînage Réflexif","idx":2},{"badge":"🚀 Ship It!","title":"Alvis — un ancien producteur de cinéma vibe-code un système de surveillance IA pour ses parents âgés, et en fait une startup","idx":3},{"badge":"💀 Vibe Fail","title":"L'Error Debt : le code IA qui passe les tests mais qui est quand même faux","idx":4},{"badge":"⚔️ Battle Royale","title":"Claude Code vs Cursor en mars 2026 : terminal vs IDE, le vrai match","idx":5},{"badge":"🧠 La Philo du Vibe","title":"La démocratisation par l'intuition : le nouveau pouvoir des créateurs non-dev","idx":6}],"disclaimer":"Cette newsletter est générée avec assistance IA. Les outils et projets mentionnés ne sont pas sponsorisés. Testez toujours le code généré par IA avant de le mettre en production. 🎨"},{"t":"tech","badge":"🔧 Tool Drop","title":"Cursor Composer 2 (19 mars 2026) : le modèle coding natif qui accélère vraiment les sessions vibe","hook":"Composer 2 (Cursor) — 🟢 must-have pour coder vite sans sacrifier la qualité.","authorWord":"Nouveau modèle Cursor daté du 19 mars 2026 : meilleur niveau en tâches longues + coût agressif. Très bon fit vibe coding si tu alternes proto rapide et refacto sérieuse.","author":"Nova 🌟","details":"<p>Si tu fais du <strong>vibe coding<\/strong> dans Cursor, le vrai « tool drop » de la fenêtre 18–24 mars est <strong>Composer 2<\/strong>, annoncé le <strong>19 mars 2026<\/strong>. Ce n'est pas juste un renommage marketing : c'est un saut de perf sur les tâches longues (agentiques), avec un pricing pensé pour rester utilisable au quotidien.<\/p><p>👉 Lien direct : <a href=\"https://cursor.com/blog/composer-2\" target=\"_blank\">https://cursor.com/blog/composer-2<\/a><br/>👉 Changelog Cursor : <a href=\"https://cursor.com/changelog\" target=\"_blank\">https://cursor.com/changelog<\/a><br/>👉 Détails modèle/pricing : <a href=\"https://cursor.com/docs/models/cursor-composer-2\" target=\"_blank\">https://cursor.com/docs/models/cursor-composer-2<\/a><\/p><h3>Ce que ça fait concrètement<\/h3><ul><li><strong>Modèle coding \"frontier-level\"<\/strong> selon Cursor, optimisé pour les workflows dev complexes (pas seulement du snippet autocomplete).<\/li><li><strong>Meilleure tenue sur les tâches multi-étapes<\/strong> : comprendre un contexte large, planifier, modifier plusieurs fichiers, puis itérer avec moins de dérive.<\/li><li><strong>Deux modes utiles<\/strong> (standard + fast) pour arbitrer coût/latence selon le moment : exploration rapide vs patch propre.<\/li><li><strong>Intégration native Cursor<\/strong> : zéro friction d'onboarding, tu switches de modèle sans changer d'outil ni casser ton flow.<\/li><\/ul><h3>Pourquoi c'est utile en vibe coding<\/h3><p>Le vibe coding casse quand l'assistant perd le fil après 3–5 itérations. Composer 2 améliore surtout cette zone critique : <strong>maintenir l'intention produit<\/strong> pendant une session longue. Dans la pratique, ça veut dire :<\/p><ul><li>moins de \"re-prompts\" pour recadrer,<\/li><li>moins de refactorings contradictoires,<\/li><li>meilleure continuité entre proto, debug et durcissement.<\/li><\/ul><p>Côté budget, le positionnement annoncé (<em>$0.50/M input, $2.50/M output<\/em> en standard) est assez agressif pour rester viable sur des journées entières de build. Pour une équipe qui fait beaucoup d'allers-retours UI/API/tests, l'impact est direct : <strong>plus d'expérimentation utile par euro<\/strong>.<\/p><h3>Limites à garder en tête (honnêteté obligatoire)<\/h3><ul><li>Les benchmarks restent publiés par l'éditeur : bon signal, mais à valider sur <em>ton<\/em> codebase.<\/li><li>Le mode fast peut encourager la surconsommation si l'équipe ne met aucun garde-fou.<\/li><li>Ce n'est pas une baguette magique architecture : il faut toujours un humain pour les décisions de design, sécurité, dette technique.<\/li><\/ul><p><strong>Verdict :<\/strong> <span>🟢 <strong>must-have<\/strong><\/span><br/>Si Cursor est déjà ton cockpit principal, Composer 2 est un upgrade immédiat et pertinent dans la vraie vie (pas juste en démo).<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Oui, c'est fort, mais attention à l'effet \"nouveau modèle = solution universelle\". Sur des stacks legacy ou fortement régulées, le gain brut peut être mangé par la revue humaine et la conformité. Avant de généraliser, fais un A/B test sur 2 sprints (vitesse, bugs post-merge, coût token, dette créée) ; sans métriques, l'enthousiasme peut coûter cher.<\/div><\/div><p><em>Source date :<\/em> la page officielle Composer 2 indique <strong>Mar 19, 2026<\/strong>, donc bien dans la fenêtre demandée (18–24 mars 2026).<\/p>","sig":"Nova 🌟 · Vibe Coding"},{"t":"strategy","badge":"💬 Prompt Craft","title":"Le Chaînage Réflexif","hook":"Forcer l'IA à critiquer son propre plan avant l'exécution pour éviter les hallucinations.","authorWord":"Le chaînage réflexif transforme un prompt linéaire en une boucle de vérification. Idéal pour le refactoring complexe où l'IA saute souvent des étapes de dépendance.","author":"Sage 🦎","details":"<p>En Vibe Coding, on veut aller vite, mais le code cassé coûte cher. Le <b>Chaînage Réflexif<\/b> oblige l'IA à générer une solution, puis à agir en tant qu'auditeur critique avant de finaliser.<\/p><p><b>Prompt naïf :<\/b><br><b>Refactore cette fonction pour qu'elle soit asynchrone et ajoute une gestion d'erreur robuste.<\/b><\/p><p><b>Prompt optimisé :<\/b><br><b>Refactore en async. Puis, critique ton plan : identifie 2 points de rupture potentiels. Enfin, applique le code corrigé selon ces critiques.<\/b><\/p><p><b>Résultat :<\/b> Le prompt optimisé réduit drastiquement les oublis de gestion d'état asynchrone. L'étape de critique force l'IA à simuler l'exécution mentale, évitant ainsi les erreurs classiques de type 'Promise pending' ou oublis de blocs try/catch. C'est l'essence même du <a href='https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought' target='_blank'>Chain of Thought<\/a> appliqué au refactoring.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Attention : l'auto-critique peut parfois mener à une 'paralysie par analyse' où l'IA tourne en boucle sur des détails mineurs. Utilisez-le pour les tâches critiques, pas pour le code trivial.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"alert","badge":"🚀 Ship It!","title":"Alvis — un ancien producteur de cinéma vibe-code un système de surveillance IA pour ses parents âgés, et en fait une startup","hook":"Zéro ligne de code écrite à la main, un système IA de détection de chutes — et une startup qui en découle.","authorWord":"Srdjan Stakic, ex-producteur de cinéma, a vibe-codé avec Lovable + ChatGPT + Claude un système IA de surveillance pour ses parents. Résultat : startup Alvis lancée.","author":"Henry 🦉","details":"<p>L'histoire de la semaine vient de <a href='https://www.businessinsider.com/aging-retirement-vibe-coding-ai-lovable-chatgpt-claude-security-cameras-2026-3' target='_blank'>Business Insider (21 mars 2026)<\/a> : <strong>Srdjan Stakic<\/strong>, 49 ans, ancien producteur de cinéma, <strong>n'avait jamais écrit une ligne de code de sa vie<\/strong>.<\/p><h3>Le contexte<\/h3><p>Diagnostiqué d'un cancer stade 4 il y a deux ans, Stakic a commencé à utiliser l'IA pour documenter ses rendez-vous médicaux. En rémission, il se retrouve aidant principal de ses parents âgés — et réalise qu'il a besoin d'un système capable de <strong>surveiller leur sécurité en continu<\/strong>, détecter les chutes, et alerter en temps réel.<\/p><h3>La stack vibe coding<\/h3><ul><li><strong>Lovable<\/strong> pour le prototypage rapide de l'interface<\/li><li><strong>ChatGPT<\/strong> + <strong>Claude<\/strong> pour l'architecture, le debugging et la logique métier<\/li><li>Caméras de sécurité connectées + analyse vidéo IA<\/li><li>Traduction automatique anglais → serbe pour les comptes-rendus médicaux<\/li><\/ul><h3>Le résultat<\/h3><p>Le projet personnel est devenu <strong>Alvis<\/strong>, une startup qui propose cette technologie à d'autres familles dans la même situation. Le tout sans avoir jamais ouvert un IDE traditionnel.<\/p><h3>Pourquoi c'est remarquable<\/h3><p>Ce n'est pas un side project fun ou un clone de SaaS — c'est un <strong>système critique de santé<\/strong> construit en vibe coding. La question de la fiabilité se pose forcément, mais le fait qu'un non-développeur puisse créer un produit viable dans un domaine aussi sensible montre à quel point la barrière d'entrée a fondu.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Un système de détection de chutes pour personnes âgées construit sans expertise technique ? C'est exactement le type de projet où un faux négatif peut coûter une vie. La story est inspirante, mais elle mériterait un audit sécurité/fiabilité indépendant avant d'être célébrée comme modèle. Le vibe coding excelle pour le prototypage — pas forcément pour le life-critical.<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"alert","badge":"💀 Vibe Fail","title":"L'Error Debt : le code IA qui passe les tests mais qui est quand même faux","hook":"1.7× plus de bugs, des failles invisibles, et un problème juridique en prime.","authorWord":"Le code généré par IA accumule une 'dette d'erreur' silencieuse : il passe les tests, semble correct, mais contient des failles logiques que personne ne détecte.","author":"Blaise 🧮","details":"<p>Un article publié le 20 mars 2026 sur <a href='https://medium.com/@keneade/your-ai-is-writing-code-no-one-understands-and-thats-becoming-a-legal-problem-e1d6aa6b174f' target='_blank'>Medium<\/a> met un nom sur le malaise que beaucoup de vibe coders ressentent sans le formuler : <strong>l'Error Debt<\/strong> (dette d'erreur).<\/p><h3>Le problème<\/h3><p>Contrairement à la dette technique classique (code sale mais fonctionnel), l'error debt est <strong>invisible<\/strong>. Le code généré par IA :<\/p><ul><li>Passe les tests unitaires ✅<\/li><li>Compile sans erreur ✅<\/li><li>A l'air propre à la review ✅<\/li><li>…mais contient des <strong>failles logiques latentes<\/strong> qui explosent en production ❌<\/li><\/ul><p>Comme le résume un dirigeant tech cité dans l'article : <em>« Le code peut sembler correct, passer les tests, et être quand même faux. »<\/em><\/p><h3>Les chiffres qui piquent<\/h3><p>Des études indépendantes citées dans l'article confirment :<\/p><ul><li><strong>1.7× plus de bugs<\/strong> dans le code IA vs code humain<\/li><li>Taux plus élevé de <strong>défauts critiques et majeurs<\/strong><\/li><li>Plus de <strong>failles de sécurité<\/strong> (gestion de credentials, injections)<\/li><li>Le code IA <strong>évite le refactoring<\/strong>, sur-spécifie les edge cases, et augmente la complexité de maintenance<\/li><\/ul><h3>Le twist juridique<\/h3><p>L'article ajoute une dimension inattendue : le code généré par IA pourrait <strong>ne pas être protégeable par le copyright<\/strong>, puisque la protection dépend de l'auteurship humain. Double peine : tu ships du code buggé que tu ne peux même pas protéger légalement.<\/p><h3>La leçon<\/h3><p>Le vibe coding accélère le shipping, mais il faut <strong>investir dans la validation<\/strong> au même rythme que dans la génération. Les tests unitaires ne suffisent pas — il faut des tests d'intégration, du fuzzing, et surtout une <strong>review humaine des chemins logiques<\/strong>, pas juste de la syntaxe. Voir aussi <a href='https://www.itbrew.com/stories/2026/03/17/troubles-with-ai-generated-code' target='_blank'>IT Brew (17 mars)<\/a> sur les guardrails nécessaires.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Les 1.7× bugs comparent du code IA brut sans review à du code humain reviewé. En pratique, un bon vibe coder itère avec l'IA jusqu'à satisfaction — le ratio réel est probablement bien meilleur. L'error debt existe, mais elle n'est pas une fatalité : c'est un problème de process, pas de technologie.<\/div><\/div>","sig":"Blaise 🧮 · Vibe Coding"},{"t":"analysis","badge":"⚔️ Battle Royale","title":"Claude Code vs Cursor en mars 2026 : terminal vs IDE, le vrai match","hook":"Agent terminal vs IDE augmenté — et si la bonne réponse c'était les deux ?","authorWord":"Claude Code domine les refactorings massifs, Cursor gagne en rapidité quotidienne. À $40/mois combinés, le duo est imbattable.","author":"Henry 🦉","details":"<p>Le comparatif le plus honnête de la semaine vient de <a href='https://www.nxcode.io/resources/news/claude-code-vs-cursor-which-is-better-2026' target='_blank'>NxCode (22 mars 2026)<\/a> : pas de matrice de features vide, pas de triple comparaison molle — un vrai duel <strong>Claude Code vs Cursor<\/strong> sur le terrain.<\/p><h3>Deux philosophies, pas deux versions du même outil<\/h3><p><strong>Claude Code<\/strong> = agent d'exécution terminal. Tu décris ce que tu veux, il lit ta codebase (1M tokens de contexte), raisonne sur l'architecture, modifie plusieurs fichiers, lance les tests, commit. Tu es l'architecte.<\/p><p><strong>Cursor<\/strong> = IDE augmenté (VS Code). Tu codes, l'IA t'assiste en temps réel — autocomplétion inline, Composer pour les éditions, agent mode pour les tâches multi-étapes. Tu es le pilote.<\/p><h3>Qui gagne quoi ?<\/h3><p><strong>🏆 Claude Code gagne sur :<\/strong><\/p><ul><li>Refactoring massif (10+ fichiers)<\/li><li>Raisonnement architectural profond<\/li><li>Tâches autonomes multi-étapes<\/li><li>Intégration Git native<\/li><li>46% de taux de satisfaction développeurs<\/li><\/ul><p><strong>🏆 Cursor gagne sur :<\/strong><\/p><ul><li>Rapidité au quotidien (Tab completions, diffs visuels)<\/li><li>Expérience IDE familière<\/li><li>Composer 2 (nouveau, mars 2026)<\/li><li>Petites éditions fréquentes<\/li><\/ul><h3>Le verdict<\/h3><p>La conclusion de NxCode est pragmatique : <strong>à $40/mois combinés ($20 + $20), utiliser Claude Code pour le gros œuvre et Cursor pour l'édition quotidienne est plus performant que l'un ou l'autre seul<\/strong>.<\/p><p>Voir aussi la comparaison élargie de <a href='https://www.buildmvpfast.com/blog/cursor-vs-windsurf-vs-copilot-best-ai-ide-2026' target='_blank'>BuildMVPFast<\/a> qui note que les 3 IDE supportent désormais MCP et les modèles Claude/GPT/Gemini, et le <a href='https://byteiota.com/windsurf-vs-cursor-which-ai-editor-wins-in-2026/' target='_blank'>test ByteIota<\/a> qui mesure SWE-1.5 de Windsurf à 950 tokens/s — 13× plus rapide que Claude Sonnet 4.5.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>$40/mois pour deux outils, c'est raisonnable pour un dev solo. Mais pour une équipe de 20, ça fait $800/mois juste en licences IDE — sans compter les tokens API. Le vrai calcul devrait inclure le coût total : licences + tokens + temps de review humaine du code généré. L'économie n'est pas aussi évidente qu'on le dit.<\/div><\/div>","sig":"Henry 🦉 · Vibe Coding"},{"t":"analysis","badge":"🧠 La Philo du Vibe","title":"La démocratisation par l'intuition : le nouveau pouvoir des créateurs non-dev","hook":"Le Vibe Coding ne tue pas le code, il libère la création des chaînes de la syntaxe.","authorWord":"Le vibe coding transforme l'expert métier en architecte de systèmes. L'intuition est le nouveau compilateur — mais sans rigueur logique, c'est une loterie.","author":"Sage 🦎","details":"<p>L'actualité de cette semaine illustre une fracture inédite. Un ancien producteur de cinéma a <a href='https://www.businessinsider.com/aging-retirement-vibe-coding-ai-lovable-chatgpt-claude-security-cameras-2026-3' target='_blank'>vibe-codé un système IA de surveillance médicale<\/a> pour ses parents âgés — et en a fait une startup. Ce type de profil atypique se multiplie : le fossé entre la <b>syntaxe<\/b> et l'<b>intention<\/b> n'a jamais été aussi mince.<\/p><p>Le Vibe Coding permet aujourd'hui à celui qui « sent » le problème de le résoudre sans intermédiaire. Cette transformation n'est pas une dégradation de la qualité logicielle, mais une mutation de sa finalité. Nous passons d'une économie de la <i>construction<\/i> à une économie de l'<i>orchestration<\/i>. Le non-développeur ne code plus, il compose avec des agents, utilisant son background (cinéma, médecine, finance) comme une structure mentale pour guider l'IA.<\/p><p>Cependant, cette libération comporte un risque : la perte du <i>savoir-faire technique<\/i> profond, ce socle qui permet de comprendre pourquoi un système échoue réellement. Comme le montre <a href='https://medium.com/@keneade/your-ai-is-writing-code-no-one-understands-and-thats-becoming-a-legal-problem-e1d6aa6b174f' target='_blank'>l'analyse de l'error debt<\/a> publiée cette semaine, le code IA peut sembler correct, passer les tests, et être quand même faux. Le « Vibe Coder » réussi est celui qui, tout en ignorant les lignes de code, possède une rigueur logique implacable. Sans cette rigueur, le Vibe Coding devient une loterie de probabilités où l'erreur est invisible tant qu'elle ne devient pas catastrophique.<\/p><p>Je prends position : le Vibe Coding est le catalyseur ultime de la diversité dans l'innovation technologique. Il force le développeur traditionnel à se réinventer, non plus comme un artisan de la syntaxe, mais comme un garant de la robustesse architecturale. Le code n'est plus la limite, c'est le langage commun de nos idées les plus folles.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Attention, Sage : confondre « facilité d'accès » et « maîtrise de la complexité » est dangereux. Si le producteur de cinéma échoue à comprendre la latence ou la sécurité de son système médical, ce n'est pas le Vibe Coding qui le sauvera, mais la réalité des faits. L'intuition ne remplace pas l'ingénierie, elle la précède. Ne vendons pas du rêve là où nous devrions encourager une hybridation des compétences plutôt qu'un remplacement.<\/div><\/div>","sig":"Sage 🦎 · Vibe Coding"},{"t":"end","end":true,"disclaimer":"Cette newsletter est générée avec assistance IA. Les outils et projets mentionnés ne sont pas sponsorisés. Testez toujours le code généré par IA avant de le mettre en production. 🎨"}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Vibe Coding</span></div>
+          <div class="home-date">${d.date}</div>
+          ${d.disclaimer ? '<div style="margin:8px 0;padding:8px 10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:6px;font-size:.55rem;color:var(--muted);line-height:1.3;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          ${d.disclaimer ? '<div style="margin-top:20px;padding:14px 16px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:.7rem;color:var(--muted);line-height:1.5;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Vibe Coding — 24 Mars 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Vibe Coding-24-Mars-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Vibe Coding</div><div class="dt-date">${DATA[0].date||'24 Mars 2026'}</div>`:`<div class="dt-logo">Vibe Coding</div><div class="dt-date">24 Mars 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Vibe Coding — 24 Mars 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>

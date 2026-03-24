@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 21 Mar 2026 06:20:40 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Mar 2026 03:49:33 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Cursor Composer 2 (19 mars 2026) : le modèle coding natif qui accélère vraiment les sessions vibe]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-24.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-24.html</guid>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, Cursor lance Composer 2 pour des sessions vibe coding plus longues et plus propres, pendant qu'un ancien producteur de cinéma vibe-code un système de surveillance IA pour ses parents âgés — et en fait une startup. Côté fail, on découvre que le code IA accumule une 'error debt' invisible : il passe les tests mais reste faux. On compare aussi Claude Code vs Cursor pour le match terminal vs IDE, et on se demande si l'intuition est vraiment le nouveau compilateur. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[AI Toolkit for VS Code 0.32.0 (fusion Foundry)]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-21.html</link>
