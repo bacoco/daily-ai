@@ -1,11 +1,20 @@
 [
   {
+    "date": "24 Mars 2026",
+    "title": "Ultimatum Night: TTF Opens at €59.3 as Market Braces for Binary Outcome",
+    "desc": "",
+    "url": "2026-03-24.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Ultimatum night defines the session: Trump's 48h deadline expires at 21:00 UTC with no diplomatic breakthrough, and the probability-weighted TTF sits at €70.5/MWh — 19% above the €59.3 spot. The Council validated 15 of 20 trade ideas, eliminating 5 doublons and contradictions; the TTF Apr straddle (unanimous) and Win-26 outright long remain highest conviction as three binary catalysts converge this week."
+  },
+  {
     "date": "23 Mars 2026",
     "title": "Trump 48h Ultimatum Looms — TTF €59.3 Braces for Monday Gap",
     "desc": "",
     "url": "2026-03-23.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Trump's 48-hour ultimatum to obliterate Iranian power plants is the most dangerous escalation since Hormuz Day 1 — and the deadline expires Monday night. With TTF at 59.3, EU storage at 28.9 pct, and Ras Laffan 17 pct capacity offline for 3-5 years, the refill math is broken three different ways. The council validated 12 of 20 trade ideas, eliminating 8 duplicates and contradictions; the TTF 50/80 strangle and JKM-TTF spread remain highest conviction."
   },
   {
