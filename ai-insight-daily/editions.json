@@ -1,11 +1,20 @@
 [
   {
+    "date": "25 Mars 2026",
+    "title": "Guerre froide IA : Anthropic vs Pentagon, l'avenir du travail, et la course aux agents",
+    "desc": "",
+    "url": "2026-03-25.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA en 2026 traverse son procès en réalité. Anthropic défie le Pentagone devant un juge fédéral, les CFOs surestiment 9 fois les licenciements IA, et un studio AAA se fait prendre la main dans le sac de l'IA générative. Le fil rouge de cette édition : confronter les récits à la data, les peurs aux faits."
+  },
+  {
     "date": "24 Mars 2026",
     "title": "Pentagon, Apple, Meta, Nvidia : la semaine où l'IA s'est militarisée et financiarisée",
     "desc": "",
     "url": "2026-03-24.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA s'enracine dans les institutions. Le Pentagone choisit Palantir comme système IA central, Microsoft et Amazon se déchirent pour 50 milliards de cloud, Apple promet l'intelligence en juin. Mais quand Google refuse les bug reports générés par IA et que les erreurs scientifiques des chatbots persistent, la question du 24 mars : l'IA est-elle prête pour les responsabilités qu'on lui confie ?"
   },
   {
