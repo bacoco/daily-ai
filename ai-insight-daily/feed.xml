@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Wed, 25 Mar 2026 02:52:52 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 02:48:10 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Sora assassiné, Arm attaque les GPU, LiteLLM piraté]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-26.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-26.html</guid>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Jour de vérité pour l'IA. Pendant que Jensen Huang et l'inventeur même du terme 'AGI' proclament que nous y sommes, OpenAI enterre Sora et son deal Disney à 1 milliard, une librairie Python utilisée 97 millions de fois se fait pirater, et Cursor avoue que 25% de sa puissance vient d'un modèle chinois. L'IA de 2026, c'est ça : des sommets vertigineux et des fondations qui tremblent.]]></description>
+    </item>
     <item>
       <title><![CDATA[Guerre froide IA : Anthropic vs Pentagon, l'avenir du travail, et la course aux agents]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-25.html</link>

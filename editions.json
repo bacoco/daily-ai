@@ -1,11 +1,20 @@
 [
   {
+    "date": "26 Mars 2026",
+    "title": "Sora assassiné, Arm attaque les GPU, LiteLLM piraté",
+    "desc": "",
+    "url": "2026-03-26.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Jour de vérité pour l'IA. Pendant que Jensen Huang et l'inventeur même du terme 'AGI' proclament que nous y sommes, OpenAI enterre Sora et son deal Disney à 1 milliard, une librairie Python utilisée 97 millions de fois se fait pirater, et Cursor avoue que 25% de sa puissance vient d'un modèle chinois. L'IA de 2026, c'est ça : des sommets vertigineux et des fondations qui tremblent."
+  },
+  {
     "date": "25 Mars 2026",
     "title": "Guerre froide IA : Anthropic vs Pentagon, l'avenir du travail, et la course aux agents",
     "desc": "",
     "url": "2026-03-25.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA en 2026 traverse son procès en réalité. Anthropic défie le Pentagone devant un juge fédéral, les CFOs surestiment 9 fois les licenciements IA, et un studio AAA se fait prendre la main dans le sac de l'IA générative. Le fil rouge de cette édition : confronter les récits à la data, les peurs aux faits."
   },
   {
