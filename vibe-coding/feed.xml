@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 24 Mar 2026 03:49:33 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 03:47:54 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[GitKraken MCP Server (via GitLens 17.5+)]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-26.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-26.html</guid>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, GitKraken branche ton agent directement sur ton workflow Git, Google débarque avec AI Studio 2.0 pour concurrencer Lovable et Bolt, et un solo dev à Madrid shippe CafeRadar — le Vivino du café — en 3 mois avec 60% de code IA. Côté fail, Armis et Forbes révèlent que le code IA contient 2,74× plus de failles de sécurité que le code humain. On explore aussi le Chaînage par État Mental pour forcer ton agent à réfléchir avant de coder, et on se demande si le vibe coding n'est pas en train de créer une toute nouvelle catégorie de développeurs. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Cursor Composer 2 (19 mars 2026) : le modèle coding natif qui accélère vraiment les sessions vibe]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-24.html</link>
