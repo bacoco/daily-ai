@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 26 Mar 2026 02:48:10 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2026 02:47:09 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Trump crée son conseil tech IA, l'économie IA traitée de Ponzi, et le NYT pris la main dans le sac]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-27.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-27.html</guid>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA sort du laboratoire et entre en salle de cinéma. Pendant que Trump nomme les CEO de Big Tech dans un Technology Council à 24 membres, un documentaire Focus Features qualifie l'économie IA de schéma de Ponzi — avec Altman et Amodei au générique. Le même jour, le NYT se fait épingler pour une chronique à 60% générée par IA, et Jellyfish publie la plus grande étude montrant que l'IA ralentit les équipes de développement. La question du 27 mars : quand tout le monde parle de bulle, est-ce le début de la fin — ou la fin du début ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Sora assassiné, Arm attaque les GPU, LiteLLM piraté]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-26.html</link>

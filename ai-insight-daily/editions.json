@@ -1,11 +1,20 @@
 [
   {
+    "date": "27 Mars 2026",
+    "title": "Trump crée son conseil tech IA, l'économie IA traitée de Ponzi, et le NYT pris la main dans le sac",
+    "desc": "",
+    "url": "2026-03-27.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA sort du laboratoire et entre en salle de cinéma. Pendant que Trump nomme les CEO de Big Tech dans un Technology Council à 24 membres, un documentaire Focus Features qualifie l'économie IA de schéma de Ponzi — avec Altman et Amodei au générique. Le même jour, le NYT se fait épingler pour une chronique à 60% générée par IA, et Jellyfish publie la plus grande étude montrant que l'IA ralentit les équipes de développement. La question du 27 mars : quand tout le monde parle de bulle, est-ce le début de la fin — ou la fin du début ?"
+  },
+  {
     "date": "26 Mars 2026",
     "title": "Sora assassiné, Arm attaque les GPU, LiteLLM piraté",
     "desc": "",
     "url": "2026-03-26.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Jour de vérité pour l'IA. Pendant que Jensen Huang et l'inventeur même du terme 'AGI' proclament que nous y sommes, OpenAI enterre Sora et son deal Disney à 1 milliard, une librairie Python utilisée 97 millions de fois se fait pirater, et Cursor avoue que 25% de sa puissance vient d'un modèle chinois. L'IA de 2026, c'est ça : des sommets vertigineux et des fondations qui tremblent."
   },
   {
