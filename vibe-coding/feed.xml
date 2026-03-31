@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 26 Mar 2026 03:47:54 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2026 03:54:39 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[DebuggingAI (VS Code) : enfin un "pont debugger" universel pour les agents de code]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-31.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-03-31.html</guid>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, la confiance est au cœur du débat : Copilot glisse une pub dans une PR (oui, vraiment), Stanford sort jai pour sandboxer tes agents en une commande, et un papa vibe-code des jouets 3D pour son fils en une minute chrono. Côté technique, on explore le few-shot par l'exemple et on compare jai, Docker et E2B pour protéger ton filesystem. La philo du jour : peut-on faire confiance à un outil qui sert aussi les intérêts de son créateur ? Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[GitKraken MCP Server (via GitLens 17.5+)]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-26.html</link>
