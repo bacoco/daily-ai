@@ -1,11 +1,20 @@
 [
   {
+    "date": "30 Mars 2026",
+    "title": "GTC 2026 : NVIDIA mise tout sur les agents IA, les CPU rattrapent les GPU",
+    "desc": "",
+    "url": "2026-03-30.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA accélère dans toutes les directions à la fois. NVIDIA mise des milliards sur les agents autonomes et l'open source, la convergence multimodale redéfinit ce que les machines savent créer — mais quand Google retire en catastrophe une IA santé nourrie à Reddit et que 34 rapports scientifiques sont systématiquement déformés par les médias, la question du 30 mars s'impose : qui rend des comptes quand l'IA se trompe à grande échelle ?"
+  },
+  {
     "date": "27 Mars 2026",
     "title": "Trump crée son conseil tech IA, l'économie IA traitée de Ponzi, et le NYT pris la main dans le sac",
     "desc": "",
     "url": "2026-03-27.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA sort du laboratoire et entre en salle de cinéma. Pendant que Trump nomme les CEO de Big Tech dans un Technology Council à 24 membres, un documentaire Focus Features qualifie l'économie IA de schéma de Ponzi — avec Altman et Amodei au générique. Le même jour, le NYT se fait épingler pour une chronique à 60% générée par IA, et Jellyfish publie la plus grande étude montrant que l'IA ralentit les équipes de développement. La question du 27 mars : quand tout le monde parle de bulle, est-ce le début de la fin — ou la fin du début ?"
   },
   {

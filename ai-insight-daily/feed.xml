@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Fri, 27 Mar 2026 02:47:35 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2026 02:53:41 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[GTC 2026 : NVIDIA mise tout sur les agents IA, les CPU rattrapent les GPU]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-30.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-30.html</guid>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA accélère dans toutes les directions à la fois. NVIDIA mise des milliards sur les agents autonomes et l'open source, la convergence multimodale redéfinit ce que les machines savent créer — mais quand Google retire en catastrophe une IA santé nourrie à Reddit et que 34 rapports scientifiques sont systématiquement déformés par les médias, la question du 30 mars s'impose : qui rend des comptes quand l'IA se trompe à grande échelle ?]]></description>
+    </item>
     <item>
       <title><![CDATA[Trump crée son conseil tech IA, l'économie IA traitée de Ponzi, et le NYT pris la main dans le sac]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-03-27.html</link>
