@@ -1,11 +1,20 @@
 [
   {
+    "date": "1 Avril 2026",
+    "title": "La confiance en l'IA s'effondre : la méfiance du public américain atteint un nouveau sommet",
+    "desc": "",
+    "url": "2026-04-01.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "/tmp/edito-ai-insight-daily.md"
+  },
+  {
     "date": "30 Mars 2026",
     "title": "GTC 2026 : NVIDIA mise tout sur les agents IA, les CPU rattrapent les GPU",
     "desc": "",
     "url": "2026-03-30.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA accélère dans toutes les directions à la fois. NVIDIA mise des milliards sur les agents autonomes et l'open source, la convergence multimodale redéfinit ce que les machines savent créer — mais quand Google retire en catastrophe une IA santé nourrie à Reddit et que 34 rapports scientifiques sont systématiquement déformés par les médias, la question du 30 mars s'impose : qui rend des comptes quand l'IA se trompe à grande échelle ?"
   },
   {
