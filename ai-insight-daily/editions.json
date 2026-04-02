@@ -1,11 +1,20 @@
 [
   {
+    "date": "2 Avril 2026",
+    "title": "OpenAI lève 122 Mds$ à une valorisation de 852 Mds$ : La course à l'infrastructure est lancée",
+    "desc": "",
+    "url": "2026-04-02.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA sort du laboratoire et entre dans la guerre — littéralement. OpenAI lève 122 milliards pour devenir l'infrastructure du monde, pendant que Claude est déployé pour des frappes militaires en Iran. Anthropic laisse fuiter son propre code source, et les deepfakes contaminent même le 1er avril. Pendant ce temps, NVIDIA ouvre ses modèles à l'échelle et la communauté maîtrise de nouvelles techniques de prompting. La question du 2 avril : à qui appartiennent les armes de l'intelligence ?"
+  },
+  {
     "date": "1 Avril 2026",
     "title": "IA : La Méfiance Atteint un Sommet Critique",
     "desc": "",
     "url": "2026-04-01.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA sort du labo et le monde s'inquiète. 55% d'Américains pensent qu'elle fera plus de mal que de bien, les bots ont dépassé les humains sur internet, et les deepfakes s'invitent dans les élections. Pendant ce temps, DeepSeek s'effondre pendant 7 heures et l'IA agentique continue sa marche. La question du 1er avril : l'humanité est-elle prête pour ce qu'elle a créé ?"
   },
   {
