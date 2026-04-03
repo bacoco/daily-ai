@@ -1,11 +1,20 @@
 [
   {
+    "date": "3 Avril 2026",
+    "title": "IA : 5 millions d'emplois menacés en France, les \"cols blancs\" en première ligne",
+    "desc": "",
+    "url": "2026-04-03.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA de 2026 ne rêve plus. Elle chiffre. 5 millions d'emplois menacés en France, 76% d'agents qui explosent en production, des modèles chinois qui narguent l'Occident. Le temps du storytelling est terminé — place à la mesure. De la Coface au scorecard de prompt, la question du 3 avril s'impose : quand l'IA devient comptable, qui ose encore lui faire confiance ?"
+  },
+  {
     "date": "2 Avril 2026",
     "title": "OpenAI lève 122 Mds$ à une valorisation de 852 Mds$ : La course à l'infrastructure est lancée",
     "desc": "",
     "url": "2026-04-02.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA sort du laboratoire et entre dans la guerre — littéralement. OpenAI lève 122 milliards pour devenir l'infrastructure du monde, pendant que Claude est déployé pour des frappes militaires en Iran. Anthropic laisse fuiter son propre code source, et les deepfakes contaminent même le 1er avril. Pendant ce temps, NVIDIA ouvre ses modèles à l'échelle et la communauté maîtrise de nouvelles techniques de prompting. La question du 2 avril : à qui appartiennent les armes de l'intelligence ?"
   },
   {
