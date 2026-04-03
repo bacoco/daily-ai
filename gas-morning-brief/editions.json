@@ -1,11 +1,20 @@
 [
   {
+    "date": "3 Avril 2026",
+    "title": "TTF Rebounds to €48.75 as HH Falters, JKM Firms",
+    "desc": "",
+    "url": "2026-04-03.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz Day 34. La fermeture du détroit n'est plus une perturbation temporaire mais un changement de régime structurel. Avec le stockage européen à 27,7% et 62,3 bcm à injecter d'ici novembre, le marché sous-estime le risque de refill panic. Les trades validés par le conseil privilégient le calendrier Oct/Avr et les calls asymétriques sur le scénario Hormuz."
+  },
+  {
     "date": "2 Avril 2026",
     "title": "Settlements, moves, and key levels",
     "desc": "",
     "url": "2026-04-02.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Jour 33 de la crise d'Hormuz. 115 mtpa de GNL dans le noir — un quart du commerce mondial. Wheatstone ne redémarrera pas de sitôt, le ban russe entre en vigueur dans 23 jours, et le storage européen traîne à 28%. Le marché price la tension mais pas encore le chaos. Bonne lecture."
   },
   {
