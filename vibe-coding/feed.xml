@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 31 Mar 2026 03:54:39 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2026 03:46:06 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[GitHub Copilot Chat (VS Code) v0.43 pre-release ajoute des hooks Copilot CLI]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-04.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-04.html</guid>
+      <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, Copilot Chat v0.43 rapproche ton éditeur de ton CLI, Ralph fait tourner Claude Code en boucle autonome (avec des garde-fous, promis), et Amazon Kiro nous rappelle brutalement qu'un agent sans supervision peut torcher la prod. On compare Cursor et Windsurf, et Sage nous explique pourquoi la syntaxe est peut-être une frontière du passé. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[DebuggingAI (VS Code) : enfin un "pont debugger" universel pour les agents de code]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-03-31.html</link>

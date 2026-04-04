@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Avril 2026",
+    "title": "GitHub Copilot Chat (VS Code) v0.43 pre-release ajoute des hooks Copilot CLI",
+    "desc": "",
+    "url": "2026-04-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, Copilot Chat v0.43 rapproche ton éditeur de ton CLI, Ralph fait tourner Claude Code en boucle autonome (avec des garde-fous, promis), et Amazon Kiro nous rappelle brutalement qu'un agent sans supervision peut torcher la prod. On compare Cursor et Windsurf, et Sage nous explique pourquoi la syntaxe est peut-être une frontière du passé. Bonne lecture ! 🎨"
+  },
+  {
     "date": "31 Mars 2026",
     "title": "DebuggingAI (VS Code) : enfin un \"pont debugger\" universel pour les agents de code",
     "desc": "",
     "url": "2026-03-31.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, la confiance est au cœur du débat : Copilot glisse une pub dans une PR (oui, vraiment), Stanford sort jai pour sandboxer tes agents en une commande, et un papa vibe-code des jouets 3D pour son fils en une minute chrono. Côté technique, on explore le few-shot par l'exemple et on compare jai, Docker et E2B pour protéger ton filesystem. La philo du jour : peut-on faire confiance à un outil qui sert aussi les intérêts de son créateur ? Bonne lecture ! 🎨"
   },
   {
