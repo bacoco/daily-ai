@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Fri, 03 Apr 2026 03:03:33 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2026 02:43:29 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[DeepSeek V4 : L'IA chinoise tournera sur des puces Huawei]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-04.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-04.html</guid>
+      <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[L'IA de 2026 ne rêve plus. Elle s'expose. Des agents piratables par un simple commentaire HTML aux deepfakes qui nient les atrocités, en passant par le plus gros hack de l'année via un chatbot : la révélation des vulnérabilités systémiques de l'IA est le grand récit d'avril. La question n'est plus "que peut faire l'IA ?" mais "où peut-elle casser ?"]]></description>
+    </item>
     <item>
       <title><![CDATA[IA : 5 millions d'emplois menacés en France, les "cols blancs" en première ligne]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-03.html</link>

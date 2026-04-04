@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Avril 2026",
+    "title": "DeepSeek V4 : L'IA chinoise tournera sur des puces Huawei",
+    "desc": "",
+    "url": "2026-04-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA de 2026 ne rêve plus. Elle s'expose. Des agents piratables par un simple commentaire HTML aux deepfakes qui nient les atrocités, en passant par le plus gros hack de l'année via un chatbot : la révélation des vulnérabilités systémiques de l'IA est le grand récit d'avril. La question n'est plus \"que peut faire l'IA ?\" mais \"où peut-elle casser ?\""
+  },
+  {
     "date": "3 Avril 2026",
     "title": "IA : 5 millions d'emplois menacés en France, les \"cols blancs\" en première ligne",
     "desc": "",
     "url": "2026-04-03.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA de 2026 ne rêve plus. Elle chiffre. 5 millions d'emplois menacés en France, 76% d'agents qui explosent en production, des modèles chinois qui narguent l'Occident. Le temps du storytelling est terminé — place à la mesure. De la Coface au scorecard de prompt, la question du 3 avril s'impose : quand l'IA devient comptable, qui ose encore lui faire confiance ?"
   },
   {
