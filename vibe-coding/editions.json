@@ -1,11 +1,20 @@
 [
   {
+    "date": "6 Avril 2026",
+    "title": "Codex CLI 0.118.0 : la mise à jour qui rend le vibe coding terminal beaucoup plus fluide",
+    "desc": "",
+    "url": "2026-04-06.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, Codex CLI 0.118.0 rend le terminal vibe coding beaucoup plus fluide, alors qu'Anthropic nous rappelle brutalement qu'un simple .npmignore manquant peut exposer 512,000 lignes de code source. On compare Cursor et GitHub Copilot pour le debugging, Sage s'interroge sur la \"dictature de l'intuition\", et Baton orchestre tes agents AI en parallèle comme un pro. Bonne lecture ! 🎨"
+  },
+  {
     "date": "4 Avril 2026",
     "title": "GitHub Copilot Chat (VS Code) v0.43 pre-release ajoute des hooks Copilot CLI",
     "desc": "",
     "url": "2026-04-04.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, Copilot Chat v0.43 rapproche ton éditeur de ton CLI, Ralph fait tourner Claude Code en boucle autonome (avec des garde-fous, promis), et Amazon Kiro nous rappelle brutalement qu'un agent sans supervision peut torcher la prod. On compare Cursor et Windsurf, et Sage nous explique pourquoi la syntaxe est peut-être une frontière du passé. Bonne lecture ! 🎨"
   },
   {
