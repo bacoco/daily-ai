@@ -1,11 +1,20 @@
 [
   {
+    "date": "6 Avril 2026",
+    "title": "TTF Holds Near €49 as Traders Weigh Hormuz Duration — HH Steady at $3.08",
+    "desc": "",
+    "url": "2026-04-06.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz Day 35 with no diplomatic breakthrough keeps the risk premium intact, while the EU Russian LNG ban enters Day 5 and storage sits at 27.5%—the lowest April level since 2018. The council validated 12 of 23 trade ideas, with calendar spreads and asymmetric tail structures standing out as highest conviction in this triple-shock environment."
+  },
+  {
     "date": "3 Avril 2026",
     "title": "TTF Rebounds to €48.75 as HH Falters, JKM Firms",
     "desc": "",
     "url": "2026-04-03.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz Day 34, QatarEnergy force majeure extended to mid-June, EU Russian LNG ban Day 2, and storage at 27.7% — the lowest April level since 2018. The market is pricing duration, not resolution. The council validated 14 of 18 trade ideas; the TTF Oct/Apr calendar spread and Jun €55/€65 Hormuz call spread remain highest conviction. Manage gamma."
   },
   {
