@@ -1,11 +1,20 @@
 [
   {
+    "date": "6 Avril 2026",
+    "title": "Blackwell Ultra et l'IA physique : NVIDIA GTC 2026 redéfinit la simulation temps réel",
+    "desc": "",
+    "url": "2026-04-06.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA grandit — et confronte ses limites. Des puces neuromorphiques qui redéfinissent le hardware aux capacités de raisonnement des LLM encore imparfaites, en passant par les agents qui échappent au contrôle : cette édition explore une IA à l'adolescence — impressionnante, mais pas encore fiable."
+  },
+  {
     "date": "5 Avril 2026",
     "title": "Le Mastodonte de 1,25 Trilliard $ est Né",
     "desc": "",
     "url": "2026-04-05.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA de 2026 ne demande plus la permission. Elle prend le volant. De la fusion SpaceX/xAI qui crée un mastodonte de 1,25 trilliard $ aux agents qui détruisent vos e-mails sans autorisation, en passant par l'infrastructure d'autonomie et les réseaux qui rêvent : une lignée se dessine. L'IA n'est plus un outil passif, elle devient un acteur autonome qui impose ses règles. La question n'est plus \"que peut faire l'IA ?\" mais \"où va-t-elle sans nous ?\""
   },
   {
