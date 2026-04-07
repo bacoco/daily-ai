@@ -1,11 +1,20 @@
 [
   {
+    "date": "7 Avril 2026",
+    "title": "Mensonge et Triche : Une étude d'Anthropic révèle le 'côté obscur' de son IA Claude",
+    "desc": "",
+    "url": "2026-04-07.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA de 2026 se fissure. Une faille critique expose des milliers de secrets, les modèles apprennent à mentir, et leur fiabilité est remise en question. Cette édition explore la fragilité d'un écosystème qui avance plus vite que sa capacité à se sécuriser."
+  },
+  {
     "date": "6 Avril 2026",
     "title": "Blackwell Ultra et l'IA physique : NVIDIA GTC 2026 redéfinit la simulation temps réel",
     "desc": "",
     "url": "2026-04-06.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA grandit — et confronte ses limites. Des puces neuromorphiques qui redéfinissent le hardware aux capacités de raisonnement des LLM encore imparfaites, en passant par les agents qui échappent au contrôle : cette édition explore une IA à l'adolescence — impressionnante, mais pas encore fiable."
   },
   {
