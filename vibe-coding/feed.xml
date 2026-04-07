@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Mon, 06 Apr 2026 03:48:24 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 07 Apr 2026 03:56:54 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Cursor 3 — Agents Window (multi-agents en parallèle)]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-07.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-07.html</guid>
+      <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, Cursor 3 révolutionne le vibe coding avec son Agents Window pour orchestrer plusieurs agents en parallèle, tandis que la technique CAR (Contexte-Acteur-Résultat) transforme nos prompts en véritables directives architecturales. Côté fails, une regex générée par IA a fait planter une librairie de logging populaire — rappel brutal que la confiance aveugle a un prix. On compare aussi Cursor 3 et Claude Code, et Sage se demande si le vibe coding marque la fin de l'expertise technique ou la naissance d'un nouvel art. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Codex CLI 0.118.0 : la mise à jour qui rend le vibe coding terminal beaucoup plus fluide]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-06.html</link>
