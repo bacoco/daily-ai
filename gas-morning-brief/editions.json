@@ -1,11 +1,20 @@
 [
   {
+    "date": "8 Avril 2026",
+    "title": "TTF Consolidates Near €50 as Hormuz Uncertainty Persists",
+    "desc": "",
+    "url": "2026-04-08.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz Day 38 et le marché dort. Les 115 mtpa de GNL bloqués, le ban russe dans 17 jours, le storage à 28% — la prime de risque est là, mais pas la panique. Le Conseil a validé 9 trades sur 14, éliminant les redondances. Le JKM-TTF spread (T4) sort en tête avec conviction unanime."
+  },
+  {
     "date": "7 Avril 2026",
     "title": "TTF Stuck Near €49 as Traders Await Hormuz Catalyst",
     "desc": "",
     "url": "2026-04-07.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz Day 37. Le blocus se prolonge, les cargos qataris font demi-tour, et pourtant TTF reste ancré près de 49€. Le marché sous-price la durée — le Conseil non. Avec 14 trades validés sur 21, le message est clair: protégez les queues, achetez de l'asymétrie. La prime de risque n'est pas cher pour ce qui pourrait arriver."
   },
   {
