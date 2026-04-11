@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 07 Apr 2026 03:56:54 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2026 04:14:11 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Cline v3.78.0 (VS Code) — plus lisible, moins de friction quand tu vibecodes]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-11.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-11.html</guid>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, on explore les deux faces du vibe coding. D'un côté, on voit des outils comme Cline qui fluidifient le quotidien et des techniques comme le Negative Prompting qui blindent notre code avant même qu'il n'existe. De l'autre, on frôle la catastrophe avec une panne causée par un agent trop zélé, et on se demande si l'efficacité de l'IA ne nous pousse pas tous vers une monoculture technique dangereuse. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Cursor 3 — Agents Window (multi-agents en parallèle)]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-07.html</link>

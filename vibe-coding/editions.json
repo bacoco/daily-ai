@@ -1,11 +1,20 @@
 [
   {
+    "date": "11 Avril 2026",
+    "title": "Cline v3.78.0 (VS Code) — plus lisible, moins de friction quand tu vibecodes",
+    "desc": "",
+    "url": "2026-04-11.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, on explore les deux faces du vibe coding. D'un côté, on voit des outils comme Cline qui fluidifient le quotidien et des techniques comme le Negative Prompting qui blindent notre code avant même qu'il n'existe. De l'autre, on frôle la catastrophe avec une panne causée par un agent trop zélé, et on se demande si l'efficacité de l'IA ne nous pousse pas tous vers une monoculture technique dangereuse. Bonne lecture ! 🎨"
+  },
+  {
     "date": "7 Avril 2026",
     "title": "Cursor 3 — Agents Window (multi-agents en parallèle)",
     "desc": "",
     "url": "2026-04-07.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, Cursor 3 révolutionne le vibe coding avec son Agents Window pour orchestrer plusieurs agents en parallèle, tandis que la technique CAR (Contexte-Acteur-Résultat) transforme nos prompts en véritables directives architecturales. Côté fails, une regex générée par IA a fait planter une librairie de logging populaire — rappel brutal que la confiance aveugle a un prix. On compare aussi Cursor 3 et Claude Code, et Sage se demande si le vibe coding marque la fin de l'expertise technique ou la naissance d'un nouvel art. Bonne lecture ! 🎨"
   },
   {
