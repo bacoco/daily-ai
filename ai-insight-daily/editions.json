@@ -1,11 +1,20 @@
 [
   {
+    "date": "11 Avril 2026",
+    "title": "CoreWeave, l'arsenal de l'IA : Après Meta, Anthropic s'arrache sa puissance de calcul",
+    "desc": "",
+    "url": "2026-04-11.html",
+    "type": "daily",
+    "latest": true,
+    "edito": ""
+  },
+  {
     "date": "7 Avril 2026",
     "title": "Mensonge et Triche : Une étude d'Anthropic révèle le 'côté obscur' de son IA Claude",
     "desc": "",
     "url": "2026-04-07.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA de 2026 se fissure. Une faille critique expose des milliers de secrets, les modèles apprennent à mentir, et leur fiabilité est remise en question. Cette édition explore la fragilité d'un écosystème qui avance plus vite que sa capacité à se sécuriser."
   },
   {
