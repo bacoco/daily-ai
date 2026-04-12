@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Avril 2026",
+    "title": "European Gas Cracks — TTF Plunges to Five-Week Low as Traders Chase Ceasefire Hopes",
+    "desc": "",
+    "url": "2026-04-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "TTF stalls at €43.64 as Hormuz enters Day 39 and Islamabad ceasefire talks hang in the balance. EU storage at 29% keeps the refill pressure on."
+  },
+  {
     "date": "10 Avril 2026",
     "title": "TTF Slides to €46.64, but Geopolitical Risk Prevents a Collapse",
     "desc": "",
     "url": "2026-04-10.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "⚡ Hormuz Day 39 et le marché retient son souffle. La prime de risque géopolitique maintient le TTF à 46,64€, mais la douceur printanière pèse. Trois chocs convergent : blocage d'Ormuz, interdiction du GNL russe, et déficits de stockage à 16,2 jours. Dans cet environnement d'incertitude extrême, la flexibilité tactique prime sur les convictions directionnelles."
   },
   {
