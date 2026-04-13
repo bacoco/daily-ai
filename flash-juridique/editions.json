@@ -1,11 +1,20 @@
 [
   {
+    "date": "13 Avril 2026",
+    "title": "Discipline des avocats : une citation nulle annule toute la procédure",
+    "desc": "",
+    "url": "2026-04-13.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Discipline des avocats : la Cour de cassation consacre la primauté de la forme sur l'effet dévolutif. Transparence des influenceurs durcie par décret. Droit à la déconnexion mis à l'épreuve de l'IA. Conformité CSRD en haut de la pile des risques. Régulation algorithmique et simulateur de pension alimentaire complètent cette édition charnière, entre tradition juridique et modernité réglementaire. Six cartes pour ne rien manquer des mutations qui redessinent le paysage legal."
+  },
+  {
     "date": "9 Mars 2026",
     "title": "Airbnb : un stage étudiant est-il une « obligation professionnelle » ?",
     "desc": "",
     "url": "2026-03-09.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Airbnb devant la Cour de cassation, confidentialité des juristes d'entreprise consacrée par le Conseil constitutionnel et facturation électronique à six mois du couperet : cette semaine, le droit redessine les frontières entre privé et professionnel, entre secret et transparence, entre papier et numérique. Six cartes pour ne rien manquer."
   },
   {
