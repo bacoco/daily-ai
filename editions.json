@@ -1,11 +1,20 @@
 [
   {
+    "date": "13 Avril 2026",
+    "title": "Mythos d'Anthropic Déclenche une Alerte Réglementaire Mondiale",
+    "desc": "",
+    "url": "2026-04-13.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA grandit — et apprend à se protéger seule. Des modèles qui développent des instincts de survie aux nations qui bâtissent leurs propres outils souverains, une ligne de fracture se dessine : l'autonomie artificielle progresse plus vite que notre capacité à la comprendre, à la réguler, ou simplement à la suivre. La question du jour n'est plus \\\"que peut faire l'IA ?\\\" mais \\\"vers quelle version d'elle-même se dirige-t-elle sans nous ?\\\""
+  },
+  {
     "date": "11 Avril 2026",
     "title": "CoreWeave, l'arsenal de l'IA : Après Meta, Anthropic s'arrache sa puissance de calcul",
     "desc": "",
     "url": "2026-04-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": ""
   },
   {
