@@ -6,7 +6,7 @@
     "url": "2026-04-14.html",
     "type": "daily",
     "latest": true,
-    "edito": "Salut ! Cette semaine, on voit les deux faces du vibe coding : d'un côté, Claude Code 2.1.105 ajoute des monitors en background qui rendent l'automatisation plus fluide, et Adrian Sutton shippe une app finance complète en 8 jours sans lire une ligne de code. De l'autre, le crash de qualité d'Opus 4.6 nous rappelle brutalement que notre workflow dépend de décisions qu'on ne contrôle pas, et Sage s'interroge sur cette dette technique invisible — le code qu'on ne comprend pas vraiment. Bonne lecture ! 🎨"
+    "edito": "Salut ! Cette semaine, le vibe coding continue sa course folle. On explore comment les plugins de Claude Code s'automatisent en arrière-plan, et comment forcer l'IA à réfléchir avant de coder avec le chaînage réflexif. Pendant ce temps, Rocket 1.0 nous rappelle que le plus dur n'est pas le code, mais la stratégie produit, et on voit s'affronter les générateurs d'UI de Vercel et Replit. Mais attention, un rapport récent montre que 70% des entreprises ont des failles de sécu dues au code IA, et on se demande si le vibe coding ne crée pas une dette technique invisible. Bonne lecture ! 🎨"
   },
   {
     "date": "11 Avril 2026",
