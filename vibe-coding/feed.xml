@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 11 Apr 2026 04:14:11 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 03:56:31 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Claude Code 2.1.105 — Monitors background pour plugins]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-14.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-14.html</guid>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, on voit les deux faces du vibe coding : d'un côté, Claude Code 2.1.105 ajoute des monitors en background qui rendent l'automatisation plus fluide, et Adrian Sutton shippe une app finance complète en 8 jours sans lire une ligne de code. De l'autre, le crash de qualité d'Opus 4.6 nous rappelle brutalement que notre workflow dépend de décisions qu'on ne contrôle pas, et Sage s'interroge sur cette dette technique invisible — le code qu'on ne comprend pas vraiment. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Cline v3.78.0 (VS Code) — plus lisible, moins de friction quand tu vibecodes]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-11.html</link>

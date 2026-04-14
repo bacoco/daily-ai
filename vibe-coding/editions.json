@@ -1,11 +1,20 @@
 [
   {
+    "date": "14 Avril 2026",
+    "title": "Claude Code 2.1.105 — Monitors background pour plugins",
+    "desc": "",
+    "url": "2026-04-14.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, on voit les deux faces du vibe coding : d'un côté, Claude Code 2.1.105 ajoute des monitors en background qui rendent l'automatisation plus fluide, et Adrian Sutton shippe une app finance complète en 8 jours sans lire une ligne de code. De l'autre, le crash de qualité d'Opus 4.6 nous rappelle brutalement que notre workflow dépend de décisions qu'on ne contrôle pas, et Sage s'interroge sur cette dette technique invisible — le code qu'on ne comprend pas vraiment. Bonne lecture ! 🎨"
+  },
+  {
     "date": "11 Avril 2026",
     "title": "Cline v3.78.0 (VS Code) — plus lisible, moins de friction quand tu vibecodes",
     "desc": "",
     "url": "2026-04-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, on explore les deux faces du vibe coding. D'un côté, on voit des outils comme Cline qui fluidifient le quotidien et des techniques comme le Negative Prompting qui blindent notre code avant même qu'il n'existe. De l'autre, on frôle la catastrophe avec une panne causée par un agent trop zélé, et on se demande si l'efficacité de l'IA ne nous pousse pas tous vers une monoculture technique dangereuse. Bonne lecture ! 🎨"
   },
   {
