@@ -1,11 +1,20 @@
 [
   {
+    "date": "14 Avril 2026",
+    "title": "Settlements, moves, and key levels",
+    "desc": "",
+    "url": "2026-04-14.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Publication du Gas Morning Brief"
+  },
+  {
     "date": "12 Avril 2026",
     "title": "European Gas Cracks — TTF Plunges to Five-Week Low as Traders Chase Ceasefire Hopes",
     "desc": "",
     "url": "2026-04-12.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "TTF stalls at €43.64 as Hormuz enters Day 39 and Islamabad ceasefire talks hang in the balance. EU storage at 29% keeps the refill pressure on."
   },
   {
