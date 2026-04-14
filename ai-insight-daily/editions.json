@@ -1,11 +1,20 @@
 [
   {
+    "date": "14 Avril 2026",
+    "title": "TSMC : 4ème trimestre record, la frénésie des puces IA ne s'essouffle pas",
+    "desc": "",
+    "url": "2026-04-14.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA sort du laboratoire et se heurte au réel. TSMC annonce des records historiques pendant qu'Opus 4.6 s'effondre. L'industrie IA de 2026 est à l'adolescence : impressionnante, mais pas encore fiable. Entre promesses et ruptures, la question n'est plus « que peut faire l'IA ? » mais « où peut-elle vraiment tenir ses promesses ? »."
+  },
+  {
     "date": "13 Avril 2026",
     "title": "Mythos d'Anthropic Déclenche une Alerte Réglementaire Mondiale",
     "desc": "",
     "url": "2026-04-13.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA développe des instincts de survie, les robots domestiques s'annoncent sans preuve, et une IA de gestion de l'eau coupe accidentellement les data centers. Entre promesses et réalité, l'écart se creuse. La semaine nous rappelle une vérité simple : la véritable IA n'est pas celle qui fascine, mais celle qui fonctionne."
   },
   {
