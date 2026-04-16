@@ -1,11 +1,20 @@
 [
   {
+    "date": "16 Avril 2026",
+    "title": "Super Micro : le scandale des 2,5 milliards de dollars",
+    "desc": "",
+    "url": "2026-04-16.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Les puces voyagent illégalement, les modèles chinois s'affranchissent des standards occidentaux, et on découvre que nos LLM ne raisonnent peut-être pas si bien que ça. L'IA de 2026 est à l'adolescence : impressionnante, mais ses fondations se fissurent. Entre promesses géopolitiques et réalités techniques, cette édition explore les frontières que l'IA est en train de redéfinir — pour le meilleur et pour le pire."
+  },
+  {
     "date": "14 Avril 2026",
     "title": "TSMC : 4ème trimestre record, la frénésie des puces IA ne s'essouffle pas",
     "desc": "",
     "url": "2026-04-14.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA sort du laboratoire et se heurte au réel. TSMC annonce des records historiques pendant qu'Opus 4.6 s'effondre. L'industrie IA de 2026 est à l'adolescence : impressionnante, mais pas encore fiable. Entre promesses et ruptures, la question n'est plus « que peut faire l'IA ? » mais « où peut-elle vraiment tenir ses promesses ? »."
   },
   {

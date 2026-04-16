@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 14 Apr 2026 03:06:28 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2026 03:33:03 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Super Micro : le scandale des 2,5 milliards de dollars]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-16.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-16.html</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Les puces voyagent illégalement, les modèles chinois s'affranchissent des standards occidentaux, et on découvre que nos LLM ne raisonnent peut-être pas si bien que ça. L'IA de 2026 est à l'adolescence : impressionnante, mais ses fondations se fissurent. Entre promesses géopolitiques et réalités techniques, cette édition explore les frontières que l'IA est en train de redéfinir — pour le meilleur et pour le pire.]]></description>
+    </item>
     <item>
       <title><![CDATA[TSMC : 4ème trimestre record, la frénésie des puces IA ne s'essouffle pas]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-14.html</link>
