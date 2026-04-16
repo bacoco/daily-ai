@@ -1,11 +1,20 @@
 [
   {
+    "date": "16 Avril 2026",
+    "title": "VS Code 1.116 — JS/TS Chat Features (Preview) : des “skills” TypeScript natifs pour agent coding",
+    "desc": "",
+    "url": "2026-04-16.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, on voit comment les outils IA s'adaptent à nos workflows avec VS Code qui rajoute des skills TypeScript/JS, pendant que Sage nous rappelle que le vibe coding ne doit pas nous faire perdre le sens de notre architecture. On compare aussi deux géants du UI généré, et on découvre un fail qui pourrait arriver à n'importe qui. Bonne lecture ! 🎨"
+  },
+  {
     "date": "14 Avril 2026",
     "title": "Claude Code 2.1.105 — Monitors background pour plugins",
     "desc": "",
     "url": "2026-04-14.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, le vibe coding continue sa course folle. On explore comment les plugins de Claude Code s'automatisent en arrière-plan, et comment forcer l'IA à réfléchir avant de coder avec le chaînage réflexif. Pendant ce temps, Rocket 1.0 nous rappelle que le plus dur n'est pas le code, mais la stratégie produit, et on voit s'affronter les générateurs d'UI de Vercel et Replit. Mais attention, un rapport récent montre que 70% des entreprises ont des failles de sécu dues au code IA, et on se demande si le vibe coding ne crée pas une dette technique invisible. Bonne lecture ! 🎨"
   },
   {

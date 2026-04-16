@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 14 Apr 2026 04:00:10 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Apr 2026 03:56:14 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[VS Code 1.116 — JS/TS Chat Features (Preview) : des “skills” TypeScript natifs pour agent coding]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-16.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-16.html</guid>
+      <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, on voit comment les outils IA s'adaptent à nos workflows avec VS Code qui rajoute des skills TypeScript/JS, pendant que Sage nous rappelle que le vibe coding ne doit pas nous faire perdre le sens de notre architecture. On compare aussi deux géants du UI généré, et on découvre un fail qui pourrait arriver à n'importe qui. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Claude Code 2.1.105 — Monitors background pour plugins]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-14.html</link>
