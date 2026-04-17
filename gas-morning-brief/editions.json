@@ -1,11 +1,20 @@
 [
   {
+    "date": "17 Avril 2026",
+    "title": "Price Action Unavailable Due to Technical Issues",
+    "desc": "",
+    "url": "2026-04-17.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "/tmp/edito-gas-morning-brief-2026-04-17.md"
+  },
+  {
     "date": "15 Avril 2026",
     "title": "Settlements, moves, and key levels",
     "desc": "",
     "url": "2026-04-15.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "TTF oscille entre €44 et €48 depuis trois jours, mais le temps presse. Hormuz Day 41, la force majeure qatari étendue à mi-juin, et le déficit de stockage à 29,5% créent une triple pression sur l'offre. Le marché price une résolution en 2 semaines — nous voyons 35% de probabilité de disruption 2+ mois. L'asymétrie est à l'achat."
   },
   {
