@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 16 Apr 2026 03:56:14 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2026 03:47:24 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Cursor Canvases (15 avril 2026) : l'UI générée par l'agent pour sortir du chat texte]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-18.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-18.html</guid>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, on voit comment les outils IA s'adaptent à nos workflows avec Cursor qui lance ses Canvases pour visualiser le code en dashboards interactifs, pendant que Sage nous rappelle que l'architecture avant tout c'est la clé du vibe coding réussi. On compare aussi Bolt.new et v0.dev pour la génération d'apps, et on découvre un fail de sécurité critique qui rappelle que la confiance aveugle a un prix. Mais la grande histoire ? Le conflit entre Apple et les apps de vibe coding, qui pose une question fondamentale : qui a le droit de créer ? Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[VS Code 1.116 — JS/TS Chat Features (Preview) : des “skills” TypeScript natifs pour agent coding]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-16.html</link>

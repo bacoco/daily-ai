@@ -1,11 +1,20 @@
 [
   {
+    "date": "18 Avril 2026",
+    "title": "Cursor Canvases (15 avril 2026) : l'UI générée par l'agent pour sortir du chat texte",
+    "desc": "",
+    "url": "2026-04-18.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, on voit comment les outils IA s'adaptent à nos workflows avec Cursor qui lance ses Canvases pour visualiser le code en dashboards interactifs, pendant que Sage nous rappelle que l'architecture avant tout c'est la clé du vibe coding réussi. On compare aussi Bolt.new et v0.dev pour la génération d'apps, et on découvre un fail de sécurité critique qui rappelle que la confiance aveugle a un prix. Mais la grande histoire ? Le conflit entre Apple et les apps de vibe coding, qui pose une question fondamentale : qui a le droit de créer ? Bonne lecture ! 🎨"
+  },
+  {
     "date": "16 Avril 2026",
     "title": "VS Code 1.116 — JS/TS Chat Features (Preview) : des “skills” TypeScript natifs pour agent coding",
     "desc": "",
     "url": "2026-04-16.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, on voit comment les outils IA s'adaptent à nos workflows avec VS Code qui rajoute des skills TypeScript/JS, pendant que Sage nous rappelle que le vibe coding ne doit pas nous faire perdre le sens de notre architecture. On compare aussi deux géants du UI généré, et on découvre un fail qui pourrait arriver à n'importe qui. Bonne lecture ! 🎨"
   },
   {
