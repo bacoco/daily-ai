@@ -1,11 +1,20 @@
 [
   {
+    "date": "18 Avril 2026",
+    "title": "Pluie de milliards sur l'IA indienne : les géants US ont choisi leur camp",
+    "desc": "",
+    "url": "2026-04-18.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA sort du laboratoire et entre dans l'industrie, mais le passage à l'échelle révèle ses failles. Les milliards d'investissements en Inde redessinent la carte mondiale, pendant que 76% des projets d'agents IA s'effondrent en production. Cette édition explore une IA à l'adolescence : impressionnante par ses capacités, mais encore fragile par sa maturité technique."
+  },
+  {
     "date": "16 Avril 2026",
     "title": "Super Micro : le scandale des 2,5 milliards de dollars",
     "desc": "",
     "url": "2026-04-16.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Les puces voyagent illégalement, les modèles chinois s'affranchissent des standards occidentaux, et on découvre que nos LLM ne raisonnent peut-être pas si bien que ça. L'IA de 2026 est à l'adolescence : impressionnante, mais ses fondations se fissurent. Entre promesses géopolitiques et réalités techniques, cette édition explore les frontières que l'IA est en train de redéfinir — pour le meilleur et pour le pire."
   },
   {

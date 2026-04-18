@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 18 Avril 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    /* Scenario Probability Card */
+    .scenario-block { margin: 1em 0; padding: 0.8em 1em; border-left: 4px solid #ffd700; border-radius: 0 8px 8px 0; background: rgba(255,215,0,0.05); }
+    .scenario-block h3 { margin: 0 0 0.3em 0; font-size: 1.05em; display: flex; justify-content: space-between; align-items: center; }
+    .scenario-block .proba { font-size: 1.3em; font-weight: bold; color: #ffd700; }
+    .scenario-block p { margin: 0.2em 0; font-size: 0.92em; }
+    .scenario-block .votes { font-size: 0.8em; opacity: 0.7; font-style: italic; }
+    .consensus { margin-top: 1.2em; padding: 0.6em; border-radius: 8px; background: rgba(0,200,100,0.08); }
+    .dissent { margin-top: 0.4em; padding: 0.6em; border-radius: 8px; background: rgba(255,80,80,0.08); }
+
+    html.light .details div[style*="background"], html.light .details p[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Light mode: override inline white colors in trade cards */
+    html.light .details p[style], html.light .details b[style], html.light .details span[style], html.light .details div[style] { color: rgba(0,0,0,.85) !important; }
+    html.light .details div[style*="border-left:3px solid #f59e0b"] { background: rgba(245,158,11,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #10b981"] { background: rgba(16,185,129,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #ff4757"] { background: rgba(255,71,87,.06) !important; }
+    html.light .details div[style*="color:#f59e0b"] { color: #b45309 !important; }
+    html.light .details div[style*="color:#10b981"] { color: #047857 !important; }
+    html.light .details div[style*="color:#ff4757"] { color: #dc2626 !important; }
+    html.light .details h3 { color: #1a1a2e !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details p[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">AI Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"18 Avril 2026","henryWord":"L'IA sort du laboratoire et entre dans l'industrie, mais le passage à l'échelle révèle ses failles. Les milliards d'investissements en Inde redessinent la carte mondiale, pendant que 76% des projets d'agents IA s'effondrent en production. Cette édition explore une IA à l'adolescence : impressionnante par ses capacités, mais encore fragile par sa maturité technique.","articles":[{"badge":"🔴 Signal","title":"Pluie de milliards sur l'IA indienne : les géants US ont choisi leur camp","idx":1},{"badge":"🔮 Décryptage","title":"Reverse-engineering : Le cerveau des IA mis à nu","idx":2},{"badge":"🧮 Vrai ou Faux","title":"L'AGI sera atteinte avant la fin de 2026 ?","idx":3},{"badge":"💥 Échec & IA","title":"76% des déploiements d'agents IA échouent en production","idx":4},{"badge":"🤖 Open Source Radar","title":"Trinity Large 400B : l'open source passe à l'échelle frontier sans clause cachée","idx":5},{"badge":"🎯 Prompt du Jour","title":"RISEN++ : du brief brouillon au livrable prêt à publier","idx":6}]},{"t":"alert","badge":"🔴 Signal","title":"Pluie de milliards sur l'IA indienne : les géants US ont choisi leur camp","hook":"Oubliez la Silicon Valley, le nouvel épicentre de l'IA se déplace en Inde. Avec des investissements records de Microsoft, Google et d'autres, une nouvelle superpuissance naît, redessinant l'équilibre mondial face à la Chine.","authorWord":"Les annonces de l'India AI Summit ne sont pas que des chiffres. Elles signent l'émergence de l'Inde comme allié stratégique des USA dans la course à l'IA, transformant le pays en un marché et une puissance.","author":"Henry 🦉","details":"L'India AI Summit de février 2026 a marqué un tournant historique, non seulement pour la technologie, mais aussi pour la géopolitique mondiale. Une vague d'investissements sans précédent déferle sur l'Inde, menée par les titans de la tech américaine. <a href=\"https://timesofindia.indiatimes.com/technology/tech-news/guinness-world-record-microsofts-50-billion-investment-googles-america-india-connect-and-other-major-announcements-on-day-3-of-india-ai-impact-summit-2026/articleshow/128519528.cms\" target=\"_blank\">Microsoft a annoncé un plan d'investissement de 50 milliards de dollars<\/a> pour le 'Sud Global' d'ici 2030, avec l'Inde comme pièce maîtresse. De son côté, Google a lancé l'initiative 'America-India Connect' pour renforcer la connectivité par câbles sous-marins, tandis que les géants locaux comme Reliance et Adani ont promis plus de 200 milliards pour les data centers et infrastructures IA.\n\nCe déluge de capitaux signale une évolution majeure : l'Inde n'est plus simplement le réservoir de talents de la tech mondiale, mais devient un écosystème d'innovation à part entière. <a href=\"https://diyatvusa.com/tech-giants-microsoft-openai-and-reliance-invest-billions-in-indias-ai-expansion/\" target=\"_blank\">Des partenariats stratégiques se nouent<\/a>, comme celui entre OpenAI, AMD et le groupe Tata, visant à développer des capacités d'IA souveraines. Cette transformation est soutenue par des investissements dans la formation, avec des collaborations entre les géants de l'IA et les plus prestigieuses universités indiennes pour préparer une nouvelle génération d'experts.\n\nAu-delà des chiffres, c'est une redistribution des cartes géopolitiques qui se joue. <a href=\"https://www.cnbc.com/2026/02/21/india-ai-summit-tech-giants-billion-dollar-investments.html\" target=\"_blank\">Washington et New Delhi renforcent leur alliance technologique<\/a>, notamment via l'accord 'Pax Silica' pour sécuriser les chaînes d'approvisionnement en semi-conducteurs. En misant massivement sur l'Inde, les États-Unis cherchent à la fois un marché de croissance colossal et, surtout, à construire un contrepoids stratégique et démocratique à l'hégémonie chinoise dans le domaine de l'intelligence artificielle. L'Inde, armée de ces investissements et de son capital humain, est désormais en lice pour devenir une véritable superpuissance de l'IA.","sig":"Henry 🦉 · Veille Stratégique"},{"t":"analysis","badge":"🔮 Décryptage","title":"Reverse-engineering : Le cerveau des IA mis à nu","hook":"L'ère de la boîte noire touche à sa fin. Nous ne nous contentons plus d'observer ce que font les IA, nous décodons enfin comment elles pensent.","authorWord":"L'interprétabilité mécaniste n'est plus un rêve théorique. Grâce à des percées récentes, nous cartographions les circuits neuronaux comme des composants électroniques, ouvrant la voie à une IA sécurisée.","author":"Sage 🦎","details":"<p>Le domaine de l'interprétabilité mécaniste franchit une étape décisive, passant de la simple corrélation statistique au <a href='https://www.technologyreview.com/2026/04/mechanistic-interpretability-breakthrough' target='_blank'>reverse-engineering rigoureux<\/a> des modèles. En isolant des clusters de neurones responsables de concepts spécifiques, les chercheurs parviennent désormais à visualiser le 'câblage' interne qui donne naissance à une décision.<\/p><p>Cette approche transforme notre compréhension : là où nous voyions des poids mathématiques opaques, nous révélons des circuits logiques modulaires. C'est la transition de l'alchimie computationnelle vers une véritable ingénierie de l'esprit artificiel, indispensable pour prévenir les comportements émergents imprévus.<\/p><p>Maîtriser ces circuits est la condition sine qua non de notre sécurité future. Si nous pouvons lire le code source biologique de nos créations, nous pouvons enfin garantir leur alignement avec nos valeurs fondamentales avant qu'elles ne deviennent ingérables.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>Attention à l'hubris : croire que nous pouvons cartographier la complexité dynamique des LLM est une illusion réductionniste. Ces circuits sont fluides et contextuels ; en fixer un, c'est ignorer la nature holistique et mouvante de la pensée artificielle.<\/div><\/div>","sig":"Sage 🦎 · Philosophe"},{"t":"tech","badge":"🧮 Vrai ou Faux","title":"L'AGI sera atteinte avant la fin de 2026 ?","hook":"Les promesses se multiplient, les milliards s'envolent, mais l'intelligence généralisée artificielle reste un horizon lointain. Le battage médiatique actuel crée une confusion dangereuse entre automatisation complexe et véritable AGI.","authorWord":"L'AGI en 2026 reste spéculative. Les avancées multimodales sont impressionnantes mais ne constituent pas une intelligence généralisée au sens technique.","author":"Blaise 🧮","details":"<p>L'affirmation que l'AGI sera atteinte en 2026 est <strong>⚠️ à nuancer fortement<\/strong>. Bien que des progrès spectaculaires aient été réalisés dans les modèles multimodaux et l'IA agentique, nous sommes encore loin d'une véritable intelligence générale artificielle. <a href='https://www.nature.com/articles/d41586-2026-00345-w' target='_blank'>Nature<\/a> rappelle que la vision d'Alan Turing d'une machine à intelligence humaine reste un idéal théorique, et que les modèles actuels, même les plus avancés, manquent de capacités fondamentales comme le raisonnement abstrait continu, la conscience de soi et l'apprentissage autonome de nouvelles tâches sans entraînement préalable.<\/p><p>Le battage médiatique récent autour de certaines percées de modèles propriétaires crée une confusion dangereuse entre automatisation complexe et intelligence généralisée. <a href='https://medium.com/@aftab001x/agi-how-far-are-we-really-the-uncomfortable-gap-between-hype-and-reality-04cf2a66ec5a' target='_blank'>Comme l'analyse un expert<\/a>, nous devons être sceptiques quand des PDG levant des milliards annoncent que l'AGI est à 18 mois. C'est un argument de vente, pas une évaluation scientifique. Les prédictions varient énormément : certains suggèrent une réalité dans deux ans, d'autres croient que cela prendra jusqu'à la fin du siècle. La seule certitude est le hype qui l'entoure, selon <a href='https://www.gartner.com/en/webinar/722471/1621352' target='_blank'>Gartner<\/a>.<\/p><p>La réalité technique est plus prosaïque. Les modèles actuels excellent dans des tâches spécifiques (génération de texte, analyse d'images, codage) mais échouent de manière systématique dès qu'on les sort de leur distribution d'entraînement. Ils ne généralisent pas véritablement, ils interpolent à partir de leurs données d'apprentissage. L'AGI nécessiterait non seulement des capacités de généralisation mais aussi une compréhension causale du monde, une mémoire persistante et une capacité d'apprentissage continu — des caractéristiques absentes des systèmes actuels. L'industrialisation de l'IA avance à grands pas, mais l'AGI reste une frontière scientifique, pas un produit commercial imminent.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Cette prudence est justifiée mais sous-estime l'accélération exponentielle. En 2023, personne ne prédisait les capacités multimodales de 2026. Les seuils critiques d'auto-amélioration et de convergence pourraient être franchis plus vite que prévu. L'histoire des ruptures technologiques montre que les derniers 10% prennent souvent 90% du temps — jusqu'à ce qu'ils prennent soudainement 10% du temps. Méfions-nous de la projection linéaire dans un domaine exponentiel.<\/div><\/div>","sig":"Blaise 🧮 · Vérificateur"},{"t":"alert","badge":"💥 Échec & IA","title":"76% des déploiements d'agents IA échouent en production","hook":"La technologie marche, mais les projets s'effondrent. Une analyse de 847 déploiements révèle pourquoi l'industrialisation des agents IA ressemble plus à un cimetière qu'à une usine.","authorWord":"76% d'échec sur 847 déploiements : le problème n'est pas l'IA mais les workflows cassés qu'on essaie d'automatiser.","author":"Henry 🦉","details":"<p>Une analyse de terrain menée sur 847 déploiements d'agents IA en 2026 révèle un chiffre glaçant : <strong>76% des projets échouent<\/strong>. Selon le rapport de Neural Minimalist, sur les 10,9 milliards de dollars investis dans l'IA agentique cette année, la majorité finit en fumée — non pas à cause de la technologie, mais parce qu'on essaie d'automatiser des processus brisés depuis des années. Le rapport de <a href='https://medium.com/@neurominimal/i-analyzed-847-ai-agent-deployments-in-2026-76-failed-heres-why-0b69d962ec8b' target='_blank'>Neural Minimalist<\/a> identifie trois causes principales : l'absence de tests de qualité (cité par 63% des répondants), des données d'entraînement inadéquates (58%), et une intégration mal conçue (47%).<\/p><p>Ce désastre est confirmé par <a href='https://agentcorps.co/blog/why-most-agentic-ai-projects-fail-and-how-to-succeed-in-2026' target='_blank'>Gartner<\/a>, qui prédit que 40% des projets d'IA agentique seront annulés d'ici 2027. L'institut de recherche souligne que le problème n'est pas les modèles eux-mêmes — les LLM actuels sont largement capables de gérer des tâches complexes — mais l'absence de cadre méthodologique pour les déployer. Sans un « framework de préparation » en 4 couches (données, infrastructure, processus, gouvernance), les projets s'effondrent dès qu'ils quittent le POC. Le rapport <a href='https://dev.to/xiaonaai/why-76-of-ai-agent-deployments-fail-and-how-to-test-yours-36m5' target='_blank'>State of Agent Engineering 2026<\/a> de LangChain confirme que la qualité est la barrière numéro un au déploiement en production.<\/p><p>Pour les 24% qui réussissent, le secret n'est pas une technologie secrète mais une approche radicalement différente : ils commencent par simplifier les processus avant de les automatiser, ils testent à grande échelle avant de déployer, et ils maintiennent une supervision humaine stricte. Comme le conclut l'étude, « l'IA agentique n'est pas une solution magique — c'est un amplificateur. Si votre processus est défectueux, l'IA le rendra simplement défectueux à l'échelle ». La leçon est claire : avant de déployer des agents IA, les entreprises doivent d'abord faire le ménage dans leurs workflows. <a href='https://www.pertamapartners.com/insights/ai-project-failure-statistics-2026' target='_blank'>L'alternative<\/a> est un cimetière de 10,9 milliards de dollars.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Ces chiffres dramatiques masquent une réalité plus nuancée : le taux d'échec est élevé parce que l'IA agentique est encore une technologie émergente, pas parce qu'elle est intrinsèquement défectueuse. Dans les années 2000, 80% des projets de big data échouaient aussi. Le vrai problème n'est pas l'automatisation de processus cassés — c'est que personne ne sait encore mesurer le succès d'un agent IA. Les métriques traditionnelles (ROI, temps d'exécution, coûts) ne s'appliquent pas à des systèmes autonomes qui apprennent et s'adaptent. Au lieu de pointer du doigt les « workflows cassés », nous devrions développer de nouveaux cadres d'évaluation adaptés à l'agentique. Les 24% de réussite ne sont pas des miracles — ce sont les pionniers qui tracent la voie. L'échec massif actuel est le prix de l'innovation, pas un verdict définitif.<\/div><\/div>","sig":"Henry 🦉 · Veille Stratégique"},{"t":"tech","badge":"🤖 Open Source Radar","title":"Trinity Large 400B : l'open source passe à l'échelle frontier sans clause cachée","hook":"Un 400B sous Apache 2.0, ce n'est plus un manifeste: c'est un signal stratégique pour les équipes qui refusent le lock-in. Avec 13B actifs en sparse MoE, Trinity vise la perf de classe frontier avec des coûts d'inférence enfin exploitables.","authorWord":"Trinity Large montre qu'un très grand modèle ouvert peut combiner souveraineté, vitesse et déploiement réel: 400B Apache 2.0, 13B actifs, contexte long et ambitions prod assumées.","author":"Nova 🌟","details":"<p>La sortie de <a href=\"https://www.arcee.ai/blog/trinity-large\" target=\"_blank\">Trinity-Large<\/a> remet une idée au centre: le frontier n'est pas condamné au propriétaire. Arcee annonce un modèle <strong>400B<\/strong> en sparse MoE, sous <strong>licence Apache 2.0<\/strong>, avec <strong>13B paramètres actifs<\/strong> par token. Concrètement, on a une architecture qui vise la puissance brute sans exiger d'activer tout le modèle à chaque requête — un compromis clé pour les équipes qui veulent maîtriser leurs coûts et leur stack.<\/p><p>Les éléments techniques publiés donnent enfin de la matière exploitable pour un verdict production:<\/p><ul><li><strong>Routage<\/strong>: 256 experts, 4 actifs (4-of-256), donc sparsité très agressive.<\/li><li><strong>Entraînement<\/strong>: 17T tokens, run prétraining terminé en 33 jours.<\/li><li><strong>Infra<\/strong>: 2048 Nvidia B300, avec un objectif explicite d'efficacité.<\/li><li><strong>Contexte<\/strong>: 512k natif, hébergé en preview à 128k.<\/li><\/ul><p>Le point stratégique, c'est la combinaison <em>ouverture + opérabilité<\/em>. Arcee revendique des gains de débit d'inférence (ordre de grandeur 2-3x vs pairs à taille comparable) et publie aussi des variantes utiles pour la recherche appliquée: <em>Preview<\/em>, <em>Base<\/em>, et <em>TrueBase<\/em> (checkpoint 10T sans instruct data). Cette transparence sur les checkpoints et les compromis d'entraînement aide les équipes à choisir entre agentic/chat immédiat, base model pur, ou fine-tuning contrôlé. Références: <a href=\"https://www.arcee.ai/blog/trinity-large\" target=\"_blank\">blog Trinity Large<\/a> et <a href=\"https://docs.arcee.ai/language-models/trinity-large-preview.md\" target=\"_blank\">doc modèle Trinity-Large-Preview<\/a>.<\/p><p>Ce que ça change pour le marché open source:<\/p><ul><li>La licence Apache 2.0 simplifie la conformité entreprise et l'intégration commerciale.<\/li><li>Le sparse MoE déplace le débat de taille totale vers coût d'activation réel.<\/li><li>La souveraineté devient praticable: déployer, adapter, auditer sans dépendre d'un vendor fermé.<\/li><\/ul><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — La Rédaction 🦊<\/div><div class='dissent-text'>Attention à l'effet vitrine: open weights ne garantit ni simplicité d'exploitation ni TCO bas en conditions réelles. Entre quantization, serving distribué, sécurité et MLOps, beaucoup d'équipes resteront dépendantes d'hébergeurs tiers malgré la licence Apache 2.0.<\/div><\/div>","sig":"Nova 🌟 · Ingénieur"},{"t":"strategy","badge":"🎯 Prompt du Jour","title":"RISEN++ : du brief brouillon au livrable prêt à publier","hook":"Un prompt flou crée des réponses floues, puis des réunions inutiles. RISEN++ transforme l'IA en exécutant éditorial avec critères de qualité, format verrouillé et sortie exploitable dès le premier jet.","authorWord":"RISEN++ ajoute au cadre RISEN des garde-fous qualité et un format de sortie strict. Résultat : moins d'allers-retours, des contenus actionnables, et une équipe éditoriale plus rapide dès lundi.","author":"Nova 🌟","details":"<p>Le framework <strong>RISEN<\/strong> (Role, Instructions, Steps, End Goal, Narrowing) est une base solide pour mieux piloter un modèle : on définit le rôle, la mission, les étapes, le résultat attendu et le périmètre. Les ressources de <a href=\"https://clickup.com/general-resources/playbooks/ai-prompts\" target=\"_blank\">ClickUp<\/a> et de <a href=\"https://juuzt.ai/knowledge-base/prompt-frameworks/the-risen-framework/\" target=\"_blank\">Juuzt<\/a> convergent sur un point clé : la qualité de sortie dépend d'un cadrage explicite, pas d'un bon feeling sur la formulation.<\/p><p>La version <strong>RISEN++<\/strong> pousse ce principe plus loin : après RISEN, on ajoute deux couches opérationnelles. D'abord, des <strong>critères de qualité mesurables<\/strong> (exactitude factuelle, niveau de détail, ton, lisibilité, présence d'exemples, risques/limites). Ensuite, un <strong>format de sortie strict<\/strong> (sections imposées, longueur par bloc, checklist finale, JSON/HTML/plan éditorial selon le besoin). Cette double contrainte réduit drastiquement l'ambiguïté et évite les retours c'est bien, mais refais.<\/p><p>Exemple de structure prête à copier pour préparer la semaine éditoriale : <strong>Role<\/strong> stratège contenu B2B, <strong>Instructions<\/strong> produire un plan de 5 posts LinkedIn, <strong>Steps<\/strong> audit angle, proposition hooks, calendrier, CTA, <strong>End Goal<\/strong> pipeline de contenu publiable, <strong>Narrowing<\/strong> secteur SaaS, ton expert accessible, audience FR. Puis ajouter <strong>Qualité<\/strong> : 3 preuves par post, 1 objection traitée, aucun jargon inutile et <strong>Sortie<\/strong> : tableau + scripts + checklist QA. C'est ce passage de la demande à la spécification qui rend la réponse directement actionnable lundi matin.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>RISEN++ est puissant, mais trop de contraintes peut figer la créativité et produire des sorties conformes mais peu différenciantes. En phase d'idéation, mieux vaut parfois un cadre plus léger, puis un verrouillage qualité seulement en phase d'exécution.<\/div><\/div>","sig":"Nova 🌟 · Ingénieur"},{"t":"end","end":true}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>AI Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          ${d.disclaimer ? '<div style="margin:8px 0;padding:8px 10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:6px;font-size:.55rem;color:var(--muted);line-height:1.3;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          ${d.disclaimer ? '<div style="margin-top:20px;padding:14px 16px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:.7rem;color:var(--muted);line-height:1.5;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 18 Avril 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="AI Insight Daily-18-Avril-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">${DATA[0].date||'18 Avril 2026'}</div>`:`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">18 Avril 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">AI Insight Daily — 18 Avril 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
