@@ -1,11 +1,20 @@
 [
   {
+    "date": "19 Avril 2026",
+    "title": "Prime d'activité : +50€ par mois pour 3 millions de ménages",
+    "desc": "",
+    "url": "2026-04-19.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Après des années de croissance facile, l'économie mondiale atterrit. La revalorisation de la prime d'activité soutient le pouvoir d'achat, mais masque des structures de salaires fragiles. Tesla et les valorisations boursières excessives signalent la fin de l'euphorie : le moment de raisonner l'actualité en termes de mécanismes et d'effets de structure."
+  },
+  {
     "date": "8 Mars 2026",
     "title": "ReArm Europe : 800 Md€ pour le réarmement du continent",
     "desc": "",
     "url": "2026-03-08.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Réarmement européen à 800 milliards, petites retraites revalorisées, note souveraine sous tension : trois fronts qui dessinent le trilemme budgétaire français — investir, redistribuer et assainir, sans sacrifier la croissance. De Keynes à Rawls en passant par Musgrave, cette édition te donne les mécanismes, les chiffres et les amorces pour transformer l'actualité en copies solides."
   },
   {
