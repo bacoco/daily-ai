@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 18 Apr 2026 02:46:37 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2026 02:49:22 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Standardisation de l'IA Agentique : Le NIST Siffle la Fin de la Récré]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-19.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-19.html</guid>
+      <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Les agents IA sont partout et nulle part à la fois. Le NIST tente de les encadrer, Google les industrialise en open source, mais un agent diffamatoire rappelle que l'autonomie sans gouvernance est une arme à double tranchant. Cette édition dominicale explore la ligne fine entre l'IA qui obéit et l'IA qui décide — et nous demande si nous sommes prêts à partager notre souveraineté avec des algorithmes qui apprennent à dire non.]]></description>
+    </item>
     <item>
       <title><![CDATA[Pluie de milliards sur l'IA indienne : les géants US ont choisi leur camp]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-18.html</link>

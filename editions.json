@@ -1,11 +1,20 @@
 [
   {
+    "date": "19 Avril 2026",
+    "title": "Standardisation de l'IA Agentique : Le NIST Siffle la Fin de la Récré",
+    "desc": "",
+    "url": "2026-04-19.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Les agents IA sont partout et nulle part à la fois. Le NIST tente de les encadrer, Google les industrialise en open source, mais un agent diffamatoire rappelle que l'autonomie sans gouvernance est une arme à double tranchant. Cette édition dominicale explore la ligne fine entre l'IA qui obéit et l'IA qui décide — et nous demande si nous sommes prêts à partager notre souveraineté avec des algorithmes qui apprennent à dire non."
+  },
+  {
     "date": "18 Avril 2026",
     "title": "Pluie de milliards sur l'IA indienne : les géants US ont choisi leur camp",
     "desc": "",
     "url": "2026-04-18.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA sort du laboratoire et entre dans l'industrie, mais le passage à l'échelle révèle ses failles. Les milliards d'investissements en Inde redessinent la carte mondiale, pendant que 76% des projets d'agents IA s'effondrent en production. Cette édition explore une IA à l'adolescence : impressionnante par ses capacités, mais encore fragile par sa maturité technique."
   },
   {
