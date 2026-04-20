@@ -1,11 +1,20 @@
 [
   {
+    "date": "20 Avril 2026",
+    "title": "Renoncer par avance à être délégué syndical : impossible",
+    "desc": "",
+    "url": "2026-04-20.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Liberté syndicale sanctifiée, liste des médecins du travail actualisée, dérogations encadrées : cette édition du lundi place le praticien face à l'équilibre permanent entre droits fondamentaux et contraintes organisationnelles. Ajoutez la montée du risque RGPD sur les données professionnelles et l'alerte sur la requalification des relations d'EI — six cartes pour naviguer dans un droit qui protège l'individu tout en structurant l'entreprise."
+  },
+  {
     "date": "17 Avril 2026",
     "title": "Détention provisoire : le Conseil constitutionnel sanctifie le droit de comparaître physiquement",
     "desc": "",
     "url": "2026-04-17.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Droit de comparaître physiquement consacré par le Conseil constitutionnel, seuils d'exposition au plomb divisés par deux, pacte Dutreil recentré sur l'opérationnel et exonération des aides à domicile resserrée : cette édition du vendredi place le praticien face à un droit qui se durcit sur tous les fronts — pénal, social, fiscal et environnemental. Ajoutez la campagne de contrôles RGPD du CEPD et la centralisation des données amiante : six cartes pour ajuster vos réflexes avant la fin du mois."
   },
   {
