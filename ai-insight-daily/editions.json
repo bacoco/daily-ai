@@ -1,11 +1,20 @@
 [
   {
+    "date": "20 Avril 2026",
+    "title": "Cerebras frappe la bourse : l'IPO du concurrent de Nvidia à 28 milliards de dollars",
+    "desc": "",
+    "url": "2026-04-20.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA de 2026 se confronte à la réalité économique. L'entrée en bourse spectaculaire de Cerebras rebat les cartes du hardware, tandis que l'échec coûteux de Sora rappelle que l'audace technique ne garantit pas le succès. Cette édition explore une industrie en pleine consolidation, où la course à la puissance brute cède le pas à une recherche de maturité et de modèles économiques viables."
+  },
+  {
     "date": "19 Avril 2026",
     "title": "Standardisation de l'IA Agentique : Le NIST Siffle la Fin de la Récré",
     "desc": "",
     "url": "2026-04-19.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Les agents IA sont partout et nulle part à la fois. Le NIST tente de les encadrer, Google les industrialise en open source, mais un agent diffamatoire rappelle que l'autonomie sans gouvernance est une arme à double tranchant. Cette édition dominicale explore la ligne fine entre l'IA qui obéit et l'IA qui décide — et nous demande si nous sommes prêts à partager notre souveraineté avec des algorithmes qui apprennent à dire non."
   },
   {
