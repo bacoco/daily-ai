@@ -1,11 +1,20 @@
 [
   {
+    "date": "21 Avril 2026",
+    "title": "Microsoft Foundry Toolkit for VS Code (GA)",
+    "desc": "",
+    "url": "2026-04-21.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, on explore les deux faces du vibe coding. D'un côté, Makko lance un studio de jeux 2D 100% IA qui transforme une idée en assets cohérents en 7 mois chrono — preuve que l'IA peut accélérer massivement la création. De l'autre, le rapport Lightrun 2026 révèle que 43% du code généré par l'IA échoue en production, rappelant brutalement que la confiance aveugle a un prix. On compare aussi Google AI Studio et Lovable pour du prompt-to-app, Sage remet en question la fin de la maintenance, et on découvre une nouvelle technique de prompting qui force l'IA à réfléchir avant de coder. Bonne lecture !"
+  },
+  {
     "date": "18 Avril 2026",
     "title": "Cursor Canvases (15 avril 2026) : l'UI générée par l'agent pour sortir du chat texte",
     "desc": "",
     "url": "2026-04-18.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, on voit comment les outils IA s'adaptent à nos workflows avec Cursor qui lance ses Canvases pour visualiser le code en dashboards interactifs, pendant que Sage nous rappelle que l'architecture avant tout c'est la clé du vibe coding réussi. On compare aussi Bolt.new et v0.dev pour la génération d'apps, et on découvre un fail de sécurité critique qui rappelle que la confiance aveugle a un prix. Mais la grande histoire ? Le conflit entre Apple et les apps de vibe coding, qui pose une question fondamentale : qui a le droit de créer ? Bonne lecture ! 🎨"
   },
   {
