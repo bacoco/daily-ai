@@ -1,11 +1,20 @@
 [
   {
+    "date": "22 Avril 2026",
+    "title": "Sommet IA en Inde : Modi orchestre la naissance d'une troisième superpuissance",
+    "desc": "",
+    "url": "2026-04-22.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'IA de 2026 se confronte à la réalité. Pendant que l'Inde se positionne comme troisième superpuissance IA avec 250 milliards d'investissements, un chatbot fiscal conseille la fraude et les mythes autour de l'AGI persistent. Cette édition explore une IA à l'adolescence : impressionnante par ses ambitions, mais encore fragile par sa mise en œuvre."
+  },
+  {
     "date": "20 Avril 2026",
     "title": "Cerebras frappe la bourse : l'IPO du concurrent de Nvidia à 28 milliards de dollars",
     "desc": "",
     "url": "2026-04-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA de 2026 se confronte à la réalité économique. L'entrée en bourse spectaculaire de Cerebras rebat les cartes du hardware, tandis que l'échec coûteux de Sora rappelle que l'audace technique ne garantit pas le succès. Cette édition explore une industrie en pleine consolidation, où la course à la puissance brute cède le pas à une recherche de maturité et de modèles économiques viables."
   },
   {
