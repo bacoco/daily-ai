@@ -1,11 +1,20 @@
 [
   {
+    "date": "22 Avril 2026",
+    "title": "Pouvoir du maire : un arrêté municipal ne peut bloquer une expulsion locative",
+    "desc": "",
+    "url": "2026-04-22.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Séparation des pouvoirs rappelée au TA de Montreuil, sites classés modernisés et identité numérique renforcée au JO, CII doublé pour les PME innovantes, droit de retrait étendu au cyber-harcèlement, dépénalisation des tests ADN en vue, et Actu-Juridique.fr pour la veille gratuite : cette édition du mercredi place le praticien face à un droit qui protège, régule et innove. Six cartes pour ajuster vos réflexes entre libertés fondamentales, conformité renforcée et opportunités fiscales."
+  },
+  {
     "date": "20 Avril 2026",
     "title": "Renoncer par avance à être délégué syndical : impossible",
     "desc": "",
     "url": "2026-04-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Liberté syndicale sanctifiée, liste des médecins du travail actualisée, dérogations encadrées : cette édition du lundi place le praticien face à l'équilibre permanent entre droits fondamentaux et contraintes organisationnelles. Ajoutez la montée du risque RGPD sur les données professionnelles et l'alerte sur la requalification des relations d'EI — six cartes pour naviguer dans un droit qui protège l'individu tout en structurant l'entreprise."
   },
   {
