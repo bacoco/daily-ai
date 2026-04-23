@@ -1,11 +1,20 @@
 [
   {
+    "date": "23 Avril 2026",
+    "title": "Le Plugin Codex pour Claude Code : quand OpenAI vient en renfort d'Anthropic",
+    "desc": "",
+    "url": "2026-04-23.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, le vibe coding passe à l'échelle industrielle. OpenAI lance un plugin pour utiliser Codex depuis Claude Code, prouvant que l'avenir n'est pas un seul outil mais un écosystème connecté. Pendant ce temps, une journaliste sans code construit un clone d'Asana en 15 minutes — et SaaStr consacre un track entier au vibe coding. Bonne lecture ! 🎨"
+  },
+  {
     "date": "21 Avril 2026",
     "title": "Microsoft Foundry Toolkit for VS Code (GA)",
     "desc": "",
     "url": "2026-04-21.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, on explore les deux faces du vibe coding. D'un côté, Makko lance un studio de jeux 2D 100% IA qui transforme une idée en assets cohérents en 7 mois chrono — preuve que l'IA peut accélérer massivement la création. De l'autre, le rapport Lightrun 2026 révèle que 43% du code généré par l'IA échoue en production, rappelant brutalement que la confiance aveugle a un prix. On compare aussi Google AI Studio et Lovable pour du prompt-to-app, Sage remet en question la fin de la maintenance, et on découvre une nouvelle technique de prompting qui force l'IA à réfléchir avant de coder. Bonne lecture !"
   },
   {

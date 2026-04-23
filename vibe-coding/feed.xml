@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 21 Apr 2026 03:48:50 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 04:44:53 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Le Plugin Codex pour Claude Code : quand OpenAI vient en renfort d'Anthropic]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-23.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-04-23.html</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Cette semaine, le vibe coding passe à l'échelle industrielle. OpenAI lance un plugin pour utiliser Codex depuis Claude Code, prouvant que l'avenir n'est pas un seul outil mais un écosystème connecté. Pendant ce temps, une journaliste sans code construit un clone d'Asana en 15 minutes — et SaaStr consacre un track entier au vibe coding. Bonne lecture ! 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Microsoft Foundry Toolkit for VS Code (GA)]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-04-21.html</link>
