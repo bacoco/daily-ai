@@ -1,11 +1,20 @@
 [
   {
+    "date": "23 Avril 2026",
+    "title": "Gas Price Flash — TTF Surges on Gulf Crisis",
+    "desc": "",
+    "url": "2026-04-23.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "TTF rangebound near €44 as the market waits for Hormuz Day 55 catalyst. The triple shock — Hormuz closure, Russian LNG ban Phase 2, storage refill mandate — has created a binary environment where calendar spreads and asymmetric structures trump directional bets. The council validated 7 of 22 proposed trades, pruning duplicates and contradictions while keeping the highest-conviction plays. The unifying theme: flexibility over fortresses. Buy the straddles, fade the naked shorts."
+  },
+  {
     "date": "20 Avril 2026",
     "title": "Settlements, moves, and key levels",
     "desc": "",
     "url": "2026-04-20.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "The market is trapped between comfortable physical balances and the fear of what could go wrong. Three structural shocks—Russian transit loss, EU storage shortfall, and Hormuz risk premium—have created a binary environment. TTF remains rangebound between €46-48, but the volatility tail is real. The unifying theme today is a steepening TTF curve: bearish tactically near-term (sell resistance at €48.50), bullish structurally into winter (buy calendar spreads, buy Winter-26 outright). The council validated 12 of 19 proposed trades, trimming duplicates and contradictions. Asymmetric hedges (Dec-26 €60 calls, risk reversals) are favored over outright directional bets in this environment."
   },
   {
