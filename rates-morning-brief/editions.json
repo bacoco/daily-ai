@@ -1,11 +1,20 @@
 [
   {
+    "date": "24 Avril 2026",
+    "title": "Consumer Sentiment Final & Jobless Claims in Focus — Iran Oil Shock Dominates",
+    "desc": "",
+    "url": "2026-04-24.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz Day 55. Ghalibaf resigns, IRGC storms cargo ships. Ceasefire narrative is dead. Oil at 105 dollars fuels breakevens and term premium. ECB meets in 6 days at 99 percent hold priced but IMF calls for 50bp hikes. Bear steepening is the regime."
+  },
+  {
     "date": "23 Avril 2026",
     "title": "Flash PMI Day: EZ Slides Into Contraction as US Manufacturing Surges — Stagflation Trade Goes Global",
     "desc": "",
     "url": "2026-04-23.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "PMI divergence day. The Eurozone just printed its worst composite reading in 17 months while US manufacturing surged to a near-4-year high. This isn't just a data surprise — it's a structural split that redefines CB policy paths, curve trades, and cross-currency positioning for the quarter. The council retained 15 of 24 trades, with the ECB-Fed 2Y spread and Bund steepener as top conviction."
   }
 ]
