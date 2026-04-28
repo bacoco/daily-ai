@@ -1,11 +1,20 @@
 [
   {
+    "date": "28 Avril 2026",
+    "title": "TTF Holds Near €45 as Asia Remains Weak",
+    "desc": "",
+    "url": "2026-04-28.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Iran's conditional offer to reopen Hormuz injects a binary catalyst into a market that had settled into uneasy rangebound trading. With the strait still physically closed, EU storage at 31.75%, and the Russian LNG ban reshaping supply, the summer refill campaign will test Europe's resolve regardless of the diplomatic outcome. The council validated 8 of 17 proposed trades, pruning duplicates and contradictions — the highest-conviction plays own volatility, not direction."
+  },
+  {
     "date": "24 Avril 2026",
     "title": "Settlements, moves, and key levels",
     "desc": "",
     "url": "2026-04-24.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz Day 56 and the market holds its breath. TTF rangebound €44-46 as traders await the June 5 Iran-EU summit — the first diplomatic path in 56 days. The triple shock (Hormuz + Russian LNG ban + storage deficit) has created a binary environment where asymmetric structures (calls, call spreads, straddles) trump directional bets. The council validated 8 of 13 proposed trades, pruning duplicates and off-scope ideas while keeping the highest-conviction plays. The unifying theme: flexibility over fortresses. Buy the calls, fade the naked futures."
   },
   {
