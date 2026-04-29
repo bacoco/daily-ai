@@ -1,11 +1,20 @@
 [
   {
+    "date": "29 Avril 2026",
+    "title": "FOMC Day: Fed Expected to Hold as Markets Watch for Hawkish Shift",
+    "desc": "",
+    "url": "2026-04-29.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Dual CB week: Fed holds today, ECB meets tomorrow. With CPI at 3.3%, Hormuz closed Day 61, and BTP-Bund at 82bp, the skew is hawkish. The desk goes into Wednesday short duration and long vol."
+  },
+  {
     "date": "28 Avril 2026",
     "title": "Fed & ECB Week: Quiet Data Calendar Before the Storm",
     "desc": "",
     "url": "2026-04-28.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Triple CB week kicks off with oil at 08 and Hormuz on day 60. The desk goes into Wednesday short Schatz and long vol — the ECB is the most likely source of a market surprise."
   },
   {
