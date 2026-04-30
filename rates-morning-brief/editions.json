@@ -1,11 +1,20 @@
 [
   {
+    "date": "30 Avril 2026",
+    "title": "GDP, PCE & ECB Decision Day: A Triple-Threat Thursday",
+    "desc": "",
+    "url": "2026-04-30.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Triple threat Thursday: Fed's 8-4 hawkish split meets ECB decision day, with Q1 GDP and PCE dropping at 8:30 AM ET. Hormuz enters month 3. The skew is unambiguously to higher yields — the only question is speed."
+  },
+  {
     "date": "29 Avril 2026",
     "title": "FOMC Day: Fed Expected to Hold as Markets Watch for Hawkish Shift",
     "desc": "",
     "url": "2026-04-29.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Dual CB week: Fed holds today, ECB meets tomorrow. With CPI at 3.3%, Hormuz closed Day 61, and BTP-Bund at 82bp, the skew is hawkish. The desk goes into Wednesday short duration and long vol."
   },
   {
