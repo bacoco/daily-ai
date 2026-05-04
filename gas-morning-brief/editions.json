@@ -1,11 +1,20 @@
 [
   {
+    "date": "4 Mai 2026",
+    "title": "TTF Pulls Back to €45 as Hormuz Premium Unwinds, HH Firm at $2.83",
+    "desc": "",
+    "url": "2026-05-04.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Hormuz has moved from scenario to reality — 20% of global LNG is disrupted and Europe faces its toughest storage refill campaign in years at just 32% full. The triple threat of Hormuz, storage deficit, and Norway's hydro gap creates an asymmetric setup: the path of least resistance is higher for summer TTF. Trade the convexity — buy summer calls or strangles to position for a potential supply squeeze, while respecting the binary downside risk of a diplomatic breakthrough."
+  },
+  {
     "date": "1 Mai 2026",
     "title": "TTF Surges 5.6% to €47.10 on First Hormuz LNG Transit — HH Drifts Near $2.68",
     "desc": "",
     "url": "2026-05-01.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz Day 64 brings a potential inflection: the first LNG tanker to cross the strait since the war began. Yet one transit does not break a blockade — and Europe enters injection season at its lowest April storage since 2018. The council audited 18 trade ideas and retained 10: the core conviction is a barbell of calendar spreads and tail-risk calls, with unanimous support for the TTF Jun €55 call as the cheapest insurance in a binary market."
   }
 ]
