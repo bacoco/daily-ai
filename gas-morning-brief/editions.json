@@ -1,11 +1,20 @@
 [
   {
+    "date": "5 Mai 2026",
+    "title": "TTF Surges 7% to Retake €49 as Geopolitical Risk Flares, HH Slips to $2.83",
+    "desc": "",
+    "url": "2026-05-05.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "The gas market is walking a tightrope, caught between the bullish trio of Hormuz risk, a deep EU storage deficit, and upcoming Norwegian maintenance. The path of least resistance is higher, with any supply disruption likely to have an outsized impact on prices."
+  },
+  {
     "date": "4 Mai 2026",
     "title": "TTF Pulls Back to €45 as Hormuz Premium Unwinds, HH Firm at $2.83",
     "desc": "",
     "url": "2026-05-04.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Hormuz has moved from scenario to reality — 20% of global LNG is disrupted and Europe faces its toughest storage refill campaign in years at just 32% full. The triple threat of Hormuz, storage deficit, and Norway's hydro gap creates an asymmetric setup: the path of least resistance is higher for summer TTF. Trade the convexity — buy summer calls or strangles to position for a potential supply squeeze, while respecting the binary downside risk of a diplomatic breakthrough."
   },
   {
