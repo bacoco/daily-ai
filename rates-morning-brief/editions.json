@@ -1,11 +1,20 @@
 [
   {
+    "date": "5 Mai 2026",
+    "title": "ISM Services PMI in Focus After Last Week's Hot Inflation",
+    "desc": "",
+    "url": "2026-05-05.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "L'édition du jour est dominée par une double contradiction : un 'flight-to-quality' qui ne suffit pas à compenser le choc inflationniste de la hausse du pétrole, et des banques centrales qui promettent de la stabilité pendant que la courbe des taux des États-Unis s'aplatit de manière baissière ('bear flattener'). Le Conseil est formel : le marché sous-estime le risque d'une reprise durable de l'inflation."
+  },
+  {
     "date": "30 Avril 2026",
     "title": "GDP, PCE & ECB Decision Day: A Triple-Threat Thursday",
     "desc": "",
     "url": "2026-04-30.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Triple threat Thursday: Fed's 8-4 hawkish split meets ECB decision day, with Q1 GDP and PCE dropping at 8:30 AM ET. Hormuz enters month 3. The skew is unambiguously to higher yields — the only question is speed."
   },
   {
