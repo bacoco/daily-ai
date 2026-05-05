@@ -1,11 +1,20 @@
 [
   {
+    "date": "5 Mai 2026",
+    "title": "Devin for Terminal : l'agent autonome qui sort de l'IDE pour coder dans ton terminal",
+    "desc": "",
+    "url": "2026-05-05.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Cette semaine, le vibe coding montre ses deux visages. D'un côté, Devin for Terminal révolutionne notre workflow avec un agent autonome qui sort de l'IDE pour opérer directement dans notre terminal. De l'autre, l'effet stellaire de l'IA crée une génération de développeurs juniors sans fondamentaux techniques. Entre la Chain-of-Thought Debugging qui nous force à réfléchir avant de coder, et les failles de sécurité cachées dans 92% des applications IA, une chose est claire : le vibe coding n'est plus une option, c'est une responsabilité. Bonne lecture ! 🎨"
+  },
+  {
     "date": "23 Avril 2026",
     "title": "Le Plugin Codex pour Claude Code : quand OpenAI vient en renfort d'Anthropic",
     "desc": "",
     "url": "2026-04-23.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, le vibe coding passe à l'échelle industrielle. OpenAI lance un plugin pour utiliser Codex depuis Claude Code, prouvant que l'avenir n'est pas un seul outil mais un écosystème connecté. Pendant ce temps, une journaliste sans code construit un clone d'Asana en 15 minutes — et SaaStr consacre un track entier au vibe coding. Bonne lecture ! 🎨"
   },
   {
