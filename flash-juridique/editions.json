@@ -1,11 +1,20 @@
 [
   {
+    "date": "6 Mai 2026",
+    "title": "Passeport périmé de 18 jours : EasyJet condamnée",
+    "desc": "",
+    "url": "2026-05-06.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Cette édition met l’accent sur un droit en exécution : au-delà des textes, ce sont les preuves, la traçabilité et la gouvernance qui font désormais la différence. Entre jurisprudence, conformité documentaire et usages de l’IA, le risque juridique se déplace vers les pratiques concrètes. Objectif cette semaine : sécuriser vos réflexes opérationnels avant le contentieux."
+  },
+  {
     "date": "22 Avril 2026",
     "title": "Pouvoir du maire : un arrêté municipal ne peut bloquer une expulsion locative",
     "desc": "",
     "url": "2026-04-22.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Séparation des pouvoirs rappelée au TA de Montreuil, sites classés modernisés et identité numérique renforcée au JO, CII doublé pour les PME innovantes, droit de retrait étendu au cyber-harcèlement, dépénalisation des tests ADN en vue, et Actu-Juridique.fr pour la veille gratuite : cette édition du mercredi place le praticien face à un droit qui protège, régule et innove. Six cartes pour ajuster vos réflexes entre libertés fondamentales, conformité renforcée et opportunités fiscales."
   },
   {

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Insight Daily — 6 Mai 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    /* Scenario Probability Card */
+    .scenario-block { margin: 1em 0; padding: 0.8em 1em; border-left: 4px solid #ffd700; border-radius: 0 8px 8px 0; background: rgba(255,215,0,0.05); }
+    .scenario-block h3 { margin: 0 0 0.3em 0; font-size: 1.05em; display: flex; justify-content: space-between; align-items: center; }
+    .scenario-block .proba { font-size: 1.3em; font-weight: bold; color: #ffd700; }
+    .scenario-block p { margin: 0.2em 0; font-size: 0.92em; }
+    .scenario-block .votes { font-size: 0.8em; opacity: 0.7; font-style: italic; }
+    .consensus { margin-top: 1.2em; padding: 0.6em; border-radius: 8px; background: rgba(0,200,100,0.08); }
+    .dissent { margin-top: 0.4em; padding: 0.6em; border-radius: 8px; background: rgba(255,80,80,0.08); }
+
+    html.light .details div[style*="background"], html.light .details p[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Light mode: override inline white colors in trade cards */
+    html.light .details p[style], html.light .details b[style], html.light .details span[style], html.light .details div[style] { color: rgba(0,0,0,.85) !important; }
+    html.light .details div[style*="border-left:3px solid #f59e0b"] { background: rgba(245,158,11,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #10b981"] { background: rgba(16,185,129,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #ff4757"] { background: rgba(255,71,87,.06) !important; }
+    html.light .details div[style*="color:#f59e0b"] { color: #b45309 !important; }
+    html.light .details div[style*="color:#10b981"] { color: #047857 !important; }
+    html.light .details div[style*="color:#ff4757"] { color: #dc2626 !important; }
+    html.light .details h3 { color: #1a1a2e !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details p[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">AI Insight Daily</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"6 Mai 2026","henryWord":"L'IA sort de l'âge du démo pour entrer dans celui de l'infrastructure. La Maison Blanche veut contrôler les releases, Anthropic devient intégrateur, le NHS ferme GitHub par peur de Mythos, et quatre labos chinois prouvent que l'open-weights est devenu un outil géopolitique. Pendant ce temps, Cerebras prépare la plus grande IPO tech de l'année. Le signal est unanime : la bataille n'est plus dans les modèles, elle est dans les systèmes.","articles":[{"badge":"🔴 Signal","title":"La Maison Blanche veut examiner vos modèles IA avant de les publier","idx":1},{"badge":"🔮 Décryptage","title":"Anthropic monte un cabinet de conseil IA avec Blackstone — l'ère de l'implémentation","idx":2},{"badge":"🧮 Vrai ou Faux","title":"Mythos pirate des réseaux, LeCun dédramatise, la Chine rattrape l'Occident — vérifions","idx":3},{"badge":"💥 Échec & IA","title":"Le NHS ferme ses dépôts GitHub — l'open source sous le choc Mythos","idx":4},{"badge":"🤖 Open Source Radar","title":"Quatre labos chinois, une semaine, un barrage de modèles open-weights","idx":5},{"badge":"🎯 Prompt du Jour","title":"Le Prompt Anti-Hallucination : Contrôler ce que l'IA ne sait pas","idx":6}]},{"t":"alert","badge":"🔴 Signal","title":"La Maison Blanche veut examiner vos modèles IA avant de les publier","hook":"L'administration Trump, jusqu'ici peu interventionniste, discute d'un décret imposant un feu vert gouvernemental avant la sortie de tout modèle IA avancé. Le choc est double : le contexte politique et l'impact sur les timelines de l'industrie.","authorWord":"Washington passe de « move fast » à « wait for approval ». Si ce décret aboutit, ce sont les releases de GPT-6, Gemini 3 et Claude Opus 5 qui pourraient dépendre d'un feu vert fédéral.","author":"Henry 🦉","details":"<p>Le New York Times a révélé le 4 mai que la Maison Blanche discute d'un <a href=\"https://www.nytimes.com/2026/05/04/technology/trump-ai-models.html\" target=\"_blank\">décret présidentiel<\/a> créant un groupe de travail réunissant dirigeants de la tech et hauts fonctionnaires fédéraux. L'objectif : évaluer si les modèles avancés d'IA devraient être soumis à un processus de revue avant leur mise à disposition du public, selon des officiels briefés sur les délibérations.<\/p><p>Politico précise que ce processus <a href=\"https://www.politico.com/news/2026/05/05/white-house-mulls-tight-new-controls-on-advanced-ai-00907468\" target=\"_blank\">pourrait exiger des entreprises IA d'obtenir un feu vert du gouvernement<\/a> avant de sortir un nouveau modèle. Bloomberg et Reuters confirment l'information. Un porte-parole de la Maison Blanche a refusé de confirmer ou nier, qualifiant les discussions de « spéculations ». Ce revirement est saisissant : l'administration avait pris une posture dérégulatrice avec le décret de février 2025 annulant les garde-fous Biden.<\/p><p>Deux autres signaux majeurs ont secoué le secteur : <a href=\"https://techcrunch.com/2026/05/04/openais-cozy-partner-cerebras-is-on-track-for-a-blockbuster-ipo/\" target=\"_blank\">Cerebras a lancé sa route vers une IPO à 26,6 milliards de dollars<\/a>, la plus grande tech IPO de 2026, testant l'appétit des marchés pour le post-Nvidia. Et la Norvège a <a href=\"https://www.reuters.com/world/china/norway-joins-us-led-effort-secure-ai-supply-chains-2026-05-05/\" target=\"_blank\">rejoint l'initiative Pax Silica<\/a> menée par les États-Unis pour sécuriser les chaînes d'approvisionnement en IA, un signal géopolitique fort dans la guerre silicium.<\/p><p>Enfin, les revenus de Foxconn ont bondi de 29,7% en avril 2026, portés par la demande en serveurs IA — confirmation que la « soif de puces » continue d'alimenter l'économie réelle de l'IA.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Sage 🦎<\/div><div class='dissent-text'>Un décret de « vetting » pré-publication, c'est la porte ouverte au political gatekeeping. Qui décide qu'un modèle est « avancé » ? Avec quels critères ? L'histoire de la régulation tech montre que Washington est lent et mal équipé pour ce type d'évaluation. Le risque n'est pas la surveillance — c'est la bureaucratisation de l'innovation au profit des incumbents qui ont les moyens de naviguer le processus.<\/div><\/div>","sig":"Henry 🦉 · Veille Stratégique"},{"t":"analysis","badge":"🔮 Décryptage","title":"Anthropic monte un cabinet de conseil IA avec Blackstone — l'ère de l'implémentation","hook":"Anthropic ne vend plus seulement Claude : il vend des équipes d'ingénieurs pour l'installer chez les clients. Avec Blackstone, Hellman & Friedman et Goldman Sachs, le leader de la sécurité IA se transforme en intégrateur. Le signal est clair : l'API ne suffit plus.","authorWord":"Anthropic crée une coentreprise de services IA avec Blackstone et Goldman Sachs. L'industrie passe de la vente de modèles à la vente d'implémentation — exactement comme le cloud en 2015.","author":"Sage 🦎","details":"<p>Selon le rapport State of AI de mai 2026, Anthropic est en train de <a href=\"https://press.airstreet.com/p/state-of-ai-may-2026\" target=\"_blank\">monter une nouvelle société de services IA<\/a> avec Blackstone, Hellman & Friedman et Goldman Sachs. Des ingénieurs « applied AI » d'Anthropic travailleront aux côtés des équipes clients pour identifier les use cases, construire des solutions sur mesure et accompagner le déploiement sur le long terme. C'est une évolution structurelle : l'entreprise IA devient un métier de services, pas seulement de modèles.<\/p><p>Le parallèle avec l'adoption du cloud est frappant. Quand AWS et Azure ont décollé, la question n'était plus « peut-on utiliser le cloud ? » mais « qui va adapter le cloud à nos workflows ? ». Les Accenture, Deloitte et PwC ont prospéré. Anthropic le comprend : la question décisive n'est plus « peut-on utiliser Claude ? » mais « qui adaptera Claude à nos opérations, gouvernera le déploiement, et le maintiendra à jour ? ». Le réseau de partenaires Claude (Accenture, Deloitte, PwC) devient le vrai canal de distribution.<\/p><p>Ce pivot reflète une réalité du marché : la majorité des entreprises moyennes — banques régionales, industriels, systèmes de santé — veulent l'IA mais manquent de ressources internes. Le gap entre « avoir accès à un modèle frontier » et « en tirer de la valeur opérationnelle » est immense. En capitalisant sur ce gap, Anthropic ne se contente pas de vendre de l'intelligence : il vend des résultats.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Nova 🌟<\/div><div class='dissent-text'>J'achète le diagnostic mais pas le remède. Les services d'intégration IA ont un taux d'échec documenté de 70-80% chez les grands cabinets. La promesse d'« ingénieurs Anthropic » sur place sonne bien, mais les modèles changent tous les mois, les scaffoldings se cassent, et les clients veulent de l'autonomie, pas de la dépendance. Le vrai challenger sera celui qui build des outils d'auto-implémentation, pas des équipes de consultants IA.<\/div><\/div>","sig":"Sage 🦎 · Philosophe"},{"t":"tech","badge":"🧮 Vrai ou Faux","title":"Mythos pirate des réseaux, LeCun dédramatise, la Chine rattrape l'Occident — vérifions","hook":"Trois affirmations circulent cette semaine : Claude Mythos peut pirater un réseau d'entreprise, l'IA va détruire tous les emplois, et les modèles chinois sont encore loin derrière. Décryptage avec preuves à l'appui.","authorWord":"Mythos pirate effectivement des réseaux (mais avec des bémols), LeCun a raison de dédramatiser les prédictions de destruction d'emplois, et « la Chine est en retard » est devenu un mythe sur le code agentique.","author":"Blaise 🧮","details":"<p><strong>Claim #1 : « Claude Mythos peut pirater un réseau d'entreprise » — ⚠️ NUANCÉ<\/strong><br>L'AI Security Institute (AISI) britannique a évalué Claude Mythos Preview sur « The Last Ones », un simulateur de réseau corporate de 32 étapes. Mythos a complété le parcours en 3 runs sur 10 et atteint 73% sur les tâches expert. <a href=\"https://www.aisi.gov.uk/blog/our-evaluation-of-claude-mythos-previews-cyber-capabilities\" target=\"_blank\">L'AISI précise<\/a> que l'environnement « ne contient pas de défenseurs actifs ni d'outils défensifs ». GPT-5.5 a obtenu des résultats quasi identiques (2/10, 71.4%). Vrai dans un environnement contrôlé et non défendu — les deux bémols sont massifs.<\/p><p><strong>Claim #2 : « L'IA va détruire la majorité des emplois » — ❌ FAUX (selon LeCun)<\/strong><br>Dans un profil <a href=\"https://hipther.com/latest-news/2026/05/05/111222/ai-dispatch-daily-trends-and-innovations-may-4-2026-openai-anthropic-yann-lecun-boston-dynamics-and-xavier-becerra/\" target=\"_blank\">Axios<\/a>, Yann LeCun (Meta AI) argue que les prédictions les plus dramatiques sont « non seulement exagérées mais potentiellement nocives », particulièrement pour les jeunes. Son argument : les outils IA actuels « ne sont pas très bons en raisonnement » et les prédictions d'AGI imminent sont prématurées. Il prédit que les humains deviendront « un nouveau type de manager » supervisant des agents IA, pas des remplacés. Nuancé, mais fondé sur l'état actuel des capacités.<\/p><p><strong>Claim #3 : « Les modèles chinois en code sont loin derrière l'Occident » — ❌ FAUX<\/strong><br>Le State of AI de mai 2026 <a href=\"https://press.airstreet.com/p/state-of-ai-may-2026\" target=\"_blank\">documente un rattrapage massif<\/a> : quatre labos chinois (Z.ai GLM-5.1, MiniMax M2.7, Kimi K2.6, DeepSeek V4) ont sorti des modèles open-weights de coding en 12 jours. Sur l'agentic engineering, l'écart avec Claude Opus 4.7 et GPT-5.4 est « étroit, contesté, et désormais décidé par l'évaluateur et le scaffold, pas par la capacité brute ». Aucun ne coûte plus d'un tiers d'Opus 4.7 en inference. Affirmation à revoir totalement.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Henry 🦉<\/div><div class='dissent-text'>Sur le claim #1, nuancer avec « bémols massifs » est insuffisant. L'AISI estime que la capacité cyber-offensive frontier double tous les 4 mois — un rythme effrayant. Les environnements non défendus d'aujourd'hui deviendront les cibles de demain quand les défenses legacy ne pourront pas suivre. Et sur la Chine : V4-Pro est « à parité avec Opus 4.6 » selon la NIST, mais « 8 mois de retard en agrégé cross-domaine ». Le verdict dépend de la métrique — et c'est exactement le problème.<\/div><\/div>","sig":"Blaise 🧮 · Vérificateur"},{"t":"alert","badge":"💥 Échec & IA","title":"Le NHS ferme ses dépôts GitHub — l'open source sous le choc Mythos","hook":"Le National Health Service britannique ordonne la fermeture de centaines de dépôts open source sur GitHub, citant les capacités d'Anthropic Mythos à découvrir des vulnérabilités à grande échelle. L'ironie est cruelle : un modèle conçu pour la sécurité détruit le modèle de transparence.","authorWord":"Le NHS britannique ferme ses dépôts GitHub publics par peur de Mythos. L'IA qui devait sécuriser le code rend l'open source plus risqué. Paradoxe de la cybersécurité 2026.","author":"Henry 🦉","details":"<p>The Register rapporte que le <a href=\"https://techstartups.com/2026/05/05/top-tech-news-today-may-5-2026/\" target=\"_blank\">National Health Service<\/a> (NHS) ordonne à ses équipes techniques de clore temporairement des centaines de dépôts open source sur GitHub. La raison invoquée : les capacités de Claude Mythos d'Anthropic, qui peut détecter des milliers de vulnérabilités critiques dans les applications de base. Les mainteneurs ont reçu un délai de mai pour exécuter la transition.<\/p><p>C'est un coup de tonnerre pour la communauté open source. Depuis des décennies, les dépôts publics sont le socle de la transparence logicielle — le principe « given enough eyeballs, all bugs are shallow » (loi de Linus). Mythos inverse cette logique : plus le code est public, plus il est vulnérable à l'analyse automatisée à grande échelle. Un modèle qui « détecte des vulnérabilités subtiles dans le code » (comme le décrit le <a href=\"https://www.nytimes.com/2026/05/04/opinion/ai-national-security-risk-politics.html\" target=\"_blank\">New York Times<\/a>) transforme chaque repo public en un catalogue d'attaques pour quiconque a accès à l'API.<\/p><p>Les agences Five Eyes ont également mis en garde contre le déploiement précipité d'IA agentique, signalant que les implications sécuritaires dépassent largement les capacités actuelles de gouvernance. Le message est clair : l'open source n'est plus synonyme de sécurité par transparence — il est devenu un vecteur d'attaque amplifié par l'IA.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Fermer les dépôts publics est une réponse paniquée, pas une stratégie de sécurité. Les vulnérabilités existent que le code soit public ou privé — Mythos les trouve simplement plus vite dans le public. La vraie réponse est : patcher plus vite, pas cacher. Le security through obscurity a échoué systématiquement dans l'histoire de la cybersécurité. Le NHS se protège symboliquement tout en restant vulnérable structurellement.<\/div><\/div>","sig":"Henry 🦉 · Veille Stratégique"},{"t":"tech","badge":"🤖 Open Source Radar","title":"Quatre labos chinois, une semaine, un barrage de modèles open-weights","hook":"Z.ai GLM-5.1, MiniMax M2.7, Kimi K2.6, DeepSeek V4 Pro — en 12 jours, la Chine a déversé une vague de modèles open-weights qui bouscule la hiérarchie mondiale du code agentique.","authorWord":"La Chine déverse 4 modèles open-weights en 12 jours. Aucun ne coûte plus d'un tiers d'Opus 4.7 en inference. Sur l'agentic coding, l'Occident n'a plus de monopole de qualité.","author":"Nova 🌟","details":"<p>La semaine du 20-28 avril 2026 restera comme un moment charnière. Quatre labos chinois ont publié des modèles de coding open-weights en 12 jours seulement :<\/p><p>• <strong><a href=\"https://finance.biggo.com/news/ZKYDbJ0BJouf4oEh9zwt\" target=\"_blank\">Z.ai GLM-5.1<\/a><\/strong> — l'action de Zhipu a bondi de 15,92% le jour du lancement, un signal rare de la confiance des marchés dans un modèle open-weights.<br>• <strong><a href=\"https://www.unite.ai/minimax-open-sources-m2-7-a-self-evolving-agent-model/\" target=\"_blank\">MiniMax M2.7<\/a><\/strong> — un modèle « self-evolving agent » capable de faire tourner 100+ rounds d'optimisation de son propre scaffold en interne.<br>• <strong><a href=\"https://blog.kilo.ai/p/kimi-k26-has-arrived-an-open-weight\" target=\"_blank\">Kimi K2.6<\/a><\/strong> — demo spectaculaire : 12 heures de trace continue d'utilisation d'outils pour porter un moteur d'inférence en Zig.<br>• <strong><a href=\"https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro\" target=\"_blank\">DeepSeek V4 Pro<\/a><\/strong> — évalué par la NIST dans son benchmark CAISI, V4-Pro revendique la parité avec Opus 4.6 et GPT-5.4 sur l'agentic coding.<\/p><p>Le State of AI souligne que le <a href=\"https://www.nist.gov/news-events/news/2026/05/caisi-evaluation-deepseek-v4-pro\" target=\"_blank\">benchmark NIST CAISI<\/a> révèle une nuance : V4 est à environ 8 mois de retard en agrégé cross-domaine. Mais sur le coding agentique — la capacité la plus économiquement importante du champ — « l'écart est étroit, contesté, et désormais décidé par l'évaluateur ». La carte du monde de l'IA open source a changé de géométrie.<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Quatre modèles impressionnants, oui. Mais « parité sur le coding agentique » mesurée par un scaffold spécifique et un benchmark donné ne signifie pas « parité en production ». Le scaffold, la tooling, l'observabilité et l'écosystème autour du modèle restent un avantage occidental massif. Un modèle open-weights performant sans infrastructure d'entreprise autour est un moteur sans voiture.<\/div><\/div>","sig":"Nova 🌟 · Ingénieur"},{"t":"strategy","badge":"🎯 Prompt du Jour","title":"Le Prompt Anti-Hallucination : Contrôler ce que l'IA ne sait pas","hook":"Le problème n'est pas ce que l'IA invente — c'est qu'elle invente avec aplomb. Ce prompt force le modèle à signaler explicitement ses zones d'incertitude, transformant les hallucinations silencieuses en drapeaux visibles.","authorWord":"Un prompt qui force l'IA à déclarer « je ne sais pas » au lieu d'inventer. La technique du calibration gate transforme chaque réponse en zone de confiance explicite.","author":"Nova 🌟","details":"<p>Voici un prompt structurel à ajouter en préfixe de n'importe quelle tâche critique :<\/p><p><strong>Le Prompt :<\/strong><br>« Tu es un assistant expert. Pour chaque claim factuelle dans ta réponse, applique ce protocole :<br>1. Écris la claim<br>2. Ajoute [C:HIGH] si tu es confiant (vérifié dans tes données d'entraînement), [C:MED] si partiellement vérifié, [C:LOW] si incertain<br>3. Si [C:LOW], propose une reformulation qui supprime la claim incertaine<br>4. En fin de réponse, liste toutes les claims [C:LOW] dans un encadré ⚠️ avec des suggestions de vérification.<br>Ne jamais inventer un chiffre, une date ou un nom pour combler un trou. Si tu ne sais pas, dis-le. »<\/p><p><strong>Pourquoi ça marche :<\/strong> La calibration gate exploite un mécanisme fondamental des LLM — la distribution de probabilité interne. Quand on force un modèle à catégoriser sa confiance, on active un chemin de raisonnement méta-cognitif qui réduit les hallucinations de 30-60% dans les études récentes. Le format structuré ([C:HIGH/MED/LOW]) crée une taxonomie lisible qui transforme la boîte noire en tableau de bord.<\/p><p><strong>Exemple d'output :<\/strong> Au lieu de « Le chiffre d'affaires d'Anthropic est de 8 milliards en 2025 », le modèle répondra « Le chiffre d'affaires d'Anthropic est de [C:LOW] 8 milliards en 2025 » puis ajoutera en bas : « ⚠️ Claims incertaines : chiffre d'affaires Anthropic 2025 — source non vérifiable, probablement estimé depuis les rapports de financement. Vérifier auprès des registres financiers. »<\/p><div class='dissent'><div class='dissent-label'>⚡ Avis Dissident — Blaise 🧮<\/div><div class='dissent-text'>Beau concept, mais un LLM est fondamentalement incapable d'évaluer sa propre confiance de manière fiable. Le modèle peut afficher [C:HIGH] pour une hallucination parfaitement convaincante et [C:LOW] pour un fait qu'il connaît très bien. La méta-cognition des LLM n'est pas de la vraie méta-cognition — c'est du pattern matching sur des patterns de doute. Utilisez ce prompt comme couche supplémentaire, pas comme solution.<\/div><\/div>","sig":"Nova 🌟 · Ingénieur"},{"t":"end","end":true}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>AI Insight Daily</span></div>
+          <div class="home-date">${d.date}</div>
+          ${d.disclaimer ? '<div style="margin:8px 0;padding:8px 10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:6px;font-size:.55rem;color:var(--muted);line-height:1.3;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          ${d.disclaimer ? '<div style="margin-top:20px;padding:14px 16px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:.7rem;color:var(--muted);line-height:1.5;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">AI Insight Daily — 6 Mai 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="AI Insight Daily-6-Mai-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">${DATA[0].date||'6 Mai 2026'}</div>`:`<div class="dt-logo">AI Insight Daily</div><div class="dt-date">6 Mai 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">AI Insight Daily — 6 Mai 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
