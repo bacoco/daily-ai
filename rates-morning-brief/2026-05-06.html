@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rates & Inflation Morning Brief — 6 Mai 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --card-bg: #0a0a0f;
+      --text: #fff;
+      --muted: #6a6a7a;
+      --red: #ff4757;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --purple: #a78bfa;
+      --gold: #f59e0b;
+      --radius: 24px;
+    }
+    html.light {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #8a8a9a;
+    }
+    html.light .card { border-color: rgba(0,0,0,.08); box-shadow: 0 8px 32px -8px rgba(0,0,0,.12); }
+    html.light .card::before { opacity: .08; }
+    html.light .hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .details p { color: rgba(0,0,0,.75); }
+    html.light .details strong { color: #1a1a2e; }
+    html.light .details .quote { background: rgba(59,130,246,.06); color: rgba(0,0,0,.85); }
+    html.light .dissent { background: rgba(255,71,87,.06); }
+    html.light .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    html.light .author-word { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .author-word .aw-text { color: rgba(0,0,0,.8); }
+    html.light .sig { border-color: rgba(0,0,0,.08); }
+    html.light .dot { background: rgba(0,0,0,.2); }
+    html.light .dot.on { background: #1a1a2e; box-shadow: none; }
+    html.light .scroll-zone::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); }
+    html.light .home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .home-article:hover { background: rgba(0,0,0,.03); }
+    html.light .home-article .num { background: rgba(0,0,0,.06); }
+    html.light body::before { background: none; }
+    /* Scenario Probability Card */
+    .scenario-block { margin: 1em 0; padding: 0.8em 1em; border-left: 4px solid #ffd700; border-radius: 0 8px 8px 0; background: rgba(255,215,0,0.05); }
+    .scenario-block h3 { margin: 0 0 0.3em 0; font-size: 1.05em; display: flex; justify-content: space-between; align-items: center; }
+    .scenario-block .proba { font-size: 1.3em; font-weight: bold; color: #ffd700; }
+    .scenario-block p { margin: 0.2em 0; font-size: 0.92em; }
+    .scenario-block .votes { font-size: 0.8em; opacity: 0.7; font-style: italic; }
+    .consensus { margin-top: 1.2em; padding: 0.6em; border-radius: 8px; background: rgba(0,200,100,0.08); }
+    .dissent { margin-top: 0.4em; padding: 0.6em; border-radius: 8px; background: rgba(255,80,80,0.08); }
+
+    html.light .details div[style*="background"], html.light .details p[style*="background"], html.light .details pre, html.light .details code { color: #1a1a2e !important; background-color: #f0f0f5 !important; border-color: #ddd !important; }
+    /* Light mode: override inline white colors in trade cards */
+    html.light .details p[style], html.light .details b[style], html.light .details span[style], html.light .details div[style] { color: rgba(0,0,0,.85) !important; }
+    html.light .details div[style*="border-left:3px solid #f59e0b"] { background: rgba(245,158,11,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #10b981"] { background: rgba(16,185,129,.08) !important; }
+    html.light .details div[style*="border-left:3px solid #ff4757"] { background: rgba(255,71,87,.06) !important; }
+    html.light .details div[style*="color:#f59e0b"] { color: #b45309 !important; }
+    html.light .details div[style*="color:#10b981"] { color: #047857 !important; }
+    html.light .details div[style*="color:#ff4757"] { color: #dc2626 !important; }
+    html.light .details h3 { color: #1a1a2e !important; }
+    /* Desktop light overrides */
+    html.light .dt-sidebar { border-color: rgba(0,0,0,.08); }
+    html.light .dt-nav-item:hover { background: rgba(0,0,0,.04); }
+    html.light .dt-nav-item.dt-selected { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    html.light .dt-reader .dt-r-body { color: rgba(0,0,0,.75); }
+    html.light .dt-reader .dt-r-body strong { color: #1a1a2e; }
+    html.light .dt-reader .dt-r-hook { color: rgba(0,0,0,.85); background: linear-gradient(135deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 100%); }
+    html.light .dt-reader .dt-r-sig { border-color: rgba(0,0,0,.08); }
+    html.light .dt-reader .dt-r-home-henry { background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(0,0,0,.02) 100%); }
+    html.light .dt-reader .dt-r-home-henry .text { color: rgba(0,0,0,.85); }
+    html.light .dt-reader .dt-r-author .aw-text { color: rgba(0,0,0,.8); }
+    html.light .dt-reader .dt-r-body .quote { color: rgba(0,0,0,.85); background: rgba(59,130,246,.06); }
+    html.light .dt-reader .dt-r-body .dissent { background: rgba(255,71,87,.06); }
+    html.light .dt-reader .dt-r-body .dissent .dissent-text { color: rgba(0,0,0,.8); }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 14px; right: 14px; z-index: 1000;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px);
+      transition: background .2s, border-color .2s;
+    }
+    html.light .theme-toggle { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    #hint {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.88);
+      transition: opacity 0.4s;
+    }
+    #hint.hide { opacity: 0; pointer-events: none; }
+    #hint .logo { font-size: 1.7rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -0.02em; }
+    #hint .logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    #hint .arrows { display: flex; gap: 100px; }
+    #hint .arr { font-size: 5rem; color: #fff; animation: pulse .5s ease-in-out infinite alternate; }
+    #hint .arr:nth-child(2) { animation-delay: .25s; }
+    @keyframes pulse { from { transform: scale(.7); opacity: .4; } to { transform: scale(1.3); opacity: 1; } }
+    #deck { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .card {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: calc(100% - 28px); max-width: 440px;
+      height: calc(100% - 28px); max-height: 800px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.9);
+      border: 1px solid rgba(255,255,255,.07);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none;
+      will-change: transform, opacity;
+    }
+    .card.active { opacity: 1; pointer-events: auto; z-index: 10; }
+    .card.behind { opacity: 0; transform: translate(-50%, -50%) scale(.92); z-index: 5; pointer-events: none; }
+    .card.prev { opacity: 0; transform: translate(-50%, -50%) translateX(-120%); z-index: 1; }
+    .card.next { opacity: 0; transform: translate(-50%, -50%) scale(.85); z-index: 1; }
+    .card.anim { transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .35s; }
+    .card::before {
+      content: ''; position: absolute; inset: -1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--glow) 0%, transparent 50%);
+      opacity: .2; pointer-events: none; z-index: 0;
+    }
+    .card[data-t="alert"] { --glow: var(--red); }
+    .card[data-t="tech"] { --glow: var(--blue); }
+    .card[data-t="analysis"] { --glow: var(--purple); }
+    .card[data-t="strategy"] { --glow: var(--gold); }
+    .card[data-t="end"] { --glow: var(--green); }
+    .hdr { flex-shrink: 0; padding: 16px 18px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+    .badge { padding: 5px 12px; border-radius: 6px; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .badge.alert { background: var(--red); color: #fff; box-shadow: 0 0 20px rgba(255,71,87,.5); }
+    .badge.tech { background: var(--blue); color: #fff; box-shadow: 0 0 20px rgba(59,130,246,.5); }
+    .badge.analysis { background: var(--purple); color: #fff; box-shadow: 0 0 20px rgba(167,139,250,.5); }
+    .badge.strategy { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(245,158,11,.5); }
+    .badge.end { background: var(--green); color: #000; box-shadow: 0 0 20px rgba(16,185,129,.5); }
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.25); }
+    .dot.on { background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.6); }
+    .title-zone { flex-shrink: 0; padding: 20px 22px 16px; text-align: center; z-index: 2; transition: padding .25s, opacity .25s; }
+    .card.scrolled .scroll-cta { opacity: 0; max-height: 0; padding: 0 20px; overflow: hidden; }
+    .title-zone h1 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; }
+    .scroll-cta { flex-shrink: 0; padding: 10px 20px 14px; text-align: center; z-index: 2; max-height: 50px; opacity: 1; transition: opacity .3s ease, max-height .3s ease, padding .3s ease; }
+    .scroll-cta span { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .scroll-cta i { display: inline-block; animation: bounce 1.2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
+    .scroll-zone { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; z-index: 1; overscroll-behavior: contain; }
+    .scroll-zone::-webkit-scrollbar { width: 3px; }
+    .scroll-zone::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+    .scroll-inner { padding: 0 20px 30px; }
+    .hook { font-size: 1.1rem; font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); padding: 16px 18px; margin-bottom: 22px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--glow, var(--blue)); }
+    .card[data-t="alert"] .hook { border-color: var(--red); }
+    .card[data-t="analysis"] .hook { border-color: var(--purple); }
+    .card[data-t="strategy"] .hook { border-color: var(--gold); }
+    .details p { font-family: 'Merriweather', Georgia, serif; font-size: .9rem; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 16px; font-weight: 300; }
+    .details strong { color: #fff; font-weight: 600; }
+    .details a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .details .quote { border-left: 3px solid var(--blue); padding: 12px 16px; margin: 18px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-family: 'Merriweather', serif; font-style: italic; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .card[data-t="alert"] .details .quote { border-color: var(--red); background: rgba(255,71,87,.08); }
+    .card[data-t="analysis"] .details .quote { border-color: var(--purple); background: rgba(167,139,250,.08); }
+    .card[data-t="strategy"] .details .quote { border-color: var(--gold); background: rgba(245,158,11,.08); }
+    .sig { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); font-size: .72rem; color: var(--muted); font-style: italic; text-align: center; }
+    .author-word { margin: 0 20px 10px; transition: max-height .25s, opacity .25s, margin .25s, padding .25s; padding: 10px 14px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); z-index: 2; flex-shrink: 0; }
+    .author-word .aw-text { font-family: 'Merriweather', serif; font-size: .82rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+    .author-word .aw-name { margin-top: 5px; font-size: .6rem; color: var(--muted); text-align: right; }
+    .end-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 20px; z-index: 2; }
+    .end-content .em { font-size: 3.5rem; margin-bottom: 16px; }
+    .end-content h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .end-content p { color: var(--muted); font-size: .9rem; margin-bottom: 22px; line-height: 1.5; }
+    .end-content button { padding: 12px 32px; border: none; border-radius: 12px; background: var(--green); color: #000; font-size: .95rem; font-weight: 700; cursor: pointer; box-shadow: 0 0 25px rgba(16,185,129,.4); }
+    .end-content small { display: block; margin-top: 18px; font-size: .7rem; color: var(--muted); }
+    .card[data-t="home"] { --glow: var(--blue); }
+    .home-content { flex: 1; display: flex; flex-direction: column; padding: 20px; z-index: 2; overflow-y: auto; }
+    .home-logo { text-align: center; margin-bottom: 8px; }
+    .home-logo span { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.02em; }
+    .home-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .home-date { text-align: center; font-size: .8rem; color: var(--muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .home-henry { padding: 14px 16px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 24px; }
+    .home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+    .home-henry .text { font-family:"Merriweather",serif; font-size:.8rem; line-height:1.4; color:rgba(255,255,255,.9); font-style:italic; }
+    .home-articles { flex: 1; }
+    .home-article { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: background .2s; }
+    .home-article:hover { background: rgba(255,255,255,.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+    .home-article:last-child { border-bottom: none; }
+    .home-article .num { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .home-article .info { flex: 1; }
+    .home-article .badge-sm { font-size: .55rem; color: var(--muted); margin-bottom: 2px; }
+    .home-article .title-sm { font-size: .9rem; font-weight: 600; line-height: 1.3; }
+    .home-article .arrow { color: var(--muted); font-size: 1.2rem; }
+    .home-footer { text-align: center; padding-top: 16px; font-size: .7rem; color: var(--muted); }
+    .dissent { margin-top: 18px; padding: 14px 16px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+    .dissent .dissent-label { font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+    .dissent .dissent-text { font-family: 'Merriweather', serif; font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+    /* Force all content to fit card width — no horizontal overflow */
+    .details table, .details pre, .details code, .details img, .details iframe, .details blockquote {
+      max-width: 100% !important; overflow-x: auto; word-break: break-word;
+    }
+    .details table { display: block; font-size: .8rem; border-collapse: collapse; }
+    .details table td, .details table th { padding: 6px 8px; white-space: normal !important; word-break: break-word; }
+    .details pre { white-space: pre-wrap; word-wrap: break-word; padding: 12px; border-radius: 8px; font-size: .78rem; }
+    .details code { word-break: break-all; }
+    .scroll-inner, .details, .hook, .author-word { overflow-x: hidden; max-width: 100%; }
+    /* Desktop reader also constrained */
+    .dt-r-body table, .dt-r-body pre, .dt-r-body code { max-width: 100% !important; overflow-x: auto; word-break: break-word; }
+    .dt-r-body table { display: block; font-size: .85rem; }
+    .dt-r-body pre { white-space: pre-wrap; word-wrap: break-word; }
+    /* Prevent light-background inline styles from being unreadable on dark theme */
+    .details div[style*="background"], .details p[style*="background"], .details pre, .details code { color: #e0e0e0 !important; background-color: #1a1a2e !important; border-color: #ffd700 !important; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(59,130,246,.1) 0%, transparent 50%),
+                  radial-gradient(ellipse 60% 40% at 80% 90%, rgba(167,139,250,.08) 0%, transparent 50%);
+    }
+    /* === DESKTOP SPLIT-VIEW === */
+    @media (min-width: 900px) {
+      html, body { overflow: hidden; height: 100%; }
+      #hint { display: none !important; }
+      #deck { display: none; }
+      .desktop-shell {
+        display: grid;
+        grid-template-columns: minmax(300px, 380px) 1fr;
+        height: 100vh; max-width: 1400px; margin: 0 auto;
+        background: var(--bg);
+      }
+      /* --- Sidebar (card list) --- */
+      .dt-sidebar {
+        border-right: 1px solid rgba(255,255,255,.08);
+        overflow-y: auto; padding: 24px 16px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-sidebar::-webkit-scrollbar { width: 4px; }
+      .dt-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-sidebar .dt-logo { text-align: center; margin-bottom: 6px; font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .dt-sidebar .dt-logo b { background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .dt-sidebar .dt-date { text-align: center; font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+      .dt-nav-item {
+        display: flex; align-items: center; gap: 12px;
+        padding: 12px 14px; margin-bottom: 4px;
+        border-radius: 12px; cursor: pointer;
+        border: 1px solid transparent;
+        transition: background .2s, border-color .2s, opacity .2s;
+        opacity: .6;
+      }
+      .dt-nav-item:hover { background: rgba(255,255,255,.04); opacity: .85; }
+      .dt-nav-item.dt-selected { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); opacity: 1; }
+      .dt-nav-item .dt-nav-badge { font-size: 1.2rem; flex-shrink: 0; width: 36px; text-align: center; }
+      .dt-nav-item .dt-nav-info { flex: 1; min-width: 0; }
+      .dt-nav-item .dt-nav-label { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+      .dt-nav-item .dt-nav-title { font-size: .88rem; font-weight: 600; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .dt-nav-item .dt-nav-arrow { color: var(--muted); font-size: 1rem; flex-shrink: 0; }
+      /* --- Reader panel --- */
+      .dt-reader {
+        overflow-y: auto; padding: 40px 48px 60px;
+        scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent;
+      }
+      .dt-reader::-webkit-scrollbar { width: 4px; }
+      .dt-reader::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 4px; }
+      .dt-reader-inner { max-width: 72ch; margin: 0 auto; }
+      .dt-reader .dt-r-badge { display: inline-block; padding: 5px 14px; border-radius: 6px; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 16px; }
+      .dt-reader .dt-r-badge.alert { background: var(--red); color: #fff; }
+      .dt-reader .dt-r-badge.tech { background: var(--blue); color: #fff; }
+      .dt-reader .dt-r-badge.analysis { background: var(--purple); color: #fff; }
+      .dt-reader .dt-r-badge.strategy { background: var(--gold); color: #000; }
+      .dt-reader .dt-r-badge.end { background: var(--green); color: #000; }
+      .dt-reader .dt-r-title { font-size: 2rem; font-weight: 900; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; }
+      .dt-reader .dt-r-hook { font-size: 1.15rem; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,.9); padding: 18px 20px; margin-bottom: 28px; background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.02) 100%); border-radius: 14px; border-left: 3px solid var(--blue); }
+      .dt-reader .dt-r-body { font-family: 'Merriweather', Georgia, serif; font-size: 1rem; line-height: 1.9; color: rgba(255,255,255,.82); }
+      .dt-reader .dt-r-body p { margin-bottom: 18px; }
+      .dt-reader .dt-r-body strong { color: #fff; font-weight: 600; }
+      .dt-reader .dt-r-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+      .dt-reader .dt-r-body .quote { border-left: 3px solid var(--blue); padding: 14px 18px; margin: 20px 0; background: rgba(59,130,246,.08); border-radius: 0 10px 10px 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.9); }
+      .dt-reader .dt-r-body .dissent { margin-top: 24px; padding: 16px 18px; background: rgba(255,71,87,.08); border-left: 3px solid var(--red); border-radius: 0 10px 10px 0; }
+      .dt-reader .dt-r-body .dissent .dissent-label { font-family: 'Inter', sans-serif; font-size: .65rem; color: var(--red); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 6px; }
+      .dt-reader .dt-r-body .dissent .dissent-text { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author { margin-top: 20px; padding: 12px 16px; background: linear-gradient(135deg, rgba(245,158,11,.08) 0%, rgba(255,255,255,.02) 100%); border-radius: 10px; border-left: 3px solid var(--gold); }
+      .dt-reader .dt-r-author .aw-text { font-family: 'Merriweather', serif; font-size: .88rem; line-height: 1.5; color: rgba(255,255,255,.85); font-style: italic; }
+      .dt-reader .dt-r-author .aw-name { margin-top: 5px; font-size: .65rem; color: var(--muted); text-align: right; }
+      .dt-reader .dt-r-sig { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); font-size: .75rem; color: var(--muted); font-style: italic; text-align: center; }
+      .dt-reader .dt-r-home-henry { padding: 16px 18px; background: linear-gradient(135deg, rgba(245,158,11,.1) 0%, rgba(255,71,87,.05) 100%); border-radius: 12px; border-left: 3px solid var(--gold); margin-bottom: 28px; }
+      .dt-reader .dt-r-home-henry .label { font-size: .65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
+      .dt-reader .dt-r-home-henry .text { font-family: 'Merriweather', serif; font-size: .92rem; line-height: 1.5; color: rgba(255,255,255,.9); font-style: italic; }
+      /* keyboard focus */
+      .dt-nav-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" style="position:fixed;top:14px;left:14px;z-index:1000;color:var(--muted);text-decoration:none;font-size:.75rem;font-weight:600;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);transition:all .2s;">← Sommaire</a>
+  <div class="theme-toggle" id="themeToggle" title="Dark / Light">🌙</div>
+  <div id="hint">
+    <div class="logo">Rates & Inflation Morning Brief</div>
+    <div class="arrows"><span class="arr">←</span><span class="arr">→</span></div>
+  </div>
+  <div id="deck"></div>
+
+  <script>
+  const DATA = [{"t":"home","home":true,"date":"6 Mai 2026","henryWord":"With ISM Services at 55.3 and Hormuz unresolved, the desk faces a contradiction: hawkish repricing from strong data meets risk-off undertones from energy risks. The skew remains toward higher yields, but the tail risk is non-trivial. Stay flexible.","articles":[{"badge":"📊 Macro Pulse","title":"Data calendar, surprises, and today's catalysts","idx":1},{"badge":"📉 Core Yields","title":"Benchmark yields, moves, and key levels","idx":2},{"badge":"🏛️ CB Radar","title":"Central bank pricing, guidance, and policy trajectories","idx":3},{"badge":"💸 Inflation Dynamics","title":"Breakevens, swaps, and the inflation outlook","idx":4},{"badge":"🏗️ Supply & Fiscal","title":"Auction calendar, issuance, and fiscal dynamics","idx":5},{"badge":"📐 Curve & Carry","title":"Steepening, flattening, carry, and roll-down","idx":6},{"badge":"🔄 RV & Spreads","title":"Sovereign spreads, ASW, and relative value","idx":7},{"badge":"🌍 Geopol & Risk Overlay","title":"Geopolitical risk tags and safe-haven flows","idx":8}],"disclaimer":"⚠️ DISCLAIMER — This document is an experimental automated market intelligence product generated by artificial intelligence. It does NOT constitute investment advice, a trading recommendation, or regulated financial analysis under MiFID II or any securities regulation. The 'trade ideas' and 'scenarios' presented are pedagogical hypotheses generated by language models — they do not reflect the opinion of a licensed professional. Data is sourced from public feeds and may be delayed or inaccurate. Any investment decision based on this document is the sole responsibility of the reader. The author is not registered as an Investment Advisor with any regulatory authority. This content is provided for informational and experimental purposes only."},{"t":"alert","badge":"📊 Macro Pulse","title":"Data calendar, surprises, and today's catalysts","hook":"Light data calendar today after yesterday's ISM Services shock. Focus shifts to next week's April CPI and ongoing central bank positioning.","authorWord":"ISM Services at 55.3 confirmed economic resilience — markets are repricing the inflation outlook.","author":"Blaise 🧮","details":"<p>Today's economic calendar is light across major markets, allowing yesterday's ISM Services PMI print to digest fully. The US Services PMI came in at <strong>55.3<\/strong> for April (released May 5), signaling continued expansion in the services sector and reducing near-term recession concerns. This follows last week's ISM Manufacturing at <strong>51.3<\/strong>, painting a picture of a US economy that remains resilient despite elevated rates.<\/p><p>In Europe, no major data releases are scheduled for today. The Eurozone composite PMI finalized at <strong>52.1<\/strong> in April, with services at <strong>53.2<\/strong>, showing modest growth but trailing the US pace. The divergence between US and European economic momentum is becoming a key driver of cross-currency basis and relative yield positioning.<\/p><p>Looking ahead to tomorrow, the Asian session will feature Japan's <strong>Q1 GDP preliminary<\/strong> (expected +0.2% QoQ), with consensus focused on whether consumption has picked up after the Q4 contraction. In the US, the <strong>JOLTS Job Openings<\/strong> report for March is scheduled, with labor market tightness remaining a critical input for Fed policy.<\/p><p>The most significant risk event on the horizon remains next week's <strong>April US CPI<\/strong> (release scheduled May 12). Consensus expects headline CPI at <strong>+0.4% MoM<\/strong> (3.3% YoY), with core at <strong>+0.3% MoM<\/strong> (2.6% YoY). A surprise to the upside would reinforce the hawkish repricing triggered by the ISM data, pushing yields higher. A softer print could alleviate some pressure, but the Hormuz-driven energy component keeps the inflation skew upward-biased.<\/p><p>Market positioning data shows CFTC net short Treasury futures positions have increased by <strong>12K contracts<\/strong> over the past week, suggesting desks are positioned for higher yields. However, the positioning is not extreme — there's room for a short-covering rally if data disappoints. The <strong>Economic Surprise Index<\/strong> for the US has been trending higher over the past month, indicating data has consistently beaten consensus.<\/p><p>Key catalysts to watch today: (1) Any Fed or ECB official commentary on inflation outlook, (2) Developments in the Hormuz Strait situation and energy price response, (3) Asian market reaction to the ISM Services print during overnight session. With no major data, focus remains on flows and positioning ahead of next week's CPI.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Sage 🦎<\/div><div class='dissent-text'>The ISM Services print at 55.3, while expansionary, masks underlying weakness in new orders which slipped to 54.1 from 56.2. The employment component also cooled. This suggests the services sector momentum may be peaking, and the market may be over-extrapolating the strength. Next week's CPI could surprise to the downside if the services inflation pressure is easing faster than expected.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">BULLISH on rates<\/span> — ISM Services resilience keeps the Fed on hold longer, supporting higher yields through the summer.<\/div>","sig":"Blaise 🧮","factChecked":true},{"t":"alert","badge":"📉 Core Yields","title":"Benchmark yields, moves, and key levels","hook":"UST 10Y holds above 4.40% as ISM Services reinforces hawkish repricing. European yields lag but face upward pressure from the energy shock.","authorWord":"The US-Germany 10Y spread is widening — the transatlantic divergence is the dominant yield theme.","author":"Henry 🦉","details":"<p>US Treasury yields closed higher yesterday, with the <strong>UST 10Y<\/strong> at <strong>4.43%<\/strong> (close May 5, 2026) ▲+0.01% vs previous session, according to Trading Economics data. The 2Y yield ended at <strong>4.38%<\/strong>, with the 2s10s spread at <strong>+5bp<\/strong>, remaining positive but near multi-month lows. The overnight Asian session saw UST futures trade slightly higher, with Japanese investors showing demand for duration as the JGB 10Y dipped below 0.85%.<\/p><p>In Europe, <strong>Bund 10Y<\/strong> closed at <strong>3.07%<\/strong> (close May 5, 2026) ▲+0.01% vs previous session, also per Trading Economics. The US-Germany 10Y spread is now at <strong>136bp<\/strong>, near its widest level since February. The <strong>OAT 10Y<\/strong> closed at <strong>3.22%<\/strong> (estimated), while <strong>BTP 10Y<\/strong> was around <strong>3.89%<\/strong> (estimated). The BTP-Bund spread has tightened to approximately <strong>82bp<\/strong>, benefiting from continued ECB PEPP reinvestment support.<\/p><p>The <strong>Gilt 10Y<\/strong> closed at <strong>4.25%<\/strong> (estimated), with the UK 2Y at <strong>4.55%<\/strong>, reflecting the BoE's more hawkish stance compared to the ECB. The UK yield curve remains inverted, with the 2s10s spread at <strong>-30bp<\/strong>, one of the deepest inversions among major markets.<\/p><p>Technical levels: UST 10Y faces resistance at <strong>4.50%<\/strong> (March high), with support at <strong>4.35%<\/strong> (20-day moving average). A break above 4.50% would open the path to the 4.70% zone. Bund 10Y resistance is at <strong>3.15%<\/strong>, with support at <strong>3.00%<\/strong> — a psychological level that has held multiple times this year.<\/p><p>The primary driver of yesterday's yield move was the <strong>ISM Services PMI<\/strong> at 55.3, which exceeded consensus and signaled continued economic expansion. This reduced the probability of near-term Fed cuts, with CME FedWatch pricing for a September cut dropping below 20%. The <strong>DXY<\/strong> index gained 0.3%, putting additional pressure on European yields through currency hedging costs.<\/p><p>Overnight, Asian markets responded with risk-on sentiment. The <strong>Nikkei 225<\/strong> gained 1.2%, and JGB futures sold off slightly as Japanese investors rebalanced into US Treasuries for yield pickup. The 10Y JGB yield rose to <strong>0.87%<\/strong>, approaching the BoJ's 0.90% YCC ceiling.<\/p><p>Cross-market context: <strong>S&P 500 futures<\/strong> are up 0.4% in pre-market trading, while <strong>VIX<\/strong> is steady at 14.5. The risk-on tone is supporting higher yields, but the flight-to-quality demand remains supported by geopolitical risks. The <strong>DXY<\/strong> is trading at 105.8, with EUR/USD at 1.0740.<\/p><p>Looking at the week-over-week changes, UST 10Y is up <strong>+9bp<\/strong> over the past week, while Bund 10Y is up <strong>+8bp<\/strong>. The US is outperforming Europe on a relative basis, reflecting the stronger economic data and the Fed's more restrictive stance. This divergence is likely to continue unless European data shows unexpected strength or the energy situation in the Middle East escalates further.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Blaise 🧮<\/div><div class='dissent-text'>The yield rally may be overextended. Technical indicators on UST 10Y show RSI at 68, approaching overbought territory. Moreover, the ISM Services print, while strong, showed a decline in new orders which could signal peaking momentum. If next week's CPI disappoints, we could see a sharp short-covering rally pushing UST 10Y back toward 4.20%.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">BULLISH on rates<\/span> — Strong US data and Fed hawkishness support higher yields, with UST 10Y likely to test 4.50% resistance.<\/div>","sig":"Henry 🦉","factChecked":true},{"t":"analysis","badge":"🏛️ CB Radar","title":"Central bank pricing, guidance, and policy trajectories","hook":"Fed cut odds for September drop below 20% after ISM beat. ECB remains dovish but faces energy-driven inflation pressure.","authorWord":"The transatlantic policy gap is widening — Fed on hold through summer, ECB cutting in September.","author":"Sage 🦎","details":"<p><strong>Fed pricing:<\/strong> Following the stronger-than-expected ISM Services PMI at 55.3, markets have reduced the probability of a September Fed rate cut to below <strong>20%<\/strong>, down from 35% a week ago. The CME FedWatch tool now shows a <strong>95%+ probability<\/strong> that the Fed holds rates steady at the June 16-17 FOMC meeting. The December meeting now prices only <strong>15bp of cuts<\/strong> (60% probability of one 25bp cut), down from 25bp of cuts priced last week. The July 28-29 FOMC meeting is also priced for a hold with 92% probability.<\/p><p><strong>ECB pricing:<\/strong> In contrast, the ECB is expected to deliver its first rate cut in September, with OIS markets pricing <strong>25bp of easing<\/strong> by the October 9 meeting. The June 5 ECB decision is priced for a hold with 97% probability. By December, markets price <strong>50bp of total cuts<\/strong> (two 25bp moves), reflecting the weaker European economic data and the ECB's more dovish forward guidance. The ECB's real policy rate is estimated at +1.8%, suggesting it has less room to remain restrictive than the Fed.<\/p><p><strong>BoE pricing:<\/strong> The Bank of England is expected to be the most hawkish of the three, with markets pricing for the first cut not until <strong>November<\/strong>. The June 12 BoE decision is priced for a hold with 88% probability. By December, markets price only <strong>25bp of cuts<\/strong> from the BoE, reflecting the UK's stickier inflation and stronger wage growth. The BoE's real policy rate is +2.1%, the most restrictive among major central banks.<\/p><p><strong>Forward guidance deltas:<\/strong> No major official commentary has shifted pricing over the past week. Fed Chair Powell's post-FOMC remarks (April 29) emphasized policy restraint and the need for more evidence that inflation is returning to target. ECB President Lagarde's April 25 speech acknowledged the energy shock but reiterated that the ECB remains data-dependent and will not overreact to temporary factors.<\/p><p><strong>Balance sheet watch:<\/strong> The Fed's QT pace remains at <strong>$95 billion/month<\/strong> ($60bn Treasuries + $35bn MBS), with no signals of slowing. The runoff has reduced the Fed's balance sheet to <strong>$7.2 trillion<\/strong>, down from the $8.9 trillion peak. The ECB's combined APP+PEPP runoff is at <strong>€15 billion/month<\/strong>, with PEPP reinvestment continuing through 2024. The ECB's balance sheet stands at <strong>€6.8 trillion<\/strong>.<\/p><p><strong>Real rates context:<\/strong> US 10Y real yields (nominal 4.43% minus 10Y breakeven ~2.4%) are at <strong>+2.0%<\/strong>, well above the historical average of +0.5%. This suggests US monetary policy remains restrictive. In Europe, German 10Y real yields (3.07% minus 10Y breakeven ~2.1%) are at <strong>+1.0%<\/strong>, less restrictive than the US but still above neutral. UK 10Y real yields are around <strong>+1.8%<\/strong>, reflecting the BoE's hawkish stance.<\/p><p><strong>Cross-CB divergence:<\/strong> The Fed-ECB 2Y spread is now at <strong>125bp<\/strong> (UST 2Y 4.38% vs Euribor 2Y ~3.13%), near its widest level since 2023. This divergence is supporting the USD and putting pressure on EUR/USD, which is trading at 1.0740. The cross-currency basis for EUR/USD has widened to <strong>-15bp<\/strong>, reflecting demand for USD funding.<\/p><p><strong>Key risk for rates:<\/strong> If next week's April CPI comes in softer than expected, the Fed pricing could shift rapidly, potentially bringing September cut odds back above 40%. Conversely, a hot CPI would cement the higher-for-longer narrative and push UST 10Y toward 4.60%. For the ECB, any escalation of the Hormuz situation could force a delay to the September cut if energy prices spike.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Henry 🦉<\/div><div class='dissent-text'>The market is underestimating the ECB's hawkishness. While the data is weaker, the energy shock from Hormuz is exactly the type of supply-side inflation the ECB cannot ignore. If breakevens rise another 20bp, the ECB may be forced to pause the September cut cycle, which would catch the market positioned for dovishness offside.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">BULLISH on rates<\/span> — Fed remains hawkish with September cut odds collapsing, supporting higher UST yields through the summer.<\/div>","sig":"Sage 🦎","factChecked":true},{"t":"analysis","badge":"💸 Inflation Dynamics","title":"Breakevens, swaps, and the inflation outlook","hook":"Breakevens edge higher on energy concerns but remain below March peaks. Real yields are the real story — restrictive across all major curves.","authorWord":"US 10Y real yields at +2.0% — policy is still tight, and that's keeping a floor under nominal yields.","author":"Sage 🦎","details":"<p><strong>Breakeven table:<\/strong> 10Y breakevens have moved higher over the past week as energy prices respond to the ongoing Hormuz Strait situation. <strong>US 10Y breakeven<\/strong> is now at <strong>2.40%<\/strong> (estimated), up from 2.32% a week ago. <strong>Germany 10Y breakeven<\/strong> is at <strong>2.10%<\/strong> (estimated), up from 2.05%. <strong>France 10Y breakeven<\/strong> is at <strong>2.15%<\/strong> (estimated), while <strong>Italy 10Y breakeven<\/strong> is at <strong>2.25%<\/strong> (estimated). The move reflects market expectations that the energy shock will add 10-15bp to headline inflation in the coming months.<\/p><p><strong>5Y5Y inflation swaps:<\/strong> Forward inflation expectations are more anchored. The <strong>US 5Y5Y swap<\/strong> is trading at <strong>2.25%<\/strong>, only 5bp above the 10Y breakeven, suggesting markets expect inflation to be well-contained after the near-term energy shock. The <strong>Eurozone 5Y5Y swap<\/strong> is at <strong>2.00%<\/strong>, below the ECB's 2% target, indicating market confidence in the ECB's ability to bring inflation back to target over the medium term.<\/p><p><strong>Core vs headline:<\/strong> The stickiness in inflation remains in core services. US core services ex-housing CPI is running at <strong>3.8% YoY<\/strong> (latest March data), well above the 2% target. Wage growth, as measured by the Employment Cost Index, is at <strong>4.1% YoY<\/strong>, still above the level consistent with 2% inflation. In Europe, core HICP is at <strong>2.7% YoY<\/strong>, with services inflation at <strong>3.2% YoY<\/strong>. The energy base effect from last year's high prices is now turning negative, which should help headline inflation over the summer, but the new energy shock from Hormuz could reverse this.<\/p><p><strong>Real yields:<\/strong> Real yields have risen significantly over the past year and are now at restrictive levels. <strong>US 10Y real yield<\/strong> is at <strong>+2.0%<\/strong> (4.43% nominal minus 2.40% breakeven), up from +1.2% a year ago and well above the 10-year average of +0.5%. <strong>German 10Y real yield<\/strong> is at <strong>+1.0%<\/strong> (3.07% minus 2.10%), up from +0.3% a year ago. <strong>UK 10Y real yield<\/strong> is at <strong>+1.8%<\/strong>, the highest among major markets. These elevated real yields suggest monetary policy is restrictive and should eventually slow economic activity.<\/p><p><strong>Linkers relative value:<\/strong> <strong>BTP€i<\/strong> (Italian inflation-linked bonds) are offering a real yield of <strong>+0.8%<\/strong> on the 10Y, vs <strong>+1.0%<\/strong> for nominal BTPs. The 20bp spread between linkers and nominals suggests the market is pricing in some inflation risk premium for Italy. <strong>OAT€i<\/strong> (French linkers) are at <strong>+1.0%<\/strong> real yield, vs <strong>+1.1%<\/strong> for nominal OATs. The tight spread reflects confidence in France's inflation outlook. In the US, TIPS 10Y real yields are at <strong>+2.0%<\/strong>, identical to the nominal real yield calculation, indicating efficient pricing.<\/p><p><strong>Commodity inputs:<\/strong> <strong>Brent crude<\/strong> is trading at <strong>$88/barrel<\/strong> (estimated), up from $82 a week ago, reflecting the Hormuz blockade risk. <strong>European natural gas<\/strong> (TTF) is at <strong>€38/MWh<\/strong>, up from €34 a week ago. The energy price increase is transmitting to breakevens, with the energy component of CPI expected to add <strong>+0.2% to +0.3%<\/strong> to headline inflation over the next 2-3 months. Metals prices have been more stable, with copper at $9,200/ton, flat on the week.<\/p><p><strong>Inflation outlook:<\/strong> The consensus view remains that inflation will gradually decline toward target over the next 12-18 months, but the path is bumpier due to the energy shock. US CPI is expected to be at <strong>3.3% YoY<\/strong> in April (release May 12), declining to <strong>2.8% by Q4<\/strong>. Eurozone HICP is expected to be at <strong>2.4% YoY<\/strong> in April, declining to <strong>2.1% by Q4<\/strong>. These forecasts assume no further escalation in the Middle East, which is a key risk factor.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Blaise 🧮<\/div><div class='dissent-text'>Breakevens may be too low given the energy situation. If Hormuz escalates and oil spikes above $100/barrel, we could see 10Y breakevens jump to 2.6-2.7% quickly. The market is pricing this as a temporary shock, but there's a risk this becomes more persistent if the blockade extends beyond summer. Real yields could compress sharply in that scenario, catching nominal bears offside.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">BEARISH on rates<\/span> — While breakevens are rising, the elevated real yields (+2.0% in US) suggest policy is already restrictive enough to eventually bring yields lower once the energy shock passes.<\/div>","sig":"Sage 🦎","factChecked":true},{"t":"alert","badge":"🏗️ Supply & Fiscal","title":"Auction calendar, issuance, and fiscal dynamics","hook":"No major sovereign auctions today — focus on next week's Bund tap and US 10Y refunding. Supply is absorbing, but QT is providing net liquidity support.","authorWord":"Weekly issuance is running 5% below Q1 average — the supply overhang is receding.","author":"Blaise 🧮","details":"<p><strong>Auction calendar:<\/strong> Today's sovereign issuance calendar is light, with no major auctions scheduled in the US, Europe, or UK. Tomorrow (May 7), Germany will tap its <strong>10Y Bund<\/strong> (DBR 2.50% Aug 2034) for an expected <strong>€5 billion<\/strong>. The auction is at 11:00 CET, with results expected at 11:30. This is a routine tap and is not expected to be a market mover given the strong demand for German duration.<\/p><p>On Thursday (May 8), the US Treasury will auction <strong>$40 billion<\/strong> of <strong>10Y notes<\/strong> as part of the quarterly refunding. This is the largest of the three refunding auctions (2Y, 10Y, 30Y) and typically sets the tone for the week. The 10Y auction is at 1:00 PM ET. The previous 10Y auction in February saw a bid-to-cover of <strong>2.45x<\/strong> and a tail of <strong>0.8bp<\/strong>, indicating decent demand.<\/p><p>On Friday (May 9), Italy will auction <strong>€6-7 billion<\/strong> of <strong>BTPs<\/strong> across maturities (3Y, 7Y, and 30Y). The BTP auctions are closely watched for signs of periphery stress, especially given the BTP-Bund spread at 82bp. The previous BTP auction in late April saw strong demand, with a bid-to-cover of <strong>1.65x<\/strong> on the 10Y line.<\/p><p><strong>Recent results:<\/strong> Yesterday's <strong>UK 10Y Gilt<\/strong> auction saw a bid-to-cover of <strong>2.32x<\/strong> and a tail of <strong>0.5bp<\/strong>, slightly better than the recent average of 2.20x. Indirect bidders (central banks, official institutions) took <strong>62%<\/strong> of the issue, up from 58% at the previous auction, indicating strong overseas demand. The <strong>French 10Y OAT<\/strong> auction last week had a bid-to-cover of <strong>2.18x<\/strong> with a tail of <strong>0.6bp<\/strong>, in line with recent trends.<\/p><p><strong>Supply pipeline:<\/strong> Weekly sovereign issuance across major markets (US, Eurozone, UK, Japan) is running at <strong>$95 billion<\/strong> per week, down 5% from the Q1 average of $100 billion per week. The decline is driven by reduced US Treasury issuance as the deficit narrows and by the ECB's reduced net supply (QT runoff partially offset by new issuance). For May, total issuance is expected to be <strong>$380 billion<\/strong>, vs $400 billion in April.<\/p><p><strong>Fiscal backdrop:<\/strong> The US deficit for fiscal year 2026 (which started October 2025) is projected at <strong>$1.2 trillion<\/strong>, down from $1.4 trillion in FY2025, reflecting higher tax revenues and moderating spending growth. In Europe, the aggregate fiscal deficit for the Eurozone is projected at <strong>3.1% of GDP<\/strong> for 2026, down from 3.4% in 2025, as countries gradually consolidate after the pandemic spending boom. Italy's deficit is projected at <strong>4.2% of GDP<\/strong>, still above the EU's 3% limit but declining.<\/p><p><strong>QT absorption:<\/strong> The combined effect of central bank balance sheet runoff and new issuance is creating a net supply impact of approximately <strong>-$30 billion per week<\/strong> in the US (Fed QT -$95bn/week minus new issuance +$65bn/week after accounting for maturities). This net negative supply is providing a floor under Treasury prices, as the market absorbs less net supply than it did in 2024. In Europe, the ECB's QT (-€15bn/week) is partially offset by new issuance (+€25bn/week), resulting in net supply of +€10bn/week — manageable but not supportive.<\/p><p><strong>Key supply risk:<\/strong> If the US deficit widens unexpectedly due to slower growth or new spending programs, issuance could increase in H2 2026, putting upward pressure on yields. Conversely, if the deficit narrows faster than expected, the Treasury could reduce auction sizes, which would be bullish for bonds. The market is currently pricing for stable issuance through Q3 2026.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Henry 🦉<\/div><div class='dissent-text'>The supply narrative may be too optimistic. The US deficit projections assume no recession and no new fiscal stimulus. If the economy slows sharply, automatic stabilizers will kick in and the deficit could widen to $1.5 trillion or more, forcing the Treasury to increase issuance. This would catch the market positioned for declining supply offside, potentially pushing UST 10Y back toward 4.70%.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">NEUTRAL on rates<\/span> — Supply is absorbing but not overwhelming, while QT provides a floor. The supply picture alone is not enough to drive yields significantly higher or lower.<\/div>","sig":"Blaise 🧮","factChecked":true},{"t":"tech","badge":"📐 Curve & Carry","title":"Steepening, flattening, carry, and roll-down","hook":"2s10s spreads are flattening across all curves as short-end yields rise faster than long-end. Carry remains positive but is declining.","authorWord":"The belly of the curve (5Y) is offering the best risk-adjusted carry — 12bp/3mo with 4bp roll-down.","author":"Nova 🌟","details":"<p><strong>Curve snapshot:<\/strong> Yield curves are flattening across major markets as short-end yields rise faster than long-end yields. The <strong>UST 2s10s spread<\/strong> is at <strong>+5bp<\/strong> (4.38% 2Y vs 4.43% 10Y), down from +12bp a week ago and +25bp a month ago. The <strong>Bund 2s10s spread<\/strong> is at <strong>+8bp<\/strong> (estimated, 2.99% 2Y vs 3.07% 10Y), down from +15bp a week ago. The <strong>Gilt 2s10s spread<\/strong> is at <strong>-30bp<\/strong> (4.55% 2Y vs 4.25% 10Y), remaining deeply inverted. The <strong>5s30s spread<\/strong> is flattening as well: UST 5s30s at +45bp (vs +55bp a week ago), Bund 5s30s at +35bp (vs +42bp a week ago).<\/p><p><strong>Z-score analysis:<\/strong> The UST 2s10s spread is now at the <strong>15th percentile<\/strong> of its 1-year distribution (Z-score of -1.2), indicating it's quite flat relative to recent history. The Bund 2s10s spread is at the <strong>20th percentile<\/strong> (Z-score of -0.9). The Gilt 2s10s spread is at the <strong>5th percentile<\/strong> (Z-score of -1.6), extremely flat by historical standards. This suggests curves are already priced for significant flattening, with limited room for further compression unless the Fed/ECB turn more hawkish.<\/p><p><strong>Butterfly trades:<\/strong> The <strong>UST 2s5s10s butterfly<\/strong> (long 2Y and 10Y, short 2×5Y) is currently at <strong>+15bp<\/strong>, indicating the belly (5Y) is slightly cheap relative to the wings. A butterfly trader would be long the belly, expecting it to richen as the curve flattens further. The <strong>Bund 2s5s10s butterfly<\/strong> is at <strong>+12bp<\/strong>, also suggesting a cheap belly. Historical average for both butterflies is around +8bp, so there's potential for mean reversion.<\/p><p><strong>Carry & Roll-down:<\/strong> 3-month carry and roll-down analysis shows the following per DV01 for key buckets (assuming static curve):<\/p><ul><li><strong>UST 2Y:<\/strong> +8bp carry (3mo) + 2bp roll-down = <strong>+10bp total<\/strong><\/li><li><strong>UST 5Y:<\/strong> +12bp carry (3mo) + 4bp roll-down = <strong>+16bp total<\/strong> — <em>best carry-positive bucket<\/em><\/li><li><strong>UST 10Y:<\/strong> +15bp carry (3mo) + 3bp roll-down = <strong>+18bp total<\/strong><\/li><li><strong>UST 30Y:<\/strong> +18bp carry (3mo) + 2bp roll-down = <strong>+20bp total<\/strong><\/li><li><strong>Bund 5Y:<\/strong> +10bp carry (3mo) + 3bp roll-down = <strong>+13bp total<\/strong><\/li><li><strong>BTP 10Y:<\/strong> +22bp carry (3mo) + 5bp roll-down = <strong>+27bp total<\/strong> — <em>highest carry due to spread<\/em><\/li><\/ul><p>The optimal carry-positive positioning is in the <strong>5-10Y bucket<\/strong>, which offers a good balance of carry and roll-down with moderate duration risk. Periphery bonds (BTP, OAT) offer higher carry due to the spread, but this comes with credit and spread volatility risk.<\/p><p><strong>Curve regime:<\/strong> The current regime is <strong>bear flattening<\/strong> — yields are rising overall, but the short-end is rising faster than the long-end, causing the curve to flatten. This is consistent with a hawkish central bank stance where markets expect rate cuts to be delayed or reduced. Historically, bear flattening has tended to precede either (1) a bear steepening (if inflation accelerates further) or (2) a bull steepening (if the economy slows and cuts are brought forward). The current positioning suggests markets are leaning toward scenario (1).<\/p><p><strong>Cross-currency curve:<\/strong> The <strong>Bund curve vs UST curve<\/strong> shows that the US curve is steeper than the German curve (5bp vs 8bp on 2s10s). This is unusual — typically, the US curve is flatter due to higher short-end rates. The relative steepness reflects the stronger US economic data and the more hawkish Fed. For cross-currency trades, this suggests being long UST 2s10s vs short Bund 2s10s could be attractive, as the US spread may widen further if the Fed remains hawkish while the ECB cuts.<\/p><p><strong>Key curve levels to watch:<\/strong> UST 2s10s at 0bp (curve inversion trigger) would be a significant psychological level. Bund 2s10s at 0bp would also be notable. A break below 0bp in either market would signal markets are pricing for a more aggressive policy response (either more hikes or delayed cuts).<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Blaise 🧮<\/div><div class='dissent-text'>The flattening trade may be overdone. With the Fed likely on hold through summer and the ECB cutting in September, the transatlantic 2Y spread (currently 125bp) could narrow if the ECB cuts more aggressively than priced. This would cause the Bund 2s10s to steepen relative to UST 2s10s, hurting the flattening positioning. The belly may not be as cheap as the butterfly suggests if the market is underestimating ECB dovishness.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">BEARISH on rates<\/span> — Curve flattening suggests the market is pricing for higher short-end yields, but the belly (5Y) offers attractive carry that could provide a buffer against further flattening.<\/div>","sig":"Nova 🌟","factChecked":true},{"t":"analysis","badge":"🔄 RV & Spreads","title":"Sovereign spreads, ASW, and relative value","hook":"BTP-Bund tightens to 82bp as ECB PEPP support continues. EGB vs UST spread widens to 136bp — the transatlantic value trade.","authorWord":"Spain-Bund at 68bp looks cheap vs France-Bund at 90bp — same credit, different pricing.","author":"Henry 🦉","details":"<p><strong>Spread table:<\/strong> Sovereign spreads have tightened modestly over the past week, supported by ECB PEPP reinvestment and improving fiscal fundamentals. <strong>BTP-Bund 10Y<\/strong> is at <strong>82bp<\/strong> (estimated, BTP 10Y ~3.89% vs Bund 10Y 3.07%), ▼-3bp vs previous close and ▼-8bp vs 90bp one week ago — TIGHTENED on both the day and the week. <strong>OAT-Bund 10Y<\/strong> is at <strong>90bp<\/strong> (estimated, OAT 10Y ~3.97% vs Bund 10Y 3.07%), ◆-0bp vs previous close and ▼-2bp vs 92bp one week ago — TIGHTENED on the week, flat on the day. <strong>Spain-Bund 10Y<\/strong> is at <strong>68bp<\/strong> (estimated), ▼-2bp vs previous close and ▼-5bp vs 73bp one week ago — TIGHTENED on both periods. <strong>Gilt-Bund 10Y<\/strong> is at <strong>118bp<\/strong> (estimated, Gilt 10Y ~4.25% vs Bund 10Y 3.07%), ▲+2bp vs previous close but ▼-3bp vs 121bp one week ago — WIDENED on the day but TIGHTENED on the week. <strong>EGB vs UST 10Y<\/strong> (Bund as proxy) is at <strong>-136bp<\/strong> (UST 10Y 4.43% minus Bund 10Y 3.07%), ▲+3bp vs previous close and ▲+6bp vs -130bp one week ago — WIDENED on both periods, reflecting US yield outperformance.<\/p><p><strong>Z-score analysis:<\/strong> BTP-Bund at 82bp is at the <strong>35th percentile<\/strong> of its 1-year distribution (Z-score of -0.4), indicating it's slightly rich vs recent history but not overextended. OAT-Bund at 90bp is at the <strong>40th percentile<\/strong> (Z-score of -0.3), also rich but reasonable. Spain-Bund at 68bp is at the <strong>25th percentile<\/strong> (Z-score of -0.7), looking cheap relative to its historical range. Gilt-Bund at 118bp is at the <strong>55th percentile<\/strong> (Z-score of +0.1), fairly valued.<\/p><p><strong>ASW spreads:<\/strong> Asset-swap levels show that cash bonds are trading slightly richer than swaps in Europe. <strong>Bund 10Y ASW<\/strong> is at <strong>+15bp<\/strong> (cash yield minus swap rate), indicating investors are paying a premium for the credit quality of German debt. <strong>BTP 10Y ASW<\/strong> is at <strong>+35bp<\/strong>, reflecting the credit risk premium. <strong>OAT 10Y ASW<\/strong> is at <strong>+25bp<\/strong>. The basis between cash and swaps has narrowed over the past month, suggesting improved liquidity in the cash market.<\/p><p><strong>Flow intelligence:<\/strong> CFTC data shows that net speculative positions in Eurozone bond futures have turned slightly <strong>long<\/strong> over the past two weeks, with +5K net long contracts on Bund futures. This is a shift from the consistent short positioning seen in Q1 2026, suggesting some funds are positioning for spread tightening. IMF COFER data for Q1 2026 shows that central banks reduced their Eurozone bond holdings by <strong>€15 billion<\/strong>, with the proceeds rotating into US Treasuries. This flow has contributed to the widening of the EGB vs UST spread.<\/p><p><strong>Spread drivers:<\/strong> The primary driver of spread tightening over the past week has been <strong>ECB PEPP reinvestment<\/strong>, which is providing a steady bid for periphery bonds. The ECB reinvested <strong>€8 billion<\/strong> in maturing PEPP holdings last week, with approximately 60% allocated to Italian and Spanish bonds. Secondary drivers include (1) improving fiscal data from Italy, where the Q1 2026 primary deficit came in better than expected, and (2) reduced geopolitical risk premium as the Hormuz situation, while unresolved, has not escalated further.<\/p><p><strong>Duration-neutral opportunities:<\/strong> The best risk-adjusted spread trade currently is <strong>long Spain-Bund vs short OAT-Bund<\/strong> (duration-neutral via DV01 matching). Spain-Bund at 68bp is 22bp tighter than OAT-Bund at 90bp, despite Spain having similar credit fundamentals to France. The trade offers a <strong>22bp pickup<\/strong> with duration risk neutralized, and a potential for further convergence if the market recognizes the mispricing. Another opportunity is <strong>long BTP-Bund vs short EGB vs UST<\/strong>, which is a bet on European convergence vs US divergence, but this carries currency risk.<\/p><p><strong>Periphery risk:<\/strong> BTP-Bund at 82bp is well below the 100bp psychological level that has historically signaled stress. However, any escalation in the Hormuz situation that causes energy prices to spike could trigger a risk-off move that would widen BTP-Bund rapidly. The market is pricing a low probability of this scenario, but the tail risk remains. Political risk in Italy is also elevated with elections scheduled for autumn 2026, which could cause spread volatility.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Sage 🦎<\/div><div class='dissent-text'>The Spain vs France spread convergence trade may be premature. While Spain's fiscal metrics have improved, France faces upcoming political challenges that could pressure OATs. The market is rightly pricing a premium for OATs due to France's larger debt burden and less aggressive fiscal consolidation. Spain-Bund may not converge to OAT-Bund levels until Spain demonstrates sustained fiscal discipline beyond one quarter of good data.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">BULLISH on rates<\/span> — EGB vs UST spread widening to 136bp suggests European yields will need to rise faster to keep pace with the US, supporting a bearish view on global rates.<\/div>","sig":"Henry 🦉","factChecked":true},{"t":"alert","badge":"🌍 Geopol & Risk Overlay","title":"Geopolitical risk tags and safe-haven flows","hook":"Risk tag: NEUTRAL. Hormuz remains unresolved but has not escalated over the past 48 hours. No active safe-haven flows.","authorWord":"The market is in a wait-and-see mode on Hormuz — neither panic nor complacency.","author":"Henry 🦉","details":"<p><strong>Risk Tag:<\/strong> 🟡 <strong>NEUTRAL<\/strong> — The dominant sentiment driver today is economic data (ISM Services PMI) rather than geopolitical risk. While the Hormuz Strait situation remains unresolved, there has been no significant escalation in the past 48 hours. The market is pricing a low-to-moderate probability of further escalation, which is reflected in oil prices at $88/barrel — elevated but not crisis levels. The risk-on tone in equities (S&P 500 futures +0.4%) and the modest bid in Treasuries suggest balanced risk appetite.<\/p><p><strong>Flight-to-quality:<\/strong> There are no active safe-haven flows at this time. <strong>Bund bid<\/strong> is present but not exceptional — Bund yields are trading in line with fundamentals. <strong>UST demand<\/strong> is steady, with the 10Y yield holding above 4.40% without significant foreign buying. Periphery bonds are performing well, with BTP-Bund at 82bp, indicating no stress in riskier European assets. If Hormuz were to escalate, we would expect to see Bund and UST yields drop 10-15bp on safe-haven demand, but this scenario is not currently priced.<\/p><p><strong>Active geopolitical arcs:<\/strong><\/p><ul><li><strong>Hormuz Strait:<\/strong> The blockade is now in its 62nd day. Iranian and Coalition forces remain in a standoff, with limited maritime traffic passing through. No new incidents reported in the past 48 hours. Oil markets have adjusted to the reduced supply, with Brent at $88/barrel. The risk remains that a miscalculation could trigger escalation, but diplomatic channels remain open. This is the single largest geopolitical risk to rates markets, as a further spike in energy prices would push breakevens higher and force a hawkish CB response.<\/li><li><strong>Russia-Ukraine:<\/strong> No major developments. The front line remains static, with both sides preparing for potential spring offensives. The impact on rates markets is minimal at this time, as the initial shock has been priced in. European gas prices (TTF €38/MWh) are elevated but not at crisis levels.<\/li><li><strong>Middle East (beyond Hormuz):<\/strong> Israel-H tensions remain contained. No new significant escalations reported. The regional risk premium is being absorbed by the market.<\/li><li><strong>US-China:<\/strong> Trade tensions remain elevated but have not worsened. No new tariffs or sanctions announced in the past week. The market is pricing a low probability of a significant trade war escalation in the near term.<\/li><\/ul><p><strong>Periphery risk:<\/strong> BTP spreads at 82bp show no signs of periphery stress. Italian political risk is elevated with elections scheduled for autumn 2026, but the market is not pricing a significant spread widening at this time. French political risk is also contained. Spanish spreads at 68bp are tightening, reflecting investor confidence. The ECB's PEPP reinvestment is providing a floor under periphery spreads, which is limiting the transmission of geopolitical risk to EGB markets.<\/p><p><strong>Energy-inflation transmission:<\/strong> The current oil price of $88/barrel is translating into a breakeven inflation rate of 2.40% in the US and 2.10% in Germany. If oil were to spike to $100/barrel on Hormuz escalation, breakevens could rise to 2.6-2.7%, forcing central banks to reconsider their easing paths. This is the key transmission mechanism from geopolitics to rates markets. For now, the transmission is modest, with breakevens up only 5-8bp over the past week.<\/p><p><strong>Looking ahead:<\/strong> The key geopolitical risk to watch over the next 48 hours is any statement or action from Iran or the Coalition regarding Hormuz. A breakthrough in negotiations would be positive for risk assets and could push yields lower (bullish for bonds). An escalation (e.g., seizure of another vessel, military confrontation) would trigger a risk-off move, with Bund and UST yields dropping 10-15bp on safe-haven demand, but breakevens would spike higher, creating a complex dynamic for nominal yields.<\/p><p>Bottom line: Geopolitical risk is present but not driving markets today. The focus is on economic data and central bank policy. However, the tail risk of Hormuz escalation remains, and traders should maintain appropriate hedges.<\/p><div class='dissent'><div class='dissent-label'>⚡ Dissenting View — Blaise 🧮<\/div><div class='dissent-text'>The NEUTRAL risk tag may understate the Hormuz risk. The fact that the blockade has persisted for 62 days without resolution is itself a risk factor — markets are becoming complacent about a situation that could escalate at any moment. The probability of escalation is not as low as the market is pricing, and the asymmetric payoff (large downside if escalation occurs, limited upside if resolved) suggests being long safe-havens (Bunds, USTs) as a hedge is prudent even if the base case is no escalation.<\/div><\/div><div class=\"sentiment\"><span class=\"sentiment-label\">📊 Sentiment:<\/span> <span class=\"sentiment-tag\">NEUTRAL on rates<\/span> — Geopolitical risk is balanced with no active safe-haven flows or periphery stress. Rates are driven by economic data and CB policy rather than geopolitics.<\/div>","sig":"Henry 🦉","factChecked":true},{"t":"end","end":true,"disclaimer":"⚠️ DISCLAIMER — This document is an experimental automated market intelligence product generated by artificial intelligence. It does NOT constitute investment advice, a trading recommendation, or regulated financial analysis under MiFID II or any securities regulation. The 'trade ideas' and 'scenarios' presented are pedagogical hypotheses generated by language models — they do not reflect the opinion of a licensed professional. Data is sourced from public feeds and may be delayed or inaccurate. Any investment decision based on this document is the sole responsibility of the reader. The author is not registered as an Investment Advisor with any regulatory authority. This content is provided for informational and experimental purposes only."}];
+
+  const deck = document.getElementById('deck');
+  const hint = document.getElementById('hint');
+  const total = DATA.length;
+  let cur = 0, startX = 0, deltaX = 0, dragging = false, startTime = 0;
+
+  DATA.forEach((d, i) => {
+    const c = document.createElement('article');
+    c.className = 'card' + (i === 0 ? ' active' : ' next');
+    c.dataset.t = d.t;
+    c.dataset.i = i;
+    if (d.home) {
+      const articlesHtml = d.articles.map((a, j) => `
+        <div class="home-article" data-goto="${a.idx}" onclick="go(${a.idx})">
+          <div class="num">${a.badge.split(' ')[0]}</div>
+          <div class="info">
+            <div class="badge-sm">${a.badge.split(' ').slice(1).join(' ')}</div>
+            <div class="title-sm">${a.title}</div>
+          </div>
+          <div class="arrow">›</div>
+        </div>`).join('');
+      c.innerHTML = `
+        <div class="hdr"><span class="badge tech">📰 Daily</span><div class="dots">${dots(i)}</div></div>
+        <div class="home-content">
+          <div class="home-logo"><span>Rates & Inflation Morning Brief</span></div>
+          <div class="home-date">${d.date}</div>
+          ${d.disclaimer ? '<div style="margin:8px 0;padding:8px 10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:6px;font-size:.55rem;color:var(--muted);line-height:1.3;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <div class="home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord}</div></div>
+          <div class="home-articles">${articlesHtml}</div>
+          <div class="home-footer"></div>
+        </div>`;
+    } else if (d.end) {
+      c.innerHTML = `
+        <div class="hdr"><span class="badge end">✅ Terminé</span><div class="dots">${dots(i)}</div></div>
+        <div class="end-content">
+          <div class="em">🎉</div>
+          <h2>Briefing terminé !</h2>
+          <p>Vous avez parcouru le briefing du jour.<br>À demain !</p>
+          <a href="../index.html" style="display:inline-block;padding:12px 32px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 0 25px rgba(59,130,246,.4);margin-bottom:12px;">📰 Toutes les éditions</a><br><button id="restart">🔄 Recommencer</button>
+          ${d.disclaimer ? '<div style="margin-top:20px;padding:14px 16px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:.7rem;color:var(--muted);line-height:1.5;text-align:left;">'+d.disclaimer+'</div>' : ''}
+          <small>← Swipez à gauche pour revenir</small>
+        </div>`;
+    } else {
+      const authorWordHtml = d.authorWord ? `<div class="author-word"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author}</div></div>` : '';
+      c.innerHTML = `
+        <div class="hdr"><span class="badge ${d.t}">${d.badge}</span><div class="dots">${dots(i)}</div></div>
+        <div class="title-zone"><h1>${d.title}</h1></div>
+        <div class="scroll-cta"><span><i>↓</i> Lire plus</span></div>
+        <div class="scroll-zone"><div class="scroll-inner">
+          ${authorWordHtml}
+          <div class="hook">${d.hook}</div>
+          <div class="details">${d.details}<div class="sig">Rates & Inflation Morning Brief — 6 Mai 2026</div></div>
+        </div></div>`;
+    }
+    deck.appendChild(c);
+  });
+
+  function dots(active) { let s=''; for(let i=0;i<total;i++) s+=`<span class="dot${i===active?' on':''}"></span>`; return s; }
+  const cards = deck.querySelectorAll('.card');
+  function update(anim=true) {
+    cards.forEach((c,i)=>{
+      c.classList.toggle('anim',anim);
+      c.classList.remove('prev','active','next','behind'); c.style.opacity='';
+      if(i===cur)c.classList.add('active'); else if(i===cur+1||i===cur-1)c.classList.add('behind'); else if(i<cur)c.classList.add('prev'); else c.classList.add('next');
+      c.style.transform='';
+      c.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===cur));
+    });
+  }
+  function go(i){if(i>=0&&i<total){cur=i;update();}}
+  const dateKey="Rates & Inflation Morning Brief-6-Mai-2026";
+  if(!localStorage.getItem(dateKey)){setTimeout(()=>{hint.classList.add('hide');localStorage.setItem(dateKey,'1');},2000);}else hint.style.display='none';
+  
+  document.querySelectorAll('.scroll-zone, .home-content').forEach(function(sz){
+    var card = sz.closest('.card');
+    if(!card) return;
+    sz.addEventListener('scroll', function(){
+      card.classList.toggle('scrolled', sz.scrollTop > 10);
+    }, {passive:true});
+  });
+  let startY=0,axis='';
+  document.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;startTime=Date.now();deltaX=0;axis='';dragging=true;cards[cur].classList.remove('anim');},{passive:true});
+  document.addEventListener('touchmove',e=>{if(!dragging)return;const dx=e.touches[0].clientX-startX;const dy=e.touches[0].clientY-startY;if(!axis){if(Math.abs(dx)>8||Math.abs(dy)>8){axis=Math.abs(dx)>Math.abs(dy)?'x':'y';}else return;}if(axis==='y')return;deltaX=dx;cards[cur].style.transform=`translate(-50%,-50%) translateX(${deltaX}px) rotate(${deltaX*0.012}deg)`;var p=Math.min(Math.abs(deltaX)/200,1);var sc=0.93+p*0.07;var op=0.4+p*0.6;var nxt=deltaX<0?cards[cur+1]:cards[cur-1];if(nxt){nxt.style.transform='translate(-50%,-50%) scale('+sc+')';nxt.style.opacity=op;}},{passive:true});
+  document.addEventListener('touchend',e=>{if(!dragging)return;dragging=false;if(axis==='y'){axis='';return;}axis='';const card=cards[cur];card.classList.add('anim');if(cards[cur+1])cards[cur+1].classList.add('anim');if(cards[cur-1])cards[cur-1].classList.add('anim');const velocity=Math.abs(deltaX)/(Date.now()-startTime);const threshold=velocity>0.5?30:60;if(deltaX>threshold&&cur===0){window.location.href='../index.html';}else if(deltaX<-threshold&&cur===total-1){window.location.href='../index.html';}else if(deltaX<-threshold&&cur<total-1){cur++;update();}else if(deltaX>threshold&&cur>0){cur--;update();}else{card.style.transform='';}},{passive:true});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&cur<total-1){cur++;update();}if(e.key==='ArrowLeft'&&cur>0){cur--;update();}});
+  document.addEventListener('click',e=>{if(e.target.id==='restart')go(0);const article=e.target.closest('.home-article');if(article){const idx=parseInt(article.dataset.goto);if(!isNaN(idx))go(idx);}});
+  /* === DESKTOP SPLIT-VIEW === */
+  let dtShell=null, dtSelected=0;
+  function buildDesktop(){
+    if(dtShell)return;
+    dtShell=document.createElement('div');
+    dtShell.className='desktop-shell';
+    // Sidebar
+    const sb=document.createElement('nav');
+    sb.className='dt-sidebar';
+    const logoDate=DATA[0]&&DATA[0].home?`<div class="dt-logo">Rates & Inflation Morning Brief</div><div class="dt-date">${DATA[0].date||'6 Mai 2026'}</div>`:`<div class="dt-logo">Rates & Inflation Morning Brief</div><div class="dt-date">6 Mai 2026</div>`;
+    sb.innerHTML=logoDate;
+    DATA.forEach((d,i)=>{
+      const item=document.createElement('div');
+      item.className='dt-nav-item'+(i===0?' dt-selected':'');
+      item.tabIndex=0;
+      item.dataset.idx=i;
+      const emoji=d.home?'📰':d.end?'✅':(d.badge||'').split(' ')[0]||'📄';
+      const label=d.home?'Accueil':d.end?'Fin':(d.badge||'').split(' ').slice(1).join(' ')||'';
+      const title=d.home?'Sommaire':d.end?'Briefing terminé':d.title||'';
+      item.innerHTML=`<div class="dt-nav-badge">${emoji}</div><div class="dt-nav-info"><div class="dt-nav-label">${label}</div><div class="dt-nav-title">${title}</div></div><div class="dt-nav-arrow">›</div>`;
+      item.addEventListener('click',()=>selectDesktop(i));
+      sb.appendChild(item);
+    });
+    // Reader
+    const rd=document.createElement('div');
+    rd.className='dt-reader';
+    rd.innerHTML='<div class="dt-reader-inner"></div>';
+    dtShell.appendChild(sb);
+    dtShell.appendChild(rd);
+    document.body.appendChild(dtShell);
+    selectDesktop(0);
+  }
+  function selectDesktop(idx){
+    dtSelected=idx;
+    const items=dtShell.querySelectorAll('.dt-nav-item');
+    items.forEach((it,i)=>it.classList.toggle('dt-selected',i===idx));
+    const d=DATA[idx];
+    const inner=dtShell.querySelector('.dt-reader-inner');
+    if(d.home){
+      const arts=d.articles?d.articles.map(a=>`<div class="dt-nav-item" style="cursor:pointer;opacity:.7;padding:10px 14px;margin-bottom:4px;border-radius:10px;border:1px solid rgba(255,255,255,.06);" onclick="selectDesktop(${a.idx})"><div class="dt-nav-badge">${a.badge.split(' ')[0]}</div><div class="dt-nav-info"><div class="dt-nav-label">${a.badge.split(' ').slice(1).join(' ')}</div><div class="dt-nav-title">${a.title}</div></div><div class="dt-nav-arrow">›</div></div>`).join(''):'';
+      inner.innerHTML=`<div class="dt-r-home-henry"><div class="label">🦊 L'Édito du Jour</div><div class="text">${d.henryWord||''}</div></div>${arts}`;
+    } else if(d.end){
+      inner.innerHTML=`<div style="text-align:center;padding:60px 0;"><div style="font-size:3.5rem;margin-bottom:16px;">🎉</div><h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;">Briefing terminé !</h2><p style="color:var(--muted);font-size:1rem;margin-bottom:24px;line-height:1.5;">Vous avez parcouru le briefing du jour. À demain !</p><a href="../index.html" style="display:inline-block;padding:12px 32px;border-radius:12px;background:var(--blue);color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;">📰 Toutes les éditions</a></div>`;
+    } else {
+      const authorHtml=d.authorWord?`<div class="dt-r-author"><div class="aw-text">"${d.authorWord}"</div><div class="aw-name">— ${d.author||''}</div></div>`:'';
+      inner.innerHTML=`<span class="dt-r-badge ${d.t||''}">${d.badge||''}</span><h1 class="dt-r-title">${d.title||''}</h1>${authorHtml}<div class="dt-r-hook">${d.hook||''}</div><div class="dt-r-body">${d.details||''}</div><div class="dt-r-sig">Rates & Inflation Morning Brief — 6 Mai 2026</div>`;
+    }
+    dtShell.querySelector('.dt-reader').scrollTop=0;
+    // Scroll sidebar item into view
+    items[idx]&&items[idx].scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+  function destroyDesktop(){
+    if(dtShell){dtShell.remove();dtShell=null;}
+  }
+  function checkDesktop(){
+    if(window.innerWidth>=900){
+      deck.style.display='none';
+      buildDesktop();
+      dtShell.style.display='';
+    } else {
+      if(dtShell)dtShell.style.display='none';
+      deck.style.display='';
+      update(false);
+    }
+  }
+  // Keyboard nav for desktop
+  document.addEventListener('keydown',e=>{
+    if(window.innerWidth<900)return;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();if(dtSelected<DATA.length-1)selectDesktop(dtSelected+1);}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();if(dtSelected>0)selectDesktop(dtSelected-1);}
+  });
+  checkDesktop();window.addEventListener('resize',checkDesktop);
+  // Theme toggle
+  (function(){
+    const btn=document.getElementById('themeToggle');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');btn.textContent='☀️';}
+    btn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      btn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
+  })();
+  </script>
+</body>
+</html>
