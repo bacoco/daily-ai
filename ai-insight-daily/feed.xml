@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 23 Apr 2026 03:57:08 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 07:31:36 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Washington obtient un accès anticipé aux modèles IA de Google, Microsoft et xAI]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-07.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-07.html</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Cette édition raconte le même basculement sous six angles : l’IA devient une infrastructure surveillée, mais pas encore totalement maîtrisée. Entre audits d’État, limites de raisonnement, incidents agentiques et tensions sur l’attribution du code, la maturité ne se mesure plus au hype mais à la gouvernance concrète. Fil rouge du jour : moins de magie, plus de responsabilité opérationnelle.]]></description>
+    </item>
     <item>
       <title><![CDATA[Bulle IA : 500 milliards effacés en 48h]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-04-23.html</link>

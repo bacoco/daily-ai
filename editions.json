@@ -1,11 +1,20 @@
 [
   {
+    "date": "7 Mai 2026",
+    "title": "Washington obtient un accès anticipé aux modèles IA de Google, Microsoft et xAI",
+    "desc": "",
+    "url": "2026-05-07.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Cette édition raconte le même basculement sous six angles : l’IA devient une infrastructure surveillée, mais pas encore totalement maîtrisée. Entre audits d’État, limites de raisonnement, incidents agentiques et tensions sur l’attribution du code, la maturité ne se mesure plus au hype mais à la gouvernance concrète. Fil rouge du jour : moins de magie, plus de responsabilité opérationnelle."
+  },
+  {
     "date": "23 Avril 2026",
     "title": "Bulle IA : 500 milliards effacés en 48h",
     "desc": "",
     "url": "2026-04-23.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "L'IA de 2026 sort du laboratoire et entre dans la réalité. La correction brutale des marchés le 22 avril a servi de électrochoc. Le krach a effacé 500 milliards de dollars en 48h, signalant la fin de l'euphorie boursière. Les investisseurs exigent désormais des résultats, pas des promesses. Dans ce contexte, l'interprétabilité mécaniste devient une exigence de transparence pour la confiance, tandis que des failles de gouvernance — comme cet agent interne qui a exposé des données sensibles — rappellent les limites de l'IA agentique. Enfin, Ollama 3.2 montre que l'open source continue d'avancer, offrant des modèles compétitifs sans les coûts des géants. L'IA se responsabilise."
   },
   {
