@@ -1,11 +1,20 @@
 [
   {
+    "date": "7 Mai 2026",
+    "title": "Chrome DevTools MCP : votre agent code prend le contrôle du navigateur",
+    "desc": "",
+    "url": "2026-05-07.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Aujourd’hui, on est en plein cœur du vibe coding mature : moins de magie, plus de méthode. On parle d’outils qui accélèrent vraiment, de prompts qui cadrent les agents, et des pièges qui coûtent cher quand on ship trop vite. Prends ce brief comme une boîte à idées prête à tester dès ce matin. 🎨"
+  },
+  {
     "date": "5 Mai 2026",
     "title": "Devin for Terminal : l'agent autonome qui sort de l'IDE pour coder dans ton terminal",
     "desc": "",
     "url": "2026-05-05.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Cette semaine, le vibe coding montre ses deux visages. D'un côté, Devin for Terminal révolutionne notre workflow avec un agent autonome qui sort de l'IDE pour opérer directement dans notre terminal. De l'autre, l'effet stellaire de l'IA crée une génération de développeurs juniors sans fondamentaux techniques. Entre la Chain-of-Thought Debugging qui nous force à réfléchir avant de coder, et les failles de sécurité cachées dans 92% des applications IA, une chose est claire : le vibe coding n'est plus une option, c'est une responsabilité. Bonne lecture ! 🎨"
   },
   {

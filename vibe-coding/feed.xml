@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 05 May 2026 09:13:47 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 09:11:56 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Chrome DevTools MCP : votre agent code prend le contrôle du navigateur]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-05-07.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-05-07.html</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Aujourd’hui, on est en plein cœur du vibe coding mature : moins de magie, plus de méthode. On parle d’outils qui accélèrent vraiment, de prompts qui cadrent les agents, et des pièges qui coûtent cher quand on ship trop vite. Prends ce brief comme une boîte à idées prête à tester dès ce matin. 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Devin for Terminal : l'agent autonome qui sort de l'IDE pour coder dans ton terminal]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-05-05.html</link>
