@@ -1,11 +1,20 @@
 [
   {
+    "date": "8 Mai 2026",
+    "title": "TTF steadies while HH range-trades ahead of US storage print",
+    "desc": "",
+    "url": "2026-05-08.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Le marché du gaz reste en régime binaire: un socle fondamental plus calme, mais une prime géopolitique toujours active. Le conseil valide majoritairement les structures convexes et les spreads définis en risque, avec discipline sur les ventes d’upside nue. En clair: rester tactique sur le spot, mais protégé sur les queues."
+  },
+  {
     "date": "6 Mai 2026",
     "title": "TTF Eases to €46.70 as Hormuz Fears Recede, HH Drifts to $2.77",
     "desc": "",
     "url": "2026-05-06.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Europe enters the critical summer injection campaign at a multi-year storage low while Hormuz remains locked in diplomatic stalemate. The triple threat of stalled LNG flows, a structural supply deficit, and Norwegian maintenance creates asymmetric upside risk — but the binary possibility of a sudden diplomatic breakthrough demands hedging. Position for the tail, respect the range."
   },
   {
