@@ -1,11 +1,20 @@
 [
   {
+    "date": "8 Mai 2026",
+    "title": "Data calendar and surprise-risk map into the session",
+    "desc": "",
+    "url": "2026-05-08.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "With rates still elevated and macro catalysts clustered ahead, this is a positioning session more than a conviction session. Sticky inflation optics keep an upward bias on yields, but geopolitical noise keeps volatility two-way. The base case is range-to-higher yields with fat tails."
+  },
+  {
     "date": "6 Mai 2026",
     "title": "Data calendar, surprises, and today's catalysts",
     "desc": "",
     "url": "2026-05-06.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "With ISM Services at 55.3 and Hormuz unresolved, the desk faces a contradiction: hawkish repricing from strong data meets risk-off undertones from energy risks. The skew remains toward higher yields, but the tail risk is non-trivial. Stay flexible."
   },
   {
