@@ -1,11 +1,20 @@
 [
   {
+    "date": "8 Mai 2026",
+    "title": "OpenAI active le mode cyber, la rivalité avec Mythos change d’échelle",
+    "desc": "",
+    "url": "2026-05-08.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Cette édition raconte un basculement net : la bataille IA n’est plus seulement une course aux modèles, c’est une course à l’exécution. Entre pression cyber, contraintes de capacité et arbitrages produits, les leaders entrent dans leur phase industrielle. Fil rouge du jour : moins de promesses, plus de discipline opérationnelle."
+  },
+  {
     "date": "7 Mai 2026",
     "title": "Washington obtient un accès anticipé aux modèles IA de Google, Microsoft et xAI",
     "desc": "",
     "url": "2026-05-07.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Cette édition raconte le même basculement sous six angles : l’IA devient une infrastructure surveillée, mais pas encore totalement maîtrisée. Entre audits d’État, limites de raisonnement, incidents agentiques et tensions sur l’attribution du code, la maturité ne se mesure plus au hype mais à la gouvernance concrète. Fil rouge du jour : moins de magie, plus de responsabilité opérationnelle."
   },
   {
