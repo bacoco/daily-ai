@@ -79,30 +79,73 @@
   <div id="deck"></div>
   <div class="swipe-hint">← swipe between editions →</div>
   <script>
+  var STRINGS={
+    firstEdMsg:"First edition coming soon… ⚡",
+    newTag:"✨ NEW",
+    edTag:"📰 EDITION",
+    editoLabel:"🦊 Editor’s Note",
+    readCta:"Read this edition →",
+    logoText:"Gas Morning Brief",
+    logoAccent:"⚡ Gas",
+    logoRest:"Morning Brief"
+  };
   var editions=[], cur=0, startX=0, deltaX=0, dragging=false, startTime=0;
   function dots(a,t){var s='';for(var i=0;i<t;i++)s+='<span class="dot'+(i===a?' on':'')+'"></span>';return s;}
   function parseDate(str){var m=str.match(/(\d+)\s+(\S+)\s+(\d+)/);return m?{day:m[1],month:m[2],year:m[3]}:{day:'',month:'',year:''};}
+  function el(tag, cls, text){var n=document.createElement(tag); if(cls) n.className=cls; if(text!==undefined) n.textContent=text; return n;}
 
   function build(){
     var deck=document.getElementById('deck');
     deck.innerHTML='';
-    if(!editions.length){deck.innerHTML='<p style="text-align:center;color:#666;padding:40px">First edition coming soon… ⚡</p>';return;}
+    if(!editions.length){
+      var empty=el('p', '', STRINGS.firstEdMsg);
+      empty.style.textAlign='center'; empty.style.color='#666'; empty.style.padding='40px';
+      deck.appendChild(empty);
+      return;
+    }
     editions.forEach(function(ed,i){
       var d=parseDate(ed.date);
-      var c=document.createElement('div');
+      var c=el('div');
       c.className='card'+(ed.latest?' latest':'');
       c.dataset.i=i;
       var tagClass=ed.latest?'new':'daily';
-      var tagText=ed.latest?'✨ NEW':'📰 EDITION';
+      var tagText=ed.latest?STRINGS.newTag:STRINGS.edTag;
       var editoText=ed.edito||ed.desc||ed.title||'';
-      c.innerHTML=
-        '<div class="hdr"><span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div></div>'+
-        '<div class="body">'+
-          '<div class="logo"><span><b>⚡ Gas</b> Morning Brief</span></div>'+
-          '<div class="big-date"><div class="day">'+d.day+'</div><div class="monthyear">'+d.month+' '+d.year+'</div></div>'+
-          (editoText?'<div class="edito"><a class="edito-text" href="'+ed.url+'"><div class="edito-label">🦊 Editor\'s Note</div>'+editoText+'</a></div>':'')+
-          '<a class="cta" href="'+ed.url+'">Read this edition →</a>'+
-        '</div>';
+
+      var hdr=el('div','hdr');
+      hdr.innerHTML='<span class="tag '+tagClass+'">'+tagText+'</span><div class="dots">'+dots(i,editions.length)+'</div>';
+
+      var body=el('div','body');
+      var logo=el('div','logo');
+      var logoSpan=el('span');
+      var logoBold=el('b', null, STRINGS.logoAccent);
+      logoSpan.appendChild(logoBold);
+      if(STRINGS.logoRest){ logoSpan.appendChild(document.createTextNode(' '+STRINGS.logoRest)); }
+      logo.appendChild(logoSpan);
+
+      var bigDate=el('div','big-date');
+      bigDate.appendChild(el('div','day',d.day));
+      bigDate.appendChild(el('div','monthyear',(d.month?d.month+' ':'')+d.year));
+
+      body.appendChild(logo);
+      body.appendChild(bigDate);
+
+      if(editoText){
+        var editoWrap=el('div','edito');
+        var editoLink=el('a','edito-text');
+        editoLink.href=ed.url;
+        editoLink.appendChild(el('div','edito-label',STRINGS.editoLabel));
+        editoLink.appendChild(document.createTextNode(editoText));
+        editoWrap.appendChild(editoLink);
+        body.appendChild(editoWrap);
+      }
+
+      var cta=el('a','cta',STRINGS.readCta);
+      cta.href=ed.url;
+      body.appendChild(cta);
+
+      c.appendChild(hdr);
+      c.appendChild(body);
       deck.appendChild(c);
     });
     update(false);
