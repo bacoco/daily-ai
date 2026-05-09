@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Thu, 07 May 2026 09:11:56 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 09:11:17 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Understand Anything : ton codebase en graphe interactif]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-05-09.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-05-09.html</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Aujourd’hui, on est en mode concret: des outils qui t’aident vraiment à shipper, des prompts qui évitent les faux pas, et un rappel lucide sur les risques quand on va trop vite. Prends ce brief comme une boîte à idées testables dès ce week-end. On vibe, mais on garde la tête froide. 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Chrome DevTools MCP : votre agent code prend le contrôle du navigateur]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-05-07.html</link>

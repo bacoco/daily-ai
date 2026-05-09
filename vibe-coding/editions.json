@@ -1,11 +1,20 @@
 [
   {
+    "date": "9 Mai 2026",
+    "title": "Understand Anything : ton codebase en graphe interactif",
+    "desc": "",
+    "url": "2026-05-09.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Aujourd’hui, on est en mode concret: des outils qui t’aident vraiment à shipper, des prompts qui évitent les faux pas, et un rappel lucide sur les risques quand on va trop vite. Prends ce brief comme une boîte à idées testables dès ce week-end. On vibe, mais on garde la tête froide. 🎨"
+  },
+  {
     "date": "7 Mai 2026",
     "title": "Chrome DevTools MCP : votre agent code prend le contrôle du navigateur",
     "desc": "",
     "url": "2026-05-07.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Aujourd’hui, on est en plein cœur du vibe coding mature : moins de magie, plus de méthode. On parle d’outils qui accélèrent vraiment, de prompts qui cadrent les agents, et des pièges qui coûtent cher quand on ship trop vite. Prends ce brief comme une boîte à idées prête à tester dès ce matin. 🎨"
   },
   {
