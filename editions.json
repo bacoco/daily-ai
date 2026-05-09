@@ -1,11 +1,20 @@
 [
   {
+    "date": "9 Mai 2026",
+    "title": "Anthropic industrialise les agents IA pour Wall Street",
+    "desc": "",
+    "url": "2026-05-09.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Les agents IA sortent du laboratoire: cette édition montre leur entrée concrète dans les infrastructures économiques, réglementaires et informationnelles. Entre industrialisation (Wall Street), normalisation (NIST) et incidents de confiance (désinformation), le vrai enjeu devient la gouvernance de l'exécution. Notre fil rouge: l'IA utile n'est plus celle qui impressionne, c'est celle qu'on peut encadrer."
+  },
+  {
     "date": "8 Mai 2026",
     "title": "OpenAI active le mode cyber, la rivalité avec Mythos change d’échelle",
     "desc": "",
     "url": "2026-05-08.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Cette édition raconte un basculement net : la bataille IA n’est plus seulement une course aux modèles, c’est une course à l’exécution. Entre pression cyber, contraintes de capacité et arbitrages produits, les leaders entrent dans leur phase industrielle. Fil rouge du jour : moins de promesses, plus de discipline opérationnelle."
   },
   {

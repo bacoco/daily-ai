@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Fri, 08 May 2026 07:04:48 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 07:29:29 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Anthropic industrialise les agents IA pour Wall Street]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-09.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-09.html</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Les agents IA sortent du laboratoire: cette édition montre leur entrée concrète dans les infrastructures économiques, réglementaires et informationnelles. Entre industrialisation (Wall Street), normalisation (NIST) et incidents de confiance (désinformation), le vrai enjeu devient la gouvernance de l'exécution. Notre fil rouge: l'IA utile n'est plus celle qui impressionne, c'est celle qu'on peut encadrer.]]></description>
+    </item>
     <item>
       <title><![CDATA[OpenAI active le mode cyber, la rivalité avec Mythos change d’échelle]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-08.html</link>
