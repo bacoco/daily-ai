@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 09 May 2026 07:29:29 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2026 07:31:34 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Nvidia dépasse 40 Md$ de paris sur l’IA — et pousse 5 GW avec IREN]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-10.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-10.html</guid>
+      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Aujourd’hui, un même fil rouge traverse l’édition : le coût de la confiance. Entre concentration de l’infrastructure, contentieux sur les hallucinations et gouvernance encore incomplète, l’IA entre dans une phase où la crédibilité opérationnelle pèse plus que les promesses. Notre cap : séparer le bruit des signaux qui changent vraiment la donne.]]></description>
+    </item>
     <item>
       <title><![CDATA[Anthropic industrialise les agents IA pour Wall Street]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-09.html</link>

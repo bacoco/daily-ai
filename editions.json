@@ -1,11 +1,20 @@
 [
   {
+    "date": "10 Mai 2026",
+    "title": "Nvidia dépasse 40 Md$ de paris sur l’IA — et pousse 5 GW avec IREN",
+    "desc": "",
+    "url": "2026-05-10.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Aujourd’hui, un même fil rouge traverse l’édition : le coût de la confiance. Entre concentration de l’infrastructure, contentieux sur les hallucinations et gouvernance encore incomplète, l’IA entre dans une phase où la crédibilité opérationnelle pèse plus que les promesses. Notre cap : séparer le bruit des signaux qui changent vraiment la donne."
+  },
+  {
     "date": "9 Mai 2026",
     "title": "Anthropic industrialise les agents IA pour Wall Street",
     "desc": "",
     "url": "2026-05-09.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Les agents IA sortent du laboratoire: cette édition montre leur entrée concrète dans les infrastructures économiques, réglementaires et informationnelles. Entre industrialisation (Wall Street), normalisation (NIST) et incidents de confiance (désinformation), le vrai enjeu devient la gouvernance de l'exécution. Notre fil rouge: l'IA utile n'est plus celle qui impressionne, c'est celle qu'on peut encadrer."
   },
   {
