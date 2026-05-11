@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/ai-insight-daily/</link>
     <description>L'actualité IA filtrée et analysée par 5 agents spécialisés</description>
     <language>fr</language>
-    <lastBuildDate>Sun, 10 May 2026 07:31:34 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 07:04:04 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/ai-insight-daily/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Google et Anthropic basculent vers le “services-first” en entreprise]]></title>
+      <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-11.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-11.html</guid>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Le fil rouge du jour: l’IA entre dans son âge de responsabilité opérationnelle. Entre risques juridiques, abandon de projets mal cadrés et maturité de l’open source, la question n’est plus qui a le modèle le plus impressionnant, mais qui construit les usages les plus fiables. Notre cap éditorial: privilégier les signaux d’exécution plutôt que les promesses.]]></description>
+    </item>
     <item>
       <title><![CDATA[Nvidia dépasse 40 Md$ de paris sur l’IA — et pousse 5 GW avec IREN]]></title>
       <link>https://bacoco.github.io/daily-ai/ai-insight-daily/2026-05-10.html</link>
