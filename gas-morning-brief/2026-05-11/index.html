@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Morning Brief — 11 May 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #0a0e1a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 2px solid #1e3a5f;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            color: #60a5fa;
+            margin-bottom: 10px;
+        }
+        .header .date {
+            font-size: 1.2em;
+            color: #94a3b8;
+        }
+        .header .tagline {
+            font-size: 1em;
+            color: #64748b;
+            margin-top: 10px;
+        }
+        .card {
+            background: #111827;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .card-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #1e293b;
+        }
+        .card-badge {
+            font-size: 1.5em;
+        }
+        .card-title {
+            flex: 1;
+        }
+        .card-title h2 {
+            font-size: 1.3em;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+        }
+        .card-hook {
+            font-size: 0.95em;
+            color: #94a3b8;
+            font-style: italic;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-details {
+            color: #cbd5e1;
+            font-size: 0.95em;
+        }
+        .card-details h3 {
+            color: #60a5fa;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .card-details p {
+            margin-bottom: 12px;
+        }
+        .card-details a {
+            color: #3b82f6;
+            text-decoration: none;
+            border-bottom: 1px dotted #3b82f6;
+        }
+        .card-details a:hover {
+            color: #60a5fa;
+            border-bottom-style: solid;
+        }
+        .card-details strong {
+            color: #e2e8f0;
+        }
+        .card-details ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+        .card-details li {
+            margin-bottom: 5px;
+        }
+        .card-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.85em;
+        }
+        .card-details table th,
+        .card-details table td {
+            padding: 8px;
+            border: 1px solid #1e293b;
+            text-align: left;
+        }
+        .card-details table th {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+        .dissent {
+            background: #1e1e2e;
+            border-left: 3px solid #ef4444;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        .dissent-label {
+            font-weight: bold;
+            color: #ef4444;
+            margin-bottom: 8px;
+        }
+        .dissent-text {
+            color: #d1d5db;
+            font-style: italic;
+        }
+        .card-footer {
+            padding: 15px 20px;
+            background: #0f172a;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            color: #64748b;
+        }
+        .author-word {
+            flex: 1;
+            padding-right: 15px;
+            font-style: italic;
+        }
+        .author {
+            font-weight: bold;
+            color: #94a3b8;
+        }
+        .card-type-flash { border-top: 3px solid #f59e0b; }
+        .card-type-edito { border-top: 3px solid #8b5cf6; }
+        .card-type-analysis { border-top: 3px solid #3b82f6; }
+        .card-type-alert { border-top: 3px solid #ef4444; }
+        .card-type-tech { border-top: 3px solid #10b981; }
+        .card-type-strategy { border-top: 3px solid #f59e0b; }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #475569;
+            font-size: 0.9em;
+        }
+        .disclaimer {
+            background: #1a1a2e;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        .disclaimer strong {
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Gas Morning Brief</h1>
+            <div class="date">11 May 2026</div>
+            <div class="tagline">The essential gas market briefing in 10 cards • TTF €44.21 (+0.6%) • Hormuz Day 69+</div>
+        </header>
+
+        <!-- CARD 1: FLASH -->
+        <article class="card card-type-flash">
+            <div class="card-header">
+                <div class="card-badge">🔥 FLASH</div>
+                <div class="card-title">
+                    <h2>Hormuz Day 69 · TTF €44.21 · MOU Talks Alive But Trump 'Not Satisfied'</h2>
+                    <div class="card-hook">The Strait of Hormuz has been closed for 69+ days. US-Iran exchanged fire on May 7 yet Trump declared hostilities 'terminated.' A 14-point MOU is in play. The market is gridlocked — but not for long.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p>European gas opened the week at a crossroads. TTF front-month closed at <strong>€44.21/MWh</strong> (close 08 May, Thu), barely moved on the week, per <a href="https://tradingeconomics.com/commodity/eu-natural-gas" target="_blank">Trading Economics / ICE</a>. Henry Hub at <strong>$2.82/MMBtu</strong>, JKM at <strong>$16.84/MMBtu</strong>. Brent crude holds above <strong>$100/bbl</strong>.</p>
+                    <p>The Strait of Hormuz remains effectively closed for the 69th consecutive day after a failed brief reopening on April 21-22 that collapsed within 24 hours. Neither the US nor Iran has removed their respective blockades. <a href="https://www.axios.com/2026/05/06/iran-us-deal-one-page-memo" target="_blank">Axios reports</a> a 14-point MOU is being negotiated via Pakistani intermediaries, but <a href="https://www.theguardian.com/world/2026/may/08/trump-iran-us-war-ceasefire-updates-explained-hormuz" target="_blank">The Guardian</a> notes Trump said he's 'not satisfied' with the terms.</p>
+                    <p><strong>Below you'll find 8 analysis cards covering price action, weather & demand, storage, LNG flows, power & carbon, geopolitics, scenario analysis, and risk outlook — plus trade ideas on every card.</strong></p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">La Rédaction 🦊</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 2: EDITO -->
+        <article class="card card-type-edito">
+            <div class="card-header">
+                <div class="card-badge">✏️ Edito</div>
+                <div class="card-title">
+                    <h2>Welcome Back</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p>After a month-long pause, the Gas Morning Brief returns to your screens. The gas market has evolved since our April 12 edition: the ceasefire has held (barely), Hormuz remains shut, TTF has drifted from €43 to €44, and the world has learned to live with a $100 oil price. But below the surface calm, the fundamentals are worsening. Storage is at 34%. Qatar is still offline. The MOU talks are fragile. This is not a market at peace — it's a market holding its breath. Today's edition: 8 cards, 24 trade ideas, and one message: the break is coming, and you need to be positioned before it does. <strong>— La Rédaction 🦊</strong></p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">La Rédaction 🦊</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 3: PRICE ACTION -->
+        <article class="card card-type-alert">
+            <div class="card-header">
+                <div class="card-badge">⚡ 💰 Price Action</div>
+                <div class="card-title">
+                    <h2>TTF Holds €44 as Ceasefire Dance Enters Decisive Phase — But War Premium Refuses to Die</h2>
+                    <div class="card-hook">TTF closed at €44.21/MWh (close 08 Fri) — barely moved on the week despite exchange of fire between US and Iran. Henry Hub at $2.82 — still a different planet. JKM drops to $16.84.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>TTF front-month closed at <strong>€44.21/MWh</strong> (close 08 May, Thu)</strong>, ▲+0.55 vs prev week, per <a href="https://tradingeconomics.com/commodity/eu-natural-gas" target="_blank">Trading Economics / ICE Endex</a>. Over the past month, TTF is down 5.46% but remains +26.14% YoY. NBP settled at <strong>107.87 GBp/thm</strong> (close 08 May), ▲+0.94% on the day, down 7.61% on the month, per <a href="https://tradingeconomics.com/commodity/uk-natural-gas" target="_blank">ICE NBP data</a>. The market is in a holding pattern: neither the ceasefire optimists nor the escalation bears can establish control.</p>
+                    <p><strong>Hormuz Day 69+ and still effectively closed.</strong> As of early May 2026, the Strait has been shut to commercial shipping for 69+ days after a failed brief reopening on April 21-22 that collapsed within 24 hours, per <a href="https://discoveryalert.com.au/strait-hormuz-shipping-disruptions-oil-lng-closure-2026/" target="_blank">Discovery Alert</a>. The House of Commons Library confirms that while a conditional ceasefire is in place, <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10636/" target="_blank">"almost no shipping has used the strait and it remains effectively closed"</a>. About 20,000 mariners and 2,000 ships remain stranded in the Persian Gulf per IMO reporting.</p>
+                    <p><strong>Across the Atlantic: Henry Hub at $2.82/MMBtu.</strong> US natgas futures fell to $2.82, near a four-week high but still depressed, supported by declining output as major producers (EQT) scale back activity, per <a href="https://tradingeconomics.com/commodity/natural-gas" target="_blank">Trading Economics</a>. Henry Hub spot last reported at <strong>$2.67/MMBtu</strong> (settle 04 May), per <a href="https://fred.stlouisfed.org/series/DHHNGSP" target="_blank">FRED / EIA</a>. US gas rigs at 129, ▲+21 YoY, while the total rig count rose by one to 548 in the week to May 8, per <a href="https://boereport.com/2026/05/08/us-drillers-add-oil-and-gas-rigs-for-third-week-in-a-row-says-baker-hughes-3/" target="_blank">Baker Hughes / BOE Report</a>. The US gas complex remains functionally disconnected from European geopolitical risk.</p>
+                    <p><strong>Asia: JKM falls to $16.84/MMBtu (close 07 May).</strong> Down 13.60% on the month but still +47.07% YoY, per <a href="https://tradingeconomics.com/commodity/liquefied-natural-gas-japan-korea" target="_blank">Trading Economics</a>. The decline reflects demand destruction in Asia, new US LNG supply (Golden Pass first cargo), and some expectation of eventual Hormuz resolution.</p>
+                    <p><strong>Brent crude at $100.49/bbl (close 08 May)</strong>, ▲+4.76% MoM, ▲+57.24% YoY, per <a href="https://tradingeconomics.com/commodity/brent-crude-oil" target="_blank">Trading Economics</a>. Oil's resilience above $100 — despite ceasefire hopes — signals the market isn't buying the peace narrative either.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Long TTF Volatility — Buy June €40 Put + €50 Call Straddle:</strong> Binary outcome risk is maximal. Straddle costs ~€2.50-3.00. Break-even at €37.50 or €53. Payoff is asymmetric.</p>
+                    <p><strong>2. Short Jun TTF €38 Puts / Long Jun TTF €50 Calls (Risk Reversal):</strong> Express bullish skew cheaply. Collect €0.60-0.80 on put sale, fund €50 call. Net cost ~€0.20-0.40. Unlimited upside above €50.</p>
+                    <p><strong>3. Long JKM-TTF Spread for Q3 2026:</strong> If Hormuz partially reopens, Qatar prioritizes Asian lifters, widening spread from ~$12 to $15+/MMBtu.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">Blaise 🧮</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 4: WEATHER & DEMAND -->
+        <article class="card card-type-analysis">
+            <div class="card-header">
+                <div class="card-badge">🌡️ 🌡️ Weather & Demand</div>
+                <div class="card-title">
+                    <h2>Mild-May Bias Across Europe, But El Niño Watch Steals the Long-Range Spotlight</h2>
+                    <div class="card-hook">Mean temperatures running 0.5-2°C above normal for May. Nordic hydro deficit persists but spring melt is improving. El Niño 61% probability by July — potentially a Super El Niño by winter.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>May weather across Europe: above-normal temperatures dominate.</strong> Mean temperatures are running <strong>0.5–2°C above climate normals</strong>, per <a href="https://pogodnik.com/en/news/europe-weather-forecast-may-2026" target="_blank">Pogodnik</a>. Day-ahead power prices hit multi-month lows: British, Nordic, Dutch at <strong>€6.85, €7.61, €14.46/MWh</strong> respectively — lowest since Oct 2025, per <a href="https://www.euronews.com/2026/05/05/electricity-prices-are-dropping-below-zero-in-europe-heres-why-that-isnt-a-good-thing" target="_blank">Euronews</a>.</p>
+                    <p><strong>Nordic hydro deficit persists.</strong> Norway's winter snow drought — worst since 1996 — created ~25 TWh deficit. Spring melt underway but inflows thin. Nordic power prices surged 4x earlier in 2026 but have moderated.</p>
+                    <p><strong>El Niño Watch: 61% probability by May-July, Super El Niño increasingly likely.</strong> <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank">NOAA CPC</a> active El Niño Watch. ECMWF ensemble trending stronger. <a href="https://weather.com/news/climate/news/2026-05-07-super-el-nino-forecast-may2026" target="_blank">Weather.com</a> reports Super El Niño (Niño 3.4 > +2.0°C) increasingly plausible. Next NOAA update: May 14.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Sell TTF Dec '26 / Jan '27 Calendar Spread (Mild Winter Play):</strong> El Niño historically means milder NW European winters. Current flat curve makes this cheap.</p>
+                    <p><strong>2. Long EU Carbon / Short TTF (Clean Dark Spread Play):</strong> EUA at €75.18 ▲+1.98% MoM. Carbon strength + weak power demand = coal displacement, reducing gas-for-power.</p>
+                    <p><strong>3. Long Nordic Power vs Short TTF (Relative Value):</strong> Hydro deficit constrains power exports, widening Nordpool-TTF spread.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">Sage 🦎</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 5: STORAGE WATCH -->
+        <article class="card card-type-alert">
+            <div class="card-header">
+                <div class="card-badge">📊 🏭 Storage Watch</div>
+                <div class="card-title">
+                    <h2>EU Storage at ~34% — Injection Season Underway but Pace Is Everything</h2>
+                    <div class="card-hook">EU gas storage at 34.3%, well below 5-year average. To hit 90% November mandate, Europe needs ~3,462 GWh/day. With Hormuz closed and TTF at €44, the economics are painful.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>EU aggregate gas storage at approximately 34.3% full</strong> — significantly below the 5-year average for this time of year, per <a href="https://energyriskiq.com/gas-storage-levels-in-europe" target="_blank">EnergyRiskIQ / AGSI+ data</a>. At this fill rate, Europe must inject approximately <strong>3,462 GWh/day</strong> on average to meet the EU-mandated 90% target by November 1. Maximum theoretical daily injection capacity: ~4,200 GWh/day — very little margin for disruptions.</p>
+                    <p><strong>Constraining factors:</strong> TTF at ~€44 makes injection expensive vs sub-€30 levels of 2023-24. EU Russian LNG spot ban in effect since April 25 removes ~9 bcm/yr. Hormuz closure strands ~20% of global LNG. Qatar's Ras Laffan under force majeure with full restoration unlikely before end-August.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Long TTF Calendar — Buy Dec 2026 / Sell Jun 2026:</strong> Winter must price in refill risk. Buy Dec at €44.10, sell Jun at €44.21. Target spread widening to €5-10.</p>
+                    <p><strong>2. Long TTF Summer '26 Volatility:</strong> Any injection disruption spikes near-dated TTF. Summer implied vol likely underpriced. Buy Jun or Jul straddles.</p>
+                    <p><strong>3. Storage Arbitrage — Fixed-Price Injection Strip:</strong> Lock in TTF summer prices (~€43-44) for injection now. If TTF spikes in Q3, spread widens. Synthetic physical storage play via financial contracts.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">La Rédaction 🦊</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 6: LNG FLOWS -->
+        <article class="card card-type-analysis">
+            <div class="card-header">
+                <div class="card-badge">🚢 LNG Flows</div>
+                <div class="card-title">
+                    <h2>Golden Pass Ships First Cargo as US LNG Hits Overdrive — But Can It Replace Qatar?</h2>
+                    <div class="card-hook">Golden Pass LNG (9th US export terminal) ships first cargo. EIA expects record US LNG exports in 2026. But 20% of global LNG remains stranded by Hormuz — US growth can't bridge the gap.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>Golden Pass LNG — the 9th US export terminal — has shipped its first cargo.</strong> The departure marks the formal entry of one of America's largest new LNG projects, per <a href="https://gcaptain.com/golden-pass-ships-first-lng-cargo-launching-major-new-u-s-export-supply/" target="_blank">gCaptain / EIA</a>. When fully complete, Golden Pass will have the third-highest nominal capacity behind Sabine Pass (3.6 Bcf/d) and Plaquemines (2.6 Bcf/d). Train 2 startup targeted for later 2026.</p>
+                    <p><strong>EIA projects record US LNG exports in 2026</strong> with slightly higher utilization rates, driven by increased demand from Europe and Asia amid Hormuz disruptions, per <a href="https://www.eia.gov/todayinenergy/detail.php?id=67484" target="_blank">EIA Today in Energy</a>. Incremental capacity: 2-3 Bcf/d in 2026.</p>
+                    <p><strong>But Qatar gap persists:</strong> <a href="https://www.naturalgasintel.com/news/qatarenergy-says-damage-at-lng-facilities-could-take-years-to-repair-upending-supply-outlook/" target="_blank">QatarEnergy says damage could take 5 years</a>. <a href="https://lngprime.com/europe/technip-energies-to-secure-qatari-lng-repair-work/185172/" target="_blank">Wood Mackenzie: full Ras Laffan restoration by end-August</a> at earliest. Two trains permanently damaged. Hormuz adds $2-3/MMBtu to LNG freight costs (Cape of Good Hope routing).</p>
+                    <p><strong>JKM at $16.84/MMBtu (close 07 May)</strong>, ▼-13.60% MoM but ▲+47.07% YoY. Decline reflects demand destruction, new US supply, and some Hormuz resolution expectation. JKM-TTF spread remains wide at ~$12-13/MMBtu equivalent.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Long LNG Freight Rates (FFA Q3 2026):</strong> Cape routing premium persists if Hormuz closed. Target $2-3/MMBtu premium. Stop if Hormuz reopens or US Gulf congestion eases.</p>
+                    <p><strong>2. Long TTF / Short JKM (Europe Premium Play):</strong> EU Russian ban + Hormuz = tighter European physical market. Golden Pass cargoes to Europe compress TTF-JKM spread from ~$12-13 to $8-10.</p>
+                    <p><strong>3. Long US LNG Exporter Equities (Venture Global, Cheniere):</strong> Higher utilization + elevated prices = margin expansion. Structural long for equity-oriented traders.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">Sage 🦎</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 7: POWER & CARBON -->
+        <article class="card card-type-analysis">
+            <div class="card-header">
+                <div class="card-badge">⚡ 💨 Power & Carbon</div>
+                <div class="card-title">
+                    <h2>Negative Power Prices Sweep Europe — But the Gas-Carbon Dynamic Is Shifting</h2>
+                    <div class="card-hook">Day-ahead power hit €6.85/MWh in the UK, €7.61/MWh in Nordics. EU carbon at €75.18. Solar spring surge crushing spark spreads, but coal-to-gas switching still supports gas at the margin.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>Day-ahead power at multi-month lows:</strong> UK €6.85, Nordics €7.61, Dutch €14.46/MWh — lowest since Oct 2025, per <a href="https://www.euronews.com/2026/05/05/electricity-prices-are-dropping-below-zero-in-europe-heres-why-that-isnt-a-good-thing" target="_blank">Euronews</a>. Negative power prices occurring across several bidding zones, driven by abundant solar generation and weak demand.</p>
+                    <p><strong>EU carbon (EUA) at €75.18 (close 08 May)</strong>, ▲+0.07% DoD, ▲+1.98% MoM, ▲+6.80% YoY, per <a href="https://tradingeconomics.com/commodity/carbon" target="_blank">Trading Economics</a>. MSR continues withdrawing allowances. Reduced free allocation under Fit for 55. EUA Dec '26 at ~€73.04 (modest backwardation).</p>
+                    <p><strong>Clean dark spread near zero:</strong> At EUA €75, coal uneconomic for baseload in Germany/Netherlands. Gas remains marginal fuel but squeezed by solar during daytime. Evening ramp (17-20h CET) creates gas demand premium — expect €15-25/MWh spread in summer months.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Long EUA Dec '26 — Carbon Upside:</strong> MSR tightening + reduced free allocations. Buy at ~€73. Target €80+ by Q4. Risk: economic slowdown reduces industrial emissions.</p>
+                    <p><strong>2. Intraday Power Spread — Buy Evening Peak / Sell Solar Noon (Germany):</strong> Solar-duck-curve creates €15-25/MWh spread. Buy 17-20h, sell 10-14h baseload.</p>
+                    <p><strong>3. Short German Power / Long TTF (Spark Spread Compression):</strong> If TTF rises on Hormuz escalation while solar suppresses daytime power, spark spread compresses further, forcing gas plant curtailments.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">Henry 🦉</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 8: GEOPOLITICS -->
+        <article class="card card-type-alert">
+            <div class="card-header">
+                <div class="card-badge">💣 🌍 Geopolitics & Regulation</div>
+                <div class="card-title">
+                    <h2>One-Page MOU, Terminated Hostilities, and a Strait Still Closed — The Fog of Negotiation</h2>
+                    <div class="card-hook">US and Iran exchange fire on May 7 but Trump declares hostilities 'terminated.' A 14-point MOU via Pakistan intermediaries. Hormuz remains closed. Neither side removed blockades.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>US-Iran exchange fire May 7, but ceasefire holds.</strong> <a href="https://www.reuters.com/world/china/trump-sees-swift-end-war-iran-reviews-us-peace-proposal-2026-05-07/" target="_blank">Reuters</a>: Trump says talks on track. <a href="https://www.theguardian.com/world/2026/may/08/trump-iran-us-war-ceasefire-updates-explained-hormuz" target="_blank">The Guardian</a>: Trump 'not satisfied' with terms. An administration official declared hostilities "terminated" citing the ceasefire.</p>
+                    <p><strong>14-point MOU under negotiation</strong> via Witkoff, Kushner, and Pakistani mediators, per <a href="https://www.axios.com/2026/05/06/iran-us-deal-one-page-memo" target="_blank">Axios</a>. US backed off new Hormuz operation based on talk progress. However, Iran has rejected a 15-point peace plan previously.</p>
+                    <p><strong>Hormuz: both blockades persist.</strong> <a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10636/" target="_blank">UK Parliament</a>: 'almost no shipping has used the strait and it remains effectively closed.' IRGC seized tanker Epaminondas April 24 despite ceasefire — clear signal Iran controls the waterway. <a href="https://www.aljazeera.com/features/2026/4/28/when-will-strait-of-hormuz-be-safe-for-commercial-shipping-again" target="_blank">Al Jazeera</a>: 9 weeks of closure sending tremors globally. 20% of world oil and LNG transits Hormuz in peacetime.</p>
+                    <p><strong>TurkStream stable at ~15 bcm/yr</strong> to Hungary, Serbia, Austria. EU Russian LNG spot ban in effect since April 25 per <a href="https://www.bloomberg.com/news/articles/2026-04-24/eu-starts-roll-out-of-russian-lng-import-ban-at-a-difficult-time" target="_blank">Bloomberg</a>. Long-term contracts exempt. <a href="https://www.politico.eu/article/turkstream-putin-erdogan-gas-pipeline-gazprom-eu-sanctions/" target="_blank">POLITICO</a>: Gazprom-BOTAŞ expanding TurkStream use, potentially adding 4 bcm/yr. EU gas phase-out mandate: pipeline prohibition by Sept 30, 2027.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Long TTF €50 Calls Jun '26 (Escalation Hedge):</strong> IRGC precedent for vessel seizures during ceasefire. €0.80 premium, 5-10x upside on escalation. Stop if MOU signed and Hormuz reopening confirmed.</p>
+                    <p><strong>2. Long Brent / Short TTF (Oil-Gas Divergence):</strong> Brent at $100 fully prices oil risk; TTF at €44 has partially faded LNG risk. Buy Brent Jun '26, sell TTF Jun '26. Target $5-10/bbl outperformance.</p>
+                    <p><strong>3. Long EUR/TRY (Turkish Mediation Premium):</strong> Turkey as key mediator. Success supports TurkStream stability and Central European supply. Indirect gas trade via FX.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">Henry 🦉</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 9: GEOPO SCENARIOS -->
+        <article class="card card-type-alert">
+            <div class="card-header">
+                <div class="card-badge">📊 🌍 Geopolitical Scenarios</div>
+                <div class="card-title">
+                    <h2>5 Geopolitical Scenarios — MOU Progress vs. Hormuz Permanence</h2>
+                    <div class="card-hook">A 14-point MOU is on the table. Hormuz closed 69+ days. Blockades on both sides. The tail risks are not symmetric.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>🔥 BULL EXTREME — MOU Collapse, Full Escalation Resumes (15% prob):</strong> Iran rejects MOU. IRGC escalates with vessel seizure or attack. TTF spikes to €65-80/MWh initially, potential €100+ on military escalation. JKM >$25. Brent $120-130. Duration: weeks to months.</p>
+                    <p><strong>💣 HIGH RISK — Deal + Partial Hormuz (30% prob):</strong> Most likely path. Both sides agree to ceasefire extension and framework MOU, but Iran maintains tolls and IRGC-coordinated passage. Commercial shipping resumes at 30-50%. TTF settles into €42-52/MWh range. 'New normal' for months.</p>
+                    <p><strong>🔄 BASE CASE — Negotiations Drag Through Summer (30% prob):</strong> Talks slow, no concessions. Hormuz closed. Qatar cannot restart. EU storage fills at elevated cost. TTF trades €44-50 through summer, €55-60 in Q4. By October, EU activates emergency demand-reduction coordination. The slow-burn scenario.</p>
+                    <p><strong>⚓ MODERATE BULL — Full Reopening (15% prob):</strong> Comprehensive deal: Hormuz reopening under international monitoring, both blockades removed. Qatar begins Ras Laffan restart. TTF drops €5-8 initially, settles €38-42. 'Buy rumor, sell fact.'</p>
+                    <p><strong>🔻 BEAR EXTREME — Deal + Rapid Reopening + Super El Niño (10% prob):</strong> Everything breaks right: MOU, rapid Hormuz opening, accelerated Qatar restart, Super El Niño brings mild winter, Nordic hydro recovers. TTF crashes to €30-35. JKM $10-12. Low but non-zero probability.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. TTF Iron Condor — Sell €38 Puts + Sell €55 Calls:</strong> 60% probability in €42-52 range. Net credit ~€0.60-0.70. Max loss ~€3.00-3.10. The market is stuck in a range until binary outcome.</p>
+                    <p><strong>2. Long Dec '26 / Short Jun '26 Calendar:</strong> Even with near-term resolution, winter 2026/27 must price storage deficit, Qatar restart uncertainty, escalation risk. Buy Dec at €44.10, sell Jun at €44.21. Target spread to €5-8.</p>
+                    <p><strong>3. Bull Call Spread — Buy €45 / Sell €50 Calls:</strong> Range-bound drift higher. Net cost ~€0.40, max profit €4.60 at €50. Reward/risk 11.5:1.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">La Rédaction 🦊</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 10: SCENARIO PROBABILITIES -->
+        <article class="card card-type-analysis">
+            <div class="card-header">
+                <div class="card-badge">🎯 Scenario Probabilities</div>
+                <div class="card-title">
+                    <h2>Market Implied vs. Our Probabilities — Where the Mispricing Lives</h2>
+                    <div class="card-hook">Market prices ~70% chance of Hormuz resolution. We think 40-45%. That mispricing is where the opportunity sits.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>Key divergence: market overprices positive resolution.</strong> TTF Dec '26 at ~€44.10 (flat to front-month) suggests limited upside risk. Our view: market underprices stalemate (30% vs implied 25%) and escalation (15% vs implied 10%). Overprices 'clean deal' (market 30% vs our 15%).</p>
+                    <table>
+                        <thead><tr><th>Scenario</th><th>Our Prob</th><th>Market Implied</th><th>TTF Range</th><th>Edge</th></tr></thead>
+                        <tbody>
+                            <tr><td>🔥 Escalation</td><td>15%</td><td>10%</td><td>€65-100</td><td>Long vol</td></tr>
+                            <tr><td>💣 Partial Deal</td><td>30%</td><td>20%</td><td>€42-52</td><td>Range trade</td></tr>
+                            <tr><td>🔄 Stalemate (Base)</td><td>30%</td><td>25%</td><td>€44-60</td><td>Calendar long</td></tr>
+                            <tr><td>⚓ Full Reopening</td><td>15%</td><td>30%</td><td>€35-42</td><td>Overpriced</td></tr>
+                            <tr><td>🔻 Super Bear</td><td>10%</td><td>15%</td><td>€28-35</td><td>Overpriced</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Confirmation triggers:</strong> Escalation = IRGC seizure, US military incident, MOU rejection. Partial Deal = MOU signed with conditions. Stalemate = talks extended, blockades maintained. Full Reopening = joint announcement, IMO safe passage. Super Bear = deal + El Niño > +1.5°C by Aug + mild autumn.</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Long TTF Jun €40/€55 Strangle:</strong> Both tails underpriced. Cost ~€1.50-2.00. Positive expected value at 45% combined probability of significant move.</p>
+                    <p><strong>2. Long Dec '26 / Short Jun '26 Calendar:</strong> Flat curve = opportunity. Winter prices in storage deficit, Qatar offline, no Russian spot, escalation risk. Target spread €5-10.</p>
+                    <p><strong>3. Tail Hedge — Buy Jun €60 Calls (€0.30-0.40):</strong> Cheap insurance against 15% escalation scenario. Negligible cost, €15-55 potential payoff.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">Blaise 🧮</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- CARD 11: RISK OUTLOOK -->
+        <article class="card card-type-alert">
+            <div class="card-header">
+                <div class="card-badge">⚠️ Risk Outlook</div>
+                <div class="card-title">
+                    <h2>Risk Dashboard: 3 Critical, 2 Elevated, 1 Monitor — The Table Is Set for a Big Move</h2>
+                    <div class="card-hook">Hormuz stalemate, MOU fragility, and storage deficit create a binary market. The biggest risk isn't escalation — it's complacency before the break.</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-details">
+                    <p><strong>🔴 CRITICAL — Hormuz Day 69+:</strong> Both blockades persist. ~20% global LNG offline. 20,000 mariners stranded per IMO. Qatar restart: end-Aug at earliest. No resolution timeline.</p>
+                    <p><strong>🔴 CRITICAL — MOU Fragility:</strong> Trump 'not satisfied' with terms. April 21-22 reopening collapsed in 24h. IRGC seized Epaminondas April 24 despite ceasefire. Neither side removed blockades. US war powers deadline adds time pressure.</p>
+                    <p><strong>🔴 CRITICAL — EU Storage Deficit:</strong> 34.3% vs 5-yr average. Required: 3,462 GWh/day for 90% by Nov 1. Max capacity: 4,200 — virtually no margin. EU Russian LNG ban removes ~9 bcm/yr. Hormuz removes ~15-20 bcm/yr. Combined 25+ bcm/yr gap vs normal.</p>
+                    <p><strong>🟡 ELEVATED — Norway Maintenance:</strong> Summer outages at Troll, Kollsnes, Nyhamna cut exports up to 1/3. Norway = ~26% EU gas supply. Late June-July peak risk. Any unplanned outage could spike TTF €3-5/MWh.</p>
+                    <p><strong>🟡 ELEVATED — Super El Niño:</strong> NOAA: 61% probability by May-July. ECMWF trending stronger. Potential Super El Niño (Niño 3.4 > +2.0°C) by winter. Ambiguous net effect on European gas. Next update: May 14.</p>
+                    <p><strong>🟢 MONITOR — US LNG Supply Ramp:</strong> Golden Pass first cargo. Record exports expected. +2-3 Bcf/d incremental in 2026. Positive but insufficient to close Qatar gap (10+ Bcf/d equivalent).</p>
+                    <h3>💡 Trade Ideas</h3>
+                    <p><strong>1. Portfolio Hedge — Long €55 Calls + Long €38 Puts:</strong> Both tails underpriced. Total cost ~€0.90. 60% probability of significant move = positive EV.</p>
+                    <p><strong>2. Long TTF Q4 '26 / Short Q3 '26 (Autumn Rally):</strong> Storage deficit bites in Sep-Oct. Market wakes up and bids for Q4 gas. Buy Oct, sell Aug. Target spread €5-8.</p>
+                    <p><strong>3. Short EUR/USD (Tail Risk Hedge):</strong> Gas escalation weakens euro via energy import dependency, trade balance, ECB constraints. Indirect bearish gas hedge.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="author-word">La Rédaction 🦊</div>
+                <div class="author">Gas Morning Brief</div>
+            </div>
+        </article>
+
+        <!-- DISCLAIMER -->
+        <div class="disclaimer">
+            <strong>Disclaimer:</strong> This publication is for information purposes only and does not constitute investment advice, a solicitation, or an offer to buy or sell any financial instruments. The authors are not registered as investment advisors under MiFID II, nor certified as CIF (Conseiller en Investissement Financier) by the AMF. All data sourced from publicly available third-party providers. Past performance and scenario analysis do not predict future results. Trading in commodity derivatives involves substantial risk of loss. Readers should conduct their own research and consult qualified professionals before making investment decisions. All trade ideas are illustrative and hypothetical — they do not represent actual positions or recommendations.
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Gas Morning Brief · Published by La Rédaction 🦊</p>
+            <p><a href="../index.html" style="color: #3b82f6;">← All Editions</a></p>
+        </div>
+    </div>
+</body>
+</html>

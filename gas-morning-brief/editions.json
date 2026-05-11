@@ -1,11 +1,20 @@
 [
   {
+    "date": "11 May 2026",
+    "title": "TTF €44.21 · Hormuz Day 69+ · MOU Talks · EU Storage 34% · 24 Trade Ideas",
+    "desc": "",
+    "url": "2026-05-11/index.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "After a month-long pause, the Gas Morning Brief returns. The ceasefire has held (barely), Hormuz remains shut, TTF has drifted from €43 to €44. But below the surface calm, fundamentals are worsening: storage at 34%, Qatar still offline, MOU talks fragile. 8 cards, 24 trade ideas, one message: the break is coming."
+  },
+  {
     "date": "8 Mai 2026",
     "title": "TTF steadies while HH range-trades ahead of US storage print",
     "desc": "",
     "url": "2026-05-08.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Le marché du gaz reste en régime binaire: un socle fondamental plus calme, mais une prime géopolitique toujours active. Le conseil valide majoritairement les structures convexes et les spreads définis en risque, avec discipline sur les ventes d’upside nue. En clair: rester tactique sur le spot, mais protégé sur les queues."
   },
   {
