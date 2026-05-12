@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Mai 2026",
+    "title": "Google confirme le premier zero-day assisté par IA : l’attaque passe à l’échelle",
+    "desc": "",
+    "url": "2026-05-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Le fil rouge du jour: l’IA entre dans son moment de responsabilité concrète. Entre précédent juridique, cyber-menace assistée par IA et régulation qui se recompose, la bataille se joue moins sur la prouesse brute que sur la gouvernance des usages. Notre cap: privilégier les signaux vérifiables et les outils réellement exécutables."
+  },
+  {
     "date": "11 Mai 2026",
     "title": "Google et Anthropic basculent vers le “services-first” en entreprise",
     "desc": "",
     "url": "2026-05-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Le fil rouge du jour: l’IA entre dans son âge de responsabilité opérationnelle. Entre risques juridiques, abandon de projets mal cadrés et maturité de l’open source, la question n’est plus qui a le modèle le plus impressionnant, mais qui construit les usages les plus fiables. Notre cap éditorial: privilégier les signaux d’exécution plutôt que les promesses."
   },
   {
