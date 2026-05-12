@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Mai 2026",
+    "title": "US CPI day sits at the center of global rates risk",
+    "desc": "",
+    "url": "2026-05-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Inflation-event risk dominates the open: baseline remains range-to-slightly-higher yields, but tails stay meaningful on geopolitics and growth surprises."
+  },
+  {
     "date": "11 Mai 2026",
     "title": "CPI/PPI/Retail cluster drives the week’s first real duration test",
     "desc": "",
     "url": "2026-05-11.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "A dense CPI–PPI–Retail sequence meets still-elevated term premium: that keeps the baseline tilted to slightly higher yields, but with fragile conviction before data. Geopolitical tails are quieter at the open, not gone. Expect two-way volatility with asymmetric upside risk in long-end yields."
   },
   {
