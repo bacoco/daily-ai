@@ -5,8 +5,15 @@
     <link>https://bacoco.github.io/daily-ai/vibe-coding/</link>
     <description>Code au feeling, ship au daily</description>
     <language>fr</language>
-    <lastBuildDate>Sat, 09 May 2026 09:11:17 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 09:10:22 GMT</lastBuildDate>
     <atom:link href="https://bacoco.github.io/daily-ai/vibe-coding/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Copilot CLI 1.0.45 passe en mode Autopilot]]></title>
+      <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-05-12.html</link>
+      <guid isPermaLink="true">https://bacoco.github.io/daily-ai/vibe-coding/2026-05-12.html</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Salut ! Aujourd’hui on est en mode vibe coding pragmatique: des outils qui accélèrent vraiment, des prompts qui cadrent mieux, et les pièges sécu à éviter avant de ship. Prends une idée, teste-la dans ta stack, puis itère vite avec des garde-fous. On code au feeling, mais on garde la tête claire. 🎨]]></description>
+    </item>
     <item>
       <title><![CDATA[Understand Anything : ton codebase en graphe interactif]]></title>
       <link>https://bacoco.github.io/daily-ai/vibe-coding/2026-05-09.html</link>

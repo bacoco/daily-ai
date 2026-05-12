@@ -1,11 +1,20 @@
 [
   {
+    "date": "12 Mai 2026",
+    "title": "Copilot CLI 1.0.45 passe en mode Autopilot",
+    "desc": "",
+    "url": "2026-05-12.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Salut ! Aujourd’hui on est en mode vibe coding pragmatique: des outils qui accélèrent vraiment, des prompts qui cadrent mieux, et les pièges sécu à éviter avant de ship. Prends une idée, teste-la dans ta stack, puis itère vite avec des garde-fous. On code au feeling, mais on garde la tête claire. 🎨"
+  },
+  {
     "date": "9 Mai 2026",
     "title": "Understand Anything : ton codebase en graphe interactif",
     "desc": "",
     "url": "2026-05-09.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Salut ! Aujourd’hui, on est en mode concret: des outils qui t’aident vraiment à shipper, des prompts qui évitent les faux pas, et un rappel lucide sur les risques quand on va trop vite. Prends ce brief comme une boîte à idées testables dès ce week-end. On vibe, mais on garde la tête froide. 🎨"
   },
   {
