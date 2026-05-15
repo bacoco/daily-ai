@@ -1,11 +1,20 @@
 [
   {
+    "date": "15 Mai 2026",
+    "title": "TTF Holds €47.91 as Hormuz Risk Premium Persists; HH Hits 7-Week High at $2.93",
+    "desc": "",
+    "url": "2026-05-15.html",
+    "type": "daily",
+    "latest": true,
+    "edito": "Three converging headwinds — a 10-week Hormuz closure stranding 20% of global LNG, EU storage 26% below its 5-year average, and a drought forecast for European summer — have TTF pinned at €47.91. The risk premium is structural, but the market has priced the base case. Watch for the next 72 hours: any diplomatic signal on Iran could trigger a sharp pullback, while a confirmed drought would push the bull case into overdrive."
+  },
+  {
     "date": "13 Mai 2026",
     "title": "TTF stabilise près de €46, HH défend $2.7 avant catalyseurs US",
     "desc": "",
     "url": "2026-05-13.html",
     "type": "daily",
-    "latest": true,
+    "latest": false,
     "edito": "Le gaz garde une asymétrie haussière malgré une apparence de range: les flux tiennent, mais la convexité reste chère là où le risque d’erreur est maximal. Le conseil retient un panier resserré de structures à risque borné et élimine les idées trop complexes ou redondantes. Exécution: discipline sur le sizing, protection optionnelle active sur Q3/Q4."
   },
   {
